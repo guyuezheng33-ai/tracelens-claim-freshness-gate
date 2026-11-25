@@ -8,6 +8,26 @@ TraceLens is a pre-merge **claim-freshness gate**. Before a coding agent's answe
 
 > lockfile 是干净的，那句话不是。TraceLens 在合并前审的是 agent 说出口的事实，不是已经落地的依赖文件。
 
+## Judge quickstart（clone → run → see graph，三步不问人）
+
+官方要求：评委应能 clone、run、see graph，无需向作者提问。全程离线，无 server、无 API key、无 signup。
+
+```bash
+# 1) clone
+git clone https://github.com/guyuezheng33-ai/tracelens-claim-freshness-gate.git
+cd "tracelens-claim-freshness-gate/trace-lens"
+
+# 2) run（自建 venv、装包、重建证据、跑 137 测试）
+python -m venv .venv && .venv/Scripts/python -m pip install -e ".[dev]"   # Windows
+# POSIX: python3 -m venv .venv && .venv/bin/python -m pip install -e ".[dev]"
+.venv/Scripts/python -m pytest tests -q
+
+# 3) see graph（双击即可，离线打开四张持久化图）
+start docs/graph-explorer.html     # Windows；POSIX: xdg-open docs/graph-explorer.html
+```
+
+Windows 也可直接 `.\verify.ps1`（等价第 2 步）+ `.\scripts\graph.ps1`（等价第 3 步）。
+
 ![批量 8 包 scan 图：8 条真实模型输出声明 → 111 条变长溯源路径（4–6 跳）→ 8 个 BLOCK_MERGE_TEXT](trace-lens/docs/scan.svg)
 
 *上图不是示意图：`make graph` / `.\scripts\graph.ps1` 用 Cypher 从持久化 `scan.rl` 读回每个节点与边后渲染，随每次复验自动重建。*
