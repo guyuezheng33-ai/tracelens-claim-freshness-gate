@@ -1,7 +1,7 @@
 {
  "_note": "Owner-only submission state. Only status=done with a non-empty evidence URL counts. Updated truthfully as each item is completed; never pre-filled as done.",
- "public_repo": {"status": "pending", "evidence": ""},
- "github_topic": {"status": "pending", "evidence": ""},
+ "public_repo": {"status": "done", "evidence": "https://github.com/guyuezheng33-ai/tracelens-claim-freshness-gate"},
+ "github_topic": {"status": "done", "evidence": "https://github.com/topics/relate (repo topic: relate, verified via GitHub API)"},
  "demo_video": {"status": "pending", "evidence": ""},
  "devpost_submission": {"status": "pending", "evidence": ""},
  "ai_disclosure": {"status": "done", "evidence": "SUBMISSION.md#ai-use-disclosure"}

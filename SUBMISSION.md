@@ -57,6 +57,6 @@ Required by Official Rules Sections 3 and 4. Stated plainly so judges can verify
 
 ## Links
 
-- Repo: `<public GitHub URL — fill after push>`
+- Repo: https://github.com/guyuezheng33-ai/tracelens-claim-freshness-gate (public, tagged `relate`)
 - Demo video: `<1–2 minute walkthrough — fill after recording>`
 - Graph explorer: `trace-lens/docs/graph-explorer.html` (double-click to open, offline)

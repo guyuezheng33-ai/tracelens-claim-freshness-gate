@@ -1,6 +1,7 @@
 # Devpost 提交字段（可直接复制粘贴）
 
 > 用法：打开提交页后，把下面每个字段的正文原样粘到对应输入框。`<...>` 占位符在拿到实际链接/视频后替换。
+> 仓库已建好并公开：https://github.com/guyuezheng33-ai/tracelens-claim-freshness-gate （topic `relate` 已加）。下面所有 `<REPO_URL>` 用这个地址替换。
 
 ## Title
 
@@ -21,7 +22,7 @@ The lockfile is clean. The sentence is not. TraceLens walks a Relate graph to bl
 ## Setup and run（贴在 Description 末尾或 "Try it out" 说明里）
 
 ```bash
-git clone <REPO_URL>
+git clone https://github.com/guyuezheng33-ai/tracelens-claim-freshness-gate.git
 cd "Relate by Neo4j Hackathon/trace-lens"
 python -m pip install -e .
 python -m tracelens.scan --text real-traces/scan/pr-answer.txt --lockfile real-traces/scan/requirements.lock --passport real-traces/scan/osv-batch-passport.json --store real-traces/scan/scan.rl --out docs/scan-verdict.json
@@ -37,7 +38,7 @@ Then double-click `trace-lens/docs/graph-explorer.html` — it opens offline wit
 
 ## GitHub URL
 
-`<REPO_URL>`
+https://github.com/guyuezheng33-ai/tracelens-claim-freshness-gate
 
 ## Built With
 
@@ -55,8 +56,8 @@ Python, Relate (embedded single-file store), Cypher, MCP, Datalog-style rule rea
 ## 提交前自检（官方 Requirements 逐条）
 
 - [ ] 项目描述写了 use case 和"什么连接什么"
-- [ ] Public GitHub repo + README（已备）
-- [ ] topic `relate`（已加）/ 建议 `relate-neo4j-hackathon`（已加）
+- [x] Public GitHub repo + README（已建并推送）
+- [x] topic `relate`（已加，`relate-neo4j-hackathon` 被 GitHub topic 目录拒绝，官方仅建议非必需）
 - [ ] 持久化 Relate store 在仓库里（`trace-lens/real-traces/**/*.rl`，已入仓）
 - [ ] 可运行代码，Relate 真的在跑（137 测试 + scan CLI，已备）
 - [ ] 1–2 分钟演示视频（待你录制上传）
