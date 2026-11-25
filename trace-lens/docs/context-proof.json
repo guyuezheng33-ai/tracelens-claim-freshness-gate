@@ -1,0 +1,41 @@
+{
+  "schema": "tracelens/context-connected@1",
+  "checks": {
+    "all_four_packs_assert_on_diagnostic_store": true,
+    "guardrail_decision_is_graph_only": true,
+    "model_cannot_release_rejected_claim": true,
+    "every_decision_cites_graph_evidence": true,
+    "real_graph_is_traceable_at_scale": true
+  },
+  "packs": {
+    "Q1": {
+      "rows": 2,
+      "passed": true
+    },
+    "Q2": {
+      "rows": 1,
+      "passed": true
+    },
+    "Q3": {
+      "rows": 1,
+      "passed": true
+    },
+    "Q4": {
+      "rows": 1,
+      "passed": true
+    }
+  },
+  "guardrail": {
+    "present": true,
+    "decision_source": "graph only (Q3 unsupported path / Q2 convergence cause)",
+    "model": "gpt-oss-20b"
+  },
+  "real_graph": {
+    "present": true,
+    "node_count": 11023,
+    "url_coverage": 1.0,
+    "nature": "real-public"
+  },
+  "passed": true,
+  "verdict": "PASS"
+}

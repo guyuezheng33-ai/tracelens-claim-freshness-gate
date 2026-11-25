@@ -1,0 +1,5541 @@
+{
+  "schema": "tracelens/graph-export@1",
+  "title": "批量 8 包 · scan 图（真实模型输出）",
+  "store": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\scan\\scan.rl",
+  "store_bytes": 73728,
+  "store_sha256": "5f4dcf9f8be506889b86e48c561740f3e29f31494f64c9206e513b56d03d54e6",
+  "source": "live Cypher read-back from the persisted Relate .rl store",
+  "queries": {
+    "nodes": "MATCH (n) RETURN labels(n)[0] AS label, properties(n) AS props",
+    "edges": "MATCH (a)-[r]->(b) RETURN coalesce(a.node_id, a.id, a.url) AS source, type(r) AS rel, coalesce(b.node_id, b.id, b.url) AS target"
+  },
+  "counts": {
+    "nodes": 162,
+    "relationships": 175,
+    "labels": {
+      "Advisory": 8,
+      "Alias": 17,
+      "Answer": 8,
+      "Claim": 8,
+      "Lockfile": 1,
+      "PkgVersion": 16,
+      "Ref": 72,
+      "Run": 8,
+      "Source": 8,
+      "Span": 16
+    },
+    "rel_types": {
+      "AFFECTS": 8,
+      "ASSERTS": 8,
+      "CITES": 8,
+      "CONTAINS": 8,
+      "HAS_ALIAS": 17,
+      "MENTIONS": 8,
+      "PARENT_OF": 8,
+      "PINS": 8,
+      "PRODUCED": 8,
+      "REFERENCES": 86,
+      "RETRIEVED_FROM": 8
+    }
+  },
+  "checks": {
+    "store_is_persisted_on_disk": true,
+    "nodes_match_live_db_count": true,
+    "relationships_match_live_db_count": true,
+    "every_node_has_properties": true,
+    "every_edge_has_type": true,
+    "every_edge_endpoint_resolves": true,
+    "q6_path_nodes_resolve_in_export": true
+  },
+  "verdict": "PASS",
+  "nodes": [
+    {
+      "id": "run:scan-0",
+      "label": "Run",
+      "props": {
+        "node_id": "run:scan-0",
+        "run_id": "scan-0",
+        "started_ns": 1795364588000000000
+      }
+    },
+    {
+      "id": "ans:scan-answer-flask-0",
+      "label": "Answer",
+      "props": {
+        "answer_id": "scan-answer-flask-0",
+        "created_ns": 1795364590000000000,
+        "model": "",
+        "node_id": "ans:scan-answer-flask-0",
+        "question": "auto-extracted from text",
+        "run_id": "scan-0",
+        "text": "from flask import Flask, render_template, request  # VERSION=3.0.3"
+      }
+    },
+    {
+      "id": "span:scan-root-0",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795364589000000000,
+        "kind": "AGENT",
+        "name": "agent.answer",
+        "node_id": "span:scan-root-0",
+        "run_id": "scan-0",
+        "span_id": "scan-root-0"
+      }
+    },
+    {
+      "id": "span:scan-ret-0",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795364589500000000,
+        "kind": "RETRIEVER",
+        "name": "vector-search",
+        "node_id": "span:scan-ret-0",
+        "run_id": "scan-0",
+        "span_id": "scan-ret-0"
+      }
+    },
+    {
+      "id": "src:scan-doc-0",
+      "label": "Source",
+      "props": {
+        "at_ns": 1715631926000000000,
+        "doc_id": "scan-doc-0",
+        "node_id": "src:scan-doc-0",
+        "source_id": "src:scan-doc-0",
+        "uri": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\scan\\pr-answer.txt"
+      }
+    },
+    {
+      "id": "pv:flask:3.0.3",
+      "label": "PkgVersion",
+      "props": {
+        "name": "flask",
+        "node_id": "pv:flask:3.0.3",
+        "version": "3.0.3"
+      }
+    },
+    {
+      "id": "claim:scan-claim-flask-0",
+      "label": "Claim",
+      "props": {
+        "claim_id": "scan-claim-flask-0",
+        "node_id": "claim:scan-claim-flask-0",
+        "text": "from flask import Flask, render_template, request  # VERSION=3.0.3"
+      }
+    },
+    {
+      "id": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\scan\\requirements.lock",
+      "label": "Lockfile",
+      "props": {
+        "node_id": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\scan\\requirements.lock",
+        "path": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\scan\\requirements.lock",
+        "pinned_ns": 1795364580000000000,
+        "sha256": "655b79c7b372a8e602045916abd6e6fe5d2f2b2edd7076d24b6d6f701f8664d9"
+      }
+    },
+    {
+      "id": "pv:flask:3.1.1",
+      "label": "PkgVersion",
+      "props": {
+        "name": "flask",
+        "node_id": "pv:flask:3.1.1",
+        "version": "3.1.1"
+      }
+    },
+    {
+      "id": "adv:GHSA-4grg-w6v8-c28g",
+      "label": "Advisory",
+      "props": {
+        "fix_available_ns": -1,
+        "fixed": "3.1.1",
+        "id": "GHSA-4grg-w6v8-c28g",
+        "node_id": "adv:GHSA-4grg-w6v8-c28g",
+        "osv_modified_ns": 1789012224238503936,
+        "published": "2025-05-13T20:25:26Z",
+        "published_ns": 1747167926000000000,
+        "summary": "Flask uses fallback key instead of current signing key",
+        "url": "https://github.com/pallets/flask/security/advisories/GHSA-4grg-w6v8-c28g"
+      }
+    },
+    {
+      "id": "alias:CVE-2025-47278",
+      "label": "Alias",
+      "props": {
+        "alias": "CVE-2025-47278",
+        "node_id": "alias:CVE-2025-47278"
+      }
+    },
+    {
+      "id": "alias:PYSEC-2026-1377",
+      "label": "Alias",
+      "props": {
+        "alias": "PYSEC-2026-1377",
+        "node_id": "alias:PYSEC-2026-1377"
+      }
+    },
+    {
+      "id": "https://github.com/pallets/flask/security/advisories/GHSA-4grg-w6v8-c28g",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://github.com/pallets/flask/security/advisories/GHSA-4grg-w6v8-c28g"
+      }
+    },
+    {
+      "id": "https://nvd.nist.gov/vuln/detail/CVE-2025-47278",
+      "label": "Ref",
+      "props": {
+        "ref_type": "ADVISORY",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-47278"
+      }
+    },
+    {
+      "id": "https://github.com/pallets/flask/commit/73d6504063bfa00666a92b07a28aaf906c532f09",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://github.com/pallets/flask/commit/73d6504063bfa00666a92b07a28aaf906c532f09"
+      }
+    },
+    {
+      "id": "https://github.com/pallets/flask",
+      "label": "Ref",
+      "props": {
+        "ref_type": "PACKAGE",
+        "url": "https://github.com/pallets/flask"
+      }
+    },
+    {
+      "id": "https://github.com/pallets/flask/releases/tag/3.1.1",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://github.com/pallets/flask/releases/tag/3.1.1"
+      }
+    },
+    {
+      "id": "https://pypi.org/project/flask",
+      "label": "Ref",
+      "props": {
+        "ref_type": "PACKAGE",
+        "url": "https://pypi.org/project/flask"
+      }
+    },
+    {
+      "id": "https://github.com/advisories/GHSA-4grg-w6v8-c28g",
+      "label": "Ref",
+      "props": {
+        "ref_type": "ADVISORY",
+        "url": "https://github.com/advisories/GHSA-4grg-w6v8-c28g"
+      }
+    },
+    {
+      "id": "run:scan-1",
+      "label": "Run",
+      "props": {
+        "node_id": "run:scan-1",
+        "run_id": "scan-1",
+        "started_ns": 1795364588000000000
+      }
+    },
+    {
+      "id": "ans:scan-answer-pillow-1",
+      "label": "Answer",
+      "props": {
+        "answer_id": "scan-answer-pillow-1",
+        "created_ns": 1795364590000000000,
+        "model": "",
+        "node_id": "ans:scan-answer-pillow-1",
+        "question": "auto-extracted from text",
+        "run_id": "scan-1",
+        "text": "from PIL import Image  # VERSION=10.0.0"
+      }
+    },
+    {
+      "id": "span:scan-root-1",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795364589000000000,
+        "kind": "AGENT",
+        "name": "agent.answer",
+        "node_id": "span:scan-root-1",
+        "run_id": "scan-1",
+        "span_id": "scan-root-1"
+      }
+    },
+    {
+      "id": "span:scan-ret-1",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795364589500000000,
+        "kind": "RETRIEVER",
+        "name": "vector-search",
+        "node_id": "span:scan-ret-1",
+        "run_id": "scan-1",
+        "span_id": "scan-ret-1"
+      }
+    },
+    {
+      "id": "src:scan-doc-1",
+      "label": "Source",
+      "props": {
+        "at_ns": 1761079189000000000,
+        "doc_id": "scan-doc-1",
+        "node_id": "src:scan-doc-1",
+        "source_id": "src:scan-doc-1",
+        "uri": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\scan\\pr-answer.txt"
+      }
+    },
+    {
+      "id": "pv:pillow:10.0.0",
+      "label": "PkgVersion",
+      "props": {
+        "name": "pillow",
+        "node_id": "pv:pillow:10.0.0",
+        "version": "10.0.0"
+      }
+    },
+    {
+      "id": "claim:scan-claim-pillow-1",
+      "label": "Claim",
+      "props": {
+        "claim_id": "scan-claim-pillow-1",
+        "node_id": "claim:scan-claim-pillow-1",
+        "text": "from PIL import Image  # VERSION=10.0.0"
+      }
+    },
+    {
+      "id": "pv:pillow:13.0.0",
+      "label": "PkgVersion",
+      "props": {
+        "name": "pillow",
+        "node_id": "pv:pillow:13.0.0",
+        "version": "13.0.0"
+      }
+    },
+    {
+      "id": "adv:GHSA-22hg-r758-rrw9",
+      "label": "Advisory",
+      "props": {
+        "fix_available_ns": -1,
+        "fixed": "13.0.0",
+        "id": "GHSA-22hg-r758-rrw9",
+        "node_id": "adv:GHSA-22hg-r758-rrw9",
+        "osv_modified_ns": 1793004963565712896,
+        "published": "2026-10-21T20:39:49Z",
+        "published_ns": 1792615189000000000,
+        "summary": "Pillow: Infinite loop in MIC n_frames when the embedded TIFF",
+        "url": "https://github.com/python-pillow/Pillow/security/advisories/GHSA-22hg-r758-rrw9"
+      }
+    },
+    {
+      "id": "alias:BIT-pillow-2026-112390",
+      "label": "Alias",
+      "props": {
+        "alias": "BIT-pillow-2026-112390",
+        "node_id": "alias:BIT-pillow-2026-112390"
+      }
+    },
+    {
+      "id": "alias:CVE-2026-112390",
+      "label": "Alias",
+      "props": {
+        "alias": "CVE-2026-112390",
+        "node_id": "alias:CVE-2026-112390"
+      }
+    },
+    {
+      "id": "https://github.com/python-pillow/Pillow/security/advisories/GHSA-22hg-r758-rrw9",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://github.com/python-pillow/Pillow/security/advisories/GHSA-22hg-r758-rrw9"
+      }
+    },
+    {
+      "id": "https://nvd.nist.gov/vuln/detail/CVE-2026-112390",
+      "label": "Ref",
+      "props": {
+        "ref_type": "ADVISORY",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-112390"
+      }
+    },
+    {
+      "id": "https://github.com/python-pillow/Pillow/commit/26cb3ed061173b817b9ee4b6f507cb0e1e293218",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://github.com/python-pillow/Pillow/commit/26cb3ed061173b817b9ee4b6f507cb0e1e293218"
+      }
+    },
+    {
+      "id": "https://github.com/python-pillow/Pillow",
+      "label": "Ref",
+      "props": {
+        "ref_type": "PACKAGE",
+        "url": "https://github.com/python-pillow/Pillow"
+      }
+    },
+    {
+      "id": "https://github.com/python-pillow/Pillow/releases/tag/13.0.0",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://github.com/python-pillow/Pillow/releases/tag/13.0.0"
+      }
+    },
+    {
+      "id": "run:scan-2",
+      "label": "Run",
+      "props": {
+        "node_id": "run:scan-2",
+        "run_id": "scan-2",
+        "started_ns": 1795364588000000000
+      }
+    },
+    {
+      "id": "ans:scan-answer-jinja2-2",
+      "label": "Answer",
+      "props": {
+        "answer_id": "scan-answer-jinja2-2",
+        "created_ns": 1795364590000000000,
+        "model": "",
+        "node_id": "ans:scan-answer-jinja2-2",
+        "question": "auto-extracted from text",
+        "run_id": "scan-2",
+        "text": "from jinja2 import Environment, PackageLoader, select_autoescape  # VERSION=3.1.2"
+      }
+    },
+    {
+      "id": "span:scan-root-2",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795364589000000000,
+        "kind": "AGENT",
+        "name": "agent.answer",
+        "node_id": "span:scan-root-2",
+        "run_id": "scan-2",
+        "span_id": "scan-root-2"
+      }
+    },
+    {
+      "id": "span:scan-ret-2",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795364589500000000,
+        "kind": "RETRIEVER",
+        "name": "vector-search",
+        "node_id": "span:scan-ret-2",
+        "run_id": "scan-2",
+        "span_id": "scan-ret-2"
+      }
+    },
+    {
+      "id": "src:scan-doc-2",
+      "label": "Source",
+      "props": {
+        "at_ns": 1709671214000000000,
+        "doc_id": "scan-doc-2",
+        "node_id": "src:scan-doc-2",
+        "source_id": "src:scan-doc-2",
+        "uri": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\scan\\pr-answer.txt"
+      }
+    },
+    {
+      "id": "pv:jinja2:3.1.2",
+      "label": "PkgVersion",
+      "props": {
+        "name": "jinja2",
+        "node_id": "pv:jinja2:3.1.2",
+        "version": "3.1.2"
+      }
+    },
+    {
+      "id": "claim:scan-claim-jinja2-2",
+      "label": "Claim",
+      "props": {
+        "claim_id": "scan-claim-jinja2-2",
+        "node_id": "claim:scan-claim-jinja2-2",
+        "text": "from jinja2 import Environment, PackageLoader, select_autoescape  # VERSION=3.1.2"
+      }
+    },
+    {
+      "id": "pv:jinja2:3.1.6",
+      "label": "PkgVersion",
+      "props": {
+        "name": "jinja2",
+        "node_id": "pv:jinja2:3.1.6",
+        "version": "3.1.6"
+      }
+    },
+    {
+      "id": "adv:GHSA-cpwx-vrp4-4pq7",
+      "label": "Advisory",
+      "props": {
+        "fix_available_ns": -1,
+        "fixed": "3.1.6",
+        "id": "GHSA-cpwx-vrp4-4pq7",
+        "node_id": "adv:GHSA-cpwx-vrp4-4pq7",
+        "osv_modified_ns": 1794962713756180992,
+        "published": "2025-03-05T20:40:14Z",
+        "published_ns": 1741207214000000000,
+        "summary": "Jinja2 vulnerable to sandbox breakout through attr filter selecting format method",
+        "url": "https://github.com/pallets/jinja/security/advisories/GHSA-cpwx-vrp4-4pq7"
+      }
+    },
+    {
+      "id": "alias:CVE-2025-27516",
+      "label": "Alias",
+      "props": {
+        "alias": "CVE-2025-27516",
+        "node_id": "alias:CVE-2025-27516"
+      }
+    },
+    {
+      "id": "alias:PYSEC-2026-1471",
+      "label": "Alias",
+      "props": {
+        "alias": "PYSEC-2026-1471",
+        "node_id": "alias:PYSEC-2026-1471"
+      }
+    },
+    {
+      "id": "https://github.com/pallets/jinja/security/advisories/GHSA-cpwx-vrp4-4pq7",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://github.com/pallets/jinja/security/advisories/GHSA-cpwx-vrp4-4pq7"
+      }
+    },
+    {
+      "id": "https://nvd.nist.gov/vuln/detail/CVE-2025-27516",
+      "label": "Ref",
+      "props": {
+        "ref_type": "ADVISORY",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-27516"
+      }
+    },
+    {
+      "id": "https://github.com/pallets/jinja/commit/90457bbf33b8662926ae65cdde4c4c32e756e403",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://github.com/pallets/jinja/commit/90457bbf33b8662926ae65cdde4c4c32e756e403"
+      }
+    },
+    {
+      "id": "https://github.com/pallets/jinja",
+      "label": "Ref",
+      "props": {
+        "ref_type": "PACKAGE",
+        "url": "https://github.com/pallets/jinja"
+      }
+    },
+    {
+      "id": "https://github.com/pallets/jinja/releases/tag/3.1.6",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://github.com/pallets/jinja/releases/tag/3.1.6"
+      }
+    },
+    {
+      "id": "https://github.com/pypa/advisory-database/tree/main/vulns/jinja2/PYSEC-2026-1471.yaml",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://github.com/pypa/advisory-database/tree/main/vulns/jinja2/PYSEC-2026-1471.yaml"
+      }
+    },
+    {
+      "id": "https://lists.debian.org/debian-lts-announce/2025/04/msg00022.html",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://lists.debian.org/debian-lts-announce/2025/04/msg00022.html"
+      }
+    },
+    {
+      "id": "https://lists.debian.org/debian-lts-announce/2025/04/msg00045.html",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://lists.debian.org/debian-lts-announce/2025/04/msg00045.html"
+      }
+    },
+    {
+      "id": "https://pypi.org/project/jinja2",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://pypi.org/project/jinja2"
+      }
+    },
+    {
+      "id": "https://github.com/advisories/GHSA-cpwx-vrp4-4pq7",
+      "label": "Ref",
+      "props": {
+        "ref_type": "ADVISORY",
+        "url": "https://github.com/advisories/GHSA-cpwx-vrp4-4pq7"
+      }
+    },
+    {
+      "id": "run:scan-3",
+      "label": "Run",
+      "props": {
+        "node_id": "run:scan-3",
+        "run_id": "scan-3",
+        "started_ns": 1795364588000000000
+      }
+    },
+    {
+      "id": "ans:scan-answer-requests-3",
+      "label": "Answer",
+      "props": {
+        "answer_id": "scan-answer-requests-3",
+        "created_ns": 1795364590000000000,
+        "model": "",
+        "node_id": "ans:scan-answer-requests-3",
+        "question": "auto-extracted from text",
+        "run_id": "scan-3",
+        "text": "import requests  # VERSION=2.31.0"
+      }
+    },
+    {
+      "id": "span:scan-root-3",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795364589000000000,
+        "kind": "AGENT",
+        "name": "agent.answer",
+        "node_id": "span:scan-root-3",
+        "run_id": "scan-3",
+        "span_id": "scan-root-3"
+      }
+    },
+    {
+      "id": "span:scan-ret-3",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795364589500000000,
+        "kind": "RETRIEVER",
+        "name": "vector-search",
+        "node_id": "span:scan-ret-3",
+        "run_id": "scan-3",
+        "span_id": "scan-ret-3"
+      }
+    },
+    {
+      "id": "src:scan-doc-3",
+      "label": "Source",
+      "props": {
+        "at_ns": 1717959968000000000,
+        "doc_id": "scan-doc-3",
+        "node_id": "src:scan-doc-3",
+        "source_id": "src:scan-doc-3",
+        "uri": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\scan\\pr-answer.txt"
+      }
+    },
+    {
+      "id": "pv:requests:2.31.0",
+      "label": "PkgVersion",
+      "props": {
+        "name": "requests",
+        "node_id": "pv:requests:2.31.0",
+        "version": "2.31.0"
+      }
+    },
+    {
+      "id": "claim:scan-claim-requests-3",
+      "label": "Claim",
+      "props": {
+        "claim_id": "scan-claim-requests-3",
+        "node_id": "claim:scan-claim-requests-3",
+        "text": "import requests  # VERSION=2.31.0"
+      }
+    },
+    {
+      "id": "pv:requests:2.32.4",
+      "label": "PkgVersion",
+      "props": {
+        "name": "requests",
+        "node_id": "pv:requests:2.32.4",
+        "version": "2.32.4"
+      }
+    },
+    {
+      "id": "adv:GHSA-9hjg-9r4m-mvj7",
+      "label": "Advisory",
+      "props": {
+        "fix_available_ns": -1,
+        "fixed": "2.32.4",
+        "id": "GHSA-9hjg-9r4m-mvj7",
+        "node_id": "adv:GHSA-9hjg-9r4m-mvj7",
+        "osv_modified_ns": 1792440004716113920,
+        "published": "2025-06-09T19:06:08Z",
+        "published_ns": 1749495968000000000,
+        "summary": "Requests vulnerable to .netrc credentials leak via malicious URLs",
+        "url": "https://github.com/psf/requests/security/advisories/GHSA-9hjg-9r4m-mvj7"
+      }
+    },
+    {
+      "id": "alias:CVE-2024-47081",
+      "label": "Alias",
+      "props": {
+        "alias": "CVE-2024-47081",
+        "node_id": "alias:CVE-2024-47081"
+      }
+    },
+    {
+      "id": "alias:PYSEC-2026-1872",
+      "label": "Alias",
+      "props": {
+        "alias": "PYSEC-2026-1872",
+        "node_id": "alias:PYSEC-2026-1872"
+      }
+    },
+    {
+      "id": "https://github.com/psf/requests/security/advisories/GHSA-9hjg-9r4m-mvj7",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://github.com/psf/requests/security/advisories/GHSA-9hjg-9r4m-mvj7"
+      }
+    },
+    {
+      "id": "https://nvd.nist.gov/vuln/detail/CVE-2024-47081",
+      "label": "Ref",
+      "props": {
+        "ref_type": "ADVISORY",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-47081"
+      }
+    },
+    {
+      "id": "https://github.com/psf/requests/pull/6965",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://github.com/psf/requests/pull/6965"
+      }
+    },
+    {
+      "id": "https://github.com/psf/requests/commit/96ba401c1296ab1dda74a2365ef36d88f7d144ef",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://github.com/psf/requests/commit/96ba401c1296ab1dda74a2365ef36d88f7d144ef"
+      }
+    },
+    {
+      "id": "https://github.com/advisories/GHSA-9hjg-9r4m-mvj7",
+      "label": "Ref",
+      "props": {
+        "ref_type": "ADVISORY",
+        "url": "https://github.com/advisories/GHSA-9hjg-9r4m-mvj7"
+      }
+    },
+    {
+      "id": "https://github.com/psf/requests",
+      "label": "Ref",
+      "props": {
+        "ref_type": "PACKAGE",
+        "url": "https://github.com/psf/requests"
+      }
+    },
+    {
+      "id": "https://github.com/psf/requests/releases/tag/v2.32.4",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://github.com/psf/requests/releases/tag/v2.32.4"
+      }
+    },
+    {
+      "id": "https://github.com/pypa/advisory-database/tree/main/vulns/requests/PYSEC-2026-1872.yaml",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://github.com/pypa/advisory-database/tree/main/vulns/requests/PYSEC-2026-1872.yaml"
+      }
+    },
+    {
+      "id": "https://pypi.org/project/requests",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://pypi.org/project/requests"
+      }
+    },
+    {
+      "id": "https://requests.readthedocs.io/en/latest/api/#requests.Session.trust_env",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://requests.readthedocs.io/en/latest/api/#requests.Session.trust_env"
+      }
+    },
+    {
+      "id": "https://seclists.org/fulldisclosure/2025/Jun/2",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://seclists.org/fulldisclosure/2025/Jun/2"
+      }
+    },
+    {
+      "id": "http://www.openwall.com/lists/oss-security/2025/06/03/11",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "http://www.openwall.com/lists/oss-security/2025/06/03/11"
+      }
+    },
+    {
+      "id": "http://www.openwall.com/lists/oss-security/2025/06/03/9",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "http://www.openwall.com/lists/oss-security/2025/06/03/9"
+      }
+    },
+    {
+      "id": "http://www.openwall.com/lists/oss-security/2025/06/04/1",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "http://www.openwall.com/lists/oss-security/2025/06/04/1"
+      }
+    },
+    {
+      "id": "http://www.openwall.com/lists/oss-security/2025/06/04/6",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "http://www.openwall.com/lists/oss-security/2025/06/04/6"
+      }
+    },
+    {
+      "id": "http://seclists.org/fulldisclosure/2025/Jun/2",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "http://seclists.org/fulldisclosure/2025/Jun/2"
+      }
+    },
+    {
+      "id": "run:scan-4",
+      "label": "Run",
+      "props": {
+        "node_id": "run:scan-4",
+        "run_id": "scan-4",
+        "started_ns": 1795364588000000000
+      }
+    },
+    {
+      "id": "ans:scan-answer-pyyaml-4",
+      "label": "Answer",
+      "props": {
+        "answer_id": "scan-answer-pyyaml-4",
+        "created_ns": 1795364590000000000,
+        "model": "",
+        "node_id": "ans:scan-answer-pyyaml-4",
+        "question": "auto-extracted from text",
+        "run_id": "scan-4",
+        "text": "import yaml  # VERSION=3.13"
+      }
+    },
+    {
+      "id": "span:scan-root-4",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795364589000000000,
+        "kind": "AGENT",
+        "name": "agent.answer",
+        "node_id": "span:scan-root-4",
+        "run_id": "scan-4",
+        "span_id": "scan-root-4"
+      }
+    },
+    {
+      "id": "span:scan-ret-4",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795364589500000000,
+        "kind": "RETRIEVER",
+        "name": "vector-search",
+        "node_id": "span:scan-ret-4",
+        "run_id": "scan-4",
+        "span_id": "scan-ret-4"
+      }
+    },
+    {
+      "id": "src:scan-doc-4",
+      "label": "Source",
+      "props": {
+        "at_ns": 1587400842000000000,
+        "doc_id": "scan-doc-4",
+        "node_id": "src:scan-doc-4",
+        "source_id": "src:scan-doc-4",
+        "uri": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\scan\\pr-answer.txt"
+      }
+    },
+    {
+      "id": "pv:pyyaml:3.13",
+      "label": "PkgVersion",
+      "props": {
+        "name": "pyyaml",
+        "node_id": "pv:pyyaml:3.13",
+        "version": "3.13"
+      }
+    },
+    {
+      "id": "claim:scan-claim-pyyaml-4",
+      "label": "Claim",
+      "props": {
+        "claim_id": "scan-claim-pyyaml-4",
+        "node_id": "claim:scan-claim-pyyaml-4",
+        "text": "import yaml  # VERSION=3.13"
+      }
+    },
+    {
+      "id": "pv:pyyaml:5.2",
+      "label": "PkgVersion",
+      "props": {
+        "name": "pyyaml",
+        "node_id": "pv:pyyaml:5.2",
+        "version": "5.2"
+      }
+    },
+    {
+      "id": "adv:GHSA-3pqx-4fqf-j49f",
+      "label": "Advisory",
+      "props": {
+        "fix_available_ns": -1,
+        "fixed": "5.2",
+        "id": "GHSA-3pqx-4fqf-j49f",
+        "node_id": "adv:GHSA-3pqx-4fqf-j49f",
+        "osv_modified_ns": 1729891391506576128,
+        "published": "2021-04-20T16:40:42Z",
+        "published_ns": 1618936842000000000,
+        "summary": "Deserialization of Untrusted Data in PyYAML",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-20477"
+      }
+    },
+    {
+      "id": "alias:CVE-2019-20477",
+      "label": "Alias",
+      "props": {
+        "alias": "CVE-2019-20477",
+        "node_id": "alias:CVE-2019-20477"
+      }
+    },
+    {
+      "id": "alias:PYSEC-2020-176",
+      "label": "Alias",
+      "props": {
+        "alias": "PYSEC-2020-176",
+        "node_id": "alias:PYSEC-2020-176"
+      }
+    },
+    {
+      "id": "https://nvd.nist.gov/vuln/detail/CVE-2019-20477",
+      "label": "Ref",
+      "props": {
+        "ref_type": "ADVISORY",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-20477"
+      }
+    },
+    {
+      "id": "https://github.com/advisories/GHSA-3pqx-4fqf-j49f",
+      "label": "Ref",
+      "props": {
+        "ref_type": "ADVISORY",
+        "url": "https://github.com/advisories/GHSA-3pqx-4fqf-j49f"
+      }
+    },
+    {
+      "id": "https://github.com/pypa/advisory-database/tree/main/vulns/pyyaml/PYSEC-2020-176.yaml",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://github.com/pypa/advisory-database/tree/main/vulns/pyyaml/PYSEC-2020-176.yaml"
+      }
+    },
+    {
+      "id": "https://github.com/yaml/pyyaml",
+      "label": "Ref",
+      "props": {
+        "ref_type": "PACKAGE",
+        "url": "https://github.com/yaml/pyyaml"
+      }
+    },
+    {
+      "id": "https://github.com/yaml/pyyaml/blob/master/CHANGES",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://github.com/yaml/pyyaml/blob/master/CHANGES"
+      }
+    },
+    {
+      "id": "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/33VBUY73AA6CTTYL3LRWHNFDULV7PFPN",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/33VBUY73AA6CTTYL3LRWHNFDULV7PFPN"
+      }
+    },
+    {
+      "id": "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/52N5XS73Z5S4ZN7I7R56ICCPCTKCUV4H",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/52N5XS73Z5S4ZN7I7R56ICCPCTKCUV4H"
+      }
+    },
+    {
+      "id": "https://www.exploit-db.com/download/47655",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://www.exploit-db.com/download/47655"
+      }
+    },
+    {
+      "id": "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/52N5XS73Z5S4ZN7I7R56ICCPCTKCUV4H/",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/52N5XS73Z5S4ZN7I7R56ICCPCTKCUV4H/"
+      }
+    },
+    {
+      "id": "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/33VBUY73AA6CTTYL3LRWHNFDULV7PFPN/",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/33VBUY73AA6CTTYL3LRWHNFDULV7PFPN/"
+      }
+    },
+    {
+      "id": "run:scan-5",
+      "label": "Run",
+      "props": {
+        "node_id": "run:scan-5",
+        "run_id": "scan-5",
+        "started_ns": 1795364588000000000
+      }
+    },
+    {
+      "id": "ans:scan-answer-numpy-5",
+      "label": "Answer",
+      "props": {
+        "answer_id": "scan-answer-numpy-5",
+        "created_ns": 1795364590000000000,
+        "model": "",
+        "node_id": "ans:scan-answer-numpy-5",
+        "question": "auto-extracted from text",
+        "run_id": "scan-5",
+        "text": "import numpy as np  # VERSION=1.21.0"
+      }
+    },
+    {
+      "id": "span:scan-root-5",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795364589000000000,
+        "kind": "AGENT",
+        "name": "agent.answer",
+        "node_id": "span:scan-root-5",
+        "run_id": "scan-5",
+        "span_id": "scan-root-5"
+      }
+    },
+    {
+      "id": "span:scan-ret-5",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795364589500000000,
+        "kind": "RETRIEVER",
+        "name": "vector-search",
+        "node_id": "span:scan-ret-5",
+        "run_id": "scan-5",
+        "span_id": "scan-ret-5"
+      }
+    },
+    {
+      "id": "src:scan-doc-5",
+      "label": "Source",
+      "props": {
+        "at_ns": 1608249641000000000,
+        "doc_id": "scan-doc-5",
+        "node_id": "src:scan-doc-5",
+        "source_id": "src:scan-doc-5",
+        "uri": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\scan\\pr-answer.txt"
+      }
+    },
+    {
+      "id": "pv:numpy:1.21.0",
+      "label": "PkgVersion",
+      "props": {
+        "name": "numpy",
+        "node_id": "pv:numpy:1.21.0",
+        "version": "1.21.0"
+      }
+    },
+    {
+      "id": "claim:scan-claim-numpy-5",
+      "label": "Claim",
+      "props": {
+        "claim_id": "scan-claim-numpy-5",
+        "node_id": "claim:scan-claim-numpy-5",
+        "text": "import numpy as np  # VERSION=1.21.0"
+      }
+    },
+    {
+      "id": "pv:numpy:1.22",
+      "label": "PkgVersion",
+      "props": {
+        "name": "numpy",
+        "node_id": "pv:numpy:1.22",
+        "version": "1.22"
+      }
+    },
+    {
+      "id": "adv:GHSA-fpfv-jqm9-f5jm",
+      "label": "Advisory",
+      "props": {
+        "fix_available_ns": -1,
+        "fixed": "1.22",
+        "id": "GHSA-fpfv-jqm9-f5jm",
+        "node_id": "adv:GHSA-fpfv-jqm9-f5jm",
+        "osv_modified_ns": 1699416367388274944,
+        "published": "2021-12-18T00:00:41Z",
+        "published_ns": 1639785641000000000,
+        "summary": "Incorrect Comparison in NumPy",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-34141"
+      }
+    },
+    {
+      "id": "alias:CVE-2021-34141",
+      "label": "Alias",
+      "props": {
+        "alias": "CVE-2021-34141",
+        "node_id": "alias:CVE-2021-34141"
+      }
+    },
+    {
+      "id": "alias:PYSEC-2021-855",
+      "label": "Alias",
+      "props": {
+        "alias": "PYSEC-2021-855",
+        "node_id": "alias:PYSEC-2021-855"
+      }
+    },
+    {
+      "id": "https://nvd.nist.gov/vuln/detail/CVE-2021-34141",
+      "label": "Ref",
+      "props": {
+        "ref_type": "ADVISORY",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-34141"
+      }
+    },
+    {
+      "id": "https://github.com/numpy/numpy/issues/18993",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://github.com/numpy/numpy/issues/18993"
+      }
+    },
+    {
+      "id": "https://github.com/numpy/numpy/issues/18993#issuecomment-1010735102",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://github.com/numpy/numpy/issues/18993#issuecomment-1010735102"
+      }
+    },
+    {
+      "id": "https://github.com/advisories/GHSA-fpfv-jqm9-f5jm",
+      "label": "Ref",
+      "props": {
+        "ref_type": "ADVISORY",
+        "url": "https://github.com/advisories/GHSA-fpfv-jqm9-f5jm"
+      }
+    },
+    {
+      "id": "https://github.com/numpy/numpy",
+      "label": "Ref",
+      "props": {
+        "ref_type": "PACKAGE",
+        "url": "https://github.com/numpy/numpy"
+      }
+    },
+    {
+      "id": "https://github.com/pypa/advisory-database/tree/main/vulns/numpy/PYSEC-2021-855.yaml",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://github.com/pypa/advisory-database/tree/main/vulns/numpy/PYSEC-2021-855.yaml"
+      }
+    },
+    {
+      "id": "https://www.oracle.com/security-alerts/cpujul2022.html",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://www.oracle.com/security-alerts/cpujul2022.html"
+      }
+    },
+    {
+      "id": "run:scan-6",
+      "label": "Run",
+      "props": {
+        "node_id": "run:scan-6",
+        "run_id": "scan-6",
+        "started_ns": 1795364588000000000
+      }
+    },
+    {
+      "id": "ans:scan-answer-django-6",
+      "label": "Answer",
+      "props": {
+        "answer_id": "scan-answer-django-6",
+        "created_ns": 1795364590000000000,
+        "model": "",
+        "node_id": "ans:scan-answer-django-6",
+        "question": "auto-extracted from text",
+        "run_id": "scan-6",
+        "text": "Django==4.2.7"
+      }
+    },
+    {
+      "id": "span:scan-root-6",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795364589000000000,
+        "kind": "AGENT",
+        "name": "agent.answer",
+        "node_id": "span:scan-root-6",
+        "run_id": "scan-6",
+        "span_id": "scan-root-6"
+      }
+    },
+    {
+      "id": "span:scan-ret-6",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795364589500000000,
+        "kind": "RETRIEVER",
+        "name": "vector-search",
+        "node_id": "span:scan-ret-6",
+        "run_id": "scan-6",
+        "span_id": "scan-ret-6"
+      }
+    },
+    {
+      "id": "src:scan-doc-6",
+      "label": "Source",
+      "props": {
+        "at_ns": 1738596623000000000,
+        "doc_id": "scan-doc-6",
+        "node_id": "src:scan-doc-6",
+        "source_id": "src:scan-doc-6",
+        "uri": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\scan\\pr-answer.txt"
+      }
+    },
+    {
+      "id": "pv:django:4.2.7",
+      "label": "PkgVersion",
+      "props": {
+        "name": "django",
+        "node_id": "pv:django:4.2.7",
+        "version": "4.2.7"
+      }
+    },
+    {
+      "id": "claim:scan-claim-django-6",
+      "label": "Claim",
+      "props": {
+        "claim_id": "scan-claim-django-6",
+        "node_id": "claim:scan-claim-django-6",
+        "text": "Django==4.2.7"
+      }
+    },
+    {
+      "id": "pv:django:6.0.2",
+      "label": "PkgVersion",
+      "props": {
+        "name": "django",
+        "node_id": "pv:django:6.0.2",
+        "version": "6.0.2"
+      }
+    },
+    {
+      "id": "adv:GHSA-2mcm-79hx-8fxw",
+      "label": "Advisory",
+      "props": {
+        "fix_available_ns": -1,
+        "fixed": "6.0.2",
+        "id": "GHSA-2mcm-79hx-8fxw",
+        "node_id": "adv:GHSA-2mcm-79hx-8fxw",
+        "osv_modified_ns": 1789012233805951232,
+        "published": "2026-02-03T15:30:23Z",
+        "published_ns": 1770132623000000000,
+        "summary": "Django has Observable Timing Discrepancy",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-13473"
+      }
+    },
+    {
+      "id": "alias:BIT-django-2025-13473",
+      "label": "Alias",
+      "props": {
+        "alias": "BIT-django-2025-13473",
+        "node_id": "alias:BIT-django-2025-13473"
+      }
+    },
+    {
+      "id": "alias:CVE-2025-13473",
+      "label": "Alias",
+      "props": {
+        "alias": "CVE-2025-13473",
+        "node_id": "alias:CVE-2025-13473"
+      }
+    },
+    {
+      "id": "alias:PYSEC-2026-42",
+      "label": "Alias",
+      "props": {
+        "alias": "PYSEC-2026-42",
+        "node_id": "alias:PYSEC-2026-42"
+      }
+    },
+    {
+      "id": "https://nvd.nist.gov/vuln/detail/CVE-2025-13473",
+      "label": "Ref",
+      "props": {
+        "ref_type": "ADVISORY",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-13473"
+      }
+    },
+    {
+      "id": "https://docs.djangoproject.com/en/dev/releases/security",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://docs.djangoproject.com/en/dev/releases/security"
+      }
+    },
+    {
+      "id": "https://github.com/django/django",
+      "label": "Ref",
+      "props": {
+        "ref_type": "PACKAGE",
+        "url": "https://github.com/django/django"
+      }
+    },
+    {
+      "id": "https://github.com/pypa/advisory-database/tree/main/vulns/django/PYSEC-2026-42.yaml",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://github.com/pypa/advisory-database/tree/main/vulns/django/PYSEC-2026-42.yaml"
+      }
+    },
+    {
+      "id": "https://groups.google.com/g/django-announce",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://groups.google.com/g/django-announce"
+      }
+    },
+    {
+      "id": "https://www.djangoproject.com/weblog/2026/feb/03/security-releases",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://www.djangoproject.com/weblog/2026/feb/03/security-releases"
+      }
+    },
+    {
+      "id": "https://docs.djangoproject.com/en/dev/releases/security/",
+      "label": "Ref",
+      "props": {
+        "ref_type": "FIX",
+        "url": "https://docs.djangoproject.com/en/dev/releases/security/"
+      }
+    },
+    {
+      "id": "https://www.djangoproject.com/weblog/2026/feb/03/security-releases/",
+      "label": "Ref",
+      "props": {
+        "ref_type": "FIX",
+        "url": "https://www.djangoproject.com/weblog/2026/feb/03/security-releases/"
+      }
+    },
+    {
+      "id": "https://github.com/advisories/GHSA-2mcm-79hx-8fxw",
+      "label": "Ref",
+      "props": {
+        "ref_type": "ADVISORY",
+        "url": "https://github.com/advisories/GHSA-2mcm-79hx-8fxw"
+      }
+    },
+    {
+      "id": "run:scan-7",
+      "label": "Run",
+      "props": {
+        "node_id": "run:scan-7",
+        "run_id": "scan-7",
+        "started_ns": 1795364588000000000
+      }
+    },
+    {
+      "id": "ans:scan-answer-urllib3-7",
+      "label": "Answer",
+      "props": {
+        "answer_id": "scan-answer-urllib3-7",
+        "created_ns": 1795364590000000000,
+        "model": "",
+        "node_id": "ans:scan-answer-urllib3-7",
+        "question": "auto-extracted from text",
+        "run_id": "scan-7",
+        "text": "urllib3==2.0.7"
+      }
+    },
+    {
+      "id": "span:scan-root-7",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795364589000000000,
+        "kind": "AGENT",
+        "name": "agent.answer",
+        "node_id": "span:scan-root-7",
+        "run_id": "scan-7",
+        "span_id": "scan-root-7"
+      }
+    },
+    {
+      "id": "span:scan-ret-7",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795364589500000000,
+        "kind": "RETRIEVER",
+        "name": "vector-search",
+        "node_id": "span:scan-ret-7",
+        "run_id": "scan-7",
+        "span_id": "scan-ret-7"
+      }
+    },
+    {
+      "id": "src:scan-doc-7",
+      "label": "Source",
+      "props": {
+        "at_ns": 1733422554000000000,
+        "doc_id": "scan-doc-7",
+        "node_id": "src:scan-doc-7",
+        "source_id": "src:scan-doc-7",
+        "uri": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\scan\\pr-answer.txt"
+      }
+    },
+    {
+      "id": "pv:urllib3:2.0.7",
+      "label": "PkgVersion",
+      "props": {
+        "name": "urllib3",
+        "node_id": "pv:urllib3:2.0.7",
+        "version": "2.0.7"
+      }
+    },
+    {
+      "id": "claim:scan-claim-urllib3-7",
+      "label": "Claim",
+      "props": {
+        "claim_id": "scan-claim-urllib3-7",
+        "node_id": "claim:scan-claim-urllib3-7",
+        "text": "urllib3==2.0.7"
+      }
+    },
+    {
+      "id": "pv:urllib3:2.6.0",
+      "label": "PkgVersion",
+      "props": {
+        "name": "urllib3",
+        "node_id": "pv:urllib3:2.6.0",
+        "version": "2.6.0"
+      }
+    },
+    {
+      "id": "adv:GHSA-2xpw-w6gg-jr37",
+      "label": "Advisory",
+      "props": {
+        "fix_available_ns": -1,
+        "fixed": "2.6.0",
+        "id": "GHSA-2xpw-w6gg-jr37",
+        "node_id": "adv:GHSA-2xpw-w6gg-jr37",
+        "osv_modified_ns": 1790356505968188928,
+        "published": "2025-12-05T18:15:54Z",
+        "published_ns": 1764958554000000000,
+        "summary": "urllib3 streaming API improperly handles highly compressed data",
+        "url": "https://github.com/urllib3/urllib3/security/advisories/GHSA-2xpw-w6gg-jr37"
+      }
+    },
+    {
+      "id": "alias:CVE-2025-66471",
+      "label": "Alias",
+      "props": {
+        "alias": "CVE-2025-66471",
+        "node_id": "alias:CVE-2025-66471"
+      }
+    },
+    {
+      "id": "alias:PYSEC-2026-1994",
+      "label": "Alias",
+      "props": {
+        "alias": "PYSEC-2026-1994",
+        "node_id": "alias:PYSEC-2026-1994"
+      }
+    },
+    {
+      "id": "https://github.com/urllib3/urllib3/security/advisories/GHSA-2xpw-w6gg-jr37",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://github.com/urllib3/urllib3/security/advisories/GHSA-2xpw-w6gg-jr37"
+      }
+    },
+    {
+      "id": "https://nvd.nist.gov/vuln/detail/CVE-2025-66471",
+      "label": "Ref",
+      "props": {
+        "ref_type": "ADVISORY",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-66471"
+      }
+    },
+    {
+      "id": "https://github.com/urllib3/urllib3/commit/c19571de34c47de3a766541b041637ba5f716ed7",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://github.com/urllib3/urllib3/commit/c19571de34c47de3a766541b041637ba5f716ed7"
+      }
+    },
+    {
+      "id": "https://github.com/urllib3/urllib3/commit/d0fde3672e4a4093f7587858dccfc298eb66e46c",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://github.com/urllib3/urllib3/commit/d0fde3672e4a4093f7587858dccfc298eb66e46c"
+      }
+    },
+    {
+      "id": "https://github.com/advisories/GHSA-2xpw-w6gg-jr37",
+      "label": "Ref",
+      "props": {
+        "ref_type": "ADVISORY",
+        "url": "https://github.com/advisories/GHSA-2xpw-w6gg-jr37"
+      }
+    },
+    {
+      "id": "https://github.com/pypa/advisory-database/tree/main/vulns/urllib3/PYSEC-2026-1994.yaml",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://github.com/pypa/advisory-database/tree/main/vulns/urllib3/PYSEC-2026-1994.yaml"
+      }
+    },
+    {
+      "id": "https://github.com/urllib3/urllib3",
+      "label": "Ref",
+      "props": {
+        "ref_type": "PACKAGE",
+        "url": "https://github.com/urllib3/urllib3"
+      }
+    },
+    {
+      "id": "https://pypi.org/project/urllib3",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://pypi.org/project/urllib3"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "run:scan-0",
+      "target": "span:scan-root-0",
+      "type": "CONTAINS"
+    },
+    {
+      "source": "ans:scan-answer-flask-0",
+      "target": "claim:scan-claim-flask-0",
+      "type": "ASSERTS"
+    },
+    {
+      "source": "span:scan-root-0",
+      "target": "span:scan-ret-0",
+      "type": "PARENT_OF"
+    },
+    {
+      "source": "span:scan-root-0",
+      "target": "ans:scan-answer-flask-0",
+      "type": "PRODUCED"
+    },
+    {
+      "source": "span:scan-ret-0",
+      "target": "src:scan-doc-0",
+      "type": "RETRIEVED_FROM"
+    },
+    {
+      "source": "src:scan-doc-0",
+      "target": "pv:flask:3.0.3",
+      "type": "MENTIONS"
+    },
+    {
+      "source": "claim:scan-claim-flask-0",
+      "target": "pv:flask:3.0.3",
+      "type": "CITES"
+    },
+    {
+      "source": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\scan\\requirements.lock",
+      "target": "pv:urllib3:2.6.0",
+      "type": "PINS"
+    },
+    {
+      "source": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\scan\\requirements.lock",
+      "target": "pv:django:6.0.2",
+      "type": "PINS"
+    },
+    {
+      "source": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\scan\\requirements.lock",
+      "target": "pv:numpy:1.22",
+      "type": "PINS"
+    },
+    {
+      "source": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\scan\\requirements.lock",
+      "target": "pv:pyyaml:5.2",
+      "type": "PINS"
+    },
+    {
+      "source": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\scan\\requirements.lock",
+      "target": "pv:requests:2.32.4",
+      "type": "PINS"
+    },
+    {
+      "source": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\scan\\requirements.lock",
+      "target": "pv:jinja2:3.1.6",
+      "type": "PINS"
+    },
+    {
+      "source": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\scan\\requirements.lock",
+      "target": "pv:pillow:13.0.0",
+      "type": "PINS"
+    },
+    {
+      "source": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\scan\\requirements.lock",
+      "target": "pv:flask:3.1.1",
+      "type": "PINS"
+    },
+    {
+      "source": "adv:GHSA-4grg-w6v8-c28g",
+      "target": "pv:flask:3.0.3",
+      "type": "AFFECTS"
+    },
+    {
+      "source": "adv:GHSA-4grg-w6v8-c28g",
+      "target": "alias:PYSEC-2026-1377",
+      "type": "HAS_ALIAS"
+    },
+    {
+      "source": "adv:GHSA-4grg-w6v8-c28g",
+      "target": "alias:CVE-2025-47278",
+      "type": "HAS_ALIAS"
+    },
+    {
+      "source": "adv:GHSA-4grg-w6v8-c28g",
+      "target": "https://github.com/advisories/GHSA-4grg-w6v8-c28g",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-4grg-w6v8-c28g",
+      "target": "https://pypi.org/project/flask",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-4grg-w6v8-c28g",
+      "target": "https://github.com/pallets/flask/releases/tag/3.1.1",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-4grg-w6v8-c28g",
+      "target": "https://github.com/pallets/flask",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-4grg-w6v8-c28g",
+      "target": "https://github.com/pallets/flask/commit/73d6504063bfa00666a92b07a28aaf906c532f09",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-4grg-w6v8-c28g",
+      "target": "https://nvd.nist.gov/vuln/detail/CVE-2025-47278",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-4grg-w6v8-c28g",
+      "target": "https://github.com/pallets/flask/security/advisories/GHSA-4grg-w6v8-c28g",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "alias:CVE-2025-47278",
+      "target": "https://nvd.nist.gov/vuln/detail/CVE-2025-47278",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "run:scan-1",
+      "target": "span:scan-root-1",
+      "type": "CONTAINS"
+    },
+    {
+      "source": "ans:scan-answer-pillow-1",
+      "target": "claim:scan-claim-pillow-1",
+      "type": "ASSERTS"
+    },
+    {
+      "source": "span:scan-root-1",
+      "target": "span:scan-ret-1",
+      "type": "PARENT_OF"
+    },
+    {
+      "source": "span:scan-root-1",
+      "target": "ans:scan-answer-pillow-1",
+      "type": "PRODUCED"
+    },
+    {
+      "source": "span:scan-ret-1",
+      "target": "src:scan-doc-1",
+      "type": "RETRIEVED_FROM"
+    },
+    {
+      "source": "src:scan-doc-1",
+      "target": "pv:pillow:10.0.0",
+      "type": "MENTIONS"
+    },
+    {
+      "source": "claim:scan-claim-pillow-1",
+      "target": "pv:pillow:10.0.0",
+      "type": "CITES"
+    },
+    {
+      "source": "adv:GHSA-22hg-r758-rrw9",
+      "target": "pv:pillow:10.0.0",
+      "type": "AFFECTS"
+    },
+    {
+      "source": "adv:GHSA-22hg-r758-rrw9",
+      "target": "alias:CVE-2026-112390",
+      "type": "HAS_ALIAS"
+    },
+    {
+      "source": "adv:GHSA-22hg-r758-rrw9",
+      "target": "alias:BIT-pillow-2026-112390",
+      "type": "HAS_ALIAS"
+    },
+    {
+      "source": "adv:GHSA-22hg-r758-rrw9",
+      "target": "https://github.com/python-pillow/Pillow/releases/tag/13.0.0",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-22hg-r758-rrw9",
+      "target": "https://github.com/python-pillow/Pillow",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-22hg-r758-rrw9",
+      "target": "https://github.com/python-pillow/Pillow/commit/26cb3ed061173b817b9ee4b6f507cb0e1e293218",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-22hg-r758-rrw9",
+      "target": "https://nvd.nist.gov/vuln/detail/CVE-2026-112390",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-22hg-r758-rrw9",
+      "target": "https://github.com/python-pillow/Pillow/security/advisories/GHSA-22hg-r758-rrw9",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "alias:CVE-2026-112390",
+      "target": "https://nvd.nist.gov/vuln/detail/CVE-2026-112390",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "run:scan-2",
+      "target": "span:scan-root-2",
+      "type": "CONTAINS"
+    },
+    {
+      "source": "ans:scan-answer-jinja2-2",
+      "target": "claim:scan-claim-jinja2-2",
+      "type": "ASSERTS"
+    },
+    {
+      "source": "span:scan-root-2",
+      "target": "span:scan-ret-2",
+      "type": "PARENT_OF"
+    },
+    {
+      "source": "span:scan-root-2",
+      "target": "ans:scan-answer-jinja2-2",
+      "type": "PRODUCED"
+    },
+    {
+      "source": "span:scan-ret-2",
+      "target": "src:scan-doc-2",
+      "type": "RETRIEVED_FROM"
+    },
+    {
+      "source": "src:scan-doc-2",
+      "target": "pv:jinja2:3.1.2",
+      "type": "MENTIONS"
+    },
+    {
+      "source": "claim:scan-claim-jinja2-2",
+      "target": "pv:jinja2:3.1.2",
+      "type": "CITES"
+    },
+    {
+      "source": "adv:GHSA-cpwx-vrp4-4pq7",
+      "target": "pv:jinja2:3.1.2",
+      "type": "AFFECTS"
+    },
+    {
+      "source": "adv:GHSA-cpwx-vrp4-4pq7",
+      "target": "alias:PYSEC-2026-1471",
+      "type": "HAS_ALIAS"
+    },
+    {
+      "source": "adv:GHSA-cpwx-vrp4-4pq7",
+      "target": "alias:CVE-2025-27516",
+      "type": "HAS_ALIAS"
+    },
+    {
+      "source": "adv:GHSA-cpwx-vrp4-4pq7",
+      "target": "https://github.com/advisories/GHSA-cpwx-vrp4-4pq7",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-cpwx-vrp4-4pq7",
+      "target": "https://pypi.org/project/jinja2",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-cpwx-vrp4-4pq7",
+      "target": "https://lists.debian.org/debian-lts-announce/2025/04/msg00045.html",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-cpwx-vrp4-4pq7",
+      "target": "https://lists.debian.org/debian-lts-announce/2025/04/msg00022.html",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-cpwx-vrp4-4pq7",
+      "target": "https://github.com/pypa/advisory-database/tree/main/vulns/jinja2/PYSEC-2026-1471.yaml",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-cpwx-vrp4-4pq7",
+      "target": "https://github.com/pallets/jinja/releases/tag/3.1.6",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-cpwx-vrp4-4pq7",
+      "target": "https://github.com/pallets/jinja",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-cpwx-vrp4-4pq7",
+      "target": "https://github.com/pallets/jinja/commit/90457bbf33b8662926ae65cdde4c4c32e756e403",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-cpwx-vrp4-4pq7",
+      "target": "https://nvd.nist.gov/vuln/detail/CVE-2025-27516",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-cpwx-vrp4-4pq7",
+      "target": "https://github.com/pallets/jinja/security/advisories/GHSA-cpwx-vrp4-4pq7",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "alias:CVE-2025-27516",
+      "target": "https://nvd.nist.gov/vuln/detail/CVE-2025-27516",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "alias:PYSEC-2026-1471",
+      "target": "https://github.com/pypa/advisory-database/tree/main/vulns/jinja2/PYSEC-2026-1471.yaml",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "run:scan-3",
+      "target": "span:scan-root-3",
+      "type": "CONTAINS"
+    },
+    {
+      "source": "ans:scan-answer-requests-3",
+      "target": "claim:scan-claim-requests-3",
+      "type": "ASSERTS"
+    },
+    {
+      "source": "span:scan-root-3",
+      "target": "span:scan-ret-3",
+      "type": "PARENT_OF"
+    },
+    {
+      "source": "span:scan-root-3",
+      "target": "ans:scan-answer-requests-3",
+      "type": "PRODUCED"
+    },
+    {
+      "source": "span:scan-ret-3",
+      "target": "src:scan-doc-3",
+      "type": "RETRIEVED_FROM"
+    },
+    {
+      "source": "src:scan-doc-3",
+      "target": "pv:requests:2.31.0",
+      "type": "MENTIONS"
+    },
+    {
+      "source": "claim:scan-claim-requests-3",
+      "target": "pv:requests:2.31.0",
+      "type": "CITES"
+    },
+    {
+      "source": "adv:GHSA-9hjg-9r4m-mvj7",
+      "target": "pv:requests:2.31.0",
+      "type": "AFFECTS"
+    },
+    {
+      "source": "adv:GHSA-9hjg-9r4m-mvj7",
+      "target": "alias:PYSEC-2026-1872",
+      "type": "HAS_ALIAS"
+    },
+    {
+      "source": "adv:GHSA-9hjg-9r4m-mvj7",
+      "target": "alias:CVE-2024-47081",
+      "type": "HAS_ALIAS"
+    },
+    {
+      "source": "adv:GHSA-9hjg-9r4m-mvj7",
+      "target": "http://seclists.org/fulldisclosure/2025/Jun/2",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-9hjg-9r4m-mvj7",
+      "target": "http://www.openwall.com/lists/oss-security/2025/06/04/6",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-9hjg-9r4m-mvj7",
+      "target": "http://www.openwall.com/lists/oss-security/2025/06/04/1",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-9hjg-9r4m-mvj7",
+      "target": "http://www.openwall.com/lists/oss-security/2025/06/03/9",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-9hjg-9r4m-mvj7",
+      "target": "http://www.openwall.com/lists/oss-security/2025/06/03/11",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-9hjg-9r4m-mvj7",
+      "target": "https://seclists.org/fulldisclosure/2025/Jun/2",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-9hjg-9r4m-mvj7",
+      "target": "https://requests.readthedocs.io/en/latest/api/#requests.Session.trust_env",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-9hjg-9r4m-mvj7",
+      "target": "https://pypi.org/project/requests",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-9hjg-9r4m-mvj7",
+      "target": "https://github.com/pypa/advisory-database/tree/main/vulns/requests/PYSEC-2026-1872.yaml",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-9hjg-9r4m-mvj7",
+      "target": "https://github.com/psf/requests/releases/tag/v2.32.4",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-9hjg-9r4m-mvj7",
+      "target": "https://github.com/psf/requests",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-9hjg-9r4m-mvj7",
+      "target": "https://github.com/advisories/GHSA-9hjg-9r4m-mvj7",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-9hjg-9r4m-mvj7",
+      "target": "https://github.com/psf/requests/commit/96ba401c1296ab1dda74a2365ef36d88f7d144ef",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-9hjg-9r4m-mvj7",
+      "target": "https://github.com/psf/requests/pull/6965",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-9hjg-9r4m-mvj7",
+      "target": "https://nvd.nist.gov/vuln/detail/CVE-2024-47081",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-9hjg-9r4m-mvj7",
+      "target": "https://github.com/psf/requests/security/advisories/GHSA-9hjg-9r4m-mvj7",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "alias:CVE-2024-47081",
+      "target": "https://nvd.nist.gov/vuln/detail/CVE-2024-47081",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "alias:PYSEC-2026-1872",
+      "target": "https://github.com/pypa/advisory-database/tree/main/vulns/requests/PYSEC-2026-1872.yaml",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "run:scan-4",
+      "target": "span:scan-root-4",
+      "type": "CONTAINS"
+    },
+    {
+      "source": "ans:scan-answer-pyyaml-4",
+      "target": "claim:scan-claim-pyyaml-4",
+      "type": "ASSERTS"
+    },
+    {
+      "source": "span:scan-root-4",
+      "target": "span:scan-ret-4",
+      "type": "PARENT_OF"
+    },
+    {
+      "source": "span:scan-root-4",
+      "target": "ans:scan-answer-pyyaml-4",
+      "type": "PRODUCED"
+    },
+    {
+      "source": "span:scan-ret-4",
+      "target": "src:scan-doc-4",
+      "type": "RETRIEVED_FROM"
+    },
+    {
+      "source": "src:scan-doc-4",
+      "target": "pv:pyyaml:3.13",
+      "type": "MENTIONS"
+    },
+    {
+      "source": "claim:scan-claim-pyyaml-4",
+      "target": "pv:pyyaml:3.13",
+      "type": "CITES"
+    },
+    {
+      "source": "adv:GHSA-3pqx-4fqf-j49f",
+      "target": "pv:pyyaml:3.13",
+      "type": "AFFECTS"
+    },
+    {
+      "source": "adv:GHSA-3pqx-4fqf-j49f",
+      "target": "alias:PYSEC-2020-176",
+      "type": "HAS_ALIAS"
+    },
+    {
+      "source": "adv:GHSA-3pqx-4fqf-j49f",
+      "target": "alias:CVE-2019-20477",
+      "type": "HAS_ALIAS"
+    },
+    {
+      "source": "adv:GHSA-3pqx-4fqf-j49f",
+      "target": "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/33VBUY73AA6CTTYL3LRWHNFDULV7PFPN/",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-3pqx-4fqf-j49f",
+      "target": "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/52N5XS73Z5S4ZN7I7R56ICCPCTKCUV4H/",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-3pqx-4fqf-j49f",
+      "target": "https://www.exploit-db.com/download/47655",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-3pqx-4fqf-j49f",
+      "target": "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/52N5XS73Z5S4ZN7I7R56ICCPCTKCUV4H",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-3pqx-4fqf-j49f",
+      "target": "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/33VBUY73AA6CTTYL3LRWHNFDULV7PFPN",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-3pqx-4fqf-j49f",
+      "target": "https://github.com/yaml/pyyaml/blob/master/CHANGES",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-3pqx-4fqf-j49f",
+      "target": "https://github.com/yaml/pyyaml",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-3pqx-4fqf-j49f",
+      "target": "https://github.com/pypa/advisory-database/tree/main/vulns/pyyaml/PYSEC-2020-176.yaml",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-3pqx-4fqf-j49f",
+      "target": "https://github.com/advisories/GHSA-3pqx-4fqf-j49f",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-3pqx-4fqf-j49f",
+      "target": "https://nvd.nist.gov/vuln/detail/CVE-2019-20477",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "alias:CVE-2019-20477",
+      "target": "https://nvd.nist.gov/vuln/detail/CVE-2019-20477",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "alias:PYSEC-2020-176",
+      "target": "https://github.com/pypa/advisory-database/tree/main/vulns/pyyaml/PYSEC-2020-176.yaml",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "run:scan-5",
+      "target": "span:scan-root-5",
+      "type": "CONTAINS"
+    },
+    {
+      "source": "ans:scan-answer-numpy-5",
+      "target": "claim:scan-claim-numpy-5",
+      "type": "ASSERTS"
+    },
+    {
+      "source": "span:scan-root-5",
+      "target": "span:scan-ret-5",
+      "type": "PARENT_OF"
+    },
+    {
+      "source": "span:scan-root-5",
+      "target": "ans:scan-answer-numpy-5",
+      "type": "PRODUCED"
+    },
+    {
+      "source": "span:scan-ret-5",
+      "target": "src:scan-doc-5",
+      "type": "RETRIEVED_FROM"
+    },
+    {
+      "source": "src:scan-doc-5",
+      "target": "pv:numpy:1.21.0",
+      "type": "MENTIONS"
+    },
+    {
+      "source": "claim:scan-claim-numpy-5",
+      "target": "pv:numpy:1.21.0",
+      "type": "CITES"
+    },
+    {
+      "source": "adv:GHSA-fpfv-jqm9-f5jm",
+      "target": "pv:numpy:1.21.0",
+      "type": "AFFECTS"
+    },
+    {
+      "source": "adv:GHSA-fpfv-jqm9-f5jm",
+      "target": "alias:PYSEC-2021-855",
+      "type": "HAS_ALIAS"
+    },
+    {
+      "source": "adv:GHSA-fpfv-jqm9-f5jm",
+      "target": "alias:CVE-2021-34141",
+      "type": "HAS_ALIAS"
+    },
+    {
+      "source": "adv:GHSA-fpfv-jqm9-f5jm",
+      "target": "https://www.oracle.com/security-alerts/cpujul2022.html",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-fpfv-jqm9-f5jm",
+      "target": "https://github.com/pypa/advisory-database/tree/main/vulns/numpy/PYSEC-2021-855.yaml",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-fpfv-jqm9-f5jm",
+      "target": "https://github.com/numpy/numpy",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-fpfv-jqm9-f5jm",
+      "target": "https://github.com/advisories/GHSA-fpfv-jqm9-f5jm",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-fpfv-jqm9-f5jm",
+      "target": "https://github.com/numpy/numpy/issues/18993#issuecomment-1010735102",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-fpfv-jqm9-f5jm",
+      "target": "https://github.com/numpy/numpy/issues/18993",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-fpfv-jqm9-f5jm",
+      "target": "https://nvd.nist.gov/vuln/detail/CVE-2021-34141",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "alias:CVE-2021-34141",
+      "target": "https://nvd.nist.gov/vuln/detail/CVE-2021-34141",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "alias:PYSEC-2021-855",
+      "target": "https://github.com/pypa/advisory-database/tree/main/vulns/numpy/PYSEC-2021-855.yaml",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "run:scan-6",
+      "target": "span:scan-root-6",
+      "type": "CONTAINS"
+    },
+    {
+      "source": "ans:scan-answer-django-6",
+      "target": "claim:scan-claim-django-6",
+      "type": "ASSERTS"
+    },
+    {
+      "source": "span:scan-root-6",
+      "target": "span:scan-ret-6",
+      "type": "PARENT_OF"
+    },
+    {
+      "source": "span:scan-root-6",
+      "target": "ans:scan-answer-django-6",
+      "type": "PRODUCED"
+    },
+    {
+      "source": "span:scan-ret-6",
+      "target": "src:scan-doc-6",
+      "type": "RETRIEVED_FROM"
+    },
+    {
+      "source": "src:scan-doc-6",
+      "target": "pv:django:4.2.7",
+      "type": "MENTIONS"
+    },
+    {
+      "source": "claim:scan-claim-django-6",
+      "target": "pv:django:4.2.7",
+      "type": "CITES"
+    },
+    {
+      "source": "adv:GHSA-2mcm-79hx-8fxw",
+      "target": "pv:django:4.2.7",
+      "type": "AFFECTS"
+    },
+    {
+      "source": "adv:GHSA-2mcm-79hx-8fxw",
+      "target": "alias:PYSEC-2026-42",
+      "type": "HAS_ALIAS"
+    },
+    {
+      "source": "adv:GHSA-2mcm-79hx-8fxw",
+      "target": "alias:CVE-2025-13473",
+      "type": "HAS_ALIAS"
+    },
+    {
+      "source": "adv:GHSA-2mcm-79hx-8fxw",
+      "target": "alias:BIT-django-2025-13473",
+      "type": "HAS_ALIAS"
+    },
+    {
+      "source": "adv:GHSA-2mcm-79hx-8fxw",
+      "target": "https://github.com/advisories/GHSA-2mcm-79hx-8fxw",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-2mcm-79hx-8fxw",
+      "target": "https://www.djangoproject.com/weblog/2026/feb/03/security-releases/",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-2mcm-79hx-8fxw",
+      "target": "https://docs.djangoproject.com/en/dev/releases/security/",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-2mcm-79hx-8fxw",
+      "target": "https://www.djangoproject.com/weblog/2026/feb/03/security-releases",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-2mcm-79hx-8fxw",
+      "target": "https://groups.google.com/g/django-announce",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-2mcm-79hx-8fxw",
+      "target": "https://github.com/pypa/advisory-database/tree/main/vulns/django/PYSEC-2026-42.yaml",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-2mcm-79hx-8fxw",
+      "target": "https://github.com/django/django",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-2mcm-79hx-8fxw",
+      "target": "https://docs.djangoproject.com/en/dev/releases/security",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-2mcm-79hx-8fxw",
+      "target": "https://nvd.nist.gov/vuln/detail/CVE-2025-13473",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "alias:CVE-2025-13473",
+      "target": "https://nvd.nist.gov/vuln/detail/CVE-2025-13473",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "alias:PYSEC-2026-42",
+      "target": "https://github.com/pypa/advisory-database/tree/main/vulns/django/PYSEC-2026-42.yaml",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "run:scan-7",
+      "target": "span:scan-root-7",
+      "type": "CONTAINS"
+    },
+    {
+      "source": "ans:scan-answer-urllib3-7",
+      "target": "claim:scan-claim-urllib3-7",
+      "type": "ASSERTS"
+    },
+    {
+      "source": "span:scan-root-7",
+      "target": "span:scan-ret-7",
+      "type": "PARENT_OF"
+    },
+    {
+      "source": "span:scan-root-7",
+      "target": "ans:scan-answer-urllib3-7",
+      "type": "PRODUCED"
+    },
+    {
+      "source": "span:scan-ret-7",
+      "target": "src:scan-doc-7",
+      "type": "RETRIEVED_FROM"
+    },
+    {
+      "source": "src:scan-doc-7",
+      "target": "pv:urllib3:2.0.7",
+      "type": "MENTIONS"
+    },
+    {
+      "source": "claim:scan-claim-urllib3-7",
+      "target": "pv:urllib3:2.0.7",
+      "type": "CITES"
+    },
+    {
+      "source": "adv:GHSA-2xpw-w6gg-jr37",
+      "target": "pv:urllib3:2.0.7",
+      "type": "AFFECTS"
+    },
+    {
+      "source": "adv:GHSA-2xpw-w6gg-jr37",
+      "target": "alias:PYSEC-2026-1994",
+      "type": "HAS_ALIAS"
+    },
+    {
+      "source": "adv:GHSA-2xpw-w6gg-jr37",
+      "target": "alias:CVE-2025-66471",
+      "type": "HAS_ALIAS"
+    },
+    {
+      "source": "adv:GHSA-2xpw-w6gg-jr37",
+      "target": "https://pypi.org/project/urllib3",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-2xpw-w6gg-jr37",
+      "target": "https://github.com/urllib3/urllib3",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-2xpw-w6gg-jr37",
+      "target": "https://github.com/pypa/advisory-database/tree/main/vulns/urllib3/PYSEC-2026-1994.yaml",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-2xpw-w6gg-jr37",
+      "target": "https://github.com/advisories/GHSA-2xpw-w6gg-jr37",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-2xpw-w6gg-jr37",
+      "target": "https://github.com/urllib3/urllib3/commit/d0fde3672e4a4093f7587858dccfc298eb66e46c",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-2xpw-w6gg-jr37",
+      "target": "https://github.com/urllib3/urllib3/commit/c19571de34c47de3a766541b041637ba5f716ed7",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-2xpw-w6gg-jr37",
+      "target": "https://nvd.nist.gov/vuln/detail/CVE-2025-66471",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-2xpw-w6gg-jr37",
+      "target": "https://github.com/urllib3/urllib3/security/advisories/GHSA-2xpw-w6gg-jr37",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "alias:CVE-2025-66471",
+      "target": "https://nvd.nist.gov/vuln/detail/CVE-2025-66471",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "alias:PYSEC-2026-1994",
+      "target": "https://github.com/pypa/advisory-database/tree/main/vulns/urllib3/PYSEC-2026-1994.yaml",
+      "type": "REFERENCES"
+    }
+  ],
+  "highlights": {
+    "Q6_provenance": [
+      {
+        "nodes": [
+          "span:scan-root-0",
+          "span:scan-ret-0",
+          "src:scan-doc-0",
+          "pv:flask:3.0.3",
+          "adv:GHSA-4grg-w6v8-c28g",
+          "alias:CVE-2025-47278",
+          "https://nvd.nist.gov/vuln/detail/CVE-2025-47278"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "HAS_ALIAS",
+          "REFERENCES"
+        ],
+        "hops": 6,
+        "package": "flask",
+        "version": "3.0.3",
+        "advisory_id": "GHSA-4grg-w6v8-c28g",
+        "claim_text": "from flask import Flask, render_template, request  # VERSION=3.0.3",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-1",
+          "span:scan-ret-1",
+          "src:scan-doc-1",
+          "pv:pillow:10.0.0",
+          "adv:GHSA-22hg-r758-rrw9",
+          "alias:CVE-2026-112390",
+          "https://nvd.nist.gov/vuln/detail/CVE-2026-112390"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "HAS_ALIAS",
+          "REFERENCES"
+        ],
+        "hops": 6,
+        "package": "pillow",
+        "version": "10.0.0",
+        "advisory_id": "GHSA-22hg-r758-rrw9",
+        "claim_text": "from PIL import Image  # VERSION=10.0.0",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-2",
+          "span:scan-ret-2",
+          "src:scan-doc-2",
+          "pv:jinja2:3.1.2",
+          "adv:GHSA-cpwx-vrp4-4pq7",
+          "alias:PYSEC-2026-1471",
+          "https://github.com/pypa/advisory-database/tree/main/vulns/jinja2/PYSEC-2026-1471.yaml"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "HAS_ALIAS",
+          "REFERENCES"
+        ],
+        "hops": 6,
+        "package": "jinja2",
+        "version": "3.1.2",
+        "advisory_id": "GHSA-cpwx-vrp4-4pq7",
+        "claim_text": "from jinja2 import Environment, PackageLoader, select_autoescape  # VERSION=3.1.2",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-2",
+          "span:scan-ret-2",
+          "src:scan-doc-2",
+          "pv:jinja2:3.1.2",
+          "adv:GHSA-cpwx-vrp4-4pq7",
+          "alias:CVE-2025-27516",
+          "https://nvd.nist.gov/vuln/detail/CVE-2025-27516"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "HAS_ALIAS",
+          "REFERENCES"
+        ],
+        "hops": 6,
+        "package": "jinja2",
+        "version": "3.1.2",
+        "advisory_id": "GHSA-cpwx-vrp4-4pq7",
+        "claim_text": "from jinja2 import Environment, PackageLoader, select_autoescape  # VERSION=3.1.2",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-3",
+          "span:scan-ret-3",
+          "src:scan-doc-3",
+          "pv:requests:2.31.0",
+          "adv:GHSA-9hjg-9r4m-mvj7",
+          "alias:PYSEC-2026-1872",
+          "https://github.com/pypa/advisory-database/tree/main/vulns/requests/PYSEC-2026-1872.yaml"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "HAS_ALIAS",
+          "REFERENCES"
+        ],
+        "hops": 6,
+        "package": "requests",
+        "version": "2.31.0",
+        "advisory_id": "GHSA-9hjg-9r4m-mvj7",
+        "claim_text": "import requests  # VERSION=2.31.0",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-3",
+          "span:scan-ret-3",
+          "src:scan-doc-3",
+          "pv:requests:2.31.0",
+          "adv:GHSA-9hjg-9r4m-mvj7",
+          "alias:CVE-2024-47081",
+          "https://nvd.nist.gov/vuln/detail/CVE-2024-47081"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "HAS_ALIAS",
+          "REFERENCES"
+        ],
+        "hops": 6,
+        "package": "requests",
+        "version": "2.31.0",
+        "advisory_id": "GHSA-9hjg-9r4m-mvj7",
+        "claim_text": "import requests  # VERSION=2.31.0",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-4",
+          "span:scan-ret-4",
+          "src:scan-doc-4",
+          "pv:pyyaml:3.13",
+          "adv:GHSA-3pqx-4fqf-j49f",
+          "alias:PYSEC-2020-176",
+          "https://github.com/pypa/advisory-database/tree/main/vulns/pyyaml/PYSEC-2020-176.yaml"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "HAS_ALIAS",
+          "REFERENCES"
+        ],
+        "hops": 6,
+        "package": "pyyaml",
+        "version": "3.13",
+        "advisory_id": "GHSA-3pqx-4fqf-j49f",
+        "claim_text": "import yaml  # VERSION=3.13",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-4",
+          "span:scan-ret-4",
+          "src:scan-doc-4",
+          "pv:pyyaml:3.13",
+          "adv:GHSA-3pqx-4fqf-j49f",
+          "alias:CVE-2019-20477",
+          "https://nvd.nist.gov/vuln/detail/CVE-2019-20477"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "HAS_ALIAS",
+          "REFERENCES"
+        ],
+        "hops": 6,
+        "package": "pyyaml",
+        "version": "3.13",
+        "advisory_id": "GHSA-3pqx-4fqf-j49f",
+        "claim_text": "import yaml  # VERSION=3.13",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-5",
+          "span:scan-ret-5",
+          "src:scan-doc-5",
+          "pv:numpy:1.21.0",
+          "adv:GHSA-fpfv-jqm9-f5jm",
+          "alias:PYSEC-2021-855",
+          "https://github.com/pypa/advisory-database/tree/main/vulns/numpy/PYSEC-2021-855.yaml"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "HAS_ALIAS",
+          "REFERENCES"
+        ],
+        "hops": 6,
+        "package": "numpy",
+        "version": "1.21.0",
+        "advisory_id": "GHSA-fpfv-jqm9-f5jm",
+        "claim_text": "import numpy as np  # VERSION=1.21.0",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-5",
+          "span:scan-ret-5",
+          "src:scan-doc-5",
+          "pv:numpy:1.21.0",
+          "adv:GHSA-fpfv-jqm9-f5jm",
+          "alias:CVE-2021-34141",
+          "https://nvd.nist.gov/vuln/detail/CVE-2021-34141"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "HAS_ALIAS",
+          "REFERENCES"
+        ],
+        "hops": 6,
+        "package": "numpy",
+        "version": "1.21.0",
+        "advisory_id": "GHSA-fpfv-jqm9-f5jm",
+        "claim_text": "import numpy as np  # VERSION=1.21.0",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-6",
+          "span:scan-ret-6",
+          "src:scan-doc-6",
+          "pv:django:4.2.7",
+          "adv:GHSA-2mcm-79hx-8fxw",
+          "alias:PYSEC-2026-42",
+          "https://github.com/pypa/advisory-database/tree/main/vulns/django/PYSEC-2026-42.yaml"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "HAS_ALIAS",
+          "REFERENCES"
+        ],
+        "hops": 6,
+        "package": "django",
+        "version": "4.2.7",
+        "advisory_id": "GHSA-2mcm-79hx-8fxw",
+        "claim_text": "Django==4.2.7",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-6",
+          "span:scan-ret-6",
+          "src:scan-doc-6",
+          "pv:django:4.2.7",
+          "adv:GHSA-2mcm-79hx-8fxw",
+          "alias:CVE-2025-13473",
+          "https://nvd.nist.gov/vuln/detail/CVE-2025-13473"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "HAS_ALIAS",
+          "REFERENCES"
+        ],
+        "hops": 6,
+        "package": "django",
+        "version": "4.2.7",
+        "advisory_id": "GHSA-2mcm-79hx-8fxw",
+        "claim_text": "Django==4.2.7",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-7",
+          "span:scan-ret-7",
+          "src:scan-doc-7",
+          "pv:urllib3:2.0.7",
+          "adv:GHSA-2xpw-w6gg-jr37",
+          "alias:PYSEC-2026-1994",
+          "https://github.com/pypa/advisory-database/tree/main/vulns/urllib3/PYSEC-2026-1994.yaml"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "HAS_ALIAS",
+          "REFERENCES"
+        ],
+        "hops": 6,
+        "package": "urllib3",
+        "version": "2.0.7",
+        "advisory_id": "GHSA-2xpw-w6gg-jr37",
+        "claim_text": "urllib3==2.0.7",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-7",
+          "span:scan-ret-7",
+          "src:scan-doc-7",
+          "pv:urllib3:2.0.7",
+          "adv:GHSA-2xpw-w6gg-jr37",
+          "alias:CVE-2025-66471",
+          "https://nvd.nist.gov/vuln/detail/CVE-2025-66471"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "HAS_ALIAS",
+          "REFERENCES"
+        ],
+        "hops": 6,
+        "package": "urllib3",
+        "version": "2.0.7",
+        "advisory_id": "GHSA-2xpw-w6gg-jr37",
+        "claim_text": "urllib3==2.0.7",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-0",
+          "span:scan-ret-0",
+          "src:scan-doc-0",
+          "pv:flask:3.0.3",
+          "adv:GHSA-4grg-w6v8-c28g",
+          "https://github.com/advisories/GHSA-4grg-w6v8-c28g"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "flask",
+        "version": "3.0.3",
+        "advisory_id": "GHSA-4grg-w6v8-c28g",
+        "claim_text": "from flask import Flask, render_template, request  # VERSION=3.0.3",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-0",
+          "span:scan-ret-0",
+          "src:scan-doc-0",
+          "pv:flask:3.0.3",
+          "adv:GHSA-4grg-w6v8-c28g",
+          "https://pypi.org/project/flask"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "flask",
+        "version": "3.0.3",
+        "advisory_id": "GHSA-4grg-w6v8-c28g",
+        "claim_text": "from flask import Flask, render_template, request  # VERSION=3.0.3",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-0",
+          "span:scan-ret-0",
+          "src:scan-doc-0",
+          "pv:flask:3.0.3",
+          "adv:GHSA-4grg-w6v8-c28g",
+          "https://github.com/pallets/flask/releases/tag/3.1.1"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "flask",
+        "version": "3.0.3",
+        "advisory_id": "GHSA-4grg-w6v8-c28g",
+        "claim_text": "from flask import Flask, render_template, request  # VERSION=3.0.3",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-0",
+          "span:scan-ret-0",
+          "src:scan-doc-0",
+          "pv:flask:3.0.3",
+          "adv:GHSA-4grg-w6v8-c28g",
+          "https://github.com/pallets/flask"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "flask",
+        "version": "3.0.3",
+        "advisory_id": "GHSA-4grg-w6v8-c28g",
+        "claim_text": "from flask import Flask, render_template, request  # VERSION=3.0.3",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-0",
+          "span:scan-ret-0",
+          "src:scan-doc-0",
+          "pv:flask:3.0.3",
+          "adv:GHSA-4grg-w6v8-c28g",
+          "https://github.com/pallets/flask/commit/73d6504063bfa00666a92b07a28aaf906c532f09"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "flask",
+        "version": "3.0.3",
+        "advisory_id": "GHSA-4grg-w6v8-c28g",
+        "claim_text": "from flask import Flask, render_template, request  # VERSION=3.0.3",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-0",
+          "span:scan-ret-0",
+          "src:scan-doc-0",
+          "pv:flask:3.0.3",
+          "adv:GHSA-4grg-w6v8-c28g",
+          "https://nvd.nist.gov/vuln/detail/CVE-2025-47278"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "flask",
+        "version": "3.0.3",
+        "advisory_id": "GHSA-4grg-w6v8-c28g",
+        "claim_text": "from flask import Flask, render_template, request  # VERSION=3.0.3",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-0",
+          "span:scan-ret-0",
+          "src:scan-doc-0",
+          "pv:flask:3.0.3",
+          "adv:GHSA-4grg-w6v8-c28g",
+          "https://github.com/pallets/flask/security/advisories/GHSA-4grg-w6v8-c28g"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "flask",
+        "version": "3.0.3",
+        "advisory_id": "GHSA-4grg-w6v8-c28g",
+        "claim_text": "from flask import Flask, render_template, request  # VERSION=3.0.3",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-0",
+          "span:scan-ret-0",
+          "src:scan-doc-0",
+          "pv:flask:3.0.3",
+          "adv:GHSA-4grg-w6v8-c28g",
+          "alias:PYSEC-2026-1377"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "HAS_ALIAS"
+        ],
+        "hops": 5,
+        "package": "flask",
+        "version": "3.0.3",
+        "advisory_id": "GHSA-4grg-w6v8-c28g",
+        "claim_text": "from flask import Flask, render_template, request  # VERSION=3.0.3",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-0",
+          "span:scan-ret-0",
+          "src:scan-doc-0",
+          "pv:flask:3.0.3",
+          "adv:GHSA-4grg-w6v8-c28g",
+          "alias:CVE-2025-47278"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "HAS_ALIAS"
+        ],
+        "hops": 5,
+        "package": "flask",
+        "version": "3.0.3",
+        "advisory_id": "GHSA-4grg-w6v8-c28g",
+        "claim_text": "from flask import Flask, render_template, request  # VERSION=3.0.3",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-1",
+          "span:scan-ret-1",
+          "src:scan-doc-1",
+          "pv:pillow:10.0.0",
+          "adv:GHSA-22hg-r758-rrw9",
+          "https://github.com/python-pillow/Pillow/releases/tag/13.0.0"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "pillow",
+        "version": "10.0.0",
+        "advisory_id": "GHSA-22hg-r758-rrw9",
+        "claim_text": "from PIL import Image  # VERSION=10.0.0",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-1",
+          "span:scan-ret-1",
+          "src:scan-doc-1",
+          "pv:pillow:10.0.0",
+          "adv:GHSA-22hg-r758-rrw9",
+          "https://github.com/python-pillow/Pillow"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "pillow",
+        "version": "10.0.0",
+        "advisory_id": "GHSA-22hg-r758-rrw9",
+        "claim_text": "from PIL import Image  # VERSION=10.0.0",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-1",
+          "span:scan-ret-1",
+          "src:scan-doc-1",
+          "pv:pillow:10.0.0",
+          "adv:GHSA-22hg-r758-rrw9",
+          "https://github.com/python-pillow/Pillow/commit/26cb3ed061173b817b9ee4b6f507cb0e1e293218"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "pillow",
+        "version": "10.0.0",
+        "advisory_id": "GHSA-22hg-r758-rrw9",
+        "claim_text": "from PIL import Image  # VERSION=10.0.0",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-1",
+          "span:scan-ret-1",
+          "src:scan-doc-1",
+          "pv:pillow:10.0.0",
+          "adv:GHSA-22hg-r758-rrw9",
+          "https://nvd.nist.gov/vuln/detail/CVE-2026-112390"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "pillow",
+        "version": "10.0.0",
+        "advisory_id": "GHSA-22hg-r758-rrw9",
+        "claim_text": "from PIL import Image  # VERSION=10.0.0",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-1",
+          "span:scan-ret-1",
+          "src:scan-doc-1",
+          "pv:pillow:10.0.0",
+          "adv:GHSA-22hg-r758-rrw9",
+          "https://github.com/python-pillow/Pillow/security/advisories/GHSA-22hg-r758-rrw9"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "pillow",
+        "version": "10.0.0",
+        "advisory_id": "GHSA-22hg-r758-rrw9",
+        "claim_text": "from PIL import Image  # VERSION=10.0.0",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-1",
+          "span:scan-ret-1",
+          "src:scan-doc-1",
+          "pv:pillow:10.0.0",
+          "adv:GHSA-22hg-r758-rrw9",
+          "alias:CVE-2026-112390"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "HAS_ALIAS"
+        ],
+        "hops": 5,
+        "package": "pillow",
+        "version": "10.0.0",
+        "advisory_id": "GHSA-22hg-r758-rrw9",
+        "claim_text": "from PIL import Image  # VERSION=10.0.0",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-1",
+          "span:scan-ret-1",
+          "src:scan-doc-1",
+          "pv:pillow:10.0.0",
+          "adv:GHSA-22hg-r758-rrw9",
+          "alias:BIT-pillow-2026-112390"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "HAS_ALIAS"
+        ],
+        "hops": 5,
+        "package": "pillow",
+        "version": "10.0.0",
+        "advisory_id": "GHSA-22hg-r758-rrw9",
+        "claim_text": "from PIL import Image  # VERSION=10.0.0",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-2",
+          "span:scan-ret-2",
+          "src:scan-doc-2",
+          "pv:jinja2:3.1.2",
+          "adv:GHSA-cpwx-vrp4-4pq7",
+          "https://github.com/advisories/GHSA-cpwx-vrp4-4pq7"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "jinja2",
+        "version": "3.1.2",
+        "advisory_id": "GHSA-cpwx-vrp4-4pq7",
+        "claim_text": "from jinja2 import Environment, PackageLoader, select_autoescape  # VERSION=3.1.2",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-2",
+          "span:scan-ret-2",
+          "src:scan-doc-2",
+          "pv:jinja2:3.1.2",
+          "adv:GHSA-cpwx-vrp4-4pq7",
+          "https://pypi.org/project/jinja2"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "jinja2",
+        "version": "3.1.2",
+        "advisory_id": "GHSA-cpwx-vrp4-4pq7",
+        "claim_text": "from jinja2 import Environment, PackageLoader, select_autoescape  # VERSION=3.1.2",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-2",
+          "span:scan-ret-2",
+          "src:scan-doc-2",
+          "pv:jinja2:3.1.2",
+          "adv:GHSA-cpwx-vrp4-4pq7",
+          "https://lists.debian.org/debian-lts-announce/2025/04/msg00045.html"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "jinja2",
+        "version": "3.1.2",
+        "advisory_id": "GHSA-cpwx-vrp4-4pq7",
+        "claim_text": "from jinja2 import Environment, PackageLoader, select_autoescape  # VERSION=3.1.2",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-2",
+          "span:scan-ret-2",
+          "src:scan-doc-2",
+          "pv:jinja2:3.1.2",
+          "adv:GHSA-cpwx-vrp4-4pq7",
+          "https://lists.debian.org/debian-lts-announce/2025/04/msg00022.html"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "jinja2",
+        "version": "3.1.2",
+        "advisory_id": "GHSA-cpwx-vrp4-4pq7",
+        "claim_text": "from jinja2 import Environment, PackageLoader, select_autoescape  # VERSION=3.1.2",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-2",
+          "span:scan-ret-2",
+          "src:scan-doc-2",
+          "pv:jinja2:3.1.2",
+          "adv:GHSA-cpwx-vrp4-4pq7",
+          "https://github.com/pypa/advisory-database/tree/main/vulns/jinja2/PYSEC-2026-1471.yaml"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "jinja2",
+        "version": "3.1.2",
+        "advisory_id": "GHSA-cpwx-vrp4-4pq7",
+        "claim_text": "from jinja2 import Environment, PackageLoader, select_autoescape  # VERSION=3.1.2",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-2",
+          "span:scan-ret-2",
+          "src:scan-doc-2",
+          "pv:jinja2:3.1.2",
+          "adv:GHSA-cpwx-vrp4-4pq7",
+          "https://github.com/pallets/jinja/releases/tag/3.1.6"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "jinja2",
+        "version": "3.1.2",
+        "advisory_id": "GHSA-cpwx-vrp4-4pq7",
+        "claim_text": "from jinja2 import Environment, PackageLoader, select_autoescape  # VERSION=3.1.2",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-2",
+          "span:scan-ret-2",
+          "src:scan-doc-2",
+          "pv:jinja2:3.1.2",
+          "adv:GHSA-cpwx-vrp4-4pq7",
+          "https://github.com/pallets/jinja"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "jinja2",
+        "version": "3.1.2",
+        "advisory_id": "GHSA-cpwx-vrp4-4pq7",
+        "claim_text": "from jinja2 import Environment, PackageLoader, select_autoescape  # VERSION=3.1.2",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-2",
+          "span:scan-ret-2",
+          "src:scan-doc-2",
+          "pv:jinja2:3.1.2",
+          "adv:GHSA-cpwx-vrp4-4pq7",
+          "https://github.com/pallets/jinja/commit/90457bbf33b8662926ae65cdde4c4c32e756e403"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "jinja2",
+        "version": "3.1.2",
+        "advisory_id": "GHSA-cpwx-vrp4-4pq7",
+        "claim_text": "from jinja2 import Environment, PackageLoader, select_autoescape  # VERSION=3.1.2",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-2",
+          "span:scan-ret-2",
+          "src:scan-doc-2",
+          "pv:jinja2:3.1.2",
+          "adv:GHSA-cpwx-vrp4-4pq7",
+          "https://nvd.nist.gov/vuln/detail/CVE-2025-27516"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "jinja2",
+        "version": "3.1.2",
+        "advisory_id": "GHSA-cpwx-vrp4-4pq7",
+        "claim_text": "from jinja2 import Environment, PackageLoader, select_autoescape  # VERSION=3.1.2",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-2",
+          "span:scan-ret-2",
+          "src:scan-doc-2",
+          "pv:jinja2:3.1.2",
+          "adv:GHSA-cpwx-vrp4-4pq7",
+          "https://github.com/pallets/jinja/security/advisories/GHSA-cpwx-vrp4-4pq7"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "jinja2",
+        "version": "3.1.2",
+        "advisory_id": "GHSA-cpwx-vrp4-4pq7",
+        "claim_text": "from jinja2 import Environment, PackageLoader, select_autoescape  # VERSION=3.1.2",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-2",
+          "span:scan-ret-2",
+          "src:scan-doc-2",
+          "pv:jinja2:3.1.2",
+          "adv:GHSA-cpwx-vrp4-4pq7",
+          "alias:PYSEC-2026-1471"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "HAS_ALIAS"
+        ],
+        "hops": 5,
+        "package": "jinja2",
+        "version": "3.1.2",
+        "advisory_id": "GHSA-cpwx-vrp4-4pq7",
+        "claim_text": "from jinja2 import Environment, PackageLoader, select_autoescape  # VERSION=3.1.2",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-2",
+          "span:scan-ret-2",
+          "src:scan-doc-2",
+          "pv:jinja2:3.1.2",
+          "adv:GHSA-cpwx-vrp4-4pq7",
+          "alias:CVE-2025-27516"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "HAS_ALIAS"
+        ],
+        "hops": 5,
+        "package": "jinja2",
+        "version": "3.1.2",
+        "advisory_id": "GHSA-cpwx-vrp4-4pq7",
+        "claim_text": "from jinja2 import Environment, PackageLoader, select_autoescape  # VERSION=3.1.2",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-3",
+          "span:scan-ret-3",
+          "src:scan-doc-3",
+          "pv:requests:2.31.0",
+          "adv:GHSA-9hjg-9r4m-mvj7",
+          "http://seclists.org/fulldisclosure/2025/Jun/2"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "requests",
+        "version": "2.31.0",
+        "advisory_id": "GHSA-9hjg-9r4m-mvj7",
+        "claim_text": "import requests  # VERSION=2.31.0",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-3",
+          "span:scan-ret-3",
+          "src:scan-doc-3",
+          "pv:requests:2.31.0",
+          "adv:GHSA-9hjg-9r4m-mvj7",
+          "http://www.openwall.com/lists/oss-security/2025/06/04/6"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "requests",
+        "version": "2.31.0",
+        "advisory_id": "GHSA-9hjg-9r4m-mvj7",
+        "claim_text": "import requests  # VERSION=2.31.0",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-3",
+          "span:scan-ret-3",
+          "src:scan-doc-3",
+          "pv:requests:2.31.0",
+          "adv:GHSA-9hjg-9r4m-mvj7",
+          "http://www.openwall.com/lists/oss-security/2025/06/04/1"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "requests",
+        "version": "2.31.0",
+        "advisory_id": "GHSA-9hjg-9r4m-mvj7",
+        "claim_text": "import requests  # VERSION=2.31.0",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-3",
+          "span:scan-ret-3",
+          "src:scan-doc-3",
+          "pv:requests:2.31.0",
+          "adv:GHSA-9hjg-9r4m-mvj7",
+          "http://www.openwall.com/lists/oss-security/2025/06/03/9"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "requests",
+        "version": "2.31.0",
+        "advisory_id": "GHSA-9hjg-9r4m-mvj7",
+        "claim_text": "import requests  # VERSION=2.31.0",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-3",
+          "span:scan-ret-3",
+          "src:scan-doc-3",
+          "pv:requests:2.31.0",
+          "adv:GHSA-9hjg-9r4m-mvj7",
+          "http://www.openwall.com/lists/oss-security/2025/06/03/11"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "requests",
+        "version": "2.31.0",
+        "advisory_id": "GHSA-9hjg-9r4m-mvj7",
+        "claim_text": "import requests  # VERSION=2.31.0",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-3",
+          "span:scan-ret-3",
+          "src:scan-doc-3",
+          "pv:requests:2.31.0",
+          "adv:GHSA-9hjg-9r4m-mvj7",
+          "https://seclists.org/fulldisclosure/2025/Jun/2"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "requests",
+        "version": "2.31.0",
+        "advisory_id": "GHSA-9hjg-9r4m-mvj7",
+        "claim_text": "import requests  # VERSION=2.31.0",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-3",
+          "span:scan-ret-3",
+          "src:scan-doc-3",
+          "pv:requests:2.31.0",
+          "adv:GHSA-9hjg-9r4m-mvj7",
+          "https://requests.readthedocs.io/en/latest/api/#requests.Session.trust_env"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "requests",
+        "version": "2.31.0",
+        "advisory_id": "GHSA-9hjg-9r4m-mvj7",
+        "claim_text": "import requests  # VERSION=2.31.0",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-3",
+          "span:scan-ret-3",
+          "src:scan-doc-3",
+          "pv:requests:2.31.0",
+          "adv:GHSA-9hjg-9r4m-mvj7",
+          "https://pypi.org/project/requests"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "requests",
+        "version": "2.31.0",
+        "advisory_id": "GHSA-9hjg-9r4m-mvj7",
+        "claim_text": "import requests  # VERSION=2.31.0",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-3",
+          "span:scan-ret-3",
+          "src:scan-doc-3",
+          "pv:requests:2.31.0",
+          "adv:GHSA-9hjg-9r4m-mvj7",
+          "https://github.com/pypa/advisory-database/tree/main/vulns/requests/PYSEC-2026-1872.yaml"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "requests",
+        "version": "2.31.0",
+        "advisory_id": "GHSA-9hjg-9r4m-mvj7",
+        "claim_text": "import requests  # VERSION=2.31.0",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-3",
+          "span:scan-ret-3",
+          "src:scan-doc-3",
+          "pv:requests:2.31.0",
+          "adv:GHSA-9hjg-9r4m-mvj7",
+          "https://github.com/psf/requests/releases/tag/v2.32.4"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "requests",
+        "version": "2.31.0",
+        "advisory_id": "GHSA-9hjg-9r4m-mvj7",
+        "claim_text": "import requests  # VERSION=2.31.0",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-3",
+          "span:scan-ret-3",
+          "src:scan-doc-3",
+          "pv:requests:2.31.0",
+          "adv:GHSA-9hjg-9r4m-mvj7",
+          "https://github.com/psf/requests"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "requests",
+        "version": "2.31.0",
+        "advisory_id": "GHSA-9hjg-9r4m-mvj7",
+        "claim_text": "import requests  # VERSION=2.31.0",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-3",
+          "span:scan-ret-3",
+          "src:scan-doc-3",
+          "pv:requests:2.31.0",
+          "adv:GHSA-9hjg-9r4m-mvj7",
+          "https://github.com/advisories/GHSA-9hjg-9r4m-mvj7"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "requests",
+        "version": "2.31.0",
+        "advisory_id": "GHSA-9hjg-9r4m-mvj7",
+        "claim_text": "import requests  # VERSION=2.31.0",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-3",
+          "span:scan-ret-3",
+          "src:scan-doc-3",
+          "pv:requests:2.31.0",
+          "adv:GHSA-9hjg-9r4m-mvj7",
+          "https://github.com/psf/requests/commit/96ba401c1296ab1dda74a2365ef36d88f7d144ef"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "requests",
+        "version": "2.31.0",
+        "advisory_id": "GHSA-9hjg-9r4m-mvj7",
+        "claim_text": "import requests  # VERSION=2.31.0",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-3",
+          "span:scan-ret-3",
+          "src:scan-doc-3",
+          "pv:requests:2.31.0",
+          "adv:GHSA-9hjg-9r4m-mvj7",
+          "https://github.com/psf/requests/pull/6965"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "requests",
+        "version": "2.31.0",
+        "advisory_id": "GHSA-9hjg-9r4m-mvj7",
+        "claim_text": "import requests  # VERSION=2.31.0",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-3",
+          "span:scan-ret-3",
+          "src:scan-doc-3",
+          "pv:requests:2.31.0",
+          "adv:GHSA-9hjg-9r4m-mvj7",
+          "https://nvd.nist.gov/vuln/detail/CVE-2024-47081"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "requests",
+        "version": "2.31.0",
+        "advisory_id": "GHSA-9hjg-9r4m-mvj7",
+        "claim_text": "import requests  # VERSION=2.31.0",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-3",
+          "span:scan-ret-3",
+          "src:scan-doc-3",
+          "pv:requests:2.31.0",
+          "adv:GHSA-9hjg-9r4m-mvj7",
+          "https://github.com/psf/requests/security/advisories/GHSA-9hjg-9r4m-mvj7"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "requests",
+        "version": "2.31.0",
+        "advisory_id": "GHSA-9hjg-9r4m-mvj7",
+        "claim_text": "import requests  # VERSION=2.31.0",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-3",
+          "span:scan-ret-3",
+          "src:scan-doc-3",
+          "pv:requests:2.31.0",
+          "adv:GHSA-9hjg-9r4m-mvj7",
+          "alias:PYSEC-2026-1872"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "HAS_ALIAS"
+        ],
+        "hops": 5,
+        "package": "requests",
+        "version": "2.31.0",
+        "advisory_id": "GHSA-9hjg-9r4m-mvj7",
+        "claim_text": "import requests  # VERSION=2.31.0",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-3",
+          "span:scan-ret-3",
+          "src:scan-doc-3",
+          "pv:requests:2.31.0",
+          "adv:GHSA-9hjg-9r4m-mvj7",
+          "alias:CVE-2024-47081"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "HAS_ALIAS"
+        ],
+        "hops": 5,
+        "package": "requests",
+        "version": "2.31.0",
+        "advisory_id": "GHSA-9hjg-9r4m-mvj7",
+        "claim_text": "import requests  # VERSION=2.31.0",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-4",
+          "span:scan-ret-4",
+          "src:scan-doc-4",
+          "pv:pyyaml:3.13",
+          "adv:GHSA-3pqx-4fqf-j49f",
+          "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/33VBUY73AA6CTTYL3LRWHNFDULV7PFPN/"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "pyyaml",
+        "version": "3.13",
+        "advisory_id": "GHSA-3pqx-4fqf-j49f",
+        "claim_text": "import yaml  # VERSION=3.13",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-4",
+          "span:scan-ret-4",
+          "src:scan-doc-4",
+          "pv:pyyaml:3.13",
+          "adv:GHSA-3pqx-4fqf-j49f",
+          "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/52N5XS73Z5S4ZN7I7R56ICCPCTKCUV4H/"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "pyyaml",
+        "version": "3.13",
+        "advisory_id": "GHSA-3pqx-4fqf-j49f",
+        "claim_text": "import yaml  # VERSION=3.13",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-4",
+          "span:scan-ret-4",
+          "src:scan-doc-4",
+          "pv:pyyaml:3.13",
+          "adv:GHSA-3pqx-4fqf-j49f",
+          "https://www.exploit-db.com/download/47655"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "pyyaml",
+        "version": "3.13",
+        "advisory_id": "GHSA-3pqx-4fqf-j49f",
+        "claim_text": "import yaml  # VERSION=3.13",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-4",
+          "span:scan-ret-4",
+          "src:scan-doc-4",
+          "pv:pyyaml:3.13",
+          "adv:GHSA-3pqx-4fqf-j49f",
+          "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/52N5XS73Z5S4ZN7I7R56ICCPCTKCUV4H"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "pyyaml",
+        "version": "3.13",
+        "advisory_id": "GHSA-3pqx-4fqf-j49f",
+        "claim_text": "import yaml  # VERSION=3.13",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-4",
+          "span:scan-ret-4",
+          "src:scan-doc-4",
+          "pv:pyyaml:3.13",
+          "adv:GHSA-3pqx-4fqf-j49f",
+          "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/33VBUY73AA6CTTYL3LRWHNFDULV7PFPN"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "pyyaml",
+        "version": "3.13",
+        "advisory_id": "GHSA-3pqx-4fqf-j49f",
+        "claim_text": "import yaml  # VERSION=3.13",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-4",
+          "span:scan-ret-4",
+          "src:scan-doc-4",
+          "pv:pyyaml:3.13",
+          "adv:GHSA-3pqx-4fqf-j49f",
+          "https://github.com/yaml/pyyaml/blob/master/CHANGES"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "pyyaml",
+        "version": "3.13",
+        "advisory_id": "GHSA-3pqx-4fqf-j49f",
+        "claim_text": "import yaml  # VERSION=3.13",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-4",
+          "span:scan-ret-4",
+          "src:scan-doc-4",
+          "pv:pyyaml:3.13",
+          "adv:GHSA-3pqx-4fqf-j49f",
+          "https://github.com/yaml/pyyaml"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "pyyaml",
+        "version": "3.13",
+        "advisory_id": "GHSA-3pqx-4fqf-j49f",
+        "claim_text": "import yaml  # VERSION=3.13",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-4",
+          "span:scan-ret-4",
+          "src:scan-doc-4",
+          "pv:pyyaml:3.13",
+          "adv:GHSA-3pqx-4fqf-j49f",
+          "https://github.com/pypa/advisory-database/tree/main/vulns/pyyaml/PYSEC-2020-176.yaml"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "pyyaml",
+        "version": "3.13",
+        "advisory_id": "GHSA-3pqx-4fqf-j49f",
+        "claim_text": "import yaml  # VERSION=3.13",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-4",
+          "span:scan-ret-4",
+          "src:scan-doc-4",
+          "pv:pyyaml:3.13",
+          "adv:GHSA-3pqx-4fqf-j49f",
+          "https://github.com/advisories/GHSA-3pqx-4fqf-j49f"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "pyyaml",
+        "version": "3.13",
+        "advisory_id": "GHSA-3pqx-4fqf-j49f",
+        "claim_text": "import yaml  # VERSION=3.13",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-4",
+          "span:scan-ret-4",
+          "src:scan-doc-4",
+          "pv:pyyaml:3.13",
+          "adv:GHSA-3pqx-4fqf-j49f",
+          "https://nvd.nist.gov/vuln/detail/CVE-2019-20477"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "pyyaml",
+        "version": "3.13",
+        "advisory_id": "GHSA-3pqx-4fqf-j49f",
+        "claim_text": "import yaml  # VERSION=3.13",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-4",
+          "span:scan-ret-4",
+          "src:scan-doc-4",
+          "pv:pyyaml:3.13",
+          "adv:GHSA-3pqx-4fqf-j49f",
+          "alias:PYSEC-2020-176"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "HAS_ALIAS"
+        ],
+        "hops": 5,
+        "package": "pyyaml",
+        "version": "3.13",
+        "advisory_id": "GHSA-3pqx-4fqf-j49f",
+        "claim_text": "import yaml  # VERSION=3.13",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-4",
+          "span:scan-ret-4",
+          "src:scan-doc-4",
+          "pv:pyyaml:3.13",
+          "adv:GHSA-3pqx-4fqf-j49f",
+          "alias:CVE-2019-20477"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "HAS_ALIAS"
+        ],
+        "hops": 5,
+        "package": "pyyaml",
+        "version": "3.13",
+        "advisory_id": "GHSA-3pqx-4fqf-j49f",
+        "claim_text": "import yaml  # VERSION=3.13",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-5",
+          "span:scan-ret-5",
+          "src:scan-doc-5",
+          "pv:numpy:1.21.0",
+          "adv:GHSA-fpfv-jqm9-f5jm",
+          "https://www.oracle.com/security-alerts/cpujul2022.html"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "numpy",
+        "version": "1.21.0",
+        "advisory_id": "GHSA-fpfv-jqm9-f5jm",
+        "claim_text": "import numpy as np  # VERSION=1.21.0",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-5",
+          "span:scan-ret-5",
+          "src:scan-doc-5",
+          "pv:numpy:1.21.0",
+          "adv:GHSA-fpfv-jqm9-f5jm",
+          "https://github.com/pypa/advisory-database/tree/main/vulns/numpy/PYSEC-2021-855.yaml"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "numpy",
+        "version": "1.21.0",
+        "advisory_id": "GHSA-fpfv-jqm9-f5jm",
+        "claim_text": "import numpy as np  # VERSION=1.21.0",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-5",
+          "span:scan-ret-5",
+          "src:scan-doc-5",
+          "pv:numpy:1.21.0",
+          "adv:GHSA-fpfv-jqm9-f5jm",
+          "https://github.com/numpy/numpy"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "numpy",
+        "version": "1.21.0",
+        "advisory_id": "GHSA-fpfv-jqm9-f5jm",
+        "claim_text": "import numpy as np  # VERSION=1.21.0",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-5",
+          "span:scan-ret-5",
+          "src:scan-doc-5",
+          "pv:numpy:1.21.0",
+          "adv:GHSA-fpfv-jqm9-f5jm",
+          "https://github.com/advisories/GHSA-fpfv-jqm9-f5jm"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "numpy",
+        "version": "1.21.0",
+        "advisory_id": "GHSA-fpfv-jqm9-f5jm",
+        "claim_text": "import numpy as np  # VERSION=1.21.0",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-5",
+          "span:scan-ret-5",
+          "src:scan-doc-5",
+          "pv:numpy:1.21.0",
+          "adv:GHSA-fpfv-jqm9-f5jm",
+          "https://github.com/numpy/numpy/issues/18993#issuecomment-1010735102"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "numpy",
+        "version": "1.21.0",
+        "advisory_id": "GHSA-fpfv-jqm9-f5jm",
+        "claim_text": "import numpy as np  # VERSION=1.21.0",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-5",
+          "span:scan-ret-5",
+          "src:scan-doc-5",
+          "pv:numpy:1.21.0",
+          "adv:GHSA-fpfv-jqm9-f5jm",
+          "https://github.com/numpy/numpy/issues/18993"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "numpy",
+        "version": "1.21.0",
+        "advisory_id": "GHSA-fpfv-jqm9-f5jm",
+        "claim_text": "import numpy as np  # VERSION=1.21.0",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-5",
+          "span:scan-ret-5",
+          "src:scan-doc-5",
+          "pv:numpy:1.21.0",
+          "adv:GHSA-fpfv-jqm9-f5jm",
+          "https://nvd.nist.gov/vuln/detail/CVE-2021-34141"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "numpy",
+        "version": "1.21.0",
+        "advisory_id": "GHSA-fpfv-jqm9-f5jm",
+        "claim_text": "import numpy as np  # VERSION=1.21.0",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-5",
+          "span:scan-ret-5",
+          "src:scan-doc-5",
+          "pv:numpy:1.21.0",
+          "adv:GHSA-fpfv-jqm9-f5jm",
+          "alias:PYSEC-2021-855"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "HAS_ALIAS"
+        ],
+        "hops": 5,
+        "package": "numpy",
+        "version": "1.21.0",
+        "advisory_id": "GHSA-fpfv-jqm9-f5jm",
+        "claim_text": "import numpy as np  # VERSION=1.21.0",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-5",
+          "span:scan-ret-5",
+          "src:scan-doc-5",
+          "pv:numpy:1.21.0",
+          "adv:GHSA-fpfv-jqm9-f5jm",
+          "alias:CVE-2021-34141"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "HAS_ALIAS"
+        ],
+        "hops": 5,
+        "package": "numpy",
+        "version": "1.21.0",
+        "advisory_id": "GHSA-fpfv-jqm9-f5jm",
+        "claim_text": "import numpy as np  # VERSION=1.21.0",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-6",
+          "span:scan-ret-6",
+          "src:scan-doc-6",
+          "pv:django:4.2.7",
+          "adv:GHSA-2mcm-79hx-8fxw",
+          "https://github.com/advisories/GHSA-2mcm-79hx-8fxw"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "django",
+        "version": "4.2.7",
+        "advisory_id": "GHSA-2mcm-79hx-8fxw",
+        "claim_text": "Django==4.2.7",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-6",
+          "span:scan-ret-6",
+          "src:scan-doc-6",
+          "pv:django:4.2.7",
+          "adv:GHSA-2mcm-79hx-8fxw",
+          "https://www.djangoproject.com/weblog/2026/feb/03/security-releases/"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "django",
+        "version": "4.2.7",
+        "advisory_id": "GHSA-2mcm-79hx-8fxw",
+        "claim_text": "Django==4.2.7",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-6",
+          "span:scan-ret-6",
+          "src:scan-doc-6",
+          "pv:django:4.2.7",
+          "adv:GHSA-2mcm-79hx-8fxw",
+          "https://docs.djangoproject.com/en/dev/releases/security/"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "django",
+        "version": "4.2.7",
+        "advisory_id": "GHSA-2mcm-79hx-8fxw",
+        "claim_text": "Django==4.2.7",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-6",
+          "span:scan-ret-6",
+          "src:scan-doc-6",
+          "pv:django:4.2.7",
+          "adv:GHSA-2mcm-79hx-8fxw",
+          "https://www.djangoproject.com/weblog/2026/feb/03/security-releases"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "django",
+        "version": "4.2.7",
+        "advisory_id": "GHSA-2mcm-79hx-8fxw",
+        "claim_text": "Django==4.2.7",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-6",
+          "span:scan-ret-6",
+          "src:scan-doc-6",
+          "pv:django:4.2.7",
+          "adv:GHSA-2mcm-79hx-8fxw",
+          "https://groups.google.com/g/django-announce"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "django",
+        "version": "4.2.7",
+        "advisory_id": "GHSA-2mcm-79hx-8fxw",
+        "claim_text": "Django==4.2.7",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-6",
+          "span:scan-ret-6",
+          "src:scan-doc-6",
+          "pv:django:4.2.7",
+          "adv:GHSA-2mcm-79hx-8fxw",
+          "https://github.com/pypa/advisory-database/tree/main/vulns/django/PYSEC-2026-42.yaml"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "django",
+        "version": "4.2.7",
+        "advisory_id": "GHSA-2mcm-79hx-8fxw",
+        "claim_text": "Django==4.2.7",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-6",
+          "span:scan-ret-6",
+          "src:scan-doc-6",
+          "pv:django:4.2.7",
+          "adv:GHSA-2mcm-79hx-8fxw",
+          "https://github.com/django/django"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "django",
+        "version": "4.2.7",
+        "advisory_id": "GHSA-2mcm-79hx-8fxw",
+        "claim_text": "Django==4.2.7",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-6",
+          "span:scan-ret-6",
+          "src:scan-doc-6",
+          "pv:django:4.2.7",
+          "adv:GHSA-2mcm-79hx-8fxw",
+          "https://docs.djangoproject.com/en/dev/releases/security"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "django",
+        "version": "4.2.7",
+        "advisory_id": "GHSA-2mcm-79hx-8fxw",
+        "claim_text": "Django==4.2.7",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-6",
+          "span:scan-ret-6",
+          "src:scan-doc-6",
+          "pv:django:4.2.7",
+          "adv:GHSA-2mcm-79hx-8fxw",
+          "https://nvd.nist.gov/vuln/detail/CVE-2025-13473"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "django",
+        "version": "4.2.7",
+        "advisory_id": "GHSA-2mcm-79hx-8fxw",
+        "claim_text": "Django==4.2.7",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-6",
+          "span:scan-ret-6",
+          "src:scan-doc-6",
+          "pv:django:4.2.7",
+          "adv:GHSA-2mcm-79hx-8fxw",
+          "alias:PYSEC-2026-42"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "HAS_ALIAS"
+        ],
+        "hops": 5,
+        "package": "django",
+        "version": "4.2.7",
+        "advisory_id": "GHSA-2mcm-79hx-8fxw",
+        "claim_text": "Django==4.2.7",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-6",
+          "span:scan-ret-6",
+          "src:scan-doc-6",
+          "pv:django:4.2.7",
+          "adv:GHSA-2mcm-79hx-8fxw",
+          "alias:CVE-2025-13473"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "HAS_ALIAS"
+        ],
+        "hops": 5,
+        "package": "django",
+        "version": "4.2.7",
+        "advisory_id": "GHSA-2mcm-79hx-8fxw",
+        "claim_text": "Django==4.2.7",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-6",
+          "span:scan-ret-6",
+          "src:scan-doc-6",
+          "pv:django:4.2.7",
+          "adv:GHSA-2mcm-79hx-8fxw",
+          "alias:BIT-django-2025-13473"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "HAS_ALIAS"
+        ],
+        "hops": 5,
+        "package": "django",
+        "version": "4.2.7",
+        "advisory_id": "GHSA-2mcm-79hx-8fxw",
+        "claim_text": "Django==4.2.7",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-7",
+          "span:scan-ret-7",
+          "src:scan-doc-7",
+          "pv:urllib3:2.0.7",
+          "adv:GHSA-2xpw-w6gg-jr37",
+          "https://pypi.org/project/urllib3"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "urllib3",
+        "version": "2.0.7",
+        "advisory_id": "GHSA-2xpw-w6gg-jr37",
+        "claim_text": "urllib3==2.0.7",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-7",
+          "span:scan-ret-7",
+          "src:scan-doc-7",
+          "pv:urllib3:2.0.7",
+          "adv:GHSA-2xpw-w6gg-jr37",
+          "https://github.com/urllib3/urllib3"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "urllib3",
+        "version": "2.0.7",
+        "advisory_id": "GHSA-2xpw-w6gg-jr37",
+        "claim_text": "urllib3==2.0.7",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-7",
+          "span:scan-ret-7",
+          "src:scan-doc-7",
+          "pv:urllib3:2.0.7",
+          "adv:GHSA-2xpw-w6gg-jr37",
+          "https://github.com/pypa/advisory-database/tree/main/vulns/urllib3/PYSEC-2026-1994.yaml"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "urllib3",
+        "version": "2.0.7",
+        "advisory_id": "GHSA-2xpw-w6gg-jr37",
+        "claim_text": "urllib3==2.0.7",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-7",
+          "span:scan-ret-7",
+          "src:scan-doc-7",
+          "pv:urllib3:2.0.7",
+          "adv:GHSA-2xpw-w6gg-jr37",
+          "https://github.com/advisories/GHSA-2xpw-w6gg-jr37"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "urllib3",
+        "version": "2.0.7",
+        "advisory_id": "GHSA-2xpw-w6gg-jr37",
+        "claim_text": "urllib3==2.0.7",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-7",
+          "span:scan-ret-7",
+          "src:scan-doc-7",
+          "pv:urllib3:2.0.7",
+          "adv:GHSA-2xpw-w6gg-jr37",
+          "https://github.com/urllib3/urllib3/commit/d0fde3672e4a4093f7587858dccfc298eb66e46c"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "urllib3",
+        "version": "2.0.7",
+        "advisory_id": "GHSA-2xpw-w6gg-jr37",
+        "claim_text": "urllib3==2.0.7",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-7",
+          "span:scan-ret-7",
+          "src:scan-doc-7",
+          "pv:urllib3:2.0.7",
+          "adv:GHSA-2xpw-w6gg-jr37",
+          "https://github.com/urllib3/urllib3/commit/c19571de34c47de3a766541b041637ba5f716ed7"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "urllib3",
+        "version": "2.0.7",
+        "advisory_id": "GHSA-2xpw-w6gg-jr37",
+        "claim_text": "urllib3==2.0.7",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-7",
+          "span:scan-ret-7",
+          "src:scan-doc-7",
+          "pv:urllib3:2.0.7",
+          "adv:GHSA-2xpw-w6gg-jr37",
+          "https://nvd.nist.gov/vuln/detail/CVE-2025-66471"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "urllib3",
+        "version": "2.0.7",
+        "advisory_id": "GHSA-2xpw-w6gg-jr37",
+        "claim_text": "urllib3==2.0.7",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-7",
+          "span:scan-ret-7",
+          "src:scan-doc-7",
+          "pv:urllib3:2.0.7",
+          "adv:GHSA-2xpw-w6gg-jr37",
+          "https://github.com/urllib3/urllib3/security/advisories/GHSA-2xpw-w6gg-jr37"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "urllib3",
+        "version": "2.0.7",
+        "advisory_id": "GHSA-2xpw-w6gg-jr37",
+        "claim_text": "urllib3==2.0.7",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-7",
+          "span:scan-ret-7",
+          "src:scan-doc-7",
+          "pv:urllib3:2.0.7",
+          "adv:GHSA-2xpw-w6gg-jr37",
+          "alias:PYSEC-2026-1994"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "HAS_ALIAS"
+        ],
+        "hops": 5,
+        "package": "urllib3",
+        "version": "2.0.7",
+        "advisory_id": "GHSA-2xpw-w6gg-jr37",
+        "claim_text": "urllib3==2.0.7",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-7",
+          "span:scan-ret-7",
+          "src:scan-doc-7",
+          "pv:urllib3:2.0.7",
+          "adv:GHSA-2xpw-w6gg-jr37",
+          "alias:CVE-2025-66471"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "HAS_ALIAS"
+        ],
+        "hops": 5,
+        "package": "urllib3",
+        "version": "2.0.7",
+        "advisory_id": "GHSA-2xpw-w6gg-jr37",
+        "claim_text": "urllib3==2.0.7",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-0",
+          "span:scan-ret-0",
+          "src:scan-doc-0",
+          "pv:flask:3.0.3",
+          "adv:GHSA-4grg-w6v8-c28g"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS"
+        ],
+        "hops": 4,
+        "package": "flask",
+        "version": "3.0.3",
+        "advisory_id": "GHSA-4grg-w6v8-c28g",
+        "claim_text": "from flask import Flask, render_template, request  # VERSION=3.0.3",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-1",
+          "span:scan-ret-1",
+          "src:scan-doc-1",
+          "pv:pillow:10.0.0",
+          "adv:GHSA-22hg-r758-rrw9"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS"
+        ],
+        "hops": 4,
+        "package": "pillow",
+        "version": "10.0.0",
+        "advisory_id": "GHSA-22hg-r758-rrw9",
+        "claim_text": "from PIL import Image  # VERSION=10.0.0",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-2",
+          "span:scan-ret-2",
+          "src:scan-doc-2",
+          "pv:jinja2:3.1.2",
+          "adv:GHSA-cpwx-vrp4-4pq7"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS"
+        ],
+        "hops": 4,
+        "package": "jinja2",
+        "version": "3.1.2",
+        "advisory_id": "GHSA-cpwx-vrp4-4pq7",
+        "claim_text": "from jinja2 import Environment, PackageLoader, select_autoescape  # VERSION=3.1.2",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-3",
+          "span:scan-ret-3",
+          "src:scan-doc-3",
+          "pv:requests:2.31.0",
+          "adv:GHSA-9hjg-9r4m-mvj7"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS"
+        ],
+        "hops": 4,
+        "package": "requests",
+        "version": "2.31.0",
+        "advisory_id": "GHSA-9hjg-9r4m-mvj7",
+        "claim_text": "import requests  # VERSION=2.31.0",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-4",
+          "span:scan-ret-4",
+          "src:scan-doc-4",
+          "pv:pyyaml:3.13",
+          "adv:GHSA-3pqx-4fqf-j49f"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS"
+        ],
+        "hops": 4,
+        "package": "pyyaml",
+        "version": "3.13",
+        "advisory_id": "GHSA-3pqx-4fqf-j49f",
+        "claim_text": "import yaml  # VERSION=3.13",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-5",
+          "span:scan-ret-5",
+          "src:scan-doc-5",
+          "pv:numpy:1.21.0",
+          "adv:GHSA-fpfv-jqm9-f5jm"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS"
+        ],
+        "hops": 4,
+        "package": "numpy",
+        "version": "1.21.0",
+        "advisory_id": "GHSA-fpfv-jqm9-f5jm",
+        "claim_text": "import numpy as np  # VERSION=1.21.0",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-6",
+          "span:scan-ret-6",
+          "src:scan-doc-6",
+          "pv:django:4.2.7",
+          "adv:GHSA-2mcm-79hx-8fxw"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS"
+        ],
+        "hops": 4,
+        "package": "django",
+        "version": "4.2.7",
+        "advisory_id": "GHSA-2mcm-79hx-8fxw",
+        "claim_text": "Django==4.2.7",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:scan-root-7",
+          "span:scan-ret-7",
+          "src:scan-doc-7",
+          "pv:urllib3:2.0.7",
+          "adv:GHSA-2xpw-w6gg-jr37"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS"
+        ],
+        "hops": 4,
+        "package": "urllib3",
+        "version": "2.0.7",
+        "advisory_id": "GHSA-2xpw-w6gg-jr37",
+        "claim_text": "urllib3==2.0.7",
+        "resolved": true
+      }
+    ],
+    "Q7_hop_audit": [
+      {
+        "nodes": [
+          "span:scan-root-4",
+          "span:scan-ret-4",
+          "src:scan-doc-4",
+          "pv:pyyaml:3.13"
+        ],
+        "stale_days": [
+          2041.99,
+          2041.99,
+          -365.0,
+          null
+        ],
+        "at_iso": [
+          "2026-11-22T16:23:09+00:00",
+          "2026-11-22T16:23:09.500000+00:00",
+          "2020-04-20T16:40:42+00:00",
+          null
+        ],
+        "labels": [
+          "Span",
+          "Span",
+          "Source",
+          "PkgVersion"
+        ],
+        "first_hop_already_stale": {
+          "index": 0,
+          "node": "span:scan-root-4",
+          "label": "Span",
+          "at_ns": 1795364589000000000,
+          "at_iso": "2026-11-22T16:23:09+00:00",
+          "already_stale_ns": 176427747000000000,
+          "already_stale_days": 2041.99
+        },
+        "advisory_id": "GHSA-3pqx-4fqf-j49f",
+        "verdict": "STALE_AT_HOP"
+      },
+      {
+        "nodes": [
+          "span:scan-root-5",
+          "span:scan-ret-5",
+          "src:scan-doc-5",
+          "pv:numpy:1.21.0"
+        ],
+        "stale_days": [
+          1800.68,
+          1800.68,
+          -365.0,
+          null
+        ],
+        "at_iso": [
+          "2026-11-22T16:23:09+00:00",
+          "2026-11-22T16:23:09.500000+00:00",
+          "2020-12-18T00:00:41+00:00",
+          null
+        ],
+        "labels": [
+          "Span",
+          "Span",
+          "Source",
+          "PkgVersion"
+        ],
+        "first_hop_already_stale": {
+          "index": 0,
+          "node": "span:scan-root-5",
+          "label": "Span",
+          "at_ns": 1795364589000000000,
+          "at_iso": "2026-11-22T16:23:09+00:00",
+          "already_stale_ns": 155578948000000000,
+          "already_stale_days": 1800.68
+        },
+        "advisory_id": "GHSA-fpfv-jqm9-f5jm",
+        "verdict": "STALE_AT_HOP"
+      },
+      {
+        "nodes": [
+          "span:scan-root-2",
+          "span:scan-ret-2",
+          "src:scan-doc-2",
+          "pv:jinja2:3.1.2"
+        ],
+        "stale_days": [
+          626.82,
+          626.82,
+          -365.0,
+          null
+        ],
+        "at_iso": [
+          "2026-11-22T16:23:09+00:00",
+          "2026-11-22T16:23:09.500000+00:00",
+          "2024-03-05T20:40:14+00:00",
+          null
+        ],
+        "labels": [
+          "Span",
+          "Span",
+          "Source",
+          "PkgVersion"
+        ],
+        "first_hop_already_stale": {
+          "index": 0,
+          "node": "span:scan-root-2",
+          "label": "Span",
+          "at_ns": 1795364589000000000,
+          "at_iso": "2026-11-22T16:23:09+00:00",
+          "already_stale_ns": 54157375000000000,
+          "already_stale_days": 626.82
+        },
+        "advisory_id": "GHSA-cpwx-vrp4-4pq7",
+        "verdict": "STALE_AT_HOP"
+      },
+      {
+        "nodes": [
+          "span:scan-root-0",
+          "span:scan-ret-0",
+          "src:scan-doc-0",
+          "pv:flask:3.0.3"
+        ],
+        "stale_days": [
+          557.83,
+          557.83,
+          -365.0,
+          null
+        ],
+        "at_iso": [
+          "2026-11-22T16:23:09+00:00",
+          "2026-11-22T16:23:09.500000+00:00",
+          "2024-05-13T20:25:26+00:00",
+          null
+        ],
+        "labels": [
+          "Span",
+          "Span",
+          "Source",
+          "PkgVersion"
+        ],
+        "first_hop_already_stale": {
+          "index": 0,
+          "node": "span:scan-root-0",
+          "label": "Span",
+          "at_ns": 1795364589000000000,
+          "at_iso": "2026-11-22T16:23:09+00:00",
+          "already_stale_ns": 48196663000000000,
+          "already_stale_days": 557.83
+        },
+        "advisory_id": "GHSA-4grg-w6v8-c28g",
+        "verdict": "STALE_AT_HOP"
+      },
+      {
+        "nodes": [
+          "span:scan-root-3",
+          "span:scan-ret-3",
+          "src:scan-doc-3",
+          "pv:requests:2.31.0"
+        ],
+        "stale_days": [
+          530.89,
+          530.89,
+          -365.0,
+          null
+        ],
+        "at_iso": [
+          "2026-11-22T16:23:09+00:00",
+          "2026-11-22T16:23:09.500000+00:00",
+          "2024-06-09T19:06:08+00:00",
+          null
+        ],
+        "labels": [
+          "Span",
+          "Span",
+          "Source",
+          "PkgVersion"
+        ],
+        "first_hop_already_stale": {
+          "index": 0,
+          "node": "span:scan-root-3",
+          "label": "Span",
+          "at_ns": 1795364589000000000,
+          "at_iso": "2026-11-22T16:23:09+00:00",
+          "already_stale_ns": 45868621000000000,
+          "already_stale_days": 530.89
+        },
+        "advisory_id": "GHSA-9hjg-9r4m-mvj7",
+        "verdict": "STALE_AT_HOP"
+      },
+      {
+        "nodes": [
+          "span:scan-root-7",
+          "span:scan-ret-7",
+          "src:scan-doc-7",
+          "pv:urllib3:2.0.7"
+        ],
+        "stale_days": [
+          351.92,
+          351.92,
+          -365.0,
+          null
+        ],
+        "at_iso": [
+          "2026-11-22T16:23:09+00:00",
+          "2026-11-22T16:23:09.500000+00:00",
+          "2024-12-05T18:15:54+00:00",
+          null
+        ],
+        "labels": [
+          "Span",
+          "Span",
+          "Source",
+          "PkgVersion"
+        ],
+        "first_hop_already_stale": {
+          "index": 0,
+          "node": "span:scan-root-7",
+          "label": "Span",
+          "at_ns": 1795364589000000000,
+          "at_iso": "2026-11-22T16:23:09+00:00",
+          "already_stale_ns": 30406035000000000,
+          "already_stale_days": 351.92
+        },
+        "advisory_id": "GHSA-2xpw-w6gg-jr37",
+        "verdict": "STALE_AT_HOP"
+      },
+      {
+        "nodes": [
+          "span:scan-root-6",
+          "span:scan-ret-6",
+          "src:scan-doc-6",
+          "pv:django:4.2.7"
+        ],
+        "stale_days": [
+          292.04,
+          292.04,
+          -365.0,
+          null
+        ],
+        "at_iso": [
+          "2026-11-22T16:23:09+00:00",
+          "2026-11-22T16:23:09.500000+00:00",
+          "2025-02-03T15:30:23+00:00",
+          null
+        ],
+        "labels": [
+          "Span",
+          "Span",
+          "Source",
+          "PkgVersion"
+        ],
+        "first_hop_already_stale": {
+          "index": 0,
+          "node": "span:scan-root-6",
+          "label": "Span",
+          "at_ns": 1795364589000000000,
+          "at_iso": "2026-11-22T16:23:09+00:00",
+          "already_stale_ns": 25231966000000000,
+          "already_stale_days": 292.04
+        },
+        "advisory_id": "GHSA-2mcm-79hx-8fxw",
+        "verdict": "STALE_AT_HOP"
+      },
+      {
+        "nodes": [
+          "span:scan-root-1",
+          "span:scan-ret-1",
+          "src:scan-doc-1",
+          "pv:pillow:10.0.0"
+        ],
+        "stale_days": [
+          31.82,
+          31.82,
+          -365.0,
+          null
+        ],
+        "at_iso": [
+          "2026-11-22T16:23:09+00:00",
+          "2026-11-22T16:23:09.500000+00:00",
+          "2025-10-21T20:39:49+00:00",
+          null
+        ],
+        "labels": [
+          "Span",
+          "Span",
+          "Source",
+          "PkgVersion"
+        ],
+        "first_hop_already_stale": {
+          "index": 0,
+          "node": "span:scan-root-1",
+          "label": "Span",
+          "at_ns": 1795364589000000000,
+          "at_iso": "2026-11-22T16:23:09+00:00",
+          "already_stale_ns": 2749400000000000,
+          "already_stale_days": 31.82
+        },
+        "advisory_id": "GHSA-22hg-r758-rrw9",
+        "verdict": "STALE_AT_HOP"
+      }
+    ],
+    "Q8_declaration_drift": [
+      {
+        "claim_chain": [
+          "ans:scan-answer-pyyaml-4",
+          "claim:scan-claim-pyyaml-4",
+          "pv:pyyaml:3.13"
+        ],
+        "lockfile_chain": [
+          "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\scan\\requirements.lock",
+          "pv:pyyaml:5.2"
+        ],
+        "advisory_chain": [
+          "adv:GHSA-3pqx-4fqf-j49f",
+          "pv:pyyaml:3.13"
+        ],
+        "claim_text": "import yaml  # VERSION=3.13",
+        "cited_version": "3.13",
+        "pinned_version": "5.2",
+        "advisory_id": "GHSA-3pqx-4fqf-j49f",
+        "advisory_url": "https://nvd.nist.gov/vuln/detail/CVE-2019-20477"
+      },
+      {
+        "claim_chain": [
+          "ans:scan-answer-numpy-5",
+          "claim:scan-claim-numpy-5",
+          "pv:numpy:1.21.0"
+        ],
+        "lockfile_chain": [
+          "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\scan\\requirements.lock",
+          "pv:numpy:1.22"
+        ],
+        "advisory_chain": [
+          "adv:GHSA-fpfv-jqm9-f5jm",
+          "pv:numpy:1.21.0"
+        ],
+        "claim_text": "import numpy as np  # VERSION=1.21.0",
+        "cited_version": "1.21.0",
+        "pinned_version": "1.22",
+        "advisory_id": "GHSA-fpfv-jqm9-f5jm",
+        "advisory_url": "https://nvd.nist.gov/vuln/detail/CVE-2021-34141"
+      },
+      {
+        "claim_chain": [
+          "ans:scan-answer-jinja2-2",
+          "claim:scan-claim-jinja2-2",
+          "pv:jinja2:3.1.2"
+        ],
+        "lockfile_chain": [
+          "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\scan\\requirements.lock",
+          "pv:jinja2:3.1.6"
+        ],
+        "advisory_chain": [
+          "adv:GHSA-cpwx-vrp4-4pq7",
+          "pv:jinja2:3.1.2"
+        ],
+        "claim_text": "from jinja2 import Environment, PackageLoader, select_autoescape  # VERSION=3.1.2",
+        "cited_version": "3.1.2",
+        "pinned_version": "3.1.6",
+        "advisory_id": "GHSA-cpwx-vrp4-4pq7",
+        "advisory_url": "https://github.com/pallets/jinja/security/advisories/GHSA-cpwx-vrp4-4pq7"
+      },
+      {
+        "claim_chain": [
+          "ans:scan-answer-flask-0",
+          "claim:scan-claim-flask-0",
+          "pv:flask:3.0.3"
+        ],
+        "lockfile_chain": [
+          "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\scan\\requirements.lock",
+          "pv:flask:3.1.1"
+        ],
+        "advisory_chain": [
+          "adv:GHSA-4grg-w6v8-c28g",
+          "pv:flask:3.0.3"
+        ],
+        "claim_text": "from flask import Flask, render_template, request  # VERSION=3.0.3",
+        "cited_version": "3.0.3",
+        "pinned_version": "3.1.1",
+        "advisory_id": "GHSA-4grg-w6v8-c28g",
+        "advisory_url": "https://github.com/pallets/flask/security/advisories/GHSA-4grg-w6v8-c28g"
+      },
+      {
+        "claim_chain": [
+          "ans:scan-answer-requests-3",
+          "claim:scan-claim-requests-3",
+          "pv:requests:2.31.0"
+        ],
+        "lockfile_chain": [
+          "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\scan\\requirements.lock",
+          "pv:requests:2.32.4"
+        ],
+        "advisory_chain": [
+          "adv:GHSA-9hjg-9r4m-mvj7",
+          "pv:requests:2.31.0"
+        ],
+        "claim_text": "import requests  # VERSION=2.31.0",
+        "cited_version": "2.31.0",
+        "pinned_version": "2.32.4",
+        "advisory_id": "GHSA-9hjg-9r4m-mvj7",
+        "advisory_url": "https://github.com/psf/requests/security/advisories/GHSA-9hjg-9r4m-mvj7"
+      },
+      {
+        "claim_chain": [
+          "ans:scan-answer-urllib3-7",
+          "claim:scan-claim-urllib3-7",
+          "pv:urllib3:2.0.7"
+        ],
+        "lockfile_chain": [
+          "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\scan\\requirements.lock",
+          "pv:urllib3:2.6.0"
+        ],
+        "advisory_chain": [
+          "adv:GHSA-2xpw-w6gg-jr37",
+          "pv:urllib3:2.0.7"
+        ],
+        "claim_text": "urllib3==2.0.7",
+        "cited_version": "2.0.7",
+        "pinned_version": "2.6.0",
+        "advisory_id": "GHSA-2xpw-w6gg-jr37",
+        "advisory_url": "https://github.com/urllib3/urllib3/security/advisories/GHSA-2xpw-w6gg-jr37"
+      },
+      {
+        "claim_chain": [
+          "ans:scan-answer-django-6",
+          "claim:scan-claim-django-6",
+          "pv:django:4.2.7"
+        ],
+        "lockfile_chain": [
+          "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\scan\\requirements.lock",
+          "pv:django:6.0.2"
+        ],
+        "advisory_chain": [
+          "adv:GHSA-2mcm-79hx-8fxw",
+          "pv:django:4.2.7"
+        ],
+        "claim_text": "Django==4.2.7",
+        "cited_version": "4.2.7",
+        "pinned_version": "6.0.2",
+        "advisory_id": "GHSA-2mcm-79hx-8fxw",
+        "advisory_url": "https://nvd.nist.gov/vuln/detail/CVE-2025-13473"
+      },
+      {
+        "claim_chain": [
+          "ans:scan-answer-pillow-1",
+          "claim:scan-claim-pillow-1",
+          "pv:pillow:10.0.0"
+        ],
+        "lockfile_chain": [
+          "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\scan\\requirements.lock",
+          "pv:pillow:13.0.0"
+        ],
+        "advisory_chain": [
+          "adv:GHSA-22hg-r758-rrw9",
+          "pv:pillow:10.0.0"
+        ],
+        "claim_text": "from PIL import Image  # VERSION=10.0.0",
+        "cited_version": "10.0.0",
+        "pinned_version": "13.0.0",
+        "advisory_id": "GHSA-22hg-r758-rrw9",
+        "advisory_url": "https://github.com/python-pillow/Pillow/security/advisories/GHSA-22hg-r758-rrw9"
+      }
+    ],
+    "merge_actions": [
+      {
+        "reject_text": "import yaml  # VERSION=3.13",
+        "cited_version": "3.13",
+        "pinned_version": "5.2",
+        "action": "reject declaration; 5.2 is already pinned, but the PR text would steer the next agent to a known-vulnerable release"
+      },
+      {
+        "reject_text": "import numpy as np  # VERSION=1.21.0",
+        "cited_version": "1.21.0",
+        "pinned_version": "1.22",
+        "action": "reject declaration; 1.22 is already pinned, but the PR text would steer the next agent to a known-vulnerable release"
+      },
+      {
+        "reject_text": "from jinja2 import Environment, PackageLoader, select_autoescape  # VERSION=3.1.2",
+        "cited_version": "3.1.2",
+        "pinned_version": "3.1.6",
+        "action": "reject declaration; 3.1.6 is already pinned, but the PR text would steer the next agent to a known-vulnerable release"
+      },
+      {
+        "reject_text": "from flask import Flask, render_template, request  # VERSION=3.0.3",
+        "cited_version": "3.0.3",
+        "pinned_version": "3.1.1",
+        "action": "reject declaration; 3.1.1 is already pinned, but the PR text would steer the next agent to a known-vulnerable release"
+      },
+      {
+        "reject_text": "import requests  # VERSION=2.31.0",
+        "cited_version": "2.31.0",
+        "pinned_version": "2.32.4",
+        "action": "reject declaration; 2.32.4 is already pinned, but the PR text would steer the next agent to a known-vulnerable release"
+      },
+      {
+        "reject_text": "urllib3==2.0.7",
+        "cited_version": "2.0.7",
+        "pinned_version": "2.6.0",
+        "action": "reject declaration; 2.6.0 is already pinned, but the PR text would steer the next agent to a known-vulnerable release"
+      },
+      {
+        "reject_text": "Django==4.2.7",
+        "cited_version": "4.2.7",
+        "pinned_version": "6.0.2",
+        "action": "reject declaration; 6.0.2 is already pinned, but the PR text would steer the next agent to a known-vulnerable release"
+      },
+      {
+        "reject_text": "from PIL import Image  # VERSION=10.0.0",
+        "cited_version": "10.0.0",
+        "pinned_version": "13.0.0",
+        "action": "reject declaration; 13.0.0 is already pinned, but the PR text would steer the next agent to a known-vulnerable release"
+      }
+    ],
+    "Q9_convergence": [],
+    "Q10_blast_radius": []
+  },
+  "verdict_summary": {
+    "graph_verdict": "BLOCK_MERGE_TEXT",
+    "checks": {
+      "q6_provenance_path_is_multihop": true,
+      "q6_path_has_no_nulls": true,
+      "q6_traverses_advisory_identity_when_present": true,
+      "q7_hop_level_time_predicate": true,
+      "q7_identifies_which_hop_was_already_stale": true,
+      "q8_declaration_drift_found": true,
+      "sca_control_reports_pinned_clean": true,
+      "graph_changes_merge_decision_where_sca_cannot": true
+    },
+    "declarations_found": 8,
+    "scenarios_built": 8,
+    "merge_verdict": "BLOCK_MERGE_TEXT"
+  }
+}

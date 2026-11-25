@@ -1,0 +1,16 @@
+{
+  "record_id": "stackexchange-69199812",
+  "question_id": "69199812",
+  "answer_id": "69199927",
+  "title": "\"Cloud Run error: Container failed to start. Failed to start and then listen on the port defined by the PORT environment variable.\"",
+  "url": "https://stackoverflow.com/a/69199927",
+  "package": "flask",
+  "cited_version": "2.0.1",
+  "fixed": "3.1.1",
+  "advisory": "GHSA-4grg-w6v8-c28g",
+  "declaration_snippet": "Flask==2.0.1",
+  "declaration_where": "answer",
+  "text_chars": 7220,
+  "license_note": "Stack Exchange content, CC BY-SA 4.0; attribution retained via answer URL",
+  "captured": "real public Stack Overflow question/answer downloaded from PinTrace public dataset"
+}

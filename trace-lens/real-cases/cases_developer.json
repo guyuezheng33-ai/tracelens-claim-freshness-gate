@@ -1,0 +1,55 @@
+{
+  "schema": "tracelens/real-failure-cases@1",
+  "nature": "real-development-failures",
+  "caveat": "These are failures actually encountered while building TraceLens. They are developer-session evidence, not customer incidents and not agent trace fixtures.",
+  "cases": [
+    {
+      "case_id": "DEV-01",
+      "title": "v1 图模型错误导致查询包恒空",
+      "symptom": "初版 store 上 Q1 返回空路径、Q2 恒空、路径行含 null 字段；四个查询包无法形成可执行判定。",
+      "root_cause": "PRODUCED 关系挂错节点、RETRIEVED_FROM 的标签与模型声明矛盾、Q2 的Cypher 过滤条件写成自环导致恒空。",
+      "graph_evidence": "重建 Run/Span/ToolCall/Source/Answer/Claim 模型与关系后，Q1 能在 Answer→root Span→retriever Span→Source 上返回 path/bad_source/score/hops；judge 的结构判定才有了可计算对象。",
+      "fix": "重写 schema.GraphMapper 与 querypacks 的四个 Cypher，统一关系方向与标签；Q2 改为跨检索分支的低分收敛 motif。",
+      "after": "demo store 上 judge=PASS，四查询包断言全部通过；回归测试固化在 tests/test_querypacks.py。",
+      "reproduce": "python -m tracelens.cli build && python -m tracelens.cli judge --store store/demo-run.rl",
+      "source": "developer-session: TraceLens v1 build, real failing queries",
+      "customer": false
+    },
+    {
+      "case_id": "DEV-02",
+      "title": "OTLP 导入后 answers=0",
+      "symptom": "用标准 OTLP/JSON 样本执行 import --fresh 后，建图成功但 answers 计数为 0，judge 因无 Answer 节点无法判定。",
+      "root_cause": "_normalize_span 只保留了标准化字段，丢弃了原始 events；_answers_from 依赖原始 events 中的 claim/answer 标注，因此没有输入。",
+      "graph_evidence": "Answer 节点缺失使 Q1 的 MATCH (a:Answer) 无结果；这是图结构层面可直接观测到的缺陷，而不是配置文件问题。",
+      "fix": "在 _normalize_span 阶段收集 events_by_id 并透传给 _answers_from，保留标准 OTel 编码下的 events/links/status。",
+      "after": "标准 OTLP 样本导入后 Answer 节点非 0，端到端 judge=PASS；回归测试在 tests/test_otlp.py。",
+      "reproduce": "python -m tracelens.cli import --fresh --input fixtures/otlp-sample.json --store /tmp/otlp-check.rl && python -m tracelens.cli judge --store /tmp/otlp-check.rl",
+      "source": "developer-session: OTLP importer integration run",
+      "customer": false
+    },
+    {
+      "case_id": "DEV-03",
+      "title": "硬编码 ID 让查询包在真实库上全部失效",
+      "symptom": "把真实运行的 trace 导入独立 store 后，Q1/Q2/Q3/Q4 全部返回 0 行；同样的代码在 demo fixture 上却全部通过。",
+      "root_cause": "Q3 的 Cypher 写死 current-policy-v9.pdf、Q4 写死 ba-root、Q1 的默认 answer_id 指向 fixture 专属值；查询包只对一份样本成立。",
+      "graph_evidence": "真实 store 的 Source/Answer/Span 节点数均大于 0；Q1/Q2/Q3/Q4 却全部返回 0 行，说明不是数据缺失，而是查询参数与图结构脱节。",
+      "fix": "新增 querypacks.discover_params()，从图中结构推导 trusted_doc/answer_id/root_id；显式参数仍优先，保留原回归测试。",
+      "after": "同一真实 store 上 Q4 返回 4 个 span、最慢子树 10.79 ms；Q1/Q2/Q3 返回空是真实结论（该 run 无低分收敛污染），不是查询失效。",
+      "reproduce": "python -m tracelens.cli query --store real-traces/self-run-1.rl --pack Q4",
+      "source": "developer-session: real trace intake, query packs returned zero rows",
+      "customer": false
+    },
+    {
+      "case_id": "DEV-04",
+      "title": "自查闭环靠分数猜，未真正消费图诊断",
+      "symptom": "第一版 agent 闭环删掉了一条 claim，但输出中 bad_sources_from_graph 为空；删 claim 的依据只是 score<0.5，换成不看图也能得到同样结果。",
+      "root_cause": "apply_self_check 的剔除规则把分数阈值当决策源，图查询结果只作展示，没有进入决策路径。",
+      "graph_evidence": "修正后 MCP 工具的 Q3 调用返回 claim_id=ba-claim-bad 且无 SUPPORTED_BY 证据路径；drop_reasons 明确写 'Q3: no SUPPORTED_BY evidence path'，删除动作由路径结果触发。",
+      "fix": "闭环改为只认图证据：Q3 无证据路径或 Q2 收敛源命中的 claim 才剔除；分数永不作为决策依据。",
+      "after": "self-check-fixture.json 记录 3 次 MCP 工具调用与图给出的剔除理由；测试验证分数低但图未标记的 claim 不会被删除。",
+      "reproduce": "python -m tracelens.cli agentloop --store store/demo-run.rl --answer-before real-traces/answer-before-fixture.json --out real-traces/self-check-fixture.json",
+      "source": "developer-session: self-check loop evidence audit",
+      "customer": false
+    }
+  ]
+}

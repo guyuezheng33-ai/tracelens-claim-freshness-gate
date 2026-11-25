@@ -1,0 +1,1 @@
+from flask import Flask  # VERSION=2.3.0

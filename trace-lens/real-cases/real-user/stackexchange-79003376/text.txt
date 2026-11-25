@@ -1,0 +1,180 @@
+ My problem  
+ I have a Flask app that I recently separated into blueprints as it grew in size.
+All of the app migrated well except for one thing -  socketio . 
+ My goal is to have a socketio background task run in on my server, but to have all of it's configuration in a separate blueprint. 
+ I can't figure out how to use the main app's socketio instance start_background_task() inside of another blueprint. 
+ So far I ran into 2 main issues: 
+ 
+ I tried to tell  blueprint.py  to import  main.py 's socketio, and also tell  main.py  to import  blueprint.py . That results in the expected  circular import error . 
+ After that I searched online for a configuration of some sort and the only config I found  https://github.com/miguelgrinberg/Flask-SocketIO-Chat ), suggested creating socketio in a separate file, and then importing it by both  main.py  and  blueprint.py  to avoid the last error.
+But this always raised an issue where  blueprint.py  tried to use socketio before it has initialized.
+(This is also what ChatGPT suggested). 
+ 
+ It's crazy how little information I was able to find about this... 
+ If anyone ran into this before I'd appreciate any help I can get! 
+ Code and extra details  
+ Everything runs on - 
+  python 3.10.12
+Flask 2.2.5
+Flask-SocketIO 5.3.6
+  
+ File structure - 
+  .
+└── backend/
+    ├── app/
+    │   ├── blueprints/
+    │   │   └── sockets/
+    │   │       ├── __init__.py
+    │   │       └── events.py
+    │   └── __init__.py
+    └── main.py
+  
+ sockets/ init .py - 
+  from flask import Blueprint
+
+sockets_bp = Blueprint('sockets_bp', __name__)
+
+from . import events
+  
+ sockets/events.py - 
+  from ... import socketio
+
+# This Actually works
+@socketio.on('Hello')
+def hello():
+    print("Got a message!!")
+
+
+def fetch_recent_logs():
+    logs = [1, 2, 3]
+    return logs
+
+def emit_logs():
+    print('Emiting logs to client')
+
+    try:
+        while True:
+            recent_logs = fetch_recent_logs(db_handler)
+            
+            socketio.emit('new_log', {'data': recent_logs})
+
+            socketio.sleep(5)
+    except Exception as e:
+        print(f"Error fetching/emitting logs: {str(e)}")
+
+# Raises 'NoneType' object has no attribute 'start_background_task'
+socketio.start_background_task(emit_logs)
+  
+ app/ init .py (create_app) - 
+  from flask import Flask
+from flask_socketio import SocketIO
+from flask_cors import CORS
+import os
+
+socketio = SocketIO()
+
+def create_app(debug=False):
+    app = Flask(__name__)
+
+    app.debug = debug
+    app.config['SECRET_KEY'] = os.urandom(24)
+
+    CORS(app, supports_credentials=True, resources={r"/*": {"origins": "*"}})
+
+    from app.blueprints.sockets import sockets_bp
+    app.register_blueprint(sockets_bp)
+
+    socketio.init_app(app, cors_allowed_origins="*")    
+
+    return app
+  
+ And finally, main.py - 
+  from app import create_app, socketio
+
+app = create_app(debug=True)
+
+if __name__ == "__main__":
+    socketio.run(app, host="0.0.0.0", port=5000,  debug=True, allow_unsafe_werkzeug=True) 
+  
+ Hope that helps!! 
+
+
+[ANSWER]
+ I managed to fix it,  
+ My solution was instead of trying to start_background_task inside the blueprint on its initiation, I now start the task inside create_app(), giving up on the idea on initializing everything inside the blueprint. 
+ The main difference from before is that now all of my configuration is in a separate file. By importing my threaded function into create_app() and then passing socketio back to it as a parameter, I'm avoiding all on the circular imports and initiation issues. 
+ This also makes it pretty much pointless to create a blueprint for the sockets as just a regular .py works. 
+ Thanks to everyone that helped!!  
+ The code: 
+  create_app() -  
+  from flask import Flask
+from flask_socketio import SocketIO
+import os
+
+from flask_app.sockets.background_tasks import emit_logs
+
+socketio = SocketIO()
+
+def create_app(debug=False):
+    app = Flask(__name__)
+
+    app.debug = debug
+    app.config['SECRET_KEY'] = os.urandom(24)
+
+    # Initialize SocketIO.
+    socketio.init_app(app, cors_allowed_origins="*")    
+
+    # Start background tasks.
+    socketio.start_background_task(emit_logs, socketio)
+
+    return app
+  
+  background_tasks.py -  
+  # Threaded function to emit logs to client
+# Now takes a socketio object!!!
+def emit_logs(socketio: SocketIO):
+    print('Emitting logs to FE')
+    db_handler = database_handler()
+    db_handler.connect()
+
+    try:
+        while True:
+            recent_logs = [1, 2, 3]
+
+            socketio.emit('new_log', {'data': recent_logs})
+
+            socketio.sleep(5)  # Fetch and emit every 1 seconds
+    except Exception as e:
+        print(f"Error fetching/emitting logs: {str(e)}")
+    finally:
+        db_handler.disconnect()
+  
+ * Edit‼️ 
+ With this configuration, using socketio normally (by importing it from create_app), causes a  circular import.  
+ To prevent this, in  sockets/events  I defined an 'initialize_socketio()' function that waits until create_app() passes the socketio instance to it as a parameter, and then uses it to configure the events: 
+  from flask_socketio import SocketIO
+
+# This is ran in create_app() to initialize socketio's events.
+def initialize_socketio(socketio: SocketIO):
+
+    @socketio.on("test_socket")
+    def test_socket():
+        print("Got a message!")
+  
+ And then call it in create_app() - 
+  from flask import Flask
+from flask_socketio import SocketIO
+
+from flask_app.blueprints.sockets.events import initialize_socketio
+
+socketio = SocketIO()
+
+def create_app(debug=False):
+    # Initializing Flask
+    app = Flask(__name__)
+
+    # Initialize SocketIO.
+    socketio.init_app(app, cors_allowed_origins="*")     
+    initialize_socketio(socketio)
+  
+ Hope that helps!! 

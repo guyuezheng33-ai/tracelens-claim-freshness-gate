@@ -1,0 +1,13 @@
+{
+  "record_id": "claude-pillow-1000",
+  "model": "claude-sonnet-4-6",
+  "task_id": "BigCodeBench/406",
+  "package": "pillow",
+  "cited_version": "10.0.0",
+  "fixed": "13.0.0",
+  "raw_requirement": "PIL==10.0.0",
+  "import_line": "from PIL import Image  # VERSION=10.0.0",
+  "nature": "real-agent-text",
+  "dataset_url": "https://github.com/dw763j/PinTrace/blob/main/outputs/evaluation/direct_dependencies.jsonl",
+  "dataset_note": "PinTrace public evaluation output; model-generated code with inline version annotation, not customer data"
+}

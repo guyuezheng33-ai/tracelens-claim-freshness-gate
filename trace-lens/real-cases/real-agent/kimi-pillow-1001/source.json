@@ -1,0 +1,13 @@
+{
+  "record_id": "kimi-pillow-1001",
+  "model": "kimi-k2.5",
+  "task_id": "BigCodeBench/1019",
+  "package": "pillow",
+  "cited_version": "10.0.1",
+  "fixed": "13.0.0",
+  "raw_requirement": "PIL==10.0.1",
+  "import_line": "from PIL import Image  # VERSION=10.0.1",
+  "nature": "real-agent-text",
+  "dataset_url": "https://github.com/dw763j/PinTrace/blob/main/outputs/evaluation/direct_dependencies.jsonl",
+  "dataset_note": "PinTrace public evaluation output; model-generated code with inline version annotation, not customer data"
+}

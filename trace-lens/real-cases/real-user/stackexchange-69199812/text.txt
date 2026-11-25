@@ -1,0 +1,186 @@
+ I'm trying to build a container image that I will later use to update the code inside of a virtual machine. The docker image works fine as I can build and run it inside of my terminal. However, I keep getting an error when I try to deploy it to cloud run: "Cloud Run error: Container failed to start. Failed to start and then listen on the port defined by the PORT environment variable." How can I fix this error? 
+ The build log contains this: 
+  Deploying container to Cloud Run service [SERVICE] in project [PROJECT_ID] region [REGION]
+Deploying...
+Creating Revision.......................................................................................................................................................................failed
+Deployment failed
+ERROR: (gcloud.run.deploy) Cloud Run error: Container failed to start. Failed to start and then listen on the port defined by the PORT environment variable. Logs for this revision might contain more information.
+  
+ The revision log contains this: 
+  {
+  "protoPayload": {
+    "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+    "status": {
+      "code": 9,
+      "message": "Ready condition status changed to False for Revision {REVISION_NAME} with message: Cloud Run error: Container failed to start. Failed to start and then listen on the port defined by the PORT environment variable. Logs for this revision might contain more information.\n\nLogs URL:{URL_LINK}"
+    },
+    "serviceName": "run.googleapis.com",
+    "resourceName": "{REVISION_NAME}",
+    "response": {
+      "metadata": {
+        "name": "{REVISION_NAME}",
+        "namespace": "{NAMESPACE}",
+        "selfLink": "{SELFLINK}",
+        "uid": "{UID}",
+        "resourceVersion": "{RESOURCEVER}",
+        "generation": 1,
+        "creationTimestamp": "{TIMESTAMP}",
+        "labels": {
+          "serving.knative.dev/route": "{SERVICE}",
+          "serving.knative.dev/configuration": "{SERVICE}",
+          "serving.knative.dev/configurationGeneration": "15",
+          "serving.knative.dev/service": "{SERVICE}",
+          "serving.knative.dev/serviceUid": "{SERVICE_UID}",
+          "cloud.googleapis.com/location": "{REGION}"
+        },
+        "annotations": {
+          "run.googleapis.com/client-name": "gcloud",
+          "serving.knative.dev/creator": "{NAMESPACE}@cloudbuild.gserviceaccount.com",
+          "client.knative.dev/user-image": "gcr.io/{PROJECT_ID}/{IMAGE}",
+          "run.googleapis.com/client-version": "357.0.0",
+          "autoscaling.knative.dev/maxScale": "100"
+        },
+        "ownerReferences": [
+          {
+            "kind": "Configuration",
+            "name": "{SERVICE}",
+            "uid": "{UID}",
+            "apiVersion": "serving.knative.dev/v1",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "apiVersion": "serving.knative.dev/v1",
+      "kind": "Revision",
+      "spec": {
+        "containerConcurrency": 80,
+        "timeoutSeconds": 300,
+        "serviceAccountName": "{NAMESPACE}-compute@developer.gserviceaccount.com",
+        "containers": [
+          {
+            "image": "gcr.io/{PROJECT_ID}/{IMAGE}",
+            "ports": [
+              {
+                "name": "h2c",
+                "containerPort": 8080
+              }
+            ],
+            "resources": {
+              "limits": {
+                "cpu": "1000m",
+                "memory": "512Mi"
+              }
+            }
+          }
+        ]
+      },
+      "status": {
+        "observedGeneration": 1,
+        "conditions": [
+          {
+            "type": "Ready",
+            "status": "False",
+            "reason": "HealthCheckContainerError",
+            "message": "Cloud Run error: Container failed to start. Failed to start and then listen on the port defined by the PORT environment variable. Logs for this revision might contain more information.\n\nLogs URL:{LOG_LINK}",
+            "lastTransitionTime": "{TIME}"
+          },
+          {
+            "type": "Active",
+            "status": "Unknown",
+            "reason": "Reserve",
+            "lastTransitionTime": "{TIME}",
+            "severity": "Info"
+          },
+          {
+            "type": "ContainerHealthy",
+            "status": "False",
+            "reason": "HealthCheckContainerError",
+            "message": "Cloud Run error: Container failed to start. Failed to start and then listen on the port defined by the PORT environment variable. Logs for this revision might contain more information.\n\nLogs URL:{LOG_LINK}",
+            "lastTransitionTime": "{TIME}"
+          },
+          {
+            "type": "ResourcesAvailable",
+            "status": "True",
+            "lastTransitionTime": "{TIME}"
+          },
+          {
+            "type": "Retry",
+            "status": "True",
+            "reason": "ImmediateRetry",
+            "message": "System will retry after 0:00:00 from lastTransitionTime for attempt 0.",
+            "lastTransitionTime": "{TIME}",
+            "severity": "Info"
+          }
+        ],
+        "logUrl": "{LOG_LINK}",
+        "imageDigest": "gcr.io/{PROJECT_ID}/{IMAGE_SHA}"
+      },
+      "@type": "type.googleapis.com/google.cloud.run.v1.Revision"
+    }
+  },
+  "insertId": "{ID}",
+  "resource": {
+    "type": "cloud_run_revision",
+    "labels": {
+      "location": "{REGION}",
+      "configuration_name": "{SERVICE}",
+      "service_name": "{SERVICE}",
+      "project_id": "{PROJECT_ID}",
+      "revision_name": "{REVISION_NAME}"
+    }
+  },
+  "timestamp": "{TIME}",
+  "severity": "ERROR",
+  "logName": "projects/{PROJECT_ID}/logs/cloudaudit.googleapis.com%2Fsystem_event",
+  "receiveTimestamp": "{TIME}"
+}
+  
+ This is my cloudbuild.yaml: 
+  steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/PROJECT_ID/IMAGE', '.']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/PROJECT_ID/IMAGE']
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
+  args: ['run', 'deploy', 'SERVICE-NAME', '--image', 'gcr.io/PROJECT_ID/IMAGE', '--region', 'REGION', '--port', '8080']
+images:
+- gcr.io/PROJECT_ID/IMAGE
+  
+ This is my Dockerfile: 
+  FROM python:3.9.7-slim-buster
+
+WORKDIR /app
+
+COPY . .
+
+CMD [ "python3", "hello.py" ]
+  
+ This is the code in hello.py: 
+  print("Hello World")
+  
+
+
+[ANSWER]
+ When Cloud Run starts your container, a health check is sent to the container. Your container is not responding to the health check. Therefore, Cloud Run determines that your service is failing. 
+ Cloud Run requires that a container provide service/process/program that listens for and responds to HTTP requests. 
+ Your hello.py file only prints a message to stdout. Your program does not start a process to listen for requests. 
+ A very simple example that converts your example into a working program: 
+  import os
+
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+        return "Hello world"
+
+if __name__ == '__main__':
+        app.run(debug=True, host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))
+  
+ Note: You will need to add a file  requirements.txt  to your build to include Flask. Create  requirements.txt  in the same location as  Dockerfile . 
+ requirements.txt: 
+  Flask==2.0.1
+  

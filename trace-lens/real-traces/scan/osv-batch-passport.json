@@ -1,0 +1,565 @@
+{
+ "schema": "tracelens/osv-batch-passport@1",
+ "source": "https://api.osv.dev/v1/query + /v1/vulns/",
+ "nature": "real-public-advisories",
+ "caveat": "Real OSV records. published is the SOURCE DATABASE's publish time (PYSEC vs GHSA differ); never rewritten. Advisories for requests/django/numpy/jinja2 were selected by querying OSV with the REAL version a model cited (package+version query); flask/urllib3/pillow/pyyaml keep the advisories the real-user/real-agent cases use.",
+ "queries": [
+  {
+   "package": "requests",
+   "version": "2.31.0",
+   "vulns_returned": 6,
+   "endpoint": "POST https://api.osv.dev/v1/query (package+version)",
+   "picked": "GHSA-9hjg-9r4m-mvj7"
+  },
+  {
+   "package": "django",
+   "version": "4.2.7",
+   "vulns_returned": 86,
+   "endpoint": "POST https://api.osv.dev/v1/query (package+version)",
+   "picked": "GHSA-2mcm-79hx-8fxw"
+  },
+  {
+   "package": "numpy",
+   "version": "1.21.0",
+   "vulns_returned": 1,
+   "endpoint": "POST https://api.osv.dev/v1/query (package+version)",
+   "picked": "GHSA-fpfv-jqm9-f5jm"
+  },
+  {
+   "package": "jinja2",
+   "version": "3.1.2",
+   "vulns_returned": 10,
+   "endpoint": "POST https://api.osv.dev/v1/query (package+version)",
+   "picked": "GHSA-cpwx-vrp4-4pq7"
+  },
+  {
+   "package": "requests",
+   "vulns_returned": 16
+  },
+  {
+   "package": "django",
+   "vulns_returned": 324
+  },
+  {
+   "package": "flask",
+   "vulns_returned": 10
+  },
+  {
+   "package": "urllib3",
+   "vulns_returned": 44
+  },
+  {
+   "package": "pillow",
+   "vulns_returned": 214
+  },
+  {
+   "package": "jinja2",
+   "vulns_returned": 20
+  },
+  {
+   "package": "pyyaml",
+   "vulns_returned": 8
+  },
+  {
+   "package": "numpy",
+   "vulns_returned": 16
+  }
+ ],
+ "advisory_count": 8,
+ "advisories": [
+  {
+   "id": "GHSA-9hjg-9r4m-mvj7",
+   "aliases": [
+    "CVE-2024-47081",
+    "PYSEC-2026-1872"
+   ],
+   "package": "requests",
+   "ecosystem": "PyPI",
+   "purl": "pkg:pypi/requests",
+   "published": "2025-06-09T19:06:08Z",
+   "published_ns": 1749495968000000000,
+   "fixed": "2.32.4",
+   "fix_available": null,
+   "fix_available_ns": -1,
+   "osv_modified_ns": 1792440004716113920,
+   "modified": "2026-10-19T20:00:04.716114530Z",
+   "url": "https://github.com/psf/requests/security/advisories/GHSA-9hjg-9r4m-mvj7",
+   "summary": "Requests vulnerable to .netrc credentials leak via malicious URLs",
+   "references": [
+    {
+     "type": "WEB",
+     "url": "https://github.com/psf/requests/security/advisories/GHSA-9hjg-9r4m-mvj7"
+    },
+    {
+     "type": "ADVISORY",
+     "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-47081"
+    },
+    {
+     "type": "WEB",
+     "url": "https://github.com/psf/requests/pull/6965"
+    },
+    {
+     "type": "WEB",
+     "url": "https://github.com/psf/requests/commit/96ba401c1296ab1dda74a2365ef36d88f7d144ef"
+    },
+    {
+     "type": "ADVISORY",
+     "url": "https://github.com/advisories/GHSA-9hjg-9r4m-mvj7"
+    },
+    {
+     "type": "PACKAGE",
+     "url": "https://github.com/psf/requests"
+    },
+    {
+     "type": "WEB",
+     "url": "https://github.com/psf/requests/releases/tag/v2.32.4"
+    },
+    {
+     "type": "WEB",
+     "url": "https://github.com/pypa/advisory-database/tree/main/vulns/requests/PYSEC-2026-1872.yaml"
+    },
+    {
+     "type": "WEB",
+     "url": "https://pypi.org/project/requests"
+    },
+    {
+     "type": "WEB",
+     "url": "https://requests.readthedocs.io/en/latest/api/#requests.Session.trust_env"
+    },
+    {
+     "type": "WEB",
+     "url": "https://seclists.org/fulldisclosure/2025/Jun/2"
+    },
+    {
+     "type": "WEB",
+     "url": "http://www.openwall.com/lists/oss-security/2025/06/03/11"
+    },
+    {
+     "type": "WEB",
+     "url": "http://www.openwall.com/lists/oss-security/2025/06/03/9"
+    },
+    {
+     "type": "WEB",
+     "url": "http://www.openwall.com/lists/oss-security/2025/06/04/1"
+    },
+    {
+     "type": "WEB",
+     "url": "http://www.openwall.com/lists/oss-security/2025/06/04/6"
+    },
+    {
+     "type": "FIX",
+     "url": "https://github.com/psf/requests/commit/96ba401c1296ab1dda74a2365ef36d88f7d144ef"
+    },
+    {
+     "type": "WEB",
+     "url": "http://seclists.org/fulldisclosure/2025/Jun/2"
+    },
+    {
+     "type": "PACKAGE",
+     "url": "https://pypi.org/project/requests"
+    }
+   ]
+  },
+  {
+   "id": "GHSA-2mcm-79hx-8fxw",
+   "aliases": [
+    "BIT-django-2025-13473",
+    "CVE-2025-13473",
+    "PYSEC-2026-42"
+   ],
+   "package": "django",
+   "ecosystem": "PyPI",
+   "purl": "pkg:pypi/django",
+   "published": "2026-02-03T15:30:23Z",
+   "published_ns": 1770132623000000000,
+   "fixed": "6.0.2",
+   "fix_available": null,
+   "fix_available_ns": -1,
+   "osv_modified_ns": 1789012233805951232,
+   "modified": "2026-09-10T03:50:33.805951644Z",
+   "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-13473",
+   "summary": "Django has Observable Timing Discrepancy",
+   "references": [
+    {
+     "type": "ADVISORY",
+     "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-13473"
+    },
+    {
+     "type": "WEB",
+     "url": "https://docs.djangoproject.com/en/dev/releases/security"
+    },
+    {
+     "type": "PACKAGE",
+     "url": "https://github.com/django/django"
+    },
+    {
+     "type": "WEB",
+     "url": "https://github.com/pypa/advisory-database/tree/main/vulns/django/PYSEC-2026-42.yaml"
+    },
+    {
+     "type": "WEB",
+     "url": "https://groups.google.com/g/django-announce"
+    },
+    {
+     "type": "WEB",
+     "url": "https://www.djangoproject.com/weblog/2026/feb/03/security-releases"
+    },
+    {
+     "type": "ADVISORY",
+     "url": "https://groups.google.com/g/django-announce"
+    },
+    {
+     "type": "FIX",
+     "url": "https://docs.djangoproject.com/en/dev/releases/security/"
+    },
+    {
+     "type": "FIX",
+     "url": "https://www.djangoproject.com/weblog/2026/feb/03/security-releases/"
+    },
+    {
+     "type": "ADVISORY",
+     "url": "https://github.com/advisories/GHSA-2mcm-79hx-8fxw"
+    }
+   ]
+  },
+  {
+   "id": "GHSA-4grg-w6v8-c28g",
+   "aliases": [
+    "CVE-2025-47278",
+    "PYSEC-2026-1377"
+   ],
+   "package": "flask",
+   "ecosystem": "PyPI",
+   "purl": "pkg:pypi/flask",
+   "published": "2025-05-13T20:25:26Z",
+   "published_ns": 1747167926000000000,
+   "fixed": "3.1.1",
+   "fix_available": null,
+   "fix_available_ns": -1,
+   "osv_modified_ns": 1789012224238503936,
+   "modified": "2026-09-10T03:50:24.238504042Z",
+   "url": "https://github.com/pallets/flask/security/advisories/GHSA-4grg-w6v8-c28g",
+   "summary": "Flask uses fallback key instead of current signing key",
+   "references": [
+    {
+     "type": "WEB",
+     "url": "https://github.com/pallets/flask/security/advisories/GHSA-4grg-w6v8-c28g"
+    },
+    {
+     "type": "ADVISORY",
+     "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-47278"
+    },
+    {
+     "type": "WEB",
+     "url": "https://github.com/pallets/flask/commit/73d6504063bfa00666a92b07a28aaf906c532f09"
+    },
+    {
+     "type": "PACKAGE",
+     "url": "https://github.com/pallets/flask"
+    },
+    {
+     "type": "WEB",
+     "url": "https://github.com/pallets/flask/releases/tag/3.1.1"
+    },
+    {
+     "type": "FIX",
+     "url": "https://github.com/pallets/flask/commit/73d6504063bfa00666a92b07a28aaf906c532f09"
+    },
+    {
+     "type": "PACKAGE",
+     "url": "https://pypi.org/project/flask"
+    },
+    {
+     "type": "ADVISORY",
+     "url": "https://github.com/advisories/GHSA-4grg-w6v8-c28g"
+    }
+   ]
+  },
+  {
+   "id": "GHSA-2xpw-w6gg-jr37",
+   "aliases": [
+    "CVE-2025-66471",
+    "PYSEC-2026-1994"
+   ],
+   "package": "urllib3",
+   "ecosystem": "PyPI",
+   "purl": "pkg:pypi/urllib3",
+   "published": "2025-12-05T18:15:54Z",
+   "published_ns": 1764958554000000000,
+   "fixed": "2.6.0",
+   "fix_available": null,
+   "fix_available_ns": -1,
+   "osv_modified_ns": 1790356505968188928,
+   "modified": "2026-09-25T17:15:05.968189421Z",
+   "url": "https://github.com/urllib3/urllib3/security/advisories/GHSA-2xpw-w6gg-jr37",
+   "summary": "urllib3 streaming API improperly handles highly compressed data",
+   "references": [
+    {
+     "type": "WEB",
+     "url": "https://github.com/urllib3/urllib3/security/advisories/GHSA-2xpw-w6gg-jr37"
+    },
+    {
+     "type": "ADVISORY",
+     "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-66471"
+    },
+    {
+     "type": "WEB",
+     "url": "https://github.com/urllib3/urllib3/commit/c19571de34c47de3a766541b041637ba5f716ed7"
+    },
+    {
+     "type": "WEB",
+     "url": "https://github.com/urllib3/urllib3/commit/d0fde3672e4a4093f7587858dccfc298eb66e46c"
+    },
+    {
+     "type": "ADVISORY",
+     "url": "https://github.com/advisories/GHSA-2xpw-w6gg-jr37"
+    },
+    {
+     "type": "WEB",
+     "url": "https://github.com/pypa/advisory-database/tree/main/vulns/urllib3/PYSEC-2026-1994.yaml"
+    },
+    {
+     "type": "PACKAGE",
+     "url": "https://github.com/urllib3/urllib3"
+    },
+    {
+     "type": "WEB",
+     "url": "https://pypi.org/project/urllib3"
+    },
+    {
+     "type": "FIX",
+     "url": "https://github.com/urllib3/urllib3/commit/c19571de34c47de3a766541b041637ba5f716ed7"
+    },
+    {
+     "type": "PACKAGE",
+     "url": "https://pypi.org/project/urllib3"
+    }
+   ]
+  },
+  {
+   "id": "GHSA-22hg-r758-rrw9",
+   "aliases": [
+    "BIT-pillow-2026-112390",
+    "CVE-2026-112390"
+   ],
+   "package": "pillow",
+   "ecosystem": "PyPI",
+   "purl": "pkg:pypi/pillow",
+   "published": "2026-10-21T20:39:49Z",
+   "published_ns": 1792615189000000000,
+   "fixed": "13.0.0",
+   "fix_available": null,
+   "fix_available_ns": -1,
+   "osv_modified_ns": 1793004963565712896,
+   "modified": "2026-10-26T08:56:03.565713059Z",
+   "url": "https://github.com/python-pillow/Pillow/security/advisories/GHSA-22hg-r758-rrw9",
+   "summary": "Pillow: Infinite loop in MIC n_frames when the embedded TIFF",
+   "references": [
+    {
+     "type": "WEB",
+     "url": "https://github.com/python-pillow/Pillow/security/advisories/GHSA-22hg-r758-rrw9"
+    },
+    {
+     "type": "ADVISORY",
+     "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-112390"
+    },
+    {
+     "type": "WEB",
+     "url": "https://github.com/python-pillow/Pillow/commit/26cb3ed061173b817b9ee4b6f507cb0e1e293218"
+    },
+    {
+     "type": "PACKAGE",
+     "url": "https://github.com/python-pillow/Pillow"
+    },
+    {
+     "type": "WEB",
+     "url": "https://github.com/python-pillow/Pillow/releases/tag/13.0.0"
+    }
+   ]
+  },
+  {
+   "id": "GHSA-cpwx-vrp4-4pq7",
+   "aliases": [
+    "CVE-2025-27516",
+    "PYSEC-2026-1471"
+   ],
+   "package": "jinja2",
+   "ecosystem": "PyPI",
+   "purl": "pkg:pypi/jinja2",
+   "published": "2025-03-05T20:40:14Z",
+   "published_ns": 1741207214000000000,
+   "fixed": "3.1.6",
+   "fix_available": null,
+   "fix_available_ns": -1,
+   "osv_modified_ns": 1794962713756180992,
+   "modified": "2026-11-18T00:45:13.756181700Z",
+   "url": "https://github.com/pallets/jinja/security/advisories/GHSA-cpwx-vrp4-4pq7",
+   "summary": "Jinja2 vulnerable to sandbox breakout through attr filter selecting format method",
+   "references": [
+    {
+     "type": "WEB",
+     "url": "https://github.com/pallets/jinja/security/advisories/GHSA-cpwx-vrp4-4pq7"
+    },
+    {
+     "type": "ADVISORY",
+     "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-27516"
+    },
+    {
+     "type": "WEB",
+     "url": "https://github.com/pallets/jinja/commit/90457bbf33b8662926ae65cdde4c4c32e756e403"
+    },
+    {
+     "type": "PACKAGE",
+     "url": "https://github.com/pallets/jinja"
+    },
+    {
+     "type": "WEB",
+     "url": "https://github.com/pallets/jinja/releases/tag/3.1.6"
+    },
+    {
+     "type": "WEB",
+     "url": "https://github.com/pypa/advisory-database/tree/main/vulns/jinja2/PYSEC-2026-1471.yaml"
+    },
+    {
+     "type": "WEB",
+     "url": "https://lists.debian.org/debian-lts-announce/2025/04/msg00022.html"
+    },
+    {
+     "type": "WEB",
+     "url": "https://lists.debian.org/debian-lts-announce/2025/04/msg00045.html"
+    },
+    {
+     "type": "WEB",
+     "url": "https://pypi.org/project/jinja2"
+    },
+    {
+     "type": "FIX",
+     "url": "https://github.com/pallets/jinja/commit/90457bbf33b8662926ae65cdde4c4c32e756e403"
+    },
+    {
+     "type": "PACKAGE",
+     "url": "https://pypi.org/project/jinja2"
+    },
+    {
+     "type": "ADVISORY",
+     "url": "https://github.com/advisories/GHSA-cpwx-vrp4-4pq7"
+    }
+   ]
+  },
+  {
+   "id": "GHSA-3pqx-4fqf-j49f",
+   "aliases": [
+    "CVE-2019-20477",
+    "PYSEC-2020-176"
+   ],
+   "package": "pyyaml",
+   "ecosystem": "PyPI",
+   "purl": "pkg:pypi/pyyaml",
+   "published": "2021-04-20T16:40:42Z",
+   "published_ns": 1618936842000000000,
+   "fixed": "5.2",
+   "fix_available": null,
+   "fix_available_ns": -1,
+   "osv_modified_ns": 1729891391506576128,
+   "modified": "2024-10-25T21:23:11.506576Z",
+   "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-20477",
+   "summary": "Deserialization of Untrusted Data in PyYAML",
+   "references": [
+    {
+     "type": "ADVISORY",
+     "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-20477"
+    },
+    {
+     "type": "ADVISORY",
+     "url": "https://github.com/advisories/GHSA-3pqx-4fqf-j49f"
+    },
+    {
+     "type": "WEB",
+     "url": "https://github.com/pypa/advisory-database/tree/main/vulns/pyyaml/PYSEC-2020-176.yaml"
+    },
+    {
+     "type": "PACKAGE",
+     "url": "https://github.com/yaml/pyyaml"
+    },
+    {
+     "type": "WEB",
+     "url": "https://github.com/yaml/pyyaml/blob/master/CHANGES"
+    },
+    {
+     "type": "WEB",
+     "url": "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/33VBUY73AA6CTTYL3LRWHNFDULV7PFPN"
+    },
+    {
+     "type": "WEB",
+     "url": "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/52N5XS73Z5S4ZN7I7R56ICCPCTKCUV4H"
+    },
+    {
+     "type": "WEB",
+     "url": "https://www.exploit-db.com/download/47655"
+    },
+    {
+     "type": "WEB",
+     "url": "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/52N5XS73Z5S4ZN7I7R56ICCPCTKCUV4H/"
+    },
+    {
+     "type": "WEB",
+     "url": "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/33VBUY73AA6CTTYL3LRWHNFDULV7PFPN/"
+    }
+   ]
+  },
+  {
+   "id": "GHSA-fpfv-jqm9-f5jm",
+   "aliases": [
+    "CVE-2021-34141",
+    "PYSEC-2021-855"
+   ],
+   "package": "numpy",
+   "ecosystem": "PyPI",
+   "purl": "pkg:pypi/numpy",
+   "published": "2021-12-18T00:00:41Z",
+   "published_ns": 1639785641000000000,
+   "fixed": "1.22",
+   "fix_available": null,
+   "fix_available_ns": -1,
+   "osv_modified_ns": 1699416367388274944,
+   "modified": "2023-11-08T04:06:07.388275Z",
+   "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-34141",
+   "summary": "Incorrect Comparison in NumPy",
+   "references": [
+    {
+     "type": "ADVISORY",
+     "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-34141"
+    },
+    {
+     "type": "WEB",
+     "url": "https://github.com/numpy/numpy/issues/18993"
+    },
+    {
+     "type": "WEB",
+     "url": "https://github.com/numpy/numpy/issues/18993#issuecomment-1010735102"
+    },
+    {
+     "type": "ADVISORY",
+     "url": "https://github.com/advisories/GHSA-fpfv-jqm9-f5jm"
+    },
+    {
+     "type": "PACKAGE",
+     "url": "https://github.com/numpy/numpy"
+    },
+    {
+     "type": "WEB",
+     "url": "https://github.com/pypa/advisory-database/tree/main/vulns/numpy/PYSEC-2021-855.yaml"
+    },
+    {
+     "type": "WEB",
+     "url": "https://www.oracle.com/security-alerts/cpujul2022.html"
+    },
+    {
+     "type": "REPORT",
+     "url": "https://github.com/numpy/numpy/issues/18993"
+    }
+   ]
+  }
+ ],
+ "references_source": "real-traces/osv/osv-snapshot.json (same offline OSV snapshot that built osv-graph.rl); references copied verbatim by advisory id on 2026-11-24"
+}

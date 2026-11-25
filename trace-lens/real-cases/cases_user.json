@@ -1,0 +1,67 @@
+{
+  "schema": "tracelens/real-cases@1",
+  "nature": "real-user",
+  "caveat": "Five captured public Stack Overflow question/answer texts, not customer incidents and not author-written demo prose. Lockfiles are safe fixtures; the declaration text is the real public text. Source URLs and record ids are kept per case.",
+  "cases": [
+    {
+      "case_id": "SO-62945229",
+      "title": "Nginx reverse-proxy for python app using docker-compose",
+      "symptom": "real Stack Overflow answer says `flask==1.1.2`; the package is pinned in a lockfile at a safe version",
+      "root_cause": "flask 1.1.2 is inside GHSA-4grg-w6v8-c28g (fixed 3.1.1); the text declaration is born stale even though the lockfile is clean",
+      "graph_evidence": "Q6 path ['span:scan-root-0', 'span:scan-ret-0', 'src:scan-doc-0', 'pv:flask:1.1.2']; Q7 hop audit 1; Q8 drift 1; scan verdict BLOCK_MERGE_TEXT",
+      "fix": "reject the text declaration and keep flask==3.1.1",
+      "after": "scan returns BLOCK_MERGE_TEXT with 1 merge action(s)",
+      "reproduce": "cd trace-lens && python -m tracelens.scan --text real-cases/real-user/stackexchange-62945229/text.txt --lockfile real-cases/real-user/stackexchange-62945229/requirements.lock --passport real-traces/scan/osv-batch-passport.json --as-of 2026-11-24T00:00:00Z --store real-cases/real-user/stackexchange-62945229/scan.rl --out real-cases/real-user/stackexchange-62945229/scan-verdict.json",
+      "source": "https://stackoverflow.com/a/62945657 (record stackexchange-62945229, captured from PinTrace public SO dataset; CC BY-SA 4.0)",
+      "customer": false
+    },
+    {
+      "case_id": "SO-79003376",
+      "title": "Flask Blueprint with socketio configuration",
+      "symptom": "real Stack Overflow question says `Flask 2.2.5`; the package is pinned in a lockfile at a safe version",
+      "root_cause": "flask 2.2.5 is inside GHSA-4grg-w6v8-c28g (fixed 3.1.1); the text declaration is born stale even though the lockfile is clean",
+      "graph_evidence": "Q6 path ['span:scan-root-1', 'span:scan-ret-1', 'src:scan-doc-1', 'pv:flask:2.2.5']; Q7 hop audit 1; Q8 drift 1; scan verdict BLOCK_MERGE_TEXT",
+      "fix": "reject the text declaration and keep flask==3.1.1",
+      "after": "scan returns BLOCK_MERGE_TEXT with 1 merge action(s)",
+      "reproduce": "cd trace-lens && python -m tracelens.scan --text real-cases/real-user/stackexchange-79003376/text.txt --lockfile real-cases/real-user/stackexchange-79003376/requirements.lock --passport real-traces/scan/osv-batch-passport.json --as-of 2026-11-24T00:00:00Z --store real-cases/real-user/stackexchange-79003376/scan.rl --out real-cases/real-user/stackexchange-79003376/scan-verdict.json",
+      "source": "https://stackoverflow.com/a/79017722 (record stackexchange-79003376, captured from PinTrace public SO dataset; CC BY-SA 4.0)",
+      "customer": false
+    },
+    {
+      "case_id": "SO-69199812",
+      "title": "\"Cloud Run error: Container failed to start. Failed to start and then listen on the port defined by the PORT environment variable.\"",
+      "symptom": "real Stack Overflow answer says `Flask==2.0.1`; the package is pinned in a lockfile at a safe version",
+      "root_cause": "flask 2.0.1 is inside GHSA-4grg-w6v8-c28g (fixed 3.1.1); the text declaration is born stale even though the lockfile is clean",
+      "graph_evidence": "Q6 path ['span:scan-root-0', 'span:scan-ret-0', 'src:scan-doc-0', 'pv:flask:2.0.1']; Q7 hop audit 1; Q8 drift 1; scan verdict BLOCK_MERGE_TEXT",
+      "fix": "reject the text declaration and keep flask==3.1.1",
+      "after": "scan returns BLOCK_MERGE_TEXT with 1 merge action(s)",
+      "reproduce": "cd trace-lens && python -m tracelens.scan --text real-cases/real-user/stackexchange-69199812/text.txt --lockfile real-cases/real-user/stackexchange-69199812/requirements.lock --passport real-traces/scan/osv-batch-passport.json --as-of 2026-11-24T00:00:00Z --store real-cases/real-user/stackexchange-69199812/scan.rl --out real-cases/real-user/stackexchange-69199812/scan-verdict.json",
+      "source": "https://stackoverflow.com/a/69199927 (record stackexchange-69199812, captured from PinTrace public SO dataset; CC BY-SA 4.0)",
+      "customer": false
+    },
+    {
+      "case_id": "SO-79584062",
+      "title": "UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown",
+      "symptom": "real Stack Overflow question says `pillow==11.2.1`; the package is pinned in a lockfile at a safe version",
+      "root_cause": "pillow 11.2.1 is inside GHSA-22hg-r758-rrw9 (fixed 13.0.0); the text declaration is born stale even though the lockfile is clean",
+      "graph_evidence": "Q6 path ['span:scan-root-7', 'span:scan-ret-7', 'src:scan-doc-7', 'pv:pillow:11.2.1']; Q7 hop audit 1; Q8 drift 1; scan verdict BLOCK_MERGE_TEXT",
+      "fix": "reject the text declaration and keep pillow==13.0.0",
+      "after": "scan returns BLOCK_MERGE_TEXT with 1 merge action(s)",
+      "reproduce": "cd trace-lens && python -m tracelens.scan --text real-cases/real-user/stackexchange-79584062/text.txt --lockfile real-cases/real-user/stackexchange-79584062/requirements.lock --passport real-traces/scan/osv-batch-passport.json --as-of 2026-11-24T00:00:00Z --store real-cases/real-user/stackexchange-79584062/scan.rl --out real-cases/real-user/stackexchange-79584062/scan-verdict.json",
+      "source": "https://stackoverflow.com/a/79584608 (record stackexchange-79584062, captured from PinTrace public SO dataset; CC BY-SA 4.0)",
+      "customer": false
+    },
+    {
+      "case_id": "SO-77198219",
+      "title": "Flask Socket-IO Emitting Across Google Cloud Run Container Instances",
+      "symptom": "real Stack Overflow question says `Flask==2.3.2`; the package is pinned in a lockfile at a safe version",
+      "root_cause": "flask 2.3.2 is inside GHSA-4grg-w6v8-c28g (fixed 3.1.1); the text declaration is born stale even though the lockfile is clean",
+      "graph_evidence": "Q6 path ['span:scan-root-1', 'span:scan-ret-1', 'src:scan-doc-1', 'pv:flask:2.3.2']; Q7 hop audit 1; Q8 drift 1; scan verdict BLOCK_MERGE_TEXT",
+      "fix": "reject the text declaration and keep flask==3.1.1",
+      "after": "scan returns BLOCK_MERGE_TEXT with 1 merge action(s)",
+      "reproduce": "cd trace-lens && python -m tracelens.scan --text real-cases/real-user/stackexchange-77198219/text.txt --lockfile real-cases/real-user/stackexchange-77198219/requirements.lock --passport real-traces/scan/osv-batch-passport.json --as-of 2026-11-24T00:00:00Z --store real-cases/real-user/stackexchange-77198219/scan.rl --out real-cases/real-user/stackexchange-77198219/scan-verdict.json",
+      "source": "https://stackoverflow.com/a/77198831 (record stackexchange-77198219, captured from PinTrace public SO dataset; CC BY-SA 4.0)",
+      "customer": false
+    }
+  ]
+}

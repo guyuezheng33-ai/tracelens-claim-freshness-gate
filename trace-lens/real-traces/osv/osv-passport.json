@@ -1,0 +1,243 @@
+{
+  "schema": "tracelens/real-osv-graph-passport@1",
+  "nature": "real-public",
+  "source": "OSV.dev public API",
+  "endpoint": "https://api.osv.dev/v1/query",
+  "ecosystem": "PyPI",
+  "query_commands": [
+    {
+      "ecosystem": "PyPI",
+      "http_status": 200,
+      "method": "POST",
+      "new_distinct_advisories": 8,
+      "package": "requests",
+      "request_body": {
+        "package": {
+          "ecosystem": "PyPI",
+          "name": "requests"
+        }
+      },
+      "url": "https://api.osv.dev/v1/query",
+      "vulns_returned": 16
+    },
+    {
+      "ecosystem": "PyPI",
+      "http_status": 200,
+      "method": "POST",
+      "new_distinct_advisories": 22,
+      "package": "urllib3",
+      "request_body": {
+        "package": {
+          "ecosystem": "PyPI",
+          "name": "urllib3"
+        }
+      },
+      "url": "https://api.osv.dev/v1/query",
+      "vulns_returned": 44
+    },
+    {
+      "ecosystem": "PyPI",
+      "http_status": 200,
+      "method": "POST",
+      "new_distinct_advisories": 163,
+      "package": "django",
+      "request_body": {
+        "package": {
+          "ecosystem": "PyPI",
+          "name": "django"
+        }
+      },
+      "url": "https://api.osv.dev/v1/query",
+      "vulns_returned": 324
+    },
+    {
+      "ecosystem": "PyPI",
+      "http_status": 200,
+      "method": "POST",
+      "new_distinct_advisories": 5,
+      "package": "flask",
+      "request_body": {
+        "package": {
+          "ecosystem": "PyPI",
+          "name": "flask"
+        }
+      },
+      "url": "https://api.osv.dev/v1/query",
+      "vulns_returned": 10
+    },
+    {
+      "ecosystem": "PyPI",
+      "http_status": 200,
+      "method": "POST",
+      "new_distinct_advisories": 24,
+      "package": "cryptography",
+      "request_body": {
+        "package": {
+          "ecosystem": "PyPI",
+          "name": "cryptography"
+        }
+      },
+      "url": "https://api.osv.dev/v1/query",
+      "vulns_returned": 42
+    },
+    {
+      "ecosystem": "PyPI",
+      "http_status": 200,
+      "method": "POST",
+      "new_distinct_advisories": 121,
+      "package": "pillow",
+      "request_body": {
+        "package": {
+          "ecosystem": "PyPI",
+          "name": "pillow"
+        }
+      },
+      "url": "https://api.osv.dev/v1/query",
+      "vulns_returned": 214
+    },
+    {
+      "ecosystem": "PyPI",
+      "http_status": 200,
+      "method": "POST",
+      "new_distinct_advisories": 8,
+      "package": "numpy",
+      "request_body": {
+        "package": {
+          "ecosystem": "PyPI",
+          "name": "numpy"
+        }
+      },
+      "url": "https://api.osv.dev/v1/query",
+      "vulns_returned": 16
+    },
+    {
+      "ecosystem": "PyPI",
+      "http_status": 200,
+      "method": "POST",
+      "new_distinct_advisories": 1,
+      "package": "pandas",
+      "request_body": {
+        "package": {
+          "ecosystem": "PyPI",
+          "name": "pandas"
+        }
+      },
+      "url": "https://api.osv.dev/v1/query",
+      "vulns_returned": 1
+    },
+    {
+      "ecosystem": "PyPI",
+      "http_status": 200,
+      "method": "POST",
+      "new_distinct_advisories": 6,
+      "package": "setuptools",
+      "request_body": {
+        "package": {
+          "ecosystem": "PyPI",
+          "name": "setuptools"
+        }
+      },
+      "url": "https://api.osv.dev/v1/query",
+      "vulns_returned": 11
+    },
+    {
+      "ecosystem": "PyPI",
+      "http_status": 200,
+      "method": "POST",
+      "new_distinct_advisories": 4,
+      "package": "pyyaml",
+      "request_body": {
+        "package": {
+          "ecosystem": "PyPI",
+          "name": "pyyaml"
+        }
+      },
+      "url": "https://api.osv.dev/v1/query",
+      "vulns_returned": 8
+    },
+    {
+      "ecosystem": "PyPI",
+      "http_status": 200,
+      "method": "POST",
+      "new_distinct_advisories": 10,
+      "package": "jinja2",
+      "request_body": {
+        "package": {
+          "ecosystem": "PyPI",
+          "name": "jinja2"
+        }
+      },
+      "url": "https://api.osv.dev/v1/query",
+      "vulns_returned": 20
+    },
+    {
+      "ecosystem": "PyPI",
+      "http_status": 200,
+      "method": "POST",
+      "new_distinct_advisories": 3,
+      "package": "sqlalchemy",
+      "request_body": {
+        "package": {
+          "ecosystem": "PyPI",
+          "name": "sqlalchemy"
+        }
+      },
+      "url": "https://api.osv.dev/v1/query",
+      "vulns_returned": 6
+    },
+    {
+      "ecosystem": "PyPI",
+      "http_status": 200,
+      "method": "POST",
+      "new_distinct_advisories": 0,
+      "package": "openssl",
+      "request_body": {
+        "package": {
+          "ecosystem": "PyPI",
+          "name": "openssl"
+        }
+      },
+      "url": "https://api.osv.dev/v1/query",
+      "vulns_returned": 0
+    },
+    {
+      "ecosystem": "PyPI",
+      "http_status": 200,
+      "method": "POST",
+      "new_distinct_advisories": 64,
+      "package": "aiohttp",
+      "request_body": {
+        "package": {
+          "ecosystem": "PyPI",
+          "name": "aiohttp"
+        }
+      },
+      "url": "https://api.osv.dev/v1/query",
+      "vulns_returned": 123
+    },
+    {
+      "ecosystem": "PyPI",
+      "http_status": 200,
+      "method": "POST",
+      "new_distinct_advisories": 434,
+      "package": "tensorflow",
+      "request_body": {
+        "package": {
+          "ecosystem": "PyPI",
+          "name": "tensorflow"
+        }
+      },
+      "url": "https://api.osv.dev/v1/query",
+      "vulns_returned": 861
+    }
+  ],
+  "sha256": "679fd34fd375b3855623abf41f7c010b23cc47e3a8c9f875ff6a1b6700de1103",
+  "node_count": 11023,
+  "relationship_count": 50952,
+  "vuln_count": 873,
+  "url_coverage": 1.0,
+  "caveat": "公开漏洞数据库数据（OSV.dev / GitHub Advisory / NVD 等公开来源），非客户数据、非生产流量、非 agent trace；仅用作真实规模与连接上下文的可溯源证据，不代表任何真实客户的系统或运行结果。",
+  "graph_model": "(:Vuln {id,summary,severity,published,url})-[:HAS_ALIAS]->(:Alias {id,alias})-[:REFERENCES]->(:Ref {url}); also (:Vuln)-[:REFERENCES]->(:Ref) for direct provenance",
+  "store": "real-traces\\osv\\osv-graph.rl",
+  "allowed_use": "可用作真实规模与连接上下文证据；不得声称来自客户数据或 agent trace"
+}

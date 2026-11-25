@@ -1,0 +1,528 @@
+{
+  "graph": {
+    "store": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\provenance\\provenance.rl",
+    "nodes": 19,
+    "relationships": 19,
+    "bytes": 45056,
+    "affects_edges_derived_from_real_ranges": [
+      {
+        "advisory_id": "PYSEC-2014-14",
+        "package": "requests",
+        "version": "2.2.0",
+        "origin": "source"
+      }
+    ]
+  },
+  "schema": "tracelens/provenance-verdict@1",
+  "checks": {
+    "q6_provenance_path_is_multihop": true,
+    "q6_path_has_no_nulls": true,
+    "q6_traverses_advisory_identity_when_present": true,
+    "q7_hop_level_time_predicate": true,
+    "q7_identifies_which_hop_was_already_stale": true,
+    "q8_declaration_drift_found": true,
+    "sca_control_reports_pinned_clean": true,
+    "graph_changes_merge_decision_where_sca_cannot": true
+  },
+  "verdict": "PASS",
+  "Q6_provenance": [
+    {
+      "answer_id": "pr-answer-1",
+      "claim_id": "pr-claim-1",
+      "claim_text": "requests 2.2.0 is safe to use",
+      "package": "requests",
+      "version": "2.2.0",
+      "advisory_id": "PYSEC-2014-14",
+      "published_ns": 1413384900000000000,
+      "created_ns": 1795364590000000000,
+      "path": [
+        "span:pr-root",
+        "span:pr-retriever",
+        "src:stale-doc.md",
+        "pv:requests:2.2.0",
+        "adv:PYSEC-2014-14",
+        "alias:GHSA-652x-xj99-gmcc",
+        "https://github.com/advisories/GHSA-652x-xj99-gmcc"
+      ],
+      "labels": [
+        "Span",
+        "Span",
+        "Source",
+        "PkgVersion",
+        "Advisory",
+        "Alias",
+        "Ref"
+      ],
+      "rels": [
+        "PARENT_OF",
+        "RETRIEVED_FROM",
+        "MENTIONS",
+        "AFFECTS",
+        "HAS_ALIAS",
+        "REFERENCES"
+      ],
+      "hops": 6
+    },
+    {
+      "answer_id": "pr-answer-1",
+      "claim_id": "pr-claim-1",
+      "claim_text": "requests 2.2.0 is safe to use",
+      "package": "requests",
+      "version": "2.2.0",
+      "advisory_id": "PYSEC-2014-14",
+      "published_ns": 1413384900000000000,
+      "created_ns": 1795364590000000000,
+      "path": [
+        "span:pr-root",
+        "span:pr-retriever",
+        "src:stale-doc.md",
+        "pv:requests:2.2.0",
+        "adv:PYSEC-2014-14",
+        "https://github.com/advisories/GHSA-652x-xj99-gmcc"
+      ],
+      "labels": [
+        "Span",
+        "Span",
+        "Source",
+        "PkgVersion",
+        "Advisory",
+        "Ref"
+      ],
+      "rels": [
+        "PARENT_OF",
+        "RETRIEVED_FROM",
+        "MENTIONS",
+        "AFFECTS",
+        "REFERENCES"
+      ],
+      "hops": 5
+    },
+    {
+      "answer_id": "pr-answer-1",
+      "claim_id": "pr-claim-1",
+      "claim_text": "requests 2.2.0 is safe to use",
+      "package": "requests",
+      "version": "2.2.0",
+      "advisory_id": "PYSEC-2014-14",
+      "published_ns": 1413384900000000000,
+      "created_ns": 1795364590000000000,
+      "path": [
+        "span:pr-root",
+        "span:pr-retriever",
+        "src:stale-doc.md",
+        "pv:requests:2.2.0",
+        "adv:PYSEC-2014-14",
+        "http://lists.opensuse.org/opensuse-updates/2016-01/msg00095.html"
+      ],
+      "labels": [
+        "Span",
+        "Span",
+        "Source",
+        "PkgVersion",
+        "Advisory",
+        "Ref"
+      ],
+      "rels": [
+        "PARENT_OF",
+        "RETRIEVED_FROM",
+        "MENTIONS",
+        "AFFECTS",
+        "REFERENCES"
+      ],
+      "hops": 5
+    },
+    {
+      "answer_id": "pr-answer-1",
+      "claim_id": "pr-claim-1",
+      "claim_text": "requests 2.2.0 is safe to use",
+      "package": "requests",
+      "version": "2.2.0",
+      "advisory_id": "PYSEC-2014-14",
+      "published_ns": 1413384900000000000,
+      "created_ns": 1795364590000000000,
+      "path": [
+        "span:pr-root",
+        "span:pr-retriever",
+        "src:stale-doc.md",
+        "pv:requests:2.2.0",
+        "adv:PYSEC-2014-14",
+        "http://advisories.mageia.org/MGASA-2014-0409.html"
+      ],
+      "labels": [
+        "Span",
+        "Span",
+        "Source",
+        "PkgVersion",
+        "Advisory",
+        "Ref"
+      ],
+      "rels": [
+        "PARENT_OF",
+        "RETRIEVED_FROM",
+        "MENTIONS",
+        "AFFECTS",
+        "REFERENCES"
+      ],
+      "hops": 5
+    },
+    {
+      "answer_id": "pr-answer-1",
+      "claim_id": "pr-claim-1",
+      "claim_text": "requests 2.2.0 is safe to use",
+      "package": "requests",
+      "version": "2.2.0",
+      "advisory_id": "PYSEC-2014-14",
+      "published_ns": 1413384900000000000,
+      "created_ns": 1795364590000000000,
+      "path": [
+        "span:pr-root",
+        "span:pr-retriever",
+        "src:stale-doc.md",
+        "pv:requests:2.2.0",
+        "adv:PYSEC-2014-14",
+        "http://www.mandriva.com/security/advisories?name=MDVSA-2015:133"
+      ],
+      "labels": [
+        "Span",
+        "Span",
+        "Source",
+        "PkgVersion",
+        "Advisory",
+        "Ref"
+      ],
+      "rels": [
+        "PARENT_OF",
+        "RETRIEVED_FROM",
+        "MENTIONS",
+        "AFFECTS",
+        "REFERENCES"
+      ],
+      "hops": 5
+    },
+    {
+      "answer_id": "pr-answer-1",
+      "claim_id": "pr-claim-1",
+      "claim_text": "requests 2.2.0 is safe to use",
+      "package": "requests",
+      "version": "2.2.0",
+      "advisory_id": "PYSEC-2014-14",
+      "published_ns": 1413384900000000000,
+      "created_ns": 1795364590000000000,
+      "path": [
+        "span:pr-root",
+        "span:pr-retriever",
+        "src:stale-doc.md",
+        "pv:requests:2.2.0",
+        "adv:PYSEC-2014-14",
+        "http://www.debian.org/security/2015/dsa-3146"
+      ],
+      "labels": [
+        "Span",
+        "Span",
+        "Source",
+        "PkgVersion",
+        "Advisory",
+        "Ref"
+      ],
+      "rels": [
+        "PARENT_OF",
+        "RETRIEVED_FROM",
+        "MENTIONS",
+        "AFFECTS",
+        "REFERENCES"
+      ],
+      "hops": 5
+    },
+    {
+      "answer_id": "pr-answer-1",
+      "claim_id": "pr-claim-1",
+      "claim_text": "requests 2.2.0 is safe to use",
+      "package": "requests",
+      "version": "2.2.0",
+      "advisory_id": "PYSEC-2014-14",
+      "published_ns": 1413384900000000000,
+      "created_ns": 1795364590000000000,
+      "path": [
+        "span:pr-root",
+        "span:pr-retriever",
+        "src:stale-doc.md",
+        "pv:requests:2.2.0",
+        "adv:PYSEC-2014-14",
+        "https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=733108"
+      ],
+      "labels": [
+        "Span",
+        "Span",
+        "Source",
+        "PkgVersion",
+        "Advisory",
+        "Ref"
+      ],
+      "rels": [
+        "PARENT_OF",
+        "RETRIEVED_FROM",
+        "MENTIONS",
+        "AFFECTS",
+        "REFERENCES"
+      ],
+      "hops": 5
+    },
+    {
+      "answer_id": "pr-answer-1",
+      "claim_id": "pr-claim-1",
+      "claim_text": "requests 2.2.0 is safe to use",
+      "package": "requests",
+      "version": "2.2.0",
+      "advisory_id": "PYSEC-2014-14",
+      "published_ns": 1413384900000000000,
+      "created_ns": 1795364590000000000,
+      "path": [
+        "span:pr-root",
+        "span:pr-retriever",
+        "src:stale-doc.md",
+        "pv:requests:2.2.0",
+        "adv:PYSEC-2014-14",
+        "https://github.com/kennethreitz/requests/issues/1885"
+      ],
+      "labels": [
+        "Span",
+        "Span",
+        "Source",
+        "PkgVersion",
+        "Advisory",
+        "Ref"
+      ],
+      "rels": [
+        "PARENT_OF",
+        "RETRIEVED_FROM",
+        "MENTIONS",
+        "AFFECTS",
+        "REFERENCES"
+      ],
+      "hops": 5
+    },
+    {
+      "answer_id": "pr-answer-1",
+      "claim_id": "pr-claim-1",
+      "claim_text": "requests 2.2.0 is safe to use",
+      "package": "requests",
+      "version": "2.2.0",
+      "advisory_id": "PYSEC-2014-14",
+      "published_ns": 1413384900000000000,
+      "created_ns": 1795364590000000000,
+      "path": [
+        "span:pr-root",
+        "span:pr-retriever",
+        "src:stale-doc.md",
+        "pv:requests:2.2.0",
+        "adv:PYSEC-2014-14",
+        "alias:GHSA-652x-xj99-gmcc"
+      ],
+      "labels": [
+        "Span",
+        "Span",
+        "Source",
+        "PkgVersion",
+        "Advisory",
+        "Alias"
+      ],
+      "rels": [
+        "PARENT_OF",
+        "RETRIEVED_FROM",
+        "MENTIONS",
+        "AFFECTS",
+        "HAS_ALIAS"
+      ],
+      "hops": 5
+    },
+    {
+      "answer_id": "pr-answer-1",
+      "claim_id": "pr-claim-1",
+      "claim_text": "requests 2.2.0 is safe to use",
+      "package": "requests",
+      "version": "2.2.0",
+      "advisory_id": "PYSEC-2014-14",
+      "published_ns": 1413384900000000000,
+      "created_ns": 1795364590000000000,
+      "path": [
+        "span:pr-root",
+        "span:pr-retriever",
+        "src:stale-doc.md",
+        "pv:requests:2.2.0",
+        "adv:PYSEC-2014-14",
+        "alias:CVE-2014-1830"
+      ],
+      "labels": [
+        "Span",
+        "Span",
+        "Source",
+        "PkgVersion",
+        "Advisory",
+        "Alias"
+      ],
+      "rels": [
+        "PARENT_OF",
+        "RETRIEVED_FROM",
+        "MENTIONS",
+        "AFFECTS",
+        "HAS_ALIAS"
+      ],
+      "hops": 5
+    },
+    {
+      "answer_id": "pr-answer-1",
+      "claim_id": "pr-claim-1",
+      "claim_text": "requests 2.2.0 is safe to use",
+      "package": "requests",
+      "version": "2.2.0",
+      "advisory_id": "PYSEC-2014-14",
+      "published_ns": 1413384900000000000,
+      "created_ns": 1795364590000000000,
+      "path": [
+        "span:pr-root",
+        "span:pr-retriever",
+        "src:stale-doc.md",
+        "pv:requests:2.2.0",
+        "adv:PYSEC-2014-14"
+      ],
+      "labels": [
+        "Span",
+        "Span",
+        "Source",
+        "PkgVersion",
+        "Advisory"
+      ],
+      "rels": [
+        "PARENT_OF",
+        "RETRIEVED_FROM",
+        "MENTIONS",
+        "AFFECTS"
+      ],
+      "hops": 4
+    }
+  ],
+  "Q7_hop_expiry": [
+    {
+      "answer_id": "pr-answer-1",
+      "advisory_id": "PYSEC-2014-14",
+      "published_ns": 1413384900000000000,
+      "created_ns": 1795364590000000000,
+      "path": [
+        "span:pr-root",
+        "span:pr-retriever",
+        "src:stale-doc.md",
+        "pv:requests:2.2.0"
+      ],
+      "labels": [
+        "Span",
+        "Span",
+        "Source",
+        "PkgVersion"
+      ],
+      "hop_times_ns": [
+        1795364589000000000,
+        1795364589500000000,
+        1381848900000000000,
+        null
+      ],
+      "rels": [
+        "PARENT_OF",
+        "RETRIEVED_FROM",
+        "MENTIONS"
+      ],
+      "hops": 3,
+      "exposure_ns": 381979690000000000
+    }
+  ],
+  "Q7_hop_audit": [
+    {
+      "answer_id": "pr-answer-1",
+      "advisory_id": "PYSEC-2014-14",
+      "published_ns": 1413384900000000000,
+      "created_ns": 1795364590000000000,
+      "hops_count": 3,
+      "rels": [
+        "PARENT_OF",
+        "RETRIEVED_FROM",
+        "MENTIONS"
+      ],
+      "hops": [
+        {
+          "index": 0,
+          "node": "span:pr-root",
+          "label": "Span",
+          "at_ns": 1795364589000000000,
+          "at_iso": "2026-11-22T16:23:09+00:00",
+          "already_stale_ns": 381979689000000000,
+          "already_stale_days": 4421.06
+        },
+        {
+          "index": 1,
+          "node": "span:pr-retriever",
+          "label": "Span",
+          "at_ns": 1795364589500000000,
+          "at_iso": "2026-11-22T16:23:09.500000+00:00",
+          "already_stale_ns": 381979689500000000,
+          "already_stale_days": 4421.06
+        },
+        {
+          "index": 2,
+          "node": "src:stale-doc.md",
+          "label": "Source",
+          "at_ns": 1381848900000000000,
+          "at_iso": "2013-10-15T14:55:00+00:00",
+          "already_stale_ns": -31536000000000000,
+          "already_stale_days": -365.0
+        },
+        {
+          "index": 3,
+          "node": "pv:requests:2.2.0",
+          "label": "PkgVersion",
+          "at_ns": null,
+          "at_iso": null,
+          "already_stale_ns": null,
+          "already_stale_days": null
+        }
+      ],
+      "first_hop_already_stale": {
+        "index": 0,
+        "node": "span:pr-root",
+        "label": "Span",
+        "at_ns": 1795364589000000000,
+        "at_iso": "2026-11-22T16:23:09+00:00",
+        "already_stale_ns": 381979689000000000,
+        "already_stale_days": 4421.06
+      },
+      "verdict": "STALE_AT_HOP"
+    }
+  ],
+  "Q8_declaration_drift": [
+    {
+      "answer_id": "pr-answer-1",
+      "claim_id": "pr-claim-1",
+      "claim_text": "requests 2.2.0 is safe to use",
+      "package": "requests",
+      "cited_version": "2.2.0",
+      "pinned_version": "2.3.0",
+      "lockfile": "requirements.lock",
+      "advisory_id": "PYSEC-2014-14",
+      "published_ns": 1413384900000000000,
+      "created_ns": 1795364590000000000,
+      "advisory_url": "https://github.com/kennethreitz/requests/issues/1885",
+      "aliases": [
+        "GHSA-652x-xj99-gmcc",
+        "CVE-2014-1830"
+      ],
+      "exposure_ns": 381979690000000000
+    }
+  ],
+  "sca_control": [
+    {
+      "lockfile": "requirements.lock",
+      "package": "requests",
+      "pinned_version": "2.3.0",
+      "advisories_on_pinned": []
+    }
+  ],
+  "why_graph": "Q6/Q7 walk variable-length PARENT_OF + RETRIEVED_FROM + MENTIONS paths and apply an ALL() wall-clock predicate over nodes(path); Q6 then continues through the advisory's public identity chain (HAS_ALIAS*0..1 -> REFERENCES*0..1) using the same Alias/Ref keys as the full OSV graph, so realized path lengths vary with the real alias/reference data. Q8 joins the answer's natural-language declaration with the lockfile pin and the advisory timeline, and resolves CVE/PYSEC aliases in the same query. A manifest-only scanner reads only PINS, so it reports clean while the stale declaration would still reach the next agent that reads the PR text."
+}

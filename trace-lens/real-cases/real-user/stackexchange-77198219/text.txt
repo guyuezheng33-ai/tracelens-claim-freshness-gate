@@ -1,0 +1,70 @@
+ I have been developing a web application that uses a flask web server, flask socket-io, and flask sessions. Previously I was deploying with via a docker image to Google Cloud Run. Google cloud run increases the number of active containers based on traffice, and to allow for session permeance, I am newly deploying to the web with gunicorn, redis, eventlet. 
+ Working with redis and eventlet has raise a problem with emitting with flask socket-io however. The following message is logged when trying to emit: 
+  Cannot publish to redis... giving up
+  
+ This causes emitting to not work. 
+ Upon searching the web, I believe my problem is because Redis is not set up properly to allow the Google Cloud Run containers to emit to with one another. I've been playing with the configuration for days, but cannot seem to figure it out. Does anyone know why this issue is arising? 
+ Here is my docker file 
+  FROM python:3.8.12
+WORKDIR .
+RUN apt-get update && apt-get install -y \
+  redis-server 
+COPY requirements.txt /tmp/requirements.txt
+COPY . .
+RUN pip install --upgrade pip
+RUN pip install --no-cache-dir -r /tmp/requirements.txt
+ENV PORT 8080
+#EXPOSE $PORT
+CMD exec gunicorn --worker-class eventlet --bind :$PORT --workers 1 --threads 8 --timeout 0 server:app
+  
+ The set up within my server.py file 
+  import eventlet
+eventlet.monkey_patch()
+# other imports
+# ...
+# Initiate session
+Session(app)
+
+# Initiate socket IO object
+socketio = SocketIO(app, message_queue='redis://')
+# I additionally tried socketio = SocketIO(app, message_queue='redis://0.0.0.0:6379')
+
+# Example of how I emit within a path
+@app.route('/path', methods=['GET'])
+def functionThatEmits():
+    # some stuff
+    socketio.emit(someval, someval, namespace='/anamespace', broadcast=True)
+    # more stuff
+
+# How the app is run
+if __name__ == "__main__":
+    socketio.run(app, host='0.0.0.0', port=8080, debug=False) # For running on gcloud
+  
+ The versions of redis, eventlet, flask-socketio, flask, and gunicorn are below. 
+  eventlet==0.33.3
+Flask==2.3.2
+flask_session==0.5.0
+Flask_SocketIO==5.1.1
+redis==5.0.0 
+gunicorn==21.2.0
+  
+ Thank you all for your time. 
+
+
+[ANSWER]
+ I ended up trying redis memorystore from google cloud and it seems to have solved my problem. For anyone who comes across this in the future follow along  here  and use the following for the gunicorn command. 
+  gunicorn --worker-class eventlet --bind :$PORT --workers 1 --timeout 0 server:app
+  
+ Define socket IO like this: 
+  socketio = SocketIO(app, message_queue=f'redis://{redis_host}:{redis_port}')
+  
+ Lastly run the app like so: 
+  socketio.run(app, host='127.0.0.1', port=8080, debug=False)
+  
+ Leave the following the eventlet monkeypatch at the top of the server.py. Make sure you import redis in your server.py. See below: 
+  import eventlet
+eventlet.monkey_patch()
+
+import redis
+  
+ Also for those curious, in the question the gunicorn command was not correct see  here  for more on that. 

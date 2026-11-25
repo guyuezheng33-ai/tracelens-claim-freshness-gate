@@ -1,0 +1,219 @@
+{
+  "schema": "tracelens/runtime-guardrail@1",
+  "created_at_utc": "2026-11-24T03:09:45.366005+00:00",
+  "store": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens/store/demo-run.rl",
+  "trace_sha256": "848cad7b52c0f4abb21a4d37c92f57c6614882602462e13bce1b3df253d0262a",
+  "decision_source": "graph only (Q3 unsupported path / Q2 convergence cause)",
+  "explanation_source": "real model via OpenAI-compatible HTTP",
+  "model_cannot_release_rejected_claim": true,
+  "answer_before": [
+    {
+      "claim_id": "ba-claim-bad",
+      "source": "stale-policy-v2.pdf",
+      "score": 0.12,
+      "text": "deadline is March 1"
+    },
+    {
+      "claim_id": "ba-claim-ok",
+      "source": "current-policy-v9.pdf",
+      "score": 0.94,
+      "text": "policy v9 current"
+    }
+  ],
+  "answer_after": [
+    {
+      "claim_id": "ba-claim-ok",
+      "source": "current-policy-v9.pdf",
+      "score": 0.94,
+      "text": "policy v9 current"
+    }
+  ],
+  "decisions": [
+    {
+      "claim_id": "ba-claim-bad",
+      "text": "deadline is March 1",
+      "source": "stale-policy-v2.pdf",
+      "score": 0.12,
+      "admitted": false,
+      "decision_source": "graph",
+      "graph_reason": "Q3: no SUPPORTED_BY evidence path",
+      "graph_evidence": [
+        {
+          "claim_id": "ba-claim-bad",
+          "text": "deadline is March 1",
+          "answer_id": "ba-ans",
+          "run_id": "bad-answer"
+        }
+      ],
+      "model_explanation": "The graph found no evidence linking the claim “deadline is March 1” to any supporting document or answer, so it could not confirm the claim. Therefore the decision is “no SUPPORTED_BY evidence path.”"
+    },
+    {
+      "claim_id": "ba-claim-ok",
+      "text": "policy v9 current",
+      "source": "current-policy-v9.pdf",
+      "score": 0.94,
+      "admitted": true,
+      "decision_source": "graph",
+      "graph_reason": "no graph flag: Q3 returned no unsupported path and source is not a Q2 convergence cause",
+      "graph_evidence": [
+        {
+          "source": "stale-policy-v2.pdf",
+          "from": "Q2 convergence cause"
+        }
+      ],
+      "model_explanation": "The graph found no unsupported path for the claim, and the source file “current‑policy‑v9.pdf” is not listed as a Q2 convergence cause. Therefore the decision to accept the claim is justified."
+    }
+  ],
+  "llm_calls": [
+    {
+      "claim_id": "ba-claim-bad",
+      "admitted": false,
+      "receipt": {
+        "endpoint": "https://text.pollinations.ai/openai",
+        "model_requested": "gpt-oss-20b",
+        "model_returned": "gpt-oss-20b",
+        "response_id": "pllns_2ea7389b7aea09cb850872b7ec5b6551",
+        "status": 200,
+        "latency_ms": 475.029,
+        "request_sha256": "66fc5e1384909d6ef415cf94ce2f066db9bf9631a825737dd63eff2370a0f3a2",
+        "response_sha256": "6579db3886ea0dd570e2f36e60ade8623d04969e382511e7e0524a4f1f5ca843",
+        "prompt_messages": [
+          {
+            "role": "system",
+            "sha256": "d9659ced9c7323599ef05cb766029217811762b508e866e1f42b760a3a200d09"
+          },
+          {
+            "role": "user",
+            "sha256": "388ea55feee318e9eeeb046815715b9688dae5e0c7af792aa1ff2d5591eb43ed"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 207,
+          "completion_tokens": 62,
+          "total_tokens": 269,
+          "prompt_tokens_details": {
+            "cached_tokens": 64
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        }
+      }
+    },
+    {
+      "claim_id": "ba-claim-ok",
+      "admitted": true,
+      "receipt": {
+        "endpoint": "https://text.pollinations.ai/openai",
+        "model_requested": "gpt-oss-20b",
+        "model_returned": "gpt-oss-20b",
+        "response_id": "pllns_1422946ab830a3a402a1451888ed53f6",
+        "status": 200,
+        "latency_ms": 509.346,
+        "request_sha256": "8805e32dbe50006850d58d6f2615789cffb4799fa800615fc991b38537b89491",
+        "response_sha256": "96c95486f9a9ea931eb54a316bcf2fed5abadfab2e30bfc68bf3c8fc39816e3e",
+        "prompt_messages": [
+          {
+            "role": "system",
+            "sha256": "d9659ced9c7323599ef05cb766029217811762b508e866e1f42b760a3a200d09"
+          },
+          {
+            "role": "user",
+            "sha256": "96371faa4eb2372151b0be0e81be1024f2f7877d985818f7046b99761928594c"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 198,
+          "completion_tokens": 94,
+          "total_tokens": 292,
+          "prompt_tokens_details": {
+            "cached_tokens": 64
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        }
+      }
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "tracelens_graph_info",
+      "result": {
+        "node_count": 21,
+        "relationship_count": 22,
+        "labels": [
+          "Answer",
+          "Claim",
+          "Run",
+          "Source",
+          "Span",
+          "ToolCall"
+        ],
+        "relationship_types": [
+          "ASSERTED_IN",
+          "CALLED",
+          "CONTAINS",
+          "PARENT_OF",
+          "PRODUCED",
+          "RETRIEVED_FROM",
+          "SUPPORTED_BY"
+        ]
+      }
+    },
+    {
+      "tool": "tracelens_judge",
+      "result": "PASS",
+      "checks": {
+        "baseline_misidentifies": true,
+        "graph_localizes_true_cause": true,
+        "graph_zero_false_positive_on_clean": true,
+        "has_signal": true
+      }
+    },
+    {
+      "tool": "tracelens_query_pack",
+      "pack": "Q3",
+      "rows": 1,
+      "claim_ids": [
+        "ba-claim-bad"
+      ]
+    }
+  ],
+  "verdict": "PASS",
+  "checks": {
+    "baseline_misidentifies": true,
+    "graph_localizes_true_cause": true,
+    "graph_zero_false_positive_on_clean": true,
+    "has_signal": true
+  },
+  "graph": {
+    "node_count": 21,
+    "relationship_count": 22,
+    "labels": [
+      "Answer",
+      "Claim",
+      "Run",
+      "Source",
+      "Span",
+      "ToolCall"
+    ],
+    "relationship_types": [
+      "ASSERTED_IN",
+      "CALLED",
+      "CONTAINS",
+      "PARENT_OF",
+      "PRODUCED",
+      "RETRIEVED_FROM",
+      "SUPPORTED_BY"
+    ]
+  },
+  "passport": {
+    "nature": "real-model-call",
+    "model": "gpt-oss-20b",
+    "endpoint": "https://text.pollinations.ai/openai",
+    "model_calls": 2,
+    "model_evidence": "receipts contain request/response sha256, latency and usage",
+    "caveat": "Graph evidence decides admission; the model only explains. Public inference endpoint, no paid customer, no private API key."
+  }
+}

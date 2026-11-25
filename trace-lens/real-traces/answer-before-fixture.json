@@ -1,0 +1,14 @@
+[
+  {
+    "claim_id": "ba-claim-bad",
+    "source": "stale-policy-v2.pdf",
+    "score": 0.12,
+    "text": "deadline is March 1"
+  },
+  {
+    "claim_id": "ba-claim-ok",
+    "source": "current-policy-v9.pdf",
+    "score": 0.94,
+    "text": "policy v9 current"
+  }
+]

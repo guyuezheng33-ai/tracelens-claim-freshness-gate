@@ -1,0 +1,794 @@
+{
+  "graph": {
+    "store": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\convergence\\convergence.rl",
+    "inputs": [
+      {
+        "prefix": "stackexchange-62945229-",
+        "model": "human:stackoverflow",
+        "nature": "real-user",
+        "source": "https://stackoverflow.com/a/62945657",
+        "declarations": 1,
+        "scenarios": 1
+      },
+      {
+        "prefix": "stackexchange-69199812-",
+        "model": "human:stackoverflow",
+        "nature": "real-user",
+        "source": "https://stackoverflow.com/a/69199927",
+        "declarations": 1,
+        "scenarios": 1
+      },
+      {
+        "prefix": "stackexchange-77198219-",
+        "model": "human:stackoverflow",
+        "nature": "real-user",
+        "source": "https://stackoverflow.com/a/77198831",
+        "declarations": 6,
+        "scenarios": 1
+      },
+      {
+        "prefix": "stackexchange-79003376-",
+        "model": "human:stackoverflow",
+        "nature": "real-user",
+        "source": "https://stackoverflow.com/a/79017722",
+        "declarations": 3,
+        "scenarios": 1
+      },
+      {
+        "prefix": "stackexchange-79584062-",
+        "model": "human:stackoverflow",
+        "nature": "real-user",
+        "source": "https://stackoverflow.com/a/79584608",
+        "declarations": 19,
+        "scenarios": 1
+      },
+      {
+        "prefix": "claude-pillow-1000-",
+        "model": "claude-sonnet-4-6",
+        "nature": "real-agent-text",
+        "source": "https://github.com/dw763j/PinTrace/blob/main/outputs/evaluation/direct_dependencies.jsonl",
+        "declarations": 1,
+        "scenarios": 1
+      },
+      {
+        "prefix": "claudesonnet-django-427-",
+        "model": "claude-sonnet-4-6",
+        "nature": "real-agent-text",
+        "source": "https://github.com/dw763j/PinTrace/blob/main/outputs/evaluation/direct_dependencies.jsonl",
+        "declarations": 1,
+        "scenarios": 1
+      },
+      {
+        "prefix": "deepseek-jinja2-312-",
+        "model": "DeepSeek-V3.2",
+        "nature": "real-agent-text",
+        "source": "https://github.com/dw763j/PinTrace/blob/main/outputs/evaluation/direct_dependencies.jsonl",
+        "declarations": 1,
+        "scenarios": 1
+      },
+      {
+        "prefix": "kimi-pillow-1001-",
+        "model": "kimi-k2.5",
+        "nature": "real-agent-text",
+        "source": "https://github.com/dw763j/PinTrace/blob/main/outputs/evaluation/direct_dependencies.jsonl",
+        "declarations": 1,
+        "scenarios": 1
+      },
+      {
+        "prefix": "llama-flask-222-",
+        "model": "meta-llama/llama-4-scout",
+        "nature": "real-agent-text",
+        "source": "https://github.com/dw763j/PinTrace/blob/main/outputs/evaluation/direct_dependencies.jsonl",
+        "declarations": 1,
+        "scenarios": 1
+      },
+      {
+        "prefix": "minimax-flask-233-",
+        "model": "MiniMax-M2.5",
+        "nature": "real-agent-text",
+        "source": "https://github.com/dw763j/PinTrace/blob/main/outputs/evaluation/direct_dependencies.jsonl",
+        "declarations": 1,
+        "scenarios": 1
+      },
+      {
+        "prefix": "minimax-numpy-1210-",
+        "model": "MiniMax-M2.5",
+        "nature": "real-agent-text",
+        "source": "https://github.com/dw763j/PinTrace/blob/main/outputs/evaluation/direct_dependencies.jsonl",
+        "declarations": 1,
+        "scenarios": 1
+      },
+      {
+        "prefix": "minimax-pillow-950-",
+        "model": "MiniMax-M2.5",
+        "nature": "real-agent-text",
+        "source": "https://github.com/dw763j/PinTrace/blob/main/outputs/evaluation/direct_dependencies.jsonl",
+        "declarations": 1,
+        "scenarios": 1
+      },
+      {
+        "prefix": "minimax-requests-2310-",
+        "model": "MiniMax-M2.5",
+        "nature": "real-agent-text",
+        "source": "https://github.com/dw763j/PinTrace/blob/main/outputs/evaluation/direct_dependencies.jsonl",
+        "declarations": 1,
+        "scenarios": 1
+      },
+      {
+        "prefix": "demo-flask-",
+        "model": "gpt-5.4",
+        "nature": "real-agent-text",
+        "source": "https://github.com/dw763j/PinTrace/blob/main/outputs/evaluation/direct_dependencies.jsonl",
+        "declarations": 1,
+        "scenarios": 1
+      },
+      {
+        "prefix": "demo-pillow-",
+        "model": "gemini-3.1-pro-preview",
+        "nature": "real-agent-text",
+        "source": "https://github.com/dw763j/PinTrace/blob/main/outputs/evaluation/direct_dependencies.jsonl",
+        "declarations": 1,
+        "scenarios": 1
+      },
+      {
+        "prefix": "demo-jinja2-",
+        "model": "DeepSeek-V3.2",
+        "nature": "real-agent-text",
+        "source": "https://github.com/dw763j/PinTrace/blob/main/outputs/evaluation/direct_dependencies.jsonl",
+        "declarations": 1,
+        "scenarios": 1
+      },
+      {
+        "prefix": "demo-requests-",
+        "model": "MiniMax-M2.5",
+        "nature": "real-agent-text",
+        "source": "https://github.com/dw763j/PinTrace/blob/main/outputs/evaluation/direct_dependencies.jsonl",
+        "declarations": 1,
+        "scenarios": 1
+      },
+      {
+        "prefix": "demo-pyyaml-",
+        "model": "Qwen3.5-397B-A17B",
+        "nature": "real-agent-text",
+        "source": "https://github.com/dw763j/PinTrace/blob/main/outputs/evaluation/direct_dependencies.jsonl",
+        "declarations": 1,
+        "scenarios": 1
+      },
+      {
+        "prefix": "demo-numpy-",
+        "model": "MiniMax-M2.5",
+        "nature": "real-agent-text",
+        "source": "https://github.com/dw763j/PinTrace/blob/main/outputs/evaluation/direct_dependencies.jsonl",
+        "declarations": 1,
+        "scenarios": 1
+      },
+      {
+        "prefix": "demo-django-",
+        "model": "claude-sonnet-4-6",
+        "nature": "real-agent-text",
+        "source": "https://github.com/dw763j/PinTrace/blob/main/outputs/evaluation/direct_dependencies.jsonl",
+        "declarations": 1,
+        "scenarios": 1
+      },
+      {
+        "prefix": "demo-urllib3-",
+        "model": "Qwen3-235B-A22B-Instruct-2507",
+        "nature": "real-agent-text",
+        "source": "https://github.com/dw763j/PinTrace/blob/main/outputs/evaluation/direct_dependencies.jsonl",
+        "declarations": 1,
+        "scenarios": 1
+      }
+    ],
+    "answers": 22,
+    "distinct_models": [
+      "DeepSeek-V3.2",
+      "MiniMax-M2.5",
+      "Qwen3-235B-A22B-Instruct-2507",
+      "Qwen3.5-397B-A17B",
+      "claude-sonnet-4-6",
+      "gemini-3.1-pro-preview",
+      "gpt-5.4",
+      "human:stackoverflow",
+      "kimi-k2.5",
+      "meta-llama/llama-4-scout"
+    ]
+  },
+  "schema": "tracelens/convergence-verdict@1",
+  "checks": {
+    "q9_finds_cross_model_convergence": true,
+    "q10_blast_radius_spans_multiple_models": true,
+    "answers_join_the_advisory_clock": true,
+    "every_cluster_node_id_is_real": true
+  },
+  "verdict": "PASS",
+  "Q9_convergence": [
+    {
+      "package": "pillow",
+      "version": "10.0.0",
+      "advisory_id": "GHSA-22hg-r758-rrw9",
+      "fixed": "13.0.0",
+      "answers": [
+        "claude-pillow-1000-scan-answer-pillow-0",
+        "demo-pillow-scan-answer-pillow-1"
+      ],
+      "models": [
+        "claude-sonnet-4-6",
+        "gemini-3.1-pro-preview"
+      ],
+      "nodes": [
+        "pv:pillow:10.0.0",
+        "adv:GHSA-22hg-r758-rrw9",
+        "ans:claude-pillow-1000-scan-answer-pillow-0",
+        "claim:claude-pillow-1000-scan-claim-pillow-0",
+        "ans:demo-pillow-scan-answer-pillow-1",
+        "claim:demo-pillow-scan-claim-pillow-1"
+      ],
+      "n_answers": 2,
+      "n_models": 2
+    },
+    {
+      "package": "django",
+      "version": "4.2.7",
+      "advisory_id": "GHSA-2mcm-79hx-8fxw",
+      "fixed": "6.0.2",
+      "answers": [
+        "claudesonnet-django-427-scan-answer-django-0",
+        "demo-django-scan-answer-django-6"
+      ],
+      "models": [
+        "claude-sonnet-4-6"
+      ],
+      "nodes": [
+        "pv:django:4.2.7",
+        "adv:GHSA-2mcm-79hx-8fxw",
+        "ans:claudesonnet-django-427-scan-answer-django-0",
+        "claim:claudesonnet-django-427-scan-claim-django-0",
+        "ans:demo-django-scan-answer-django-6",
+        "claim:demo-django-scan-claim-django-6"
+      ],
+      "n_answers": 2,
+      "n_models": 1
+    },
+    {
+      "package": "jinja2",
+      "version": "3.1.2",
+      "advisory_id": "GHSA-cpwx-vrp4-4pq7",
+      "fixed": "3.1.6",
+      "answers": [
+        "deepseek-jinja2-312-scan-answer-jinja2-0",
+        "demo-jinja2-scan-answer-jinja2-2"
+      ],
+      "models": [
+        "DeepSeek-V3.2"
+      ],
+      "nodes": [
+        "pv:jinja2:3.1.2",
+        "adv:GHSA-cpwx-vrp4-4pq7",
+        "ans:deepseek-jinja2-312-scan-answer-jinja2-0",
+        "claim:deepseek-jinja2-312-scan-claim-jinja2-0",
+        "ans:demo-jinja2-scan-answer-jinja2-2",
+        "claim:demo-jinja2-scan-claim-jinja2-2"
+      ],
+      "n_answers": 2,
+      "n_models": 1
+    },
+    {
+      "package": "numpy",
+      "version": "1.21.0",
+      "advisory_id": "GHSA-fpfv-jqm9-f5jm",
+      "fixed": "1.22",
+      "answers": [
+        "minimax-numpy-1210-scan-answer-numpy-0",
+        "demo-numpy-scan-answer-numpy-5"
+      ],
+      "models": [
+        "MiniMax-M2.5"
+      ],
+      "nodes": [
+        "pv:numpy:1.21.0",
+        "adv:GHSA-fpfv-jqm9-f5jm",
+        "ans:minimax-numpy-1210-scan-answer-numpy-0",
+        "claim:minimax-numpy-1210-scan-claim-numpy-0",
+        "ans:demo-numpy-scan-answer-numpy-5",
+        "claim:demo-numpy-scan-claim-numpy-5"
+      ],
+      "n_answers": 2,
+      "n_models": 1
+    },
+    {
+      "package": "requests",
+      "version": "2.31.0",
+      "advisory_id": "GHSA-9hjg-9r4m-mvj7",
+      "fixed": "2.32.4",
+      "answers": [
+        "minimax-requests-2310-scan-answer-requests-0",
+        "demo-requests-scan-answer-requests-3"
+      ],
+      "models": [
+        "MiniMax-M2.5"
+      ],
+      "nodes": [
+        "pv:requests:2.31.0",
+        "adv:GHSA-9hjg-9r4m-mvj7",
+        "ans:minimax-requests-2310-scan-answer-requests-0",
+        "claim:minimax-requests-2310-scan-claim-requests-0",
+        "ans:demo-requests-scan-answer-requests-3",
+        "claim:demo-requests-scan-claim-requests-3"
+      ],
+      "n_answers": 2,
+      "n_models": 1
+    },
+    {
+      "package": "flask",
+      "version": "1.1.2",
+      "advisory_id": "GHSA-4grg-w6v8-c28g",
+      "fixed": "3.1.1",
+      "answers": [
+        "stackexchange-62945229-scan-answer-flask-0"
+      ],
+      "models": [
+        "human:stackoverflow"
+      ],
+      "nodes": [
+        "pv:flask:1.1.2",
+        "adv:GHSA-4grg-w6v8-c28g",
+        "ans:stackexchange-62945229-scan-answer-flask-0",
+        "claim:stackexchange-62945229-scan-claim-flask-0"
+      ],
+      "n_answers": 1,
+      "n_models": 1
+    },
+    {
+      "package": "flask",
+      "version": "2.0.1",
+      "advisory_id": "GHSA-4grg-w6v8-c28g",
+      "fixed": "3.1.1",
+      "answers": [
+        "stackexchange-69199812-scan-answer-flask-0"
+      ],
+      "models": [
+        "human:stackoverflow"
+      ],
+      "nodes": [
+        "pv:flask:2.0.1",
+        "adv:GHSA-4grg-w6v8-c28g",
+        "ans:stackexchange-69199812-scan-answer-flask-0",
+        "claim:stackexchange-69199812-scan-claim-flask-0"
+      ],
+      "n_answers": 1,
+      "n_models": 1
+    },
+    {
+      "package": "flask",
+      "version": "2.3.2",
+      "advisory_id": "GHSA-4grg-w6v8-c28g",
+      "fixed": "3.1.1",
+      "answers": [
+        "stackexchange-77198219-scan-answer-flask-1"
+      ],
+      "models": [
+        "human:stackoverflow"
+      ],
+      "nodes": [
+        "pv:flask:2.3.2",
+        "adv:GHSA-4grg-w6v8-c28g",
+        "ans:stackexchange-77198219-scan-answer-flask-1",
+        "claim:stackexchange-77198219-scan-claim-flask-1"
+      ],
+      "n_answers": 1,
+      "n_models": 1
+    },
+    {
+      "package": "flask",
+      "version": "2.2.5",
+      "advisory_id": "GHSA-4grg-w6v8-c28g",
+      "fixed": "3.1.1",
+      "answers": [
+        "stackexchange-79003376-scan-answer-flask-1"
+      ],
+      "models": [
+        "human:stackoverflow"
+      ],
+      "nodes": [
+        "pv:flask:2.2.5",
+        "adv:GHSA-4grg-w6v8-c28g",
+        "ans:stackexchange-79003376-scan-answer-flask-1",
+        "claim:stackexchange-79003376-scan-claim-flask-1"
+      ],
+      "n_answers": 1,
+      "n_models": 1
+    },
+    {
+      "package": "pillow",
+      "version": "11.2.1",
+      "advisory_id": "GHSA-22hg-r758-rrw9",
+      "fixed": "13.0.0",
+      "answers": [
+        "stackexchange-79584062-scan-answer-pillow-7"
+      ],
+      "models": [
+        "human:stackoverflow"
+      ],
+      "nodes": [
+        "pv:pillow:11.2.1",
+        "adv:GHSA-22hg-r758-rrw9",
+        "ans:stackexchange-79584062-scan-answer-pillow-7",
+        "claim:stackexchange-79584062-scan-claim-pillow-7"
+      ],
+      "n_answers": 1,
+      "n_models": 1
+    },
+    {
+      "package": "pillow",
+      "version": "10.0.1",
+      "advisory_id": "GHSA-22hg-r758-rrw9",
+      "fixed": "13.0.0",
+      "answers": [
+        "kimi-pillow-1001-scan-answer-pillow-0"
+      ],
+      "models": [
+        "kimi-k2.5"
+      ],
+      "nodes": [
+        "pv:pillow:10.0.1",
+        "adv:GHSA-22hg-r758-rrw9",
+        "ans:kimi-pillow-1001-scan-answer-pillow-0",
+        "claim:kimi-pillow-1001-scan-claim-pillow-0"
+      ],
+      "n_answers": 1,
+      "n_models": 1
+    },
+    {
+      "package": "flask",
+      "version": "2.2.2",
+      "advisory_id": "GHSA-4grg-w6v8-c28g",
+      "fixed": "3.1.1",
+      "answers": [
+        "llama-flask-222-scan-answer-flask-0"
+      ],
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "nodes": [
+        "pv:flask:2.2.2",
+        "adv:GHSA-4grg-w6v8-c28g",
+        "ans:llama-flask-222-scan-answer-flask-0",
+        "claim:llama-flask-222-scan-claim-flask-0"
+      ],
+      "n_answers": 1,
+      "n_models": 1
+    },
+    {
+      "package": "flask",
+      "version": "2.3.3",
+      "advisory_id": "GHSA-4grg-w6v8-c28g",
+      "fixed": "3.1.1",
+      "answers": [
+        "minimax-flask-233-scan-answer-flask-0"
+      ],
+      "models": [
+        "MiniMax-M2.5"
+      ],
+      "nodes": [
+        "pv:flask:2.3.3",
+        "adv:GHSA-4grg-w6v8-c28g",
+        "ans:minimax-flask-233-scan-answer-flask-0",
+        "claim:minimax-flask-233-scan-claim-flask-0"
+      ],
+      "n_answers": 1,
+      "n_models": 1
+    },
+    {
+      "package": "pillow",
+      "version": "9.5.0",
+      "advisory_id": "GHSA-22hg-r758-rrw9",
+      "fixed": "13.0.0",
+      "answers": [
+        "minimax-pillow-950-scan-answer-pillow-0"
+      ],
+      "models": [
+        "MiniMax-M2.5"
+      ],
+      "nodes": [
+        "pv:pillow:9.5.0",
+        "adv:GHSA-22hg-r758-rrw9",
+        "ans:minimax-pillow-950-scan-answer-pillow-0",
+        "claim:minimax-pillow-950-scan-claim-pillow-0"
+      ],
+      "n_answers": 1,
+      "n_models": 1
+    },
+    {
+      "package": "flask",
+      "version": "3.0.3",
+      "advisory_id": "GHSA-4grg-w6v8-c28g",
+      "fixed": "3.1.1",
+      "answers": [
+        "demo-flask-scan-answer-flask-0"
+      ],
+      "models": [
+        "gpt-5.4"
+      ],
+      "nodes": [
+        "pv:flask:3.0.3",
+        "adv:GHSA-4grg-w6v8-c28g",
+        "ans:demo-flask-scan-answer-flask-0",
+        "claim:demo-flask-scan-claim-flask-0"
+      ],
+      "n_answers": 1,
+      "n_models": 1
+    },
+    {
+      "package": "pyyaml",
+      "version": "3.13",
+      "advisory_id": "GHSA-3pqx-4fqf-j49f",
+      "fixed": "5.2",
+      "answers": [
+        "demo-pyyaml-scan-answer-pyyaml-4"
+      ],
+      "models": [
+        "Qwen3.5-397B-A17B"
+      ],
+      "nodes": [
+        "pv:pyyaml:3.13",
+        "adv:GHSA-3pqx-4fqf-j49f",
+        "ans:demo-pyyaml-scan-answer-pyyaml-4",
+        "claim:demo-pyyaml-scan-claim-pyyaml-4"
+      ],
+      "n_answers": 1,
+      "n_models": 1
+    },
+    {
+      "package": "urllib3",
+      "version": "2.0.7",
+      "advisory_id": "GHSA-2xpw-w6gg-jr37",
+      "fixed": "2.6.0",
+      "answers": [
+        "demo-urllib3-scan-answer-urllib3-7"
+      ],
+      "models": [
+        "Qwen3-235B-A22B-Instruct-2507"
+      ],
+      "nodes": [
+        "pv:urllib3:2.0.7",
+        "adv:GHSA-2xpw-w6gg-jr37",
+        "ans:demo-urllib3-scan-answer-urllib3-7",
+        "claim:demo-urllib3-scan-claim-urllib3-7"
+      ],
+      "n_answers": 1,
+      "n_models": 1
+    }
+  ],
+  "Q10_blast_radius": [
+    {
+      "advisory_id": "GHSA-22hg-r758-rrw9",
+      "fixed": "13.0.0",
+      "published": "2026-10-21T20:39:49Z",
+      "package": "pillow",
+      "answers": [
+        "minimax-pillow-950-scan-answer-pillow-0",
+        "kimi-pillow-1001-scan-answer-pillow-0",
+        "demo-pillow-scan-answer-pillow-1",
+        "claude-pillow-1000-scan-answer-pillow-0",
+        "stackexchange-79584062-scan-answer-pillow-7"
+      ],
+      "models": [
+        "MiniMax-M2.5",
+        "kimi-k2.5",
+        "gemini-3.1-pro-preview",
+        "claude-sonnet-4-6",
+        "human:stackoverflow"
+      ],
+      "versions": [
+        "9.5.0",
+        "10.0.1",
+        "10.0.0",
+        "11.2.1"
+      ],
+      "nodes": [
+        "adv:GHSA-22hg-r758-rrw9",
+        "ans:minimax-pillow-950-scan-answer-pillow-0",
+        "pv:pillow:9.5.0",
+        "ans:kimi-pillow-1001-scan-answer-pillow-0",
+        "pv:pillow:10.0.1",
+        "ans:demo-pillow-scan-answer-pillow-1",
+        "pv:pillow:10.0.0",
+        "ans:claude-pillow-1000-scan-answer-pillow-0",
+        "ans:stackexchange-79584062-scan-answer-pillow-7",
+        "pv:pillow:11.2.1"
+      ],
+      "n_answers": 5,
+      "n_models": 5
+    },
+    {
+      "advisory_id": "GHSA-4grg-w6v8-c28g",
+      "fixed": "3.1.1",
+      "published": "2025-05-13T20:25:26Z",
+      "package": "flask",
+      "answers": [
+        "demo-flask-scan-answer-flask-0",
+        "minimax-flask-233-scan-answer-flask-0",
+        "llama-flask-222-scan-answer-flask-0",
+        "stackexchange-79003376-scan-answer-flask-1",
+        "stackexchange-77198219-scan-answer-flask-1",
+        "stackexchange-69199812-scan-answer-flask-0",
+        "stackexchange-62945229-scan-answer-flask-0"
+      ],
+      "models": [
+        "gpt-5.4",
+        "MiniMax-M2.5",
+        "meta-llama/llama-4-scout",
+        "human:stackoverflow"
+      ],
+      "versions": [
+        "3.0.3",
+        "2.3.3",
+        "2.2.2",
+        "2.2.5",
+        "2.3.2",
+        "2.0.1",
+        "1.1.2"
+      ],
+      "nodes": [
+        "adv:GHSA-4grg-w6v8-c28g",
+        "ans:demo-flask-scan-answer-flask-0",
+        "pv:flask:3.0.3",
+        "ans:minimax-flask-233-scan-answer-flask-0",
+        "pv:flask:2.3.3",
+        "ans:llama-flask-222-scan-answer-flask-0",
+        "pv:flask:2.2.2",
+        "ans:stackexchange-79003376-scan-answer-flask-1",
+        "pv:flask:2.2.5",
+        "ans:stackexchange-77198219-scan-answer-flask-1",
+        "pv:flask:2.3.2",
+        "ans:stackexchange-69199812-scan-answer-flask-0",
+        "pv:flask:2.0.1",
+        "ans:stackexchange-62945229-scan-answer-flask-0",
+        "pv:flask:1.1.2"
+      ],
+      "n_answers": 7,
+      "n_models": 4
+    },
+    {
+      "advisory_id": "GHSA-2mcm-79hx-8fxw",
+      "fixed": "6.0.2",
+      "published": "2026-02-03T15:30:23Z",
+      "package": "django",
+      "answers": [
+        "demo-django-scan-answer-django-6",
+        "claudesonnet-django-427-scan-answer-django-0"
+      ],
+      "models": [
+        "claude-sonnet-4-6"
+      ],
+      "versions": [
+        "4.2.7"
+      ],
+      "nodes": [
+        "adv:GHSA-2mcm-79hx-8fxw",
+        "ans:demo-django-scan-answer-django-6",
+        "pv:django:4.2.7",
+        "ans:claudesonnet-django-427-scan-answer-django-0"
+      ],
+      "n_answers": 2,
+      "n_models": 1
+    },
+    {
+      "advisory_id": "GHSA-cpwx-vrp4-4pq7",
+      "fixed": "3.1.6",
+      "published": "2025-03-05T20:40:14Z",
+      "package": "jinja2",
+      "answers": [
+        "demo-jinja2-scan-answer-jinja2-2",
+        "deepseek-jinja2-312-scan-answer-jinja2-0"
+      ],
+      "models": [
+        "DeepSeek-V3.2"
+      ],
+      "versions": [
+        "3.1.2"
+      ],
+      "nodes": [
+        "adv:GHSA-cpwx-vrp4-4pq7",
+        "ans:demo-jinja2-scan-answer-jinja2-2",
+        "pv:jinja2:3.1.2",
+        "ans:deepseek-jinja2-312-scan-answer-jinja2-0"
+      ],
+      "n_answers": 2,
+      "n_models": 1
+    },
+    {
+      "advisory_id": "GHSA-fpfv-jqm9-f5jm",
+      "fixed": "1.22",
+      "published": "2021-12-18T00:00:41Z",
+      "package": "numpy",
+      "answers": [
+        "demo-numpy-scan-answer-numpy-5",
+        "minimax-numpy-1210-scan-answer-numpy-0"
+      ],
+      "models": [
+        "MiniMax-M2.5"
+      ],
+      "versions": [
+        "1.21.0"
+      ],
+      "nodes": [
+        "adv:GHSA-fpfv-jqm9-f5jm",
+        "ans:demo-numpy-scan-answer-numpy-5",
+        "pv:numpy:1.21.0",
+        "ans:minimax-numpy-1210-scan-answer-numpy-0"
+      ],
+      "n_answers": 2,
+      "n_models": 1
+    },
+    {
+      "advisory_id": "GHSA-9hjg-9r4m-mvj7",
+      "fixed": "2.32.4",
+      "published": "2025-06-09T19:06:08Z",
+      "package": "requests",
+      "answers": [
+        "demo-requests-scan-answer-requests-3",
+        "minimax-requests-2310-scan-answer-requests-0"
+      ],
+      "models": [
+        "MiniMax-M2.5"
+      ],
+      "versions": [
+        "2.31.0"
+      ],
+      "nodes": [
+        "adv:GHSA-9hjg-9r4m-mvj7",
+        "ans:demo-requests-scan-answer-requests-3",
+        "pv:requests:2.31.0",
+        "ans:minimax-requests-2310-scan-answer-requests-0"
+      ],
+      "n_answers": 2,
+      "n_models": 1
+    },
+    {
+      "advisory_id": "GHSA-3pqx-4fqf-j49f",
+      "fixed": "5.2",
+      "published": "2021-04-20T16:40:42Z",
+      "package": "pyyaml",
+      "answers": [
+        "demo-pyyaml-scan-answer-pyyaml-4"
+      ],
+      "models": [
+        "Qwen3.5-397B-A17B"
+      ],
+      "versions": [
+        "3.13"
+      ],
+      "nodes": [
+        "adv:GHSA-3pqx-4fqf-j49f",
+        "ans:demo-pyyaml-scan-answer-pyyaml-4",
+        "pv:pyyaml:3.13"
+      ],
+      "n_answers": 1,
+      "n_models": 1
+    },
+    {
+      "advisory_id": "GHSA-2xpw-w6gg-jr37",
+      "fixed": "2.6.0",
+      "published": "2025-12-05T18:15:54Z",
+      "package": "urllib3",
+      "answers": [
+        "demo-urllib3-scan-answer-urllib3-7"
+      ],
+      "models": [
+        "Qwen3-235B-A22B-Instruct-2507"
+      ],
+      "versions": [
+        "2.0.7"
+      ],
+      "nodes": [
+        "adv:GHSA-2xpw-w6gg-jr37",
+        "ans:demo-urllib3-scan-answer-urllib3-7",
+        "pv:urllib3:2.0.7"
+      ],
+      "n_answers": 1,
+      "n_models": 1
+    }
+  ],
+  "why_graph": "Q9 groups DISTINCT models around one PkgVersion node that a real advisory AFFECTS — systemic convergence is a fan-in the graph sees in one query. Q10 fans out from one Advisory node over AFFECTS <- CITES <- ASSERTS to count every captured answer a single advisory turns born-stale. A per-file scanner has no cross-answer view at all."
+}

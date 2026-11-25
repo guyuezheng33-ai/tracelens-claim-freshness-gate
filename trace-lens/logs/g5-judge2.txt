@@ -1,0 +1,8 @@
+【产品】Relate by Neo4j Hackathon · profile=contest · 第 17 轮
+【先断】engineering
+【定义】一致且够严（2/2 承诺达成）
+【收敛】6/6，卡在 未过项：
+【退化】无退化
+【覆盖】0/0 功能项有实现；证据完整性 5/5
+【拍板】A 只改【先断】这一条 / B 先补 UNRUN 的证据 / C 停
+明细 → runs\Relate by Neo4j Hackathon\judge-20261124-123753.json

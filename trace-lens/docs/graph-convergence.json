@@ -1,0 +1,4826 @@
+{
+  "schema": "tracelens/graph-export@1",
+  "title": "跨答案 · Q9/Q10 收敛图",
+  "store": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\convergence\\convergence.rl",
+  "store_bytes": 98304,
+  "store_sha256": "b9cfb2f37a71d49acf9a8d5f4dddddf4b87cbafd7a593ab97ba12156da12e3e1",
+  "source": "live Cypher read-back from the persisted Relate .rl store",
+  "queries": {
+    "nodes": "MATCH (n) RETURN labels(n)[0] AS label, properties(n) AS props",
+    "edges": "MATCH (a)-[r]->(b) RETURN coalesce(a.node_id, a.id, a.url) AS source, type(r) AS rel, coalesce(b.node_id, b.id, b.url) AS target"
+  },
+  "counts": {
+    "nodes": 269,
+    "relationships": 296,
+    "labels": {
+      "Advisory": 8,
+      "Alias": 17,
+      "Answer": 22,
+      "Claim": 22,
+      "Lockfile": 15,
+      "PkgVersion": 25,
+      "Ref": 72,
+      "Run": 22,
+      "Source": 22,
+      "Span": 44
+    },
+    "rel_types": {
+      "AFFECTS": 17,
+      "ASSERTS": 22,
+      "CITES": 22,
+      "CONTAINS": 22,
+      "HAS_ALIAS": 17,
+      "MENTIONS": 22,
+      "PARENT_OF": 22,
+      "PINS": 22,
+      "PRODUCED": 22,
+      "REFERENCES": 86,
+      "RETRIEVED_FROM": 22
+    }
+  },
+  "checks": {
+    "store_is_persisted_on_disk": true,
+    "nodes_match_live_db_count": true,
+    "relationships_match_live_db_count": true,
+    "every_node_has_properties": true,
+    "every_edge_has_type": true,
+    "every_edge_endpoint_resolves": true,
+    "q6_path_nodes_resolve_in_export": true
+  },
+  "verdict": "PASS",
+  "nodes": [
+    {
+      "id": "run:stackexchange-62945229-scan-0",
+      "label": "Run",
+      "props": {
+        "node_id": "run:stackexchange-62945229-scan-0",
+        "run_id": "stackexchange-62945229-scan-0",
+        "started_ns": 1795478398000000000
+      }
+    },
+    {
+      "id": "ans:stackexchange-62945229-scan-answer-flask-0",
+      "label": "Answer",
+      "props": {
+        "answer_id": "stackexchange-62945229-scan-answer-flask-0",
+        "created_ns": 1795478400000000000,
+        "model": "human:stackoverflow",
+        "node_id": "ans:stackexchange-62945229-scan-answer-flask-0",
+        "question": "Nginx reverse-proxy for python app using docker-compose",
+        "run_id": "stackexchange-62945229-scan-0",
+        "text": "flask==1.1.2"
+      }
+    },
+    {
+      "id": "span:stackexchange-62945229-scan-root-0",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795478399000000000,
+        "kind": "AGENT",
+        "name": "agent.answer",
+        "node_id": "span:stackexchange-62945229-scan-root-0",
+        "run_id": "stackexchange-62945229-scan-0",
+        "span_id": "stackexchange-62945229-scan-root-0"
+      }
+    },
+    {
+      "id": "span:stackexchange-62945229-scan-ret-0",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795478399500000000,
+        "kind": "RETRIEVER",
+        "name": "vector-search",
+        "node_id": "span:stackexchange-62945229-scan-ret-0",
+        "run_id": "stackexchange-62945229-scan-0",
+        "span_id": "stackexchange-62945229-scan-ret-0"
+      }
+    },
+    {
+      "id": "src:stackexchange-62945229-scan-doc-0",
+      "label": "Source",
+      "props": {
+        "at_ns": 1715631926000000000,
+        "doc_id": "stackexchange-62945229-scan-doc-0",
+        "node_id": "src:stackexchange-62945229-scan-doc-0",
+        "source_id": "src:stackexchange-62945229-scan-doc-0",
+        "uri": "https://stackoverflow.com/a/62945657"
+      }
+    },
+    {
+      "id": "pv:flask:1.1.2",
+      "label": "PkgVersion",
+      "props": {
+        "name": "flask",
+        "node_id": "pv:flask:1.1.2",
+        "version": "1.1.2"
+      }
+    },
+    {
+      "id": "claim:stackexchange-62945229-scan-claim-flask-0",
+      "label": "Claim",
+      "props": {
+        "claim_id": "stackexchange-62945229-scan-claim-flask-0",
+        "node_id": "claim:stackexchange-62945229-scan-claim-flask-0",
+        "text": "flask==1.1.2"
+      }
+    },
+    {
+      "id": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-user\\stackexchange-62945229\\requirements.lock",
+      "label": "Lockfile",
+      "props": {
+        "node_id": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-user\\stackexchange-62945229\\requirements.lock",
+        "path": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-user\\stackexchange-62945229\\requirements.lock",
+        "pinned_ns": 1795478390000000000,
+        "sha256": "bb4b000802aa340d74b74430ba6eba5b205e3c10f145637117317fd4e3319d8d"
+      }
+    },
+    {
+      "id": "pv:flask:3.1.1",
+      "label": "PkgVersion",
+      "props": {
+        "name": "flask",
+        "node_id": "pv:flask:3.1.1",
+        "version": "3.1.1"
+      }
+    },
+    {
+      "id": "adv:GHSA-4grg-w6v8-c28g",
+      "label": "Advisory",
+      "props": {
+        "fix_available_ns": -1,
+        "fixed": "3.1.1",
+        "id": "GHSA-4grg-w6v8-c28g",
+        "node_id": "adv:GHSA-4grg-w6v8-c28g",
+        "osv_modified_ns": 1789012224238503936,
+        "published": "2025-05-13T20:25:26Z",
+        "published_ns": 1747167926000000000,
+        "summary": "Flask uses fallback key instead of current signing key",
+        "url": "https://github.com/pallets/flask/security/advisories/GHSA-4grg-w6v8-c28g"
+      }
+    },
+    {
+      "id": "alias:CVE-2025-47278",
+      "label": "Alias",
+      "props": {
+        "alias": "CVE-2025-47278",
+        "node_id": "alias:CVE-2025-47278"
+      }
+    },
+    {
+      "id": "alias:PYSEC-2026-1377",
+      "label": "Alias",
+      "props": {
+        "alias": "PYSEC-2026-1377",
+        "node_id": "alias:PYSEC-2026-1377"
+      }
+    },
+    {
+      "id": "https://github.com/pallets/flask/security/advisories/GHSA-4grg-w6v8-c28g",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://github.com/pallets/flask/security/advisories/GHSA-4grg-w6v8-c28g"
+      }
+    },
+    {
+      "id": "https://nvd.nist.gov/vuln/detail/CVE-2025-47278",
+      "label": "Ref",
+      "props": {
+        "ref_type": "ADVISORY",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-47278"
+      }
+    },
+    {
+      "id": "https://github.com/pallets/flask/commit/73d6504063bfa00666a92b07a28aaf906c532f09",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://github.com/pallets/flask/commit/73d6504063bfa00666a92b07a28aaf906c532f09"
+      }
+    },
+    {
+      "id": "https://github.com/pallets/flask",
+      "label": "Ref",
+      "props": {
+        "ref_type": "PACKAGE",
+        "url": "https://github.com/pallets/flask"
+      }
+    },
+    {
+      "id": "https://github.com/pallets/flask/releases/tag/3.1.1",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://github.com/pallets/flask/releases/tag/3.1.1"
+      }
+    },
+    {
+      "id": "https://pypi.org/project/flask",
+      "label": "Ref",
+      "props": {
+        "ref_type": "PACKAGE",
+        "url": "https://pypi.org/project/flask"
+      }
+    },
+    {
+      "id": "https://github.com/advisories/GHSA-4grg-w6v8-c28g",
+      "label": "Ref",
+      "props": {
+        "ref_type": "ADVISORY",
+        "url": "https://github.com/advisories/GHSA-4grg-w6v8-c28g"
+      }
+    },
+    {
+      "id": "run:stackexchange-69199812-scan-0",
+      "label": "Run",
+      "props": {
+        "node_id": "run:stackexchange-69199812-scan-0",
+        "run_id": "stackexchange-69199812-scan-0",
+        "started_ns": 1795478398000000000
+      }
+    },
+    {
+      "id": "ans:stackexchange-69199812-scan-answer-flask-0",
+      "label": "Answer",
+      "props": {
+        "answer_id": "stackexchange-69199812-scan-answer-flask-0",
+        "created_ns": 1795478400000000000,
+        "model": "human:stackoverflow",
+        "node_id": "ans:stackexchange-69199812-scan-answer-flask-0",
+        "question": "\"Cloud Run error: Container failed to start. Failed to start and then listen on the port defined by the PORT environment variable.\"",
+        "run_id": "stackexchange-69199812-scan-0",
+        "text": "Flask==2.0.1"
+      }
+    },
+    {
+      "id": "span:stackexchange-69199812-scan-root-0",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795478399000000000,
+        "kind": "AGENT",
+        "name": "agent.answer",
+        "node_id": "span:stackexchange-69199812-scan-root-0",
+        "run_id": "stackexchange-69199812-scan-0",
+        "span_id": "stackexchange-69199812-scan-root-0"
+      }
+    },
+    {
+      "id": "span:stackexchange-69199812-scan-ret-0",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795478399500000000,
+        "kind": "RETRIEVER",
+        "name": "vector-search",
+        "node_id": "span:stackexchange-69199812-scan-ret-0",
+        "run_id": "stackexchange-69199812-scan-0",
+        "span_id": "stackexchange-69199812-scan-ret-0"
+      }
+    },
+    {
+      "id": "src:stackexchange-69199812-scan-doc-0",
+      "label": "Source",
+      "props": {
+        "at_ns": 1715631926000000000,
+        "doc_id": "stackexchange-69199812-scan-doc-0",
+        "node_id": "src:stackexchange-69199812-scan-doc-0",
+        "source_id": "src:stackexchange-69199812-scan-doc-0",
+        "uri": "https://stackoverflow.com/a/69199927"
+      }
+    },
+    {
+      "id": "pv:flask:2.0.1",
+      "label": "PkgVersion",
+      "props": {
+        "name": "flask",
+        "node_id": "pv:flask:2.0.1",
+        "version": "2.0.1"
+      }
+    },
+    {
+      "id": "claim:stackexchange-69199812-scan-claim-flask-0",
+      "label": "Claim",
+      "props": {
+        "claim_id": "stackexchange-69199812-scan-claim-flask-0",
+        "node_id": "claim:stackexchange-69199812-scan-claim-flask-0",
+        "text": "Flask==2.0.1"
+      }
+    },
+    {
+      "id": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-user\\stackexchange-69199812\\requirements.lock",
+      "label": "Lockfile",
+      "props": {
+        "node_id": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-user\\stackexchange-69199812\\requirements.lock",
+        "path": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-user\\stackexchange-69199812\\requirements.lock",
+        "pinned_ns": 1795478390000000000,
+        "sha256": "bb4b000802aa340d74b74430ba6eba5b205e3c10f145637117317fd4e3319d8d"
+      }
+    },
+    {
+      "id": "run:stackexchange-77198219-scan-1",
+      "label": "Run",
+      "props": {
+        "node_id": "run:stackexchange-77198219-scan-1",
+        "run_id": "stackexchange-77198219-scan-1",
+        "started_ns": 1795478398000000000
+      }
+    },
+    {
+      "id": "ans:stackexchange-77198219-scan-answer-flask-1",
+      "label": "Answer",
+      "props": {
+        "answer_id": "stackexchange-77198219-scan-answer-flask-1",
+        "created_ns": 1795478400000000000,
+        "model": "human:stackoverflow",
+        "node_id": "ans:stackexchange-77198219-scan-answer-flask-1",
+        "question": "Flask Socket-IO Emitting Across Google Cloud Run Container Instances",
+        "run_id": "stackexchange-77198219-scan-1",
+        "text": "Flask==2.3.2"
+      }
+    },
+    {
+      "id": "span:stackexchange-77198219-scan-root-1",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795478399000000000,
+        "kind": "AGENT",
+        "name": "agent.answer",
+        "node_id": "span:stackexchange-77198219-scan-root-1",
+        "run_id": "stackexchange-77198219-scan-1",
+        "span_id": "stackexchange-77198219-scan-root-1"
+      }
+    },
+    {
+      "id": "span:stackexchange-77198219-scan-ret-1",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795478399500000000,
+        "kind": "RETRIEVER",
+        "name": "vector-search",
+        "node_id": "span:stackexchange-77198219-scan-ret-1",
+        "run_id": "stackexchange-77198219-scan-1",
+        "span_id": "stackexchange-77198219-scan-ret-1"
+      }
+    },
+    {
+      "id": "src:stackexchange-77198219-scan-doc-1",
+      "label": "Source",
+      "props": {
+        "at_ns": 1715631926000000000,
+        "doc_id": "stackexchange-77198219-scan-doc-1",
+        "node_id": "src:stackexchange-77198219-scan-doc-1",
+        "source_id": "src:stackexchange-77198219-scan-doc-1",
+        "uri": "https://stackoverflow.com/a/77198831"
+      }
+    },
+    {
+      "id": "pv:flask:2.3.2",
+      "label": "PkgVersion",
+      "props": {
+        "name": "flask",
+        "node_id": "pv:flask:2.3.2",
+        "version": "2.3.2"
+      }
+    },
+    {
+      "id": "claim:stackexchange-77198219-scan-claim-flask-1",
+      "label": "Claim",
+      "props": {
+        "claim_id": "stackexchange-77198219-scan-claim-flask-1",
+        "node_id": "claim:stackexchange-77198219-scan-claim-flask-1",
+        "text": "Flask==2.3.2"
+      }
+    },
+    {
+      "id": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-user\\stackexchange-77198219\\requirements.lock",
+      "label": "Lockfile",
+      "props": {
+        "node_id": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-user\\stackexchange-77198219\\requirements.lock",
+        "path": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-user\\stackexchange-77198219\\requirements.lock",
+        "pinned_ns": 1795478390000000000,
+        "sha256": "bb4b000802aa340d74b74430ba6eba5b205e3c10f145637117317fd4e3319d8d"
+      }
+    },
+    {
+      "id": "run:stackexchange-79003376-scan-1",
+      "label": "Run",
+      "props": {
+        "node_id": "run:stackexchange-79003376-scan-1",
+        "run_id": "stackexchange-79003376-scan-1",
+        "started_ns": 1795478398000000000
+      }
+    },
+    {
+      "id": "ans:stackexchange-79003376-scan-answer-flask-1",
+      "label": "Answer",
+      "props": {
+        "answer_id": "stackexchange-79003376-scan-answer-flask-1",
+        "created_ns": 1795478400000000000,
+        "model": "human:stackoverflow",
+        "node_id": "ans:stackexchange-79003376-scan-answer-flask-1",
+        "question": "Flask Blueprint with socketio configuration",
+        "run_id": "stackexchange-79003376-scan-1",
+        "text": "Flask 2.2.5"
+      }
+    },
+    {
+      "id": "span:stackexchange-79003376-scan-root-1",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795478399000000000,
+        "kind": "AGENT",
+        "name": "agent.answer",
+        "node_id": "span:stackexchange-79003376-scan-root-1",
+        "run_id": "stackexchange-79003376-scan-1",
+        "span_id": "stackexchange-79003376-scan-root-1"
+      }
+    },
+    {
+      "id": "span:stackexchange-79003376-scan-ret-1",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795478399500000000,
+        "kind": "RETRIEVER",
+        "name": "vector-search",
+        "node_id": "span:stackexchange-79003376-scan-ret-1",
+        "run_id": "stackexchange-79003376-scan-1",
+        "span_id": "stackexchange-79003376-scan-ret-1"
+      }
+    },
+    {
+      "id": "src:stackexchange-79003376-scan-doc-1",
+      "label": "Source",
+      "props": {
+        "at_ns": 1715631926000000000,
+        "doc_id": "stackexchange-79003376-scan-doc-1",
+        "node_id": "src:stackexchange-79003376-scan-doc-1",
+        "source_id": "src:stackexchange-79003376-scan-doc-1",
+        "uri": "https://stackoverflow.com/a/79017722"
+      }
+    },
+    {
+      "id": "pv:flask:2.2.5",
+      "label": "PkgVersion",
+      "props": {
+        "name": "flask",
+        "node_id": "pv:flask:2.2.5",
+        "version": "2.2.5"
+      }
+    },
+    {
+      "id": "claim:stackexchange-79003376-scan-claim-flask-1",
+      "label": "Claim",
+      "props": {
+        "claim_id": "stackexchange-79003376-scan-claim-flask-1",
+        "node_id": "claim:stackexchange-79003376-scan-claim-flask-1",
+        "text": "Flask 2.2.5"
+      }
+    },
+    {
+      "id": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-user\\stackexchange-79003376\\requirements.lock",
+      "label": "Lockfile",
+      "props": {
+        "node_id": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-user\\stackexchange-79003376\\requirements.lock",
+        "path": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-user\\stackexchange-79003376\\requirements.lock",
+        "pinned_ns": 1795478390000000000,
+        "sha256": "bb4b000802aa340d74b74430ba6eba5b205e3c10f145637117317fd4e3319d8d"
+      }
+    },
+    {
+      "id": "run:stackexchange-79584062-scan-7",
+      "label": "Run",
+      "props": {
+        "node_id": "run:stackexchange-79584062-scan-7",
+        "run_id": "stackexchange-79584062-scan-7",
+        "started_ns": 1795478398000000000
+      }
+    },
+    {
+      "id": "ans:stackexchange-79584062-scan-answer-pillow-7",
+      "label": "Answer",
+      "props": {
+        "answer_id": "stackexchange-79584062-scan-answer-pillow-7",
+        "created_ns": 1795478400000000000,
+        "model": "human:stackoverflow",
+        "node_id": "ans:stackexchange-79584062-scan-answer-pillow-7",
+        "question": "UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown",
+        "run_id": "stackexchange-79584062-scan-7",
+        "text": "pillow==11.2.1"
+      }
+    },
+    {
+      "id": "span:stackexchange-79584062-scan-root-7",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795478399000000000,
+        "kind": "AGENT",
+        "name": "agent.answer",
+        "node_id": "span:stackexchange-79584062-scan-root-7",
+        "run_id": "stackexchange-79584062-scan-7",
+        "span_id": "stackexchange-79584062-scan-root-7"
+      }
+    },
+    {
+      "id": "span:stackexchange-79584062-scan-ret-7",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795478399500000000,
+        "kind": "RETRIEVER",
+        "name": "vector-search",
+        "node_id": "span:stackexchange-79584062-scan-ret-7",
+        "run_id": "stackexchange-79584062-scan-7",
+        "span_id": "stackexchange-79584062-scan-ret-7"
+      }
+    },
+    {
+      "id": "src:stackexchange-79584062-scan-doc-7",
+      "label": "Source",
+      "props": {
+        "at_ns": 1761079189000000000,
+        "doc_id": "stackexchange-79584062-scan-doc-7",
+        "node_id": "src:stackexchange-79584062-scan-doc-7",
+        "source_id": "src:stackexchange-79584062-scan-doc-7",
+        "uri": "https://stackoverflow.com/a/79584608"
+      }
+    },
+    {
+      "id": "pv:pillow:11.2.1",
+      "label": "PkgVersion",
+      "props": {
+        "name": "pillow",
+        "node_id": "pv:pillow:11.2.1",
+        "version": "11.2.1"
+      }
+    },
+    {
+      "id": "claim:stackexchange-79584062-scan-claim-pillow-7",
+      "label": "Claim",
+      "props": {
+        "claim_id": "stackexchange-79584062-scan-claim-pillow-7",
+        "node_id": "claim:stackexchange-79584062-scan-claim-pillow-7",
+        "text": "pillow==11.2.1"
+      }
+    },
+    {
+      "id": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-user\\stackexchange-79584062\\requirements.lock",
+      "label": "Lockfile",
+      "props": {
+        "node_id": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-user\\stackexchange-79584062\\requirements.lock",
+        "path": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-user\\stackexchange-79584062\\requirements.lock",
+        "pinned_ns": 1795478390000000000,
+        "sha256": "67d0eb406c3987f3042b7bb04301aee67db4299eb3ece953a0ea7fe7f6fc9ebf"
+      }
+    },
+    {
+      "id": "pv:pillow:13.0.0",
+      "label": "PkgVersion",
+      "props": {
+        "name": "pillow",
+        "node_id": "pv:pillow:13.0.0",
+        "version": "13.0.0"
+      }
+    },
+    {
+      "id": "adv:GHSA-22hg-r758-rrw9",
+      "label": "Advisory",
+      "props": {
+        "fix_available_ns": -1,
+        "fixed": "13.0.0",
+        "id": "GHSA-22hg-r758-rrw9",
+        "node_id": "adv:GHSA-22hg-r758-rrw9",
+        "osv_modified_ns": 1793004963565712896,
+        "published": "2026-10-21T20:39:49Z",
+        "published_ns": 1792615189000000000,
+        "summary": "Pillow: Infinite loop in MIC n_frames when the embedded TIFF",
+        "url": "https://github.com/python-pillow/Pillow/security/advisories/GHSA-22hg-r758-rrw9"
+      }
+    },
+    {
+      "id": "alias:BIT-pillow-2026-112390",
+      "label": "Alias",
+      "props": {
+        "alias": "BIT-pillow-2026-112390",
+        "node_id": "alias:BIT-pillow-2026-112390"
+      }
+    },
+    {
+      "id": "alias:CVE-2026-112390",
+      "label": "Alias",
+      "props": {
+        "alias": "CVE-2026-112390",
+        "node_id": "alias:CVE-2026-112390"
+      }
+    },
+    {
+      "id": "https://github.com/python-pillow/Pillow/security/advisories/GHSA-22hg-r758-rrw9",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://github.com/python-pillow/Pillow/security/advisories/GHSA-22hg-r758-rrw9"
+      }
+    },
+    {
+      "id": "https://nvd.nist.gov/vuln/detail/CVE-2026-112390",
+      "label": "Ref",
+      "props": {
+        "ref_type": "ADVISORY",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-112390"
+      }
+    },
+    {
+      "id": "https://github.com/python-pillow/Pillow/commit/26cb3ed061173b817b9ee4b6f507cb0e1e293218",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://github.com/python-pillow/Pillow/commit/26cb3ed061173b817b9ee4b6f507cb0e1e293218"
+      }
+    },
+    {
+      "id": "https://github.com/python-pillow/Pillow",
+      "label": "Ref",
+      "props": {
+        "ref_type": "PACKAGE",
+        "url": "https://github.com/python-pillow/Pillow"
+      }
+    },
+    {
+      "id": "https://github.com/python-pillow/Pillow/releases/tag/13.0.0",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://github.com/python-pillow/Pillow/releases/tag/13.0.0"
+      }
+    },
+    {
+      "id": "run:claude-pillow-1000-scan-0",
+      "label": "Run",
+      "props": {
+        "node_id": "run:claude-pillow-1000-scan-0",
+        "run_id": "claude-pillow-1000-scan-0",
+        "started_ns": 1795478398000000000
+      }
+    },
+    {
+      "id": "ans:claude-pillow-1000-scan-answer-pillow-0",
+      "label": "Answer",
+      "props": {
+        "answer_id": "claude-pillow-1000-scan-answer-pillow-0",
+        "created_ns": 1795478400000000000,
+        "model": "claude-sonnet-4-6",
+        "node_id": "ans:claude-pillow-1000-scan-answer-pillow-0",
+        "question": "claude-sonnet-4-6 · BigCodeBench/406",
+        "run_id": "claude-pillow-1000-scan-0",
+        "text": "from PIL import Image  # VERSION=10.0.0"
+      }
+    },
+    {
+      "id": "span:claude-pillow-1000-scan-root-0",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795478399000000000,
+        "kind": "AGENT",
+        "name": "agent.answer",
+        "node_id": "span:claude-pillow-1000-scan-root-0",
+        "run_id": "claude-pillow-1000-scan-0",
+        "span_id": "claude-pillow-1000-scan-root-0"
+      }
+    },
+    {
+      "id": "span:claude-pillow-1000-scan-ret-0",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795478399500000000,
+        "kind": "RETRIEVER",
+        "name": "vector-search",
+        "node_id": "span:claude-pillow-1000-scan-ret-0",
+        "run_id": "claude-pillow-1000-scan-0",
+        "span_id": "claude-pillow-1000-scan-ret-0"
+      }
+    },
+    {
+      "id": "src:claude-pillow-1000-scan-doc-0",
+      "label": "Source",
+      "props": {
+        "at_ns": 1761079189000000000,
+        "doc_id": "claude-pillow-1000-scan-doc-0",
+        "node_id": "src:claude-pillow-1000-scan-doc-0",
+        "source_id": "src:claude-pillow-1000-scan-doc-0",
+        "uri": "https://github.com/dw763j/PinTrace/blob/main/outputs/evaluation/direct_dependencies.jsonl"
+      }
+    },
+    {
+      "id": "pv:pillow:10.0.0",
+      "label": "PkgVersion",
+      "props": {
+        "name": "pillow",
+        "node_id": "pv:pillow:10.0.0",
+        "version": "10.0.0"
+      }
+    },
+    {
+      "id": "claim:claude-pillow-1000-scan-claim-pillow-0",
+      "label": "Claim",
+      "props": {
+        "claim_id": "claude-pillow-1000-scan-claim-pillow-0",
+        "node_id": "claim:claude-pillow-1000-scan-claim-pillow-0",
+        "text": "from PIL import Image  # VERSION=10.0.0"
+      }
+    },
+    {
+      "id": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-agent\\claude-pillow-1000\\requirements.lock",
+      "label": "Lockfile",
+      "props": {
+        "node_id": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-agent\\claude-pillow-1000\\requirements.lock",
+        "path": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-agent\\claude-pillow-1000\\requirements.lock",
+        "pinned_ns": 1795478390000000000,
+        "sha256": "67d0eb406c3987f3042b7bb04301aee67db4299eb3ece953a0ea7fe7f6fc9ebf"
+      }
+    },
+    {
+      "id": "run:claudesonnet-django-427-scan-0",
+      "label": "Run",
+      "props": {
+        "node_id": "run:claudesonnet-django-427-scan-0",
+        "run_id": "claudesonnet-django-427-scan-0",
+        "started_ns": 1795478398000000000
+      }
+    },
+    {
+      "id": "ans:claudesonnet-django-427-scan-answer-django-0",
+      "label": "Answer",
+      "props": {
+        "answer_id": "claudesonnet-django-427-scan-answer-django-0",
+        "created_ns": 1795478400000000000,
+        "model": "claude-sonnet-4-6",
+        "node_id": "ans:claudesonnet-django-427-scan-answer-django-0",
+        "question": "claude-sonnet-4-6 · BigCodeBench/181",
+        "run_id": "claudesonnet-django-427-scan-0",
+        "text": "Django==4.2.7"
+      }
+    },
+    {
+      "id": "span:claudesonnet-django-427-scan-root-0",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795478399000000000,
+        "kind": "AGENT",
+        "name": "agent.answer",
+        "node_id": "span:claudesonnet-django-427-scan-root-0",
+        "run_id": "claudesonnet-django-427-scan-0",
+        "span_id": "claudesonnet-django-427-scan-root-0"
+      }
+    },
+    {
+      "id": "span:claudesonnet-django-427-scan-ret-0",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795478399500000000,
+        "kind": "RETRIEVER",
+        "name": "vector-search",
+        "node_id": "span:claudesonnet-django-427-scan-ret-0",
+        "run_id": "claudesonnet-django-427-scan-0",
+        "span_id": "claudesonnet-django-427-scan-ret-0"
+      }
+    },
+    {
+      "id": "src:claudesonnet-django-427-scan-doc-0",
+      "label": "Source",
+      "props": {
+        "at_ns": 1738596623000000000,
+        "doc_id": "claudesonnet-django-427-scan-doc-0",
+        "node_id": "src:claudesonnet-django-427-scan-doc-0",
+        "source_id": "src:claudesonnet-django-427-scan-doc-0",
+        "uri": "https://github.com/dw763j/PinTrace/blob/main/outputs/evaluation/direct_dependencies.jsonl"
+      }
+    },
+    {
+      "id": "pv:django:4.2.7",
+      "label": "PkgVersion",
+      "props": {
+        "name": "django",
+        "node_id": "pv:django:4.2.7",
+        "version": "4.2.7"
+      }
+    },
+    {
+      "id": "claim:claudesonnet-django-427-scan-claim-django-0",
+      "label": "Claim",
+      "props": {
+        "claim_id": "claudesonnet-django-427-scan-claim-django-0",
+        "node_id": "claim:claudesonnet-django-427-scan-claim-django-0",
+        "text": "Django==4.2.7"
+      }
+    },
+    {
+      "id": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-agent\\claudesonnet-django-427\\requirements.lock",
+      "label": "Lockfile",
+      "props": {
+        "node_id": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-agent\\claudesonnet-django-427\\requirements.lock",
+        "path": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-agent\\claudesonnet-django-427\\requirements.lock",
+        "pinned_ns": 1795478390000000000,
+        "sha256": "67cb27c62e07c2649a3e7940c49a02b8a64a2fe3ac7685ea85355af525a396e2"
+      }
+    },
+    {
+      "id": "pv:django:6.0.2",
+      "label": "PkgVersion",
+      "props": {
+        "name": "django",
+        "node_id": "pv:django:6.0.2",
+        "version": "6.0.2"
+      }
+    },
+    {
+      "id": "adv:GHSA-2mcm-79hx-8fxw",
+      "label": "Advisory",
+      "props": {
+        "fix_available_ns": -1,
+        "fixed": "6.0.2",
+        "id": "GHSA-2mcm-79hx-8fxw",
+        "node_id": "adv:GHSA-2mcm-79hx-8fxw",
+        "osv_modified_ns": 1789012233805951232,
+        "published": "2026-02-03T15:30:23Z",
+        "published_ns": 1770132623000000000,
+        "summary": "Django has Observable Timing Discrepancy",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-13473"
+      }
+    },
+    {
+      "id": "alias:BIT-django-2025-13473",
+      "label": "Alias",
+      "props": {
+        "alias": "BIT-django-2025-13473",
+        "node_id": "alias:BIT-django-2025-13473"
+      }
+    },
+    {
+      "id": "alias:CVE-2025-13473",
+      "label": "Alias",
+      "props": {
+        "alias": "CVE-2025-13473",
+        "node_id": "alias:CVE-2025-13473"
+      }
+    },
+    {
+      "id": "alias:PYSEC-2026-42",
+      "label": "Alias",
+      "props": {
+        "alias": "PYSEC-2026-42",
+        "node_id": "alias:PYSEC-2026-42"
+      }
+    },
+    {
+      "id": "https://nvd.nist.gov/vuln/detail/CVE-2025-13473",
+      "label": "Ref",
+      "props": {
+        "ref_type": "ADVISORY",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-13473"
+      }
+    },
+    {
+      "id": "https://docs.djangoproject.com/en/dev/releases/security",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://docs.djangoproject.com/en/dev/releases/security"
+      }
+    },
+    {
+      "id": "https://github.com/django/django",
+      "label": "Ref",
+      "props": {
+        "ref_type": "PACKAGE",
+        "url": "https://github.com/django/django"
+      }
+    },
+    {
+      "id": "https://github.com/pypa/advisory-database/tree/main/vulns/django/PYSEC-2026-42.yaml",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://github.com/pypa/advisory-database/tree/main/vulns/django/PYSEC-2026-42.yaml"
+      }
+    },
+    {
+      "id": "https://groups.google.com/g/django-announce",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://groups.google.com/g/django-announce"
+      }
+    },
+    {
+      "id": "https://www.djangoproject.com/weblog/2026/feb/03/security-releases",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://www.djangoproject.com/weblog/2026/feb/03/security-releases"
+      }
+    },
+    {
+      "id": "https://docs.djangoproject.com/en/dev/releases/security/",
+      "label": "Ref",
+      "props": {
+        "ref_type": "FIX",
+        "url": "https://docs.djangoproject.com/en/dev/releases/security/"
+      }
+    },
+    {
+      "id": "https://www.djangoproject.com/weblog/2026/feb/03/security-releases/",
+      "label": "Ref",
+      "props": {
+        "ref_type": "FIX",
+        "url": "https://www.djangoproject.com/weblog/2026/feb/03/security-releases/"
+      }
+    },
+    {
+      "id": "https://github.com/advisories/GHSA-2mcm-79hx-8fxw",
+      "label": "Ref",
+      "props": {
+        "ref_type": "ADVISORY",
+        "url": "https://github.com/advisories/GHSA-2mcm-79hx-8fxw"
+      }
+    },
+    {
+      "id": "run:deepseek-jinja2-312-scan-0",
+      "label": "Run",
+      "props": {
+        "node_id": "run:deepseek-jinja2-312-scan-0",
+        "run_id": "deepseek-jinja2-312-scan-0",
+        "started_ns": 1795478398000000000
+      }
+    },
+    {
+      "id": "ans:deepseek-jinja2-312-scan-answer-jinja2-0",
+      "label": "Answer",
+      "props": {
+        "answer_id": "deepseek-jinja2-312-scan-answer-jinja2-0",
+        "created_ns": 1795478400000000000,
+        "model": "DeepSeek-V3.2",
+        "node_id": "ans:deepseek-jinja2-312-scan-answer-jinja2-0",
+        "question": "DeepSeek-V3.2 · stackexchange-63901755",
+        "run_id": "deepseek-jinja2-312-scan-0",
+        "text": "from jinja2 import Environment, PackageLoader, select_autoescape  # VERSION=3.1.2"
+      }
+    },
+    {
+      "id": "span:deepseek-jinja2-312-scan-root-0",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795478399000000000,
+        "kind": "AGENT",
+        "name": "agent.answer",
+        "node_id": "span:deepseek-jinja2-312-scan-root-0",
+        "run_id": "deepseek-jinja2-312-scan-0",
+        "span_id": "deepseek-jinja2-312-scan-root-0"
+      }
+    },
+    {
+      "id": "span:deepseek-jinja2-312-scan-ret-0",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795478399500000000,
+        "kind": "RETRIEVER",
+        "name": "vector-search",
+        "node_id": "span:deepseek-jinja2-312-scan-ret-0",
+        "run_id": "deepseek-jinja2-312-scan-0",
+        "span_id": "deepseek-jinja2-312-scan-ret-0"
+      }
+    },
+    {
+      "id": "src:deepseek-jinja2-312-scan-doc-0",
+      "label": "Source",
+      "props": {
+        "at_ns": 1709671214000000000,
+        "doc_id": "deepseek-jinja2-312-scan-doc-0",
+        "node_id": "src:deepseek-jinja2-312-scan-doc-0",
+        "source_id": "src:deepseek-jinja2-312-scan-doc-0",
+        "uri": "https://github.com/dw763j/PinTrace/blob/main/outputs/evaluation/direct_dependencies.jsonl"
+      }
+    },
+    {
+      "id": "pv:jinja2:3.1.2",
+      "label": "PkgVersion",
+      "props": {
+        "name": "jinja2",
+        "node_id": "pv:jinja2:3.1.2",
+        "version": "3.1.2"
+      }
+    },
+    {
+      "id": "claim:deepseek-jinja2-312-scan-claim-jinja2-0",
+      "label": "Claim",
+      "props": {
+        "claim_id": "deepseek-jinja2-312-scan-claim-jinja2-0",
+        "node_id": "claim:deepseek-jinja2-312-scan-claim-jinja2-0",
+        "text": "from jinja2 import Environment, PackageLoader, select_autoescape  # VERSION=3.1.2"
+      }
+    },
+    {
+      "id": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-agent\\deepseek-jinja2-312\\requirements.lock",
+      "label": "Lockfile",
+      "props": {
+        "node_id": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-agent\\deepseek-jinja2-312\\requirements.lock",
+        "path": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-agent\\deepseek-jinja2-312\\requirements.lock",
+        "pinned_ns": 1795478390000000000,
+        "sha256": "8abeb8abcc1f15551ad877205014b6ca81c252481ef287d96e65bed4b0a8e609"
+      }
+    },
+    {
+      "id": "pv:jinja2:3.1.6",
+      "label": "PkgVersion",
+      "props": {
+        "name": "jinja2",
+        "node_id": "pv:jinja2:3.1.6",
+        "version": "3.1.6"
+      }
+    },
+    {
+      "id": "adv:GHSA-cpwx-vrp4-4pq7",
+      "label": "Advisory",
+      "props": {
+        "fix_available_ns": -1,
+        "fixed": "3.1.6",
+        "id": "GHSA-cpwx-vrp4-4pq7",
+        "node_id": "adv:GHSA-cpwx-vrp4-4pq7",
+        "osv_modified_ns": 1794962713756180992,
+        "published": "2025-03-05T20:40:14Z",
+        "published_ns": 1741207214000000000,
+        "summary": "Jinja2 vulnerable to sandbox breakout through attr filter selecting format method",
+        "url": "https://github.com/pallets/jinja/security/advisories/GHSA-cpwx-vrp4-4pq7"
+      }
+    },
+    {
+      "id": "alias:CVE-2025-27516",
+      "label": "Alias",
+      "props": {
+        "alias": "CVE-2025-27516",
+        "node_id": "alias:CVE-2025-27516"
+      }
+    },
+    {
+      "id": "alias:PYSEC-2026-1471",
+      "label": "Alias",
+      "props": {
+        "alias": "PYSEC-2026-1471",
+        "node_id": "alias:PYSEC-2026-1471"
+      }
+    },
+    {
+      "id": "https://github.com/pallets/jinja/security/advisories/GHSA-cpwx-vrp4-4pq7",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://github.com/pallets/jinja/security/advisories/GHSA-cpwx-vrp4-4pq7"
+      }
+    },
+    {
+      "id": "https://nvd.nist.gov/vuln/detail/CVE-2025-27516",
+      "label": "Ref",
+      "props": {
+        "ref_type": "ADVISORY",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-27516"
+      }
+    },
+    {
+      "id": "https://github.com/pallets/jinja/commit/90457bbf33b8662926ae65cdde4c4c32e756e403",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://github.com/pallets/jinja/commit/90457bbf33b8662926ae65cdde4c4c32e756e403"
+      }
+    },
+    {
+      "id": "https://github.com/pallets/jinja",
+      "label": "Ref",
+      "props": {
+        "ref_type": "PACKAGE",
+        "url": "https://github.com/pallets/jinja"
+      }
+    },
+    {
+      "id": "https://github.com/pallets/jinja/releases/tag/3.1.6",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://github.com/pallets/jinja/releases/tag/3.1.6"
+      }
+    },
+    {
+      "id": "https://github.com/pypa/advisory-database/tree/main/vulns/jinja2/PYSEC-2026-1471.yaml",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://github.com/pypa/advisory-database/tree/main/vulns/jinja2/PYSEC-2026-1471.yaml"
+      }
+    },
+    {
+      "id": "https://lists.debian.org/debian-lts-announce/2025/04/msg00022.html",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://lists.debian.org/debian-lts-announce/2025/04/msg00022.html"
+      }
+    },
+    {
+      "id": "https://lists.debian.org/debian-lts-announce/2025/04/msg00045.html",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://lists.debian.org/debian-lts-announce/2025/04/msg00045.html"
+      }
+    },
+    {
+      "id": "https://pypi.org/project/jinja2",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://pypi.org/project/jinja2"
+      }
+    },
+    {
+      "id": "https://github.com/advisories/GHSA-cpwx-vrp4-4pq7",
+      "label": "Ref",
+      "props": {
+        "ref_type": "ADVISORY",
+        "url": "https://github.com/advisories/GHSA-cpwx-vrp4-4pq7"
+      }
+    },
+    {
+      "id": "run:kimi-pillow-1001-scan-0",
+      "label": "Run",
+      "props": {
+        "node_id": "run:kimi-pillow-1001-scan-0",
+        "run_id": "kimi-pillow-1001-scan-0",
+        "started_ns": 1795478398000000000
+      }
+    },
+    {
+      "id": "ans:kimi-pillow-1001-scan-answer-pillow-0",
+      "label": "Answer",
+      "props": {
+        "answer_id": "kimi-pillow-1001-scan-answer-pillow-0",
+        "created_ns": 1795478400000000000,
+        "model": "kimi-k2.5",
+        "node_id": "ans:kimi-pillow-1001-scan-answer-pillow-0",
+        "question": "kimi-k2.5 · BigCodeBench/1019",
+        "run_id": "kimi-pillow-1001-scan-0",
+        "text": "from PIL import Image  # VERSION=10.0.1"
+      }
+    },
+    {
+      "id": "span:kimi-pillow-1001-scan-root-0",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795478399000000000,
+        "kind": "AGENT",
+        "name": "agent.answer",
+        "node_id": "span:kimi-pillow-1001-scan-root-0",
+        "run_id": "kimi-pillow-1001-scan-0",
+        "span_id": "kimi-pillow-1001-scan-root-0"
+      }
+    },
+    {
+      "id": "span:kimi-pillow-1001-scan-ret-0",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795478399500000000,
+        "kind": "RETRIEVER",
+        "name": "vector-search",
+        "node_id": "span:kimi-pillow-1001-scan-ret-0",
+        "run_id": "kimi-pillow-1001-scan-0",
+        "span_id": "kimi-pillow-1001-scan-ret-0"
+      }
+    },
+    {
+      "id": "src:kimi-pillow-1001-scan-doc-0",
+      "label": "Source",
+      "props": {
+        "at_ns": 1761079189000000000,
+        "doc_id": "kimi-pillow-1001-scan-doc-0",
+        "node_id": "src:kimi-pillow-1001-scan-doc-0",
+        "source_id": "src:kimi-pillow-1001-scan-doc-0",
+        "uri": "https://github.com/dw763j/PinTrace/blob/main/outputs/evaluation/direct_dependencies.jsonl"
+      }
+    },
+    {
+      "id": "pv:pillow:10.0.1",
+      "label": "PkgVersion",
+      "props": {
+        "name": "pillow",
+        "node_id": "pv:pillow:10.0.1",
+        "version": "10.0.1"
+      }
+    },
+    {
+      "id": "claim:kimi-pillow-1001-scan-claim-pillow-0",
+      "label": "Claim",
+      "props": {
+        "claim_id": "kimi-pillow-1001-scan-claim-pillow-0",
+        "node_id": "claim:kimi-pillow-1001-scan-claim-pillow-0",
+        "text": "from PIL import Image  # VERSION=10.0.1"
+      }
+    },
+    {
+      "id": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-agent\\kimi-pillow-1001\\requirements.lock",
+      "label": "Lockfile",
+      "props": {
+        "node_id": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-agent\\kimi-pillow-1001\\requirements.lock",
+        "path": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-agent\\kimi-pillow-1001\\requirements.lock",
+        "pinned_ns": 1795478390000000000,
+        "sha256": "67d0eb406c3987f3042b7bb04301aee67db4299eb3ece953a0ea7fe7f6fc9ebf"
+      }
+    },
+    {
+      "id": "run:llama-flask-222-scan-0",
+      "label": "Run",
+      "props": {
+        "node_id": "run:llama-flask-222-scan-0",
+        "run_id": "llama-flask-222-scan-0",
+        "started_ns": 1795478398000000000
+      }
+    },
+    {
+      "id": "ans:llama-flask-222-scan-answer-flask-0",
+      "label": "Answer",
+      "props": {
+        "answer_id": "llama-flask-222-scan-answer-flask-0",
+        "created_ns": 1795478400000000000,
+        "model": "meta-llama/llama-4-scout",
+        "node_id": "ans:llama-flask-222-scan-answer-flask-0",
+        "question": "meta-llama/llama-4-scout · BigCodeBench/80",
+        "run_id": "llama-flask-222-scan-0",
+        "text": "from flask import Flask, render_template, request  # VERSION=2.2.2"
+      }
+    },
+    {
+      "id": "span:llama-flask-222-scan-root-0",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795478399000000000,
+        "kind": "AGENT",
+        "name": "agent.answer",
+        "node_id": "span:llama-flask-222-scan-root-0",
+        "run_id": "llama-flask-222-scan-0",
+        "span_id": "llama-flask-222-scan-root-0"
+      }
+    },
+    {
+      "id": "span:llama-flask-222-scan-ret-0",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795478399500000000,
+        "kind": "RETRIEVER",
+        "name": "vector-search",
+        "node_id": "span:llama-flask-222-scan-ret-0",
+        "run_id": "llama-flask-222-scan-0",
+        "span_id": "llama-flask-222-scan-ret-0"
+      }
+    },
+    {
+      "id": "src:llama-flask-222-scan-doc-0",
+      "label": "Source",
+      "props": {
+        "at_ns": 1715631926000000000,
+        "doc_id": "llama-flask-222-scan-doc-0",
+        "node_id": "src:llama-flask-222-scan-doc-0",
+        "source_id": "src:llama-flask-222-scan-doc-0",
+        "uri": "https://github.com/dw763j/PinTrace/blob/main/outputs/evaluation/direct_dependencies.jsonl"
+      }
+    },
+    {
+      "id": "pv:flask:2.2.2",
+      "label": "PkgVersion",
+      "props": {
+        "name": "flask",
+        "node_id": "pv:flask:2.2.2",
+        "version": "2.2.2"
+      }
+    },
+    {
+      "id": "claim:llama-flask-222-scan-claim-flask-0",
+      "label": "Claim",
+      "props": {
+        "claim_id": "llama-flask-222-scan-claim-flask-0",
+        "node_id": "claim:llama-flask-222-scan-claim-flask-0",
+        "text": "from flask import Flask, render_template, request  # VERSION=2.2.2"
+      }
+    },
+    {
+      "id": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-agent\\llama-flask-222\\requirements.lock",
+      "label": "Lockfile",
+      "props": {
+        "node_id": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-agent\\llama-flask-222\\requirements.lock",
+        "path": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-agent\\llama-flask-222\\requirements.lock",
+        "pinned_ns": 1795478390000000000,
+        "sha256": "bb4b000802aa340d74b74430ba6eba5b205e3c10f145637117317fd4e3319d8d"
+      }
+    },
+    {
+      "id": "run:minimax-flask-233-scan-0",
+      "label": "Run",
+      "props": {
+        "node_id": "run:minimax-flask-233-scan-0",
+        "run_id": "minimax-flask-233-scan-0",
+        "started_ns": 1795478398000000000
+      }
+    },
+    {
+      "id": "ans:minimax-flask-233-scan-answer-flask-0",
+      "label": "Answer",
+      "props": {
+        "answer_id": "minimax-flask-233-scan-answer-flask-0",
+        "created_ns": 1795478400000000000,
+        "model": "MiniMax-M2.5",
+        "node_id": "ans:minimax-flask-233-scan-answer-flask-0",
+        "question": "MiniMax-M2.5 · BigCodeBench/401",
+        "run_id": "minimax-flask-233-scan-0",
+        "text": "from flask import Flask  # VERSION=2.3.3"
+      }
+    },
+    {
+      "id": "span:minimax-flask-233-scan-root-0",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795478399000000000,
+        "kind": "AGENT",
+        "name": "agent.answer",
+        "node_id": "span:minimax-flask-233-scan-root-0",
+        "run_id": "minimax-flask-233-scan-0",
+        "span_id": "minimax-flask-233-scan-root-0"
+      }
+    },
+    {
+      "id": "span:minimax-flask-233-scan-ret-0",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795478399500000000,
+        "kind": "RETRIEVER",
+        "name": "vector-search",
+        "node_id": "span:minimax-flask-233-scan-ret-0",
+        "run_id": "minimax-flask-233-scan-0",
+        "span_id": "minimax-flask-233-scan-ret-0"
+      }
+    },
+    {
+      "id": "src:minimax-flask-233-scan-doc-0",
+      "label": "Source",
+      "props": {
+        "at_ns": 1715631926000000000,
+        "doc_id": "minimax-flask-233-scan-doc-0",
+        "node_id": "src:minimax-flask-233-scan-doc-0",
+        "source_id": "src:minimax-flask-233-scan-doc-0",
+        "uri": "https://github.com/dw763j/PinTrace/blob/main/outputs/evaluation/direct_dependencies.jsonl"
+      }
+    },
+    {
+      "id": "pv:flask:2.3.3",
+      "label": "PkgVersion",
+      "props": {
+        "name": "flask",
+        "node_id": "pv:flask:2.3.3",
+        "version": "2.3.3"
+      }
+    },
+    {
+      "id": "claim:minimax-flask-233-scan-claim-flask-0",
+      "label": "Claim",
+      "props": {
+        "claim_id": "minimax-flask-233-scan-claim-flask-0",
+        "node_id": "claim:minimax-flask-233-scan-claim-flask-0",
+        "text": "from flask import Flask  # VERSION=2.3.3"
+      }
+    },
+    {
+      "id": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-agent\\minimax-flask-233\\requirements.lock",
+      "label": "Lockfile",
+      "props": {
+        "node_id": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-agent\\minimax-flask-233\\requirements.lock",
+        "path": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-agent\\minimax-flask-233\\requirements.lock",
+        "pinned_ns": 1795478390000000000,
+        "sha256": "bb4b000802aa340d74b74430ba6eba5b205e3c10f145637117317fd4e3319d8d"
+      }
+    },
+    {
+      "id": "run:minimax-numpy-1210-scan-0",
+      "label": "Run",
+      "props": {
+        "node_id": "run:minimax-numpy-1210-scan-0",
+        "run_id": "minimax-numpy-1210-scan-0",
+        "started_ns": 1795478398000000000
+      }
+    },
+    {
+      "id": "ans:minimax-numpy-1210-scan-answer-numpy-0",
+      "label": "Answer",
+      "props": {
+        "answer_id": "minimax-numpy-1210-scan-answer-numpy-0",
+        "created_ns": 1795478400000000000,
+        "model": "MiniMax-M2.5",
+        "node_id": "ans:minimax-numpy-1210-scan-answer-numpy-0",
+        "question": "MiniMax-M2.5 · BigCodeBench/10",
+        "run_id": "minimax-numpy-1210-scan-0",
+        "text": "import numpy as np  # VERSION=1.21.0"
+      }
+    },
+    {
+      "id": "span:minimax-numpy-1210-scan-root-0",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795478399000000000,
+        "kind": "AGENT",
+        "name": "agent.answer",
+        "node_id": "span:minimax-numpy-1210-scan-root-0",
+        "run_id": "minimax-numpy-1210-scan-0",
+        "span_id": "minimax-numpy-1210-scan-root-0"
+      }
+    },
+    {
+      "id": "span:minimax-numpy-1210-scan-ret-0",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795478399500000000,
+        "kind": "RETRIEVER",
+        "name": "vector-search",
+        "node_id": "span:minimax-numpy-1210-scan-ret-0",
+        "run_id": "minimax-numpy-1210-scan-0",
+        "span_id": "minimax-numpy-1210-scan-ret-0"
+      }
+    },
+    {
+      "id": "src:minimax-numpy-1210-scan-doc-0",
+      "label": "Source",
+      "props": {
+        "at_ns": 1608249641000000000,
+        "doc_id": "minimax-numpy-1210-scan-doc-0",
+        "node_id": "src:minimax-numpy-1210-scan-doc-0",
+        "source_id": "src:minimax-numpy-1210-scan-doc-0",
+        "uri": "https://github.com/dw763j/PinTrace/blob/main/outputs/evaluation/direct_dependencies.jsonl"
+      }
+    },
+    {
+      "id": "pv:numpy:1.21.0",
+      "label": "PkgVersion",
+      "props": {
+        "name": "numpy",
+        "node_id": "pv:numpy:1.21.0",
+        "version": "1.21.0"
+      }
+    },
+    {
+      "id": "claim:minimax-numpy-1210-scan-claim-numpy-0",
+      "label": "Claim",
+      "props": {
+        "claim_id": "minimax-numpy-1210-scan-claim-numpy-0",
+        "node_id": "claim:minimax-numpy-1210-scan-claim-numpy-0",
+        "text": "import numpy as np  # VERSION=1.21.0"
+      }
+    },
+    {
+      "id": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-agent\\minimax-numpy-1210\\requirements.lock",
+      "label": "Lockfile",
+      "props": {
+        "node_id": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-agent\\minimax-numpy-1210\\requirements.lock",
+        "path": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-agent\\minimax-numpy-1210\\requirements.lock",
+        "pinned_ns": 1795478390000000000,
+        "sha256": "627168402d0514cccd5261db8ff9945148abfac4be533e78ea1fbca4a36871a7"
+      }
+    },
+    {
+      "id": "pv:numpy:1.22",
+      "label": "PkgVersion",
+      "props": {
+        "name": "numpy",
+        "node_id": "pv:numpy:1.22",
+        "version": "1.22"
+      }
+    },
+    {
+      "id": "adv:GHSA-fpfv-jqm9-f5jm",
+      "label": "Advisory",
+      "props": {
+        "fix_available_ns": -1,
+        "fixed": "1.22",
+        "id": "GHSA-fpfv-jqm9-f5jm",
+        "node_id": "adv:GHSA-fpfv-jqm9-f5jm",
+        "osv_modified_ns": 1699416367388274944,
+        "published": "2021-12-18T00:00:41Z",
+        "published_ns": 1639785641000000000,
+        "summary": "Incorrect Comparison in NumPy",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-34141"
+      }
+    },
+    {
+      "id": "alias:CVE-2021-34141",
+      "label": "Alias",
+      "props": {
+        "alias": "CVE-2021-34141",
+        "node_id": "alias:CVE-2021-34141"
+      }
+    },
+    {
+      "id": "alias:PYSEC-2021-855",
+      "label": "Alias",
+      "props": {
+        "alias": "PYSEC-2021-855",
+        "node_id": "alias:PYSEC-2021-855"
+      }
+    },
+    {
+      "id": "https://nvd.nist.gov/vuln/detail/CVE-2021-34141",
+      "label": "Ref",
+      "props": {
+        "ref_type": "ADVISORY",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-34141"
+      }
+    },
+    {
+      "id": "https://github.com/numpy/numpy/issues/18993",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://github.com/numpy/numpy/issues/18993"
+      }
+    },
+    {
+      "id": "https://github.com/numpy/numpy/issues/18993#issuecomment-1010735102",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://github.com/numpy/numpy/issues/18993#issuecomment-1010735102"
+      }
+    },
+    {
+      "id": "https://github.com/advisories/GHSA-fpfv-jqm9-f5jm",
+      "label": "Ref",
+      "props": {
+        "ref_type": "ADVISORY",
+        "url": "https://github.com/advisories/GHSA-fpfv-jqm9-f5jm"
+      }
+    },
+    {
+      "id": "https://github.com/numpy/numpy",
+      "label": "Ref",
+      "props": {
+        "ref_type": "PACKAGE",
+        "url": "https://github.com/numpy/numpy"
+      }
+    },
+    {
+      "id": "https://github.com/pypa/advisory-database/tree/main/vulns/numpy/PYSEC-2021-855.yaml",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://github.com/pypa/advisory-database/tree/main/vulns/numpy/PYSEC-2021-855.yaml"
+      }
+    },
+    {
+      "id": "https://www.oracle.com/security-alerts/cpujul2022.html",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://www.oracle.com/security-alerts/cpujul2022.html"
+      }
+    },
+    {
+      "id": "run:minimax-pillow-950-scan-0",
+      "label": "Run",
+      "props": {
+        "node_id": "run:minimax-pillow-950-scan-0",
+        "run_id": "minimax-pillow-950-scan-0",
+        "started_ns": 1795478398000000000
+      }
+    },
+    {
+      "id": "ans:minimax-pillow-950-scan-answer-pillow-0",
+      "label": "Answer",
+      "props": {
+        "answer_id": "minimax-pillow-950-scan-answer-pillow-0",
+        "created_ns": 1795478400000000000,
+        "model": "MiniMax-M2.5",
+        "node_id": "ans:minimax-pillow-950-scan-answer-pillow-0",
+        "question": "MiniMax-M2.5 · BigCodeBench/406",
+        "run_id": "minimax-pillow-950-scan-0",
+        "text": "from PIL import Image  # VERSION=9.5.0"
+      }
+    },
+    {
+      "id": "span:minimax-pillow-950-scan-root-0",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795478399000000000,
+        "kind": "AGENT",
+        "name": "agent.answer",
+        "node_id": "span:minimax-pillow-950-scan-root-0",
+        "run_id": "minimax-pillow-950-scan-0",
+        "span_id": "minimax-pillow-950-scan-root-0"
+      }
+    },
+    {
+      "id": "span:minimax-pillow-950-scan-ret-0",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795478399500000000,
+        "kind": "RETRIEVER",
+        "name": "vector-search",
+        "node_id": "span:minimax-pillow-950-scan-ret-0",
+        "run_id": "minimax-pillow-950-scan-0",
+        "span_id": "minimax-pillow-950-scan-ret-0"
+      }
+    },
+    {
+      "id": "src:minimax-pillow-950-scan-doc-0",
+      "label": "Source",
+      "props": {
+        "at_ns": 1761079189000000000,
+        "doc_id": "minimax-pillow-950-scan-doc-0",
+        "node_id": "src:minimax-pillow-950-scan-doc-0",
+        "source_id": "src:minimax-pillow-950-scan-doc-0",
+        "uri": "https://github.com/dw763j/PinTrace/blob/main/outputs/evaluation/direct_dependencies.jsonl"
+      }
+    },
+    {
+      "id": "pv:pillow:9.5.0",
+      "label": "PkgVersion",
+      "props": {
+        "name": "pillow",
+        "node_id": "pv:pillow:9.5.0",
+        "version": "9.5.0"
+      }
+    },
+    {
+      "id": "claim:minimax-pillow-950-scan-claim-pillow-0",
+      "label": "Claim",
+      "props": {
+        "claim_id": "minimax-pillow-950-scan-claim-pillow-0",
+        "node_id": "claim:minimax-pillow-950-scan-claim-pillow-0",
+        "text": "from PIL import Image  # VERSION=9.5.0"
+      }
+    },
+    {
+      "id": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-agent\\minimax-pillow-950\\requirements.lock",
+      "label": "Lockfile",
+      "props": {
+        "node_id": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-agent\\minimax-pillow-950\\requirements.lock",
+        "path": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-agent\\minimax-pillow-950\\requirements.lock",
+        "pinned_ns": 1795478390000000000,
+        "sha256": "67d0eb406c3987f3042b7bb04301aee67db4299eb3ece953a0ea7fe7f6fc9ebf"
+      }
+    },
+    {
+      "id": "run:minimax-requests-2310-scan-0",
+      "label": "Run",
+      "props": {
+        "node_id": "run:minimax-requests-2310-scan-0",
+        "run_id": "minimax-requests-2310-scan-0",
+        "started_ns": 1795478398000000000
+      }
+    },
+    {
+      "id": "ans:minimax-requests-2310-scan-answer-requests-0",
+      "label": "Answer",
+      "props": {
+        "answer_id": "minimax-requests-2310-scan-answer-requests-0",
+        "created_ns": 1795478400000000000,
+        "model": "MiniMax-M2.5",
+        "node_id": "ans:minimax-requests-2310-scan-answer-requests-0",
+        "question": "MiniMax-M2.5 · BigCodeBench/32",
+        "run_id": "minimax-requests-2310-scan-0",
+        "text": "import requests  # VERSION=2.31.0"
+      }
+    },
+    {
+      "id": "span:minimax-requests-2310-scan-root-0",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795478399000000000,
+        "kind": "AGENT",
+        "name": "agent.answer",
+        "node_id": "span:minimax-requests-2310-scan-root-0",
+        "run_id": "minimax-requests-2310-scan-0",
+        "span_id": "minimax-requests-2310-scan-root-0"
+      }
+    },
+    {
+      "id": "span:minimax-requests-2310-scan-ret-0",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795478399500000000,
+        "kind": "RETRIEVER",
+        "name": "vector-search",
+        "node_id": "span:minimax-requests-2310-scan-ret-0",
+        "run_id": "minimax-requests-2310-scan-0",
+        "span_id": "minimax-requests-2310-scan-ret-0"
+      }
+    },
+    {
+      "id": "src:minimax-requests-2310-scan-doc-0",
+      "label": "Source",
+      "props": {
+        "at_ns": 1717959968000000000,
+        "doc_id": "minimax-requests-2310-scan-doc-0",
+        "node_id": "src:minimax-requests-2310-scan-doc-0",
+        "source_id": "src:minimax-requests-2310-scan-doc-0",
+        "uri": "https://github.com/dw763j/PinTrace/blob/main/outputs/evaluation/direct_dependencies.jsonl"
+      }
+    },
+    {
+      "id": "pv:requests:2.31.0",
+      "label": "PkgVersion",
+      "props": {
+        "name": "requests",
+        "node_id": "pv:requests:2.31.0",
+        "version": "2.31.0"
+      }
+    },
+    {
+      "id": "claim:minimax-requests-2310-scan-claim-requests-0",
+      "label": "Claim",
+      "props": {
+        "claim_id": "minimax-requests-2310-scan-claim-requests-0",
+        "node_id": "claim:minimax-requests-2310-scan-claim-requests-0",
+        "text": "import requests  # VERSION=2.31.0"
+      }
+    },
+    {
+      "id": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-agent\\minimax-requests-2310\\requirements.lock",
+      "label": "Lockfile",
+      "props": {
+        "node_id": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-agent\\minimax-requests-2310\\requirements.lock",
+        "path": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-agent\\minimax-requests-2310\\requirements.lock",
+        "pinned_ns": 1795478390000000000,
+        "sha256": "a0110d05af9d07a179479d6e00d6411bd21a1dffcf00147d1239e7e48ab5ec67"
+      }
+    },
+    {
+      "id": "pv:requests:2.32.4",
+      "label": "PkgVersion",
+      "props": {
+        "name": "requests",
+        "node_id": "pv:requests:2.32.4",
+        "version": "2.32.4"
+      }
+    },
+    {
+      "id": "adv:GHSA-9hjg-9r4m-mvj7",
+      "label": "Advisory",
+      "props": {
+        "fix_available_ns": -1,
+        "fixed": "2.32.4",
+        "id": "GHSA-9hjg-9r4m-mvj7",
+        "node_id": "adv:GHSA-9hjg-9r4m-mvj7",
+        "osv_modified_ns": 1792440004716113920,
+        "published": "2025-06-09T19:06:08Z",
+        "published_ns": 1749495968000000000,
+        "summary": "Requests vulnerable to .netrc credentials leak via malicious URLs",
+        "url": "https://github.com/psf/requests/security/advisories/GHSA-9hjg-9r4m-mvj7"
+      }
+    },
+    {
+      "id": "alias:CVE-2024-47081",
+      "label": "Alias",
+      "props": {
+        "alias": "CVE-2024-47081",
+        "node_id": "alias:CVE-2024-47081"
+      }
+    },
+    {
+      "id": "alias:PYSEC-2026-1872",
+      "label": "Alias",
+      "props": {
+        "alias": "PYSEC-2026-1872",
+        "node_id": "alias:PYSEC-2026-1872"
+      }
+    },
+    {
+      "id": "https://github.com/psf/requests/security/advisories/GHSA-9hjg-9r4m-mvj7",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://github.com/psf/requests/security/advisories/GHSA-9hjg-9r4m-mvj7"
+      }
+    },
+    {
+      "id": "https://nvd.nist.gov/vuln/detail/CVE-2024-47081",
+      "label": "Ref",
+      "props": {
+        "ref_type": "ADVISORY",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-47081"
+      }
+    },
+    {
+      "id": "https://github.com/psf/requests/pull/6965",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://github.com/psf/requests/pull/6965"
+      }
+    },
+    {
+      "id": "https://github.com/psf/requests/commit/96ba401c1296ab1dda74a2365ef36d88f7d144ef",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://github.com/psf/requests/commit/96ba401c1296ab1dda74a2365ef36d88f7d144ef"
+      }
+    },
+    {
+      "id": "https://github.com/advisories/GHSA-9hjg-9r4m-mvj7",
+      "label": "Ref",
+      "props": {
+        "ref_type": "ADVISORY",
+        "url": "https://github.com/advisories/GHSA-9hjg-9r4m-mvj7"
+      }
+    },
+    {
+      "id": "https://github.com/psf/requests",
+      "label": "Ref",
+      "props": {
+        "ref_type": "PACKAGE",
+        "url": "https://github.com/psf/requests"
+      }
+    },
+    {
+      "id": "https://github.com/psf/requests/releases/tag/v2.32.4",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://github.com/psf/requests/releases/tag/v2.32.4"
+      }
+    },
+    {
+      "id": "https://github.com/pypa/advisory-database/tree/main/vulns/requests/PYSEC-2026-1872.yaml",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://github.com/pypa/advisory-database/tree/main/vulns/requests/PYSEC-2026-1872.yaml"
+      }
+    },
+    {
+      "id": "https://pypi.org/project/requests",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://pypi.org/project/requests"
+      }
+    },
+    {
+      "id": "https://requests.readthedocs.io/en/latest/api/#requests.Session.trust_env",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://requests.readthedocs.io/en/latest/api/#requests.Session.trust_env"
+      }
+    },
+    {
+      "id": "https://seclists.org/fulldisclosure/2025/Jun/2",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://seclists.org/fulldisclosure/2025/Jun/2"
+      }
+    },
+    {
+      "id": "http://www.openwall.com/lists/oss-security/2025/06/03/11",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "http://www.openwall.com/lists/oss-security/2025/06/03/11"
+      }
+    },
+    {
+      "id": "http://www.openwall.com/lists/oss-security/2025/06/03/9",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "http://www.openwall.com/lists/oss-security/2025/06/03/9"
+      }
+    },
+    {
+      "id": "http://www.openwall.com/lists/oss-security/2025/06/04/1",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "http://www.openwall.com/lists/oss-security/2025/06/04/1"
+      }
+    },
+    {
+      "id": "http://www.openwall.com/lists/oss-security/2025/06/04/6",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "http://www.openwall.com/lists/oss-security/2025/06/04/6"
+      }
+    },
+    {
+      "id": "http://seclists.org/fulldisclosure/2025/Jun/2",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "http://seclists.org/fulldisclosure/2025/Jun/2"
+      }
+    },
+    {
+      "id": "run:demo-flask-scan-0",
+      "label": "Run",
+      "props": {
+        "node_id": "run:demo-flask-scan-0",
+        "run_id": "demo-flask-scan-0",
+        "started_ns": 1795478398000000000
+      }
+    },
+    {
+      "id": "ans:demo-flask-scan-answer-flask-0",
+      "label": "Answer",
+      "props": {
+        "answer_id": "demo-flask-scan-answer-flask-0",
+        "created_ns": 1795478400000000000,
+        "model": "gpt-5.4",
+        "node_id": "ans:demo-flask-scan-answer-flask-0",
+        "question": "gpt-5.4 · BigCodeBench/80",
+        "run_id": "demo-flask-scan-0",
+        "text": "from flask import Flask, render_template, request  # VERSION=3.0.3"
+      }
+    },
+    {
+      "id": "span:demo-flask-scan-root-0",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795478399000000000,
+        "kind": "AGENT",
+        "name": "agent.answer",
+        "node_id": "span:demo-flask-scan-root-0",
+        "run_id": "demo-flask-scan-0",
+        "span_id": "demo-flask-scan-root-0"
+      }
+    },
+    {
+      "id": "span:demo-flask-scan-ret-0",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795478399500000000,
+        "kind": "RETRIEVER",
+        "name": "vector-search",
+        "node_id": "span:demo-flask-scan-ret-0",
+        "run_id": "demo-flask-scan-0",
+        "span_id": "demo-flask-scan-ret-0"
+      }
+    },
+    {
+      "id": "src:demo-flask-scan-doc-0",
+      "label": "Source",
+      "props": {
+        "at_ns": 1715631926000000000,
+        "doc_id": "demo-flask-scan-doc-0",
+        "node_id": "src:demo-flask-scan-doc-0",
+        "source_id": "src:demo-flask-scan-doc-0",
+        "uri": "https://github.com/dw763j/PinTrace/blob/main/outputs/evaluation/direct_dependencies.jsonl"
+      }
+    },
+    {
+      "id": "pv:flask:3.0.3",
+      "label": "PkgVersion",
+      "props": {
+        "name": "flask",
+        "node_id": "pv:flask:3.0.3",
+        "version": "3.0.3"
+      }
+    },
+    {
+      "id": "claim:demo-flask-scan-claim-flask-0",
+      "label": "Claim",
+      "props": {
+        "claim_id": "demo-flask-scan-claim-flask-0",
+        "node_id": "claim:demo-flask-scan-claim-flask-0",
+        "text": "from flask import Flask, render_template, request  # VERSION=3.0.3"
+      }
+    },
+    {
+      "id": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\scan\\requirements.lock",
+      "label": "Lockfile",
+      "props": {
+        "node_id": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\scan\\requirements.lock",
+        "path": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\scan\\requirements.lock",
+        "pinned_ns": 1795478390000000000,
+        "sha256": "655b79c7b372a8e602045916abd6e6fe5d2f2b2edd7076d24b6d6f701f8664d9"
+      }
+    },
+    {
+      "id": "run:demo-pillow-scan-1",
+      "label": "Run",
+      "props": {
+        "node_id": "run:demo-pillow-scan-1",
+        "run_id": "demo-pillow-scan-1",
+        "started_ns": 1795478398000000000
+      }
+    },
+    {
+      "id": "ans:demo-pillow-scan-answer-pillow-1",
+      "label": "Answer",
+      "props": {
+        "answer_id": "demo-pillow-scan-answer-pillow-1",
+        "created_ns": 1795478400000000000,
+        "model": "gemini-3.1-pro-preview",
+        "node_id": "ans:demo-pillow-scan-answer-pillow-1",
+        "question": "gemini-3.1-pro-preview · BigCodeBench/180",
+        "run_id": "demo-pillow-scan-1",
+        "text": "from PIL import Image  # VERSION=10.0.0"
+      }
+    },
+    {
+      "id": "span:demo-pillow-scan-root-1",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795478399000000000,
+        "kind": "AGENT",
+        "name": "agent.answer",
+        "node_id": "span:demo-pillow-scan-root-1",
+        "run_id": "demo-pillow-scan-1",
+        "span_id": "demo-pillow-scan-root-1"
+      }
+    },
+    {
+      "id": "span:demo-pillow-scan-ret-1",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795478399500000000,
+        "kind": "RETRIEVER",
+        "name": "vector-search",
+        "node_id": "span:demo-pillow-scan-ret-1",
+        "run_id": "demo-pillow-scan-1",
+        "span_id": "demo-pillow-scan-ret-1"
+      }
+    },
+    {
+      "id": "src:demo-pillow-scan-doc-1",
+      "label": "Source",
+      "props": {
+        "at_ns": 1761079189000000000,
+        "doc_id": "demo-pillow-scan-doc-1",
+        "node_id": "src:demo-pillow-scan-doc-1",
+        "source_id": "src:demo-pillow-scan-doc-1",
+        "uri": "https://github.com/dw763j/PinTrace/blob/main/outputs/evaluation/direct_dependencies.jsonl"
+      }
+    },
+    {
+      "id": "claim:demo-pillow-scan-claim-pillow-1",
+      "label": "Claim",
+      "props": {
+        "claim_id": "demo-pillow-scan-claim-pillow-1",
+        "node_id": "claim:demo-pillow-scan-claim-pillow-1",
+        "text": "from PIL import Image  # VERSION=10.0.0"
+      }
+    },
+    {
+      "id": "run:demo-jinja2-scan-2",
+      "label": "Run",
+      "props": {
+        "node_id": "run:demo-jinja2-scan-2",
+        "run_id": "demo-jinja2-scan-2",
+        "started_ns": 1795478398000000000
+      }
+    },
+    {
+      "id": "ans:demo-jinja2-scan-answer-jinja2-2",
+      "label": "Answer",
+      "props": {
+        "answer_id": "demo-jinja2-scan-answer-jinja2-2",
+        "created_ns": 1795478400000000000,
+        "model": "DeepSeek-V3.2",
+        "node_id": "ans:demo-jinja2-scan-answer-jinja2-2",
+        "question": "DeepSeek-V3.2 · stackexchange-63901755",
+        "run_id": "demo-jinja2-scan-2",
+        "text": "from jinja2 import Environment, PackageLoader, select_autoescape  # VERSION=3.1.2"
+      }
+    },
+    {
+      "id": "span:demo-jinja2-scan-root-2",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795478399000000000,
+        "kind": "AGENT",
+        "name": "agent.answer",
+        "node_id": "span:demo-jinja2-scan-root-2",
+        "run_id": "demo-jinja2-scan-2",
+        "span_id": "demo-jinja2-scan-root-2"
+      }
+    },
+    {
+      "id": "span:demo-jinja2-scan-ret-2",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795478399500000000,
+        "kind": "RETRIEVER",
+        "name": "vector-search",
+        "node_id": "span:demo-jinja2-scan-ret-2",
+        "run_id": "demo-jinja2-scan-2",
+        "span_id": "demo-jinja2-scan-ret-2"
+      }
+    },
+    {
+      "id": "src:demo-jinja2-scan-doc-2",
+      "label": "Source",
+      "props": {
+        "at_ns": 1709671214000000000,
+        "doc_id": "demo-jinja2-scan-doc-2",
+        "node_id": "src:demo-jinja2-scan-doc-2",
+        "source_id": "src:demo-jinja2-scan-doc-2",
+        "uri": "https://github.com/dw763j/PinTrace/blob/main/outputs/evaluation/direct_dependencies.jsonl"
+      }
+    },
+    {
+      "id": "claim:demo-jinja2-scan-claim-jinja2-2",
+      "label": "Claim",
+      "props": {
+        "claim_id": "demo-jinja2-scan-claim-jinja2-2",
+        "node_id": "claim:demo-jinja2-scan-claim-jinja2-2",
+        "text": "from jinja2 import Environment, PackageLoader, select_autoescape  # VERSION=3.1.2"
+      }
+    },
+    {
+      "id": "run:demo-requests-scan-3",
+      "label": "Run",
+      "props": {
+        "node_id": "run:demo-requests-scan-3",
+        "run_id": "demo-requests-scan-3",
+        "started_ns": 1795478398000000000
+      }
+    },
+    {
+      "id": "ans:demo-requests-scan-answer-requests-3",
+      "label": "Answer",
+      "props": {
+        "answer_id": "demo-requests-scan-answer-requests-3",
+        "created_ns": 1795478400000000000,
+        "model": "MiniMax-M2.5",
+        "node_id": "ans:demo-requests-scan-answer-requests-3",
+        "question": "MiniMax-M2.5 · BigCodeBench/32",
+        "run_id": "demo-requests-scan-3",
+        "text": "import requests  # VERSION=2.31.0"
+      }
+    },
+    {
+      "id": "span:demo-requests-scan-root-3",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795478399000000000,
+        "kind": "AGENT",
+        "name": "agent.answer",
+        "node_id": "span:demo-requests-scan-root-3",
+        "run_id": "demo-requests-scan-3",
+        "span_id": "demo-requests-scan-root-3"
+      }
+    },
+    {
+      "id": "span:demo-requests-scan-ret-3",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795478399500000000,
+        "kind": "RETRIEVER",
+        "name": "vector-search",
+        "node_id": "span:demo-requests-scan-ret-3",
+        "run_id": "demo-requests-scan-3",
+        "span_id": "demo-requests-scan-ret-3"
+      }
+    },
+    {
+      "id": "src:demo-requests-scan-doc-3",
+      "label": "Source",
+      "props": {
+        "at_ns": 1717959968000000000,
+        "doc_id": "demo-requests-scan-doc-3",
+        "node_id": "src:demo-requests-scan-doc-3",
+        "source_id": "src:demo-requests-scan-doc-3",
+        "uri": "https://github.com/dw763j/PinTrace/blob/main/outputs/evaluation/direct_dependencies.jsonl"
+      }
+    },
+    {
+      "id": "claim:demo-requests-scan-claim-requests-3",
+      "label": "Claim",
+      "props": {
+        "claim_id": "demo-requests-scan-claim-requests-3",
+        "node_id": "claim:demo-requests-scan-claim-requests-3",
+        "text": "import requests  # VERSION=2.31.0"
+      }
+    },
+    {
+      "id": "run:demo-pyyaml-scan-4",
+      "label": "Run",
+      "props": {
+        "node_id": "run:demo-pyyaml-scan-4",
+        "run_id": "demo-pyyaml-scan-4",
+        "started_ns": 1795478398000000000
+      }
+    },
+    {
+      "id": "ans:demo-pyyaml-scan-answer-pyyaml-4",
+      "label": "Answer",
+      "props": {
+        "answer_id": "demo-pyyaml-scan-answer-pyyaml-4",
+        "created_ns": 1795478400000000000,
+        "model": "Qwen3.5-397B-A17B",
+        "node_id": "ans:demo-pyyaml-scan-answer-pyyaml-4",
+        "question": "Qwen3.5-397B-A17B · stackexchange-69200750",
+        "run_id": "demo-pyyaml-scan-4",
+        "text": "import yaml  # VERSION=3.13"
+      }
+    },
+    {
+      "id": "span:demo-pyyaml-scan-root-4",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795478399000000000,
+        "kind": "AGENT",
+        "name": "agent.answer",
+        "node_id": "span:demo-pyyaml-scan-root-4",
+        "run_id": "demo-pyyaml-scan-4",
+        "span_id": "demo-pyyaml-scan-root-4"
+      }
+    },
+    {
+      "id": "span:demo-pyyaml-scan-ret-4",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795478399500000000,
+        "kind": "RETRIEVER",
+        "name": "vector-search",
+        "node_id": "span:demo-pyyaml-scan-ret-4",
+        "run_id": "demo-pyyaml-scan-4",
+        "span_id": "demo-pyyaml-scan-ret-4"
+      }
+    },
+    {
+      "id": "src:demo-pyyaml-scan-doc-4",
+      "label": "Source",
+      "props": {
+        "at_ns": 1587400842000000000,
+        "doc_id": "demo-pyyaml-scan-doc-4",
+        "node_id": "src:demo-pyyaml-scan-doc-4",
+        "source_id": "src:demo-pyyaml-scan-doc-4",
+        "uri": "https://github.com/dw763j/PinTrace/blob/main/outputs/evaluation/direct_dependencies.jsonl"
+      }
+    },
+    {
+      "id": "pv:pyyaml:3.13",
+      "label": "PkgVersion",
+      "props": {
+        "name": "pyyaml",
+        "node_id": "pv:pyyaml:3.13",
+        "version": "3.13"
+      }
+    },
+    {
+      "id": "claim:demo-pyyaml-scan-claim-pyyaml-4",
+      "label": "Claim",
+      "props": {
+        "claim_id": "demo-pyyaml-scan-claim-pyyaml-4",
+        "node_id": "claim:demo-pyyaml-scan-claim-pyyaml-4",
+        "text": "import yaml  # VERSION=3.13"
+      }
+    },
+    {
+      "id": "pv:pyyaml:5.2",
+      "label": "PkgVersion",
+      "props": {
+        "name": "pyyaml",
+        "node_id": "pv:pyyaml:5.2",
+        "version": "5.2"
+      }
+    },
+    {
+      "id": "adv:GHSA-3pqx-4fqf-j49f",
+      "label": "Advisory",
+      "props": {
+        "fix_available_ns": -1,
+        "fixed": "5.2",
+        "id": "GHSA-3pqx-4fqf-j49f",
+        "node_id": "adv:GHSA-3pqx-4fqf-j49f",
+        "osv_modified_ns": 1729891391506576128,
+        "published": "2021-04-20T16:40:42Z",
+        "published_ns": 1618936842000000000,
+        "summary": "Deserialization of Untrusted Data in PyYAML",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-20477"
+      }
+    },
+    {
+      "id": "alias:CVE-2019-20477",
+      "label": "Alias",
+      "props": {
+        "alias": "CVE-2019-20477",
+        "node_id": "alias:CVE-2019-20477"
+      }
+    },
+    {
+      "id": "alias:PYSEC-2020-176",
+      "label": "Alias",
+      "props": {
+        "alias": "PYSEC-2020-176",
+        "node_id": "alias:PYSEC-2020-176"
+      }
+    },
+    {
+      "id": "https://nvd.nist.gov/vuln/detail/CVE-2019-20477",
+      "label": "Ref",
+      "props": {
+        "ref_type": "ADVISORY",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-20477"
+      }
+    },
+    {
+      "id": "https://github.com/advisories/GHSA-3pqx-4fqf-j49f",
+      "label": "Ref",
+      "props": {
+        "ref_type": "ADVISORY",
+        "url": "https://github.com/advisories/GHSA-3pqx-4fqf-j49f"
+      }
+    },
+    {
+      "id": "https://github.com/pypa/advisory-database/tree/main/vulns/pyyaml/PYSEC-2020-176.yaml",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://github.com/pypa/advisory-database/tree/main/vulns/pyyaml/PYSEC-2020-176.yaml"
+      }
+    },
+    {
+      "id": "https://github.com/yaml/pyyaml",
+      "label": "Ref",
+      "props": {
+        "ref_type": "PACKAGE",
+        "url": "https://github.com/yaml/pyyaml"
+      }
+    },
+    {
+      "id": "https://github.com/yaml/pyyaml/blob/master/CHANGES",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://github.com/yaml/pyyaml/blob/master/CHANGES"
+      }
+    },
+    {
+      "id": "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/33VBUY73AA6CTTYL3LRWHNFDULV7PFPN",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/33VBUY73AA6CTTYL3LRWHNFDULV7PFPN"
+      }
+    },
+    {
+      "id": "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/52N5XS73Z5S4ZN7I7R56ICCPCTKCUV4H",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/52N5XS73Z5S4ZN7I7R56ICCPCTKCUV4H"
+      }
+    },
+    {
+      "id": "https://www.exploit-db.com/download/47655",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://www.exploit-db.com/download/47655"
+      }
+    },
+    {
+      "id": "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/52N5XS73Z5S4ZN7I7R56ICCPCTKCUV4H/",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/52N5XS73Z5S4ZN7I7R56ICCPCTKCUV4H/"
+      }
+    },
+    {
+      "id": "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/33VBUY73AA6CTTYL3LRWHNFDULV7PFPN/",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/33VBUY73AA6CTTYL3LRWHNFDULV7PFPN/"
+      }
+    },
+    {
+      "id": "run:demo-numpy-scan-5",
+      "label": "Run",
+      "props": {
+        "node_id": "run:demo-numpy-scan-5",
+        "run_id": "demo-numpy-scan-5",
+        "started_ns": 1795478398000000000
+      }
+    },
+    {
+      "id": "ans:demo-numpy-scan-answer-numpy-5",
+      "label": "Answer",
+      "props": {
+        "answer_id": "demo-numpy-scan-answer-numpy-5",
+        "created_ns": 1795478400000000000,
+        "model": "MiniMax-M2.5",
+        "node_id": "ans:demo-numpy-scan-answer-numpy-5",
+        "question": "MiniMax-M2.5 · BigCodeBench/10",
+        "run_id": "demo-numpy-scan-5",
+        "text": "import numpy as np  # VERSION=1.21.0"
+      }
+    },
+    {
+      "id": "span:demo-numpy-scan-root-5",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795478399000000000,
+        "kind": "AGENT",
+        "name": "agent.answer",
+        "node_id": "span:demo-numpy-scan-root-5",
+        "run_id": "demo-numpy-scan-5",
+        "span_id": "demo-numpy-scan-root-5"
+      }
+    },
+    {
+      "id": "span:demo-numpy-scan-ret-5",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795478399500000000,
+        "kind": "RETRIEVER",
+        "name": "vector-search",
+        "node_id": "span:demo-numpy-scan-ret-5",
+        "run_id": "demo-numpy-scan-5",
+        "span_id": "demo-numpy-scan-ret-5"
+      }
+    },
+    {
+      "id": "src:demo-numpy-scan-doc-5",
+      "label": "Source",
+      "props": {
+        "at_ns": 1608249641000000000,
+        "doc_id": "demo-numpy-scan-doc-5",
+        "node_id": "src:demo-numpy-scan-doc-5",
+        "source_id": "src:demo-numpy-scan-doc-5",
+        "uri": "https://github.com/dw763j/PinTrace/blob/main/outputs/evaluation/direct_dependencies.jsonl"
+      }
+    },
+    {
+      "id": "claim:demo-numpy-scan-claim-numpy-5",
+      "label": "Claim",
+      "props": {
+        "claim_id": "demo-numpy-scan-claim-numpy-5",
+        "node_id": "claim:demo-numpy-scan-claim-numpy-5",
+        "text": "import numpy as np  # VERSION=1.21.0"
+      }
+    },
+    {
+      "id": "run:demo-django-scan-6",
+      "label": "Run",
+      "props": {
+        "node_id": "run:demo-django-scan-6",
+        "run_id": "demo-django-scan-6",
+        "started_ns": 1795478398000000000
+      }
+    },
+    {
+      "id": "ans:demo-django-scan-answer-django-6",
+      "label": "Answer",
+      "props": {
+        "answer_id": "demo-django-scan-answer-django-6",
+        "created_ns": 1795478400000000000,
+        "model": "claude-sonnet-4-6",
+        "node_id": "ans:demo-django-scan-answer-django-6",
+        "question": "claude-sonnet-4-6 · BigCodeBench/181",
+        "run_id": "demo-django-scan-6",
+        "text": "Django==4.2.7"
+      }
+    },
+    {
+      "id": "span:demo-django-scan-root-6",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795478399000000000,
+        "kind": "AGENT",
+        "name": "agent.answer",
+        "node_id": "span:demo-django-scan-root-6",
+        "run_id": "demo-django-scan-6",
+        "span_id": "demo-django-scan-root-6"
+      }
+    },
+    {
+      "id": "span:demo-django-scan-ret-6",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795478399500000000,
+        "kind": "RETRIEVER",
+        "name": "vector-search",
+        "node_id": "span:demo-django-scan-ret-6",
+        "run_id": "demo-django-scan-6",
+        "span_id": "demo-django-scan-ret-6"
+      }
+    },
+    {
+      "id": "src:demo-django-scan-doc-6",
+      "label": "Source",
+      "props": {
+        "at_ns": 1738596623000000000,
+        "doc_id": "demo-django-scan-doc-6",
+        "node_id": "src:demo-django-scan-doc-6",
+        "source_id": "src:demo-django-scan-doc-6",
+        "uri": "https://github.com/dw763j/PinTrace/blob/main/outputs/evaluation/direct_dependencies.jsonl"
+      }
+    },
+    {
+      "id": "claim:demo-django-scan-claim-django-6",
+      "label": "Claim",
+      "props": {
+        "claim_id": "demo-django-scan-claim-django-6",
+        "node_id": "claim:demo-django-scan-claim-django-6",
+        "text": "Django==4.2.7"
+      }
+    },
+    {
+      "id": "run:demo-urllib3-scan-7",
+      "label": "Run",
+      "props": {
+        "node_id": "run:demo-urllib3-scan-7",
+        "run_id": "demo-urllib3-scan-7",
+        "started_ns": 1795478398000000000
+      }
+    },
+    {
+      "id": "ans:demo-urllib3-scan-answer-urllib3-7",
+      "label": "Answer",
+      "props": {
+        "answer_id": "demo-urllib3-scan-answer-urllib3-7",
+        "created_ns": 1795478400000000000,
+        "model": "Qwen3-235B-A22B-Instruct-2507",
+        "node_id": "ans:demo-urllib3-scan-answer-urllib3-7",
+        "question": "Qwen3-235B-A22B-Instruct-2507 · BigCodeBench/723",
+        "run_id": "demo-urllib3-scan-7",
+        "text": "urllib3==2.0.7"
+      }
+    },
+    {
+      "id": "span:demo-urllib3-scan-root-7",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795478399000000000,
+        "kind": "AGENT",
+        "name": "agent.answer",
+        "node_id": "span:demo-urllib3-scan-root-7",
+        "run_id": "demo-urllib3-scan-7",
+        "span_id": "demo-urllib3-scan-root-7"
+      }
+    },
+    {
+      "id": "span:demo-urllib3-scan-ret-7",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795478399500000000,
+        "kind": "RETRIEVER",
+        "name": "vector-search",
+        "node_id": "span:demo-urllib3-scan-ret-7",
+        "run_id": "demo-urllib3-scan-7",
+        "span_id": "demo-urllib3-scan-ret-7"
+      }
+    },
+    {
+      "id": "src:demo-urllib3-scan-doc-7",
+      "label": "Source",
+      "props": {
+        "at_ns": 1733422554000000000,
+        "doc_id": "demo-urllib3-scan-doc-7",
+        "node_id": "src:demo-urllib3-scan-doc-7",
+        "source_id": "src:demo-urllib3-scan-doc-7",
+        "uri": "https://github.com/dw763j/PinTrace/blob/main/outputs/evaluation/direct_dependencies.jsonl"
+      }
+    },
+    {
+      "id": "pv:urllib3:2.0.7",
+      "label": "PkgVersion",
+      "props": {
+        "name": "urllib3",
+        "node_id": "pv:urllib3:2.0.7",
+        "version": "2.0.7"
+      }
+    },
+    {
+      "id": "claim:demo-urllib3-scan-claim-urllib3-7",
+      "label": "Claim",
+      "props": {
+        "claim_id": "demo-urllib3-scan-claim-urllib3-7",
+        "node_id": "claim:demo-urllib3-scan-claim-urllib3-7",
+        "text": "urllib3==2.0.7"
+      }
+    },
+    {
+      "id": "pv:urllib3:2.6.0",
+      "label": "PkgVersion",
+      "props": {
+        "name": "urllib3",
+        "node_id": "pv:urllib3:2.6.0",
+        "version": "2.6.0"
+      }
+    },
+    {
+      "id": "adv:GHSA-2xpw-w6gg-jr37",
+      "label": "Advisory",
+      "props": {
+        "fix_available_ns": -1,
+        "fixed": "2.6.0",
+        "id": "GHSA-2xpw-w6gg-jr37",
+        "node_id": "adv:GHSA-2xpw-w6gg-jr37",
+        "osv_modified_ns": 1790356505968188928,
+        "published": "2025-12-05T18:15:54Z",
+        "published_ns": 1764958554000000000,
+        "summary": "urllib3 streaming API improperly handles highly compressed data",
+        "url": "https://github.com/urllib3/urllib3/security/advisories/GHSA-2xpw-w6gg-jr37"
+      }
+    },
+    {
+      "id": "alias:CVE-2025-66471",
+      "label": "Alias",
+      "props": {
+        "alias": "CVE-2025-66471",
+        "node_id": "alias:CVE-2025-66471"
+      }
+    },
+    {
+      "id": "alias:PYSEC-2026-1994",
+      "label": "Alias",
+      "props": {
+        "alias": "PYSEC-2026-1994",
+        "node_id": "alias:PYSEC-2026-1994"
+      }
+    },
+    {
+      "id": "https://github.com/urllib3/urllib3/security/advisories/GHSA-2xpw-w6gg-jr37",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://github.com/urllib3/urllib3/security/advisories/GHSA-2xpw-w6gg-jr37"
+      }
+    },
+    {
+      "id": "https://nvd.nist.gov/vuln/detail/CVE-2025-66471",
+      "label": "Ref",
+      "props": {
+        "ref_type": "ADVISORY",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-66471"
+      }
+    },
+    {
+      "id": "https://github.com/urllib3/urllib3/commit/c19571de34c47de3a766541b041637ba5f716ed7",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://github.com/urllib3/urllib3/commit/c19571de34c47de3a766541b041637ba5f716ed7"
+      }
+    },
+    {
+      "id": "https://github.com/urllib3/urllib3/commit/d0fde3672e4a4093f7587858dccfc298eb66e46c",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://github.com/urllib3/urllib3/commit/d0fde3672e4a4093f7587858dccfc298eb66e46c"
+      }
+    },
+    {
+      "id": "https://github.com/advisories/GHSA-2xpw-w6gg-jr37",
+      "label": "Ref",
+      "props": {
+        "ref_type": "ADVISORY",
+        "url": "https://github.com/advisories/GHSA-2xpw-w6gg-jr37"
+      }
+    },
+    {
+      "id": "https://github.com/pypa/advisory-database/tree/main/vulns/urllib3/PYSEC-2026-1994.yaml",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://github.com/pypa/advisory-database/tree/main/vulns/urllib3/PYSEC-2026-1994.yaml"
+      }
+    },
+    {
+      "id": "https://github.com/urllib3/urllib3",
+      "label": "Ref",
+      "props": {
+        "ref_type": "PACKAGE",
+        "url": "https://github.com/urllib3/urllib3"
+      }
+    },
+    {
+      "id": "https://pypi.org/project/urllib3",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://pypi.org/project/urllib3"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "run:stackexchange-62945229-scan-0",
+      "target": "span:stackexchange-62945229-scan-root-0",
+      "type": "CONTAINS"
+    },
+    {
+      "source": "ans:stackexchange-62945229-scan-answer-flask-0",
+      "target": "claim:stackexchange-62945229-scan-claim-flask-0",
+      "type": "ASSERTS"
+    },
+    {
+      "source": "span:stackexchange-62945229-scan-root-0",
+      "target": "span:stackexchange-62945229-scan-ret-0",
+      "type": "PARENT_OF"
+    },
+    {
+      "source": "span:stackexchange-62945229-scan-root-0",
+      "target": "ans:stackexchange-62945229-scan-answer-flask-0",
+      "type": "PRODUCED"
+    },
+    {
+      "source": "span:stackexchange-62945229-scan-ret-0",
+      "target": "src:stackexchange-62945229-scan-doc-0",
+      "type": "RETRIEVED_FROM"
+    },
+    {
+      "source": "src:stackexchange-62945229-scan-doc-0",
+      "target": "pv:flask:1.1.2",
+      "type": "MENTIONS"
+    },
+    {
+      "source": "claim:stackexchange-62945229-scan-claim-flask-0",
+      "target": "pv:flask:1.1.2",
+      "type": "CITES"
+    },
+    {
+      "source": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-user\\stackexchange-62945229\\requirements.lock",
+      "target": "pv:flask:3.1.1",
+      "type": "PINS"
+    },
+    {
+      "source": "adv:GHSA-4grg-w6v8-c28g",
+      "target": "pv:flask:3.0.3",
+      "type": "AFFECTS"
+    },
+    {
+      "source": "adv:GHSA-4grg-w6v8-c28g",
+      "target": "pv:flask:2.3.3",
+      "type": "AFFECTS"
+    },
+    {
+      "source": "adv:GHSA-4grg-w6v8-c28g",
+      "target": "pv:flask:2.2.2",
+      "type": "AFFECTS"
+    },
+    {
+      "source": "adv:GHSA-4grg-w6v8-c28g",
+      "target": "pv:flask:2.2.5",
+      "type": "AFFECTS"
+    },
+    {
+      "source": "adv:GHSA-4grg-w6v8-c28g",
+      "target": "pv:flask:2.3.2",
+      "type": "AFFECTS"
+    },
+    {
+      "source": "adv:GHSA-4grg-w6v8-c28g",
+      "target": "pv:flask:2.0.1",
+      "type": "AFFECTS"
+    },
+    {
+      "source": "adv:GHSA-4grg-w6v8-c28g",
+      "target": "pv:flask:1.1.2",
+      "type": "AFFECTS"
+    },
+    {
+      "source": "adv:GHSA-4grg-w6v8-c28g",
+      "target": "alias:PYSEC-2026-1377",
+      "type": "HAS_ALIAS"
+    },
+    {
+      "source": "adv:GHSA-4grg-w6v8-c28g",
+      "target": "alias:CVE-2025-47278",
+      "type": "HAS_ALIAS"
+    },
+    {
+      "source": "adv:GHSA-4grg-w6v8-c28g",
+      "target": "https://github.com/advisories/GHSA-4grg-w6v8-c28g",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-4grg-w6v8-c28g",
+      "target": "https://pypi.org/project/flask",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-4grg-w6v8-c28g",
+      "target": "https://github.com/pallets/flask/releases/tag/3.1.1",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-4grg-w6v8-c28g",
+      "target": "https://github.com/pallets/flask",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-4grg-w6v8-c28g",
+      "target": "https://github.com/pallets/flask/commit/73d6504063bfa00666a92b07a28aaf906c532f09",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-4grg-w6v8-c28g",
+      "target": "https://nvd.nist.gov/vuln/detail/CVE-2025-47278",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-4grg-w6v8-c28g",
+      "target": "https://github.com/pallets/flask/security/advisories/GHSA-4grg-w6v8-c28g",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "alias:CVE-2025-47278",
+      "target": "https://nvd.nist.gov/vuln/detail/CVE-2025-47278",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "run:stackexchange-69199812-scan-0",
+      "target": "span:stackexchange-69199812-scan-root-0",
+      "type": "CONTAINS"
+    },
+    {
+      "source": "ans:stackexchange-69199812-scan-answer-flask-0",
+      "target": "claim:stackexchange-69199812-scan-claim-flask-0",
+      "type": "ASSERTS"
+    },
+    {
+      "source": "span:stackexchange-69199812-scan-root-0",
+      "target": "span:stackexchange-69199812-scan-ret-0",
+      "type": "PARENT_OF"
+    },
+    {
+      "source": "span:stackexchange-69199812-scan-root-0",
+      "target": "ans:stackexchange-69199812-scan-answer-flask-0",
+      "type": "PRODUCED"
+    },
+    {
+      "source": "span:stackexchange-69199812-scan-ret-0",
+      "target": "src:stackexchange-69199812-scan-doc-0",
+      "type": "RETRIEVED_FROM"
+    },
+    {
+      "source": "src:stackexchange-69199812-scan-doc-0",
+      "target": "pv:flask:2.0.1",
+      "type": "MENTIONS"
+    },
+    {
+      "source": "claim:stackexchange-69199812-scan-claim-flask-0",
+      "target": "pv:flask:2.0.1",
+      "type": "CITES"
+    },
+    {
+      "source": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-user\\stackexchange-69199812\\requirements.lock",
+      "target": "pv:flask:3.1.1",
+      "type": "PINS"
+    },
+    {
+      "source": "run:stackexchange-77198219-scan-1",
+      "target": "span:stackexchange-77198219-scan-root-1",
+      "type": "CONTAINS"
+    },
+    {
+      "source": "ans:stackexchange-77198219-scan-answer-flask-1",
+      "target": "claim:stackexchange-77198219-scan-claim-flask-1",
+      "type": "ASSERTS"
+    },
+    {
+      "source": "span:stackexchange-77198219-scan-root-1",
+      "target": "span:stackexchange-77198219-scan-ret-1",
+      "type": "PARENT_OF"
+    },
+    {
+      "source": "span:stackexchange-77198219-scan-root-1",
+      "target": "ans:stackexchange-77198219-scan-answer-flask-1",
+      "type": "PRODUCED"
+    },
+    {
+      "source": "span:stackexchange-77198219-scan-ret-1",
+      "target": "src:stackexchange-77198219-scan-doc-1",
+      "type": "RETRIEVED_FROM"
+    },
+    {
+      "source": "src:stackexchange-77198219-scan-doc-1",
+      "target": "pv:flask:2.3.2",
+      "type": "MENTIONS"
+    },
+    {
+      "source": "claim:stackexchange-77198219-scan-claim-flask-1",
+      "target": "pv:flask:2.3.2",
+      "type": "CITES"
+    },
+    {
+      "source": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-user\\stackexchange-77198219\\requirements.lock",
+      "target": "pv:flask:3.1.1",
+      "type": "PINS"
+    },
+    {
+      "source": "run:stackexchange-79003376-scan-1",
+      "target": "span:stackexchange-79003376-scan-root-1",
+      "type": "CONTAINS"
+    },
+    {
+      "source": "ans:stackexchange-79003376-scan-answer-flask-1",
+      "target": "claim:stackexchange-79003376-scan-claim-flask-1",
+      "type": "ASSERTS"
+    },
+    {
+      "source": "span:stackexchange-79003376-scan-root-1",
+      "target": "span:stackexchange-79003376-scan-ret-1",
+      "type": "PARENT_OF"
+    },
+    {
+      "source": "span:stackexchange-79003376-scan-root-1",
+      "target": "ans:stackexchange-79003376-scan-answer-flask-1",
+      "type": "PRODUCED"
+    },
+    {
+      "source": "span:stackexchange-79003376-scan-ret-1",
+      "target": "src:stackexchange-79003376-scan-doc-1",
+      "type": "RETRIEVED_FROM"
+    },
+    {
+      "source": "src:stackexchange-79003376-scan-doc-1",
+      "target": "pv:flask:2.2.5",
+      "type": "MENTIONS"
+    },
+    {
+      "source": "claim:stackexchange-79003376-scan-claim-flask-1",
+      "target": "pv:flask:2.2.5",
+      "type": "CITES"
+    },
+    {
+      "source": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-user\\stackexchange-79003376\\requirements.lock",
+      "target": "pv:flask:3.1.1",
+      "type": "PINS"
+    },
+    {
+      "source": "run:stackexchange-79584062-scan-7",
+      "target": "span:stackexchange-79584062-scan-root-7",
+      "type": "CONTAINS"
+    },
+    {
+      "source": "ans:stackexchange-79584062-scan-answer-pillow-7",
+      "target": "claim:stackexchange-79584062-scan-claim-pillow-7",
+      "type": "ASSERTS"
+    },
+    {
+      "source": "span:stackexchange-79584062-scan-root-7",
+      "target": "span:stackexchange-79584062-scan-ret-7",
+      "type": "PARENT_OF"
+    },
+    {
+      "source": "span:stackexchange-79584062-scan-root-7",
+      "target": "ans:stackexchange-79584062-scan-answer-pillow-7",
+      "type": "PRODUCED"
+    },
+    {
+      "source": "span:stackexchange-79584062-scan-ret-7",
+      "target": "src:stackexchange-79584062-scan-doc-7",
+      "type": "RETRIEVED_FROM"
+    },
+    {
+      "source": "src:stackexchange-79584062-scan-doc-7",
+      "target": "pv:pillow:11.2.1",
+      "type": "MENTIONS"
+    },
+    {
+      "source": "claim:stackexchange-79584062-scan-claim-pillow-7",
+      "target": "pv:pillow:11.2.1",
+      "type": "CITES"
+    },
+    {
+      "source": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-user\\stackexchange-79584062\\requirements.lock",
+      "target": "pv:pillow:13.0.0",
+      "type": "PINS"
+    },
+    {
+      "source": "adv:GHSA-22hg-r758-rrw9",
+      "target": "pv:pillow:9.5.0",
+      "type": "AFFECTS"
+    },
+    {
+      "source": "adv:GHSA-22hg-r758-rrw9",
+      "target": "pv:pillow:10.0.1",
+      "type": "AFFECTS"
+    },
+    {
+      "source": "adv:GHSA-22hg-r758-rrw9",
+      "target": "pv:pillow:10.0.0",
+      "type": "AFFECTS"
+    },
+    {
+      "source": "adv:GHSA-22hg-r758-rrw9",
+      "target": "pv:pillow:11.2.1",
+      "type": "AFFECTS"
+    },
+    {
+      "source": "adv:GHSA-22hg-r758-rrw9",
+      "target": "alias:CVE-2026-112390",
+      "type": "HAS_ALIAS"
+    },
+    {
+      "source": "adv:GHSA-22hg-r758-rrw9",
+      "target": "alias:BIT-pillow-2026-112390",
+      "type": "HAS_ALIAS"
+    },
+    {
+      "source": "adv:GHSA-22hg-r758-rrw9",
+      "target": "https://github.com/python-pillow/Pillow/releases/tag/13.0.0",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-22hg-r758-rrw9",
+      "target": "https://github.com/python-pillow/Pillow",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-22hg-r758-rrw9",
+      "target": "https://github.com/python-pillow/Pillow/commit/26cb3ed061173b817b9ee4b6f507cb0e1e293218",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-22hg-r758-rrw9",
+      "target": "https://nvd.nist.gov/vuln/detail/CVE-2026-112390",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-22hg-r758-rrw9",
+      "target": "https://github.com/python-pillow/Pillow/security/advisories/GHSA-22hg-r758-rrw9",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "alias:CVE-2026-112390",
+      "target": "https://nvd.nist.gov/vuln/detail/CVE-2026-112390",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "run:claude-pillow-1000-scan-0",
+      "target": "span:claude-pillow-1000-scan-root-0",
+      "type": "CONTAINS"
+    },
+    {
+      "source": "ans:claude-pillow-1000-scan-answer-pillow-0",
+      "target": "claim:claude-pillow-1000-scan-claim-pillow-0",
+      "type": "ASSERTS"
+    },
+    {
+      "source": "span:claude-pillow-1000-scan-root-0",
+      "target": "span:claude-pillow-1000-scan-ret-0",
+      "type": "PARENT_OF"
+    },
+    {
+      "source": "span:claude-pillow-1000-scan-root-0",
+      "target": "ans:claude-pillow-1000-scan-answer-pillow-0",
+      "type": "PRODUCED"
+    },
+    {
+      "source": "span:claude-pillow-1000-scan-ret-0",
+      "target": "src:claude-pillow-1000-scan-doc-0",
+      "type": "RETRIEVED_FROM"
+    },
+    {
+      "source": "src:claude-pillow-1000-scan-doc-0",
+      "target": "pv:pillow:10.0.0",
+      "type": "MENTIONS"
+    },
+    {
+      "source": "claim:claude-pillow-1000-scan-claim-pillow-0",
+      "target": "pv:pillow:10.0.0",
+      "type": "CITES"
+    },
+    {
+      "source": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-agent\\claude-pillow-1000\\requirements.lock",
+      "target": "pv:pillow:13.0.0",
+      "type": "PINS"
+    },
+    {
+      "source": "run:claudesonnet-django-427-scan-0",
+      "target": "span:claudesonnet-django-427-scan-root-0",
+      "type": "CONTAINS"
+    },
+    {
+      "source": "ans:claudesonnet-django-427-scan-answer-django-0",
+      "target": "claim:claudesonnet-django-427-scan-claim-django-0",
+      "type": "ASSERTS"
+    },
+    {
+      "source": "span:claudesonnet-django-427-scan-root-0",
+      "target": "span:claudesonnet-django-427-scan-ret-0",
+      "type": "PARENT_OF"
+    },
+    {
+      "source": "span:claudesonnet-django-427-scan-root-0",
+      "target": "ans:claudesonnet-django-427-scan-answer-django-0",
+      "type": "PRODUCED"
+    },
+    {
+      "source": "span:claudesonnet-django-427-scan-ret-0",
+      "target": "src:claudesonnet-django-427-scan-doc-0",
+      "type": "RETRIEVED_FROM"
+    },
+    {
+      "source": "src:claudesonnet-django-427-scan-doc-0",
+      "target": "pv:django:4.2.7",
+      "type": "MENTIONS"
+    },
+    {
+      "source": "claim:claudesonnet-django-427-scan-claim-django-0",
+      "target": "pv:django:4.2.7",
+      "type": "CITES"
+    },
+    {
+      "source": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-agent\\claudesonnet-django-427\\requirements.lock",
+      "target": "pv:django:6.0.2",
+      "type": "PINS"
+    },
+    {
+      "source": "adv:GHSA-2mcm-79hx-8fxw",
+      "target": "pv:django:4.2.7",
+      "type": "AFFECTS"
+    },
+    {
+      "source": "adv:GHSA-2mcm-79hx-8fxw",
+      "target": "alias:PYSEC-2026-42",
+      "type": "HAS_ALIAS"
+    },
+    {
+      "source": "adv:GHSA-2mcm-79hx-8fxw",
+      "target": "alias:CVE-2025-13473",
+      "type": "HAS_ALIAS"
+    },
+    {
+      "source": "adv:GHSA-2mcm-79hx-8fxw",
+      "target": "alias:BIT-django-2025-13473",
+      "type": "HAS_ALIAS"
+    },
+    {
+      "source": "adv:GHSA-2mcm-79hx-8fxw",
+      "target": "https://github.com/advisories/GHSA-2mcm-79hx-8fxw",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-2mcm-79hx-8fxw",
+      "target": "https://www.djangoproject.com/weblog/2026/feb/03/security-releases/",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-2mcm-79hx-8fxw",
+      "target": "https://docs.djangoproject.com/en/dev/releases/security/",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-2mcm-79hx-8fxw",
+      "target": "https://www.djangoproject.com/weblog/2026/feb/03/security-releases",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-2mcm-79hx-8fxw",
+      "target": "https://groups.google.com/g/django-announce",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-2mcm-79hx-8fxw",
+      "target": "https://github.com/pypa/advisory-database/tree/main/vulns/django/PYSEC-2026-42.yaml",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-2mcm-79hx-8fxw",
+      "target": "https://github.com/django/django",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-2mcm-79hx-8fxw",
+      "target": "https://docs.djangoproject.com/en/dev/releases/security",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-2mcm-79hx-8fxw",
+      "target": "https://nvd.nist.gov/vuln/detail/CVE-2025-13473",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "alias:CVE-2025-13473",
+      "target": "https://nvd.nist.gov/vuln/detail/CVE-2025-13473",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "alias:PYSEC-2026-42",
+      "target": "https://github.com/pypa/advisory-database/tree/main/vulns/django/PYSEC-2026-42.yaml",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "run:deepseek-jinja2-312-scan-0",
+      "target": "span:deepseek-jinja2-312-scan-root-0",
+      "type": "CONTAINS"
+    },
+    {
+      "source": "ans:deepseek-jinja2-312-scan-answer-jinja2-0",
+      "target": "claim:deepseek-jinja2-312-scan-claim-jinja2-0",
+      "type": "ASSERTS"
+    },
+    {
+      "source": "span:deepseek-jinja2-312-scan-root-0",
+      "target": "span:deepseek-jinja2-312-scan-ret-0",
+      "type": "PARENT_OF"
+    },
+    {
+      "source": "span:deepseek-jinja2-312-scan-root-0",
+      "target": "ans:deepseek-jinja2-312-scan-answer-jinja2-0",
+      "type": "PRODUCED"
+    },
+    {
+      "source": "span:deepseek-jinja2-312-scan-ret-0",
+      "target": "src:deepseek-jinja2-312-scan-doc-0",
+      "type": "RETRIEVED_FROM"
+    },
+    {
+      "source": "src:deepseek-jinja2-312-scan-doc-0",
+      "target": "pv:jinja2:3.1.2",
+      "type": "MENTIONS"
+    },
+    {
+      "source": "claim:deepseek-jinja2-312-scan-claim-jinja2-0",
+      "target": "pv:jinja2:3.1.2",
+      "type": "CITES"
+    },
+    {
+      "source": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-agent\\deepseek-jinja2-312\\requirements.lock",
+      "target": "pv:jinja2:3.1.6",
+      "type": "PINS"
+    },
+    {
+      "source": "adv:GHSA-cpwx-vrp4-4pq7",
+      "target": "pv:jinja2:3.1.2",
+      "type": "AFFECTS"
+    },
+    {
+      "source": "adv:GHSA-cpwx-vrp4-4pq7",
+      "target": "alias:PYSEC-2026-1471",
+      "type": "HAS_ALIAS"
+    },
+    {
+      "source": "adv:GHSA-cpwx-vrp4-4pq7",
+      "target": "alias:CVE-2025-27516",
+      "type": "HAS_ALIAS"
+    },
+    {
+      "source": "adv:GHSA-cpwx-vrp4-4pq7",
+      "target": "https://github.com/advisories/GHSA-cpwx-vrp4-4pq7",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-cpwx-vrp4-4pq7",
+      "target": "https://pypi.org/project/jinja2",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-cpwx-vrp4-4pq7",
+      "target": "https://lists.debian.org/debian-lts-announce/2025/04/msg00045.html",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-cpwx-vrp4-4pq7",
+      "target": "https://lists.debian.org/debian-lts-announce/2025/04/msg00022.html",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-cpwx-vrp4-4pq7",
+      "target": "https://github.com/pypa/advisory-database/tree/main/vulns/jinja2/PYSEC-2026-1471.yaml",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-cpwx-vrp4-4pq7",
+      "target": "https://github.com/pallets/jinja/releases/tag/3.1.6",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-cpwx-vrp4-4pq7",
+      "target": "https://github.com/pallets/jinja",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-cpwx-vrp4-4pq7",
+      "target": "https://github.com/pallets/jinja/commit/90457bbf33b8662926ae65cdde4c4c32e756e403",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-cpwx-vrp4-4pq7",
+      "target": "https://nvd.nist.gov/vuln/detail/CVE-2025-27516",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-cpwx-vrp4-4pq7",
+      "target": "https://github.com/pallets/jinja/security/advisories/GHSA-cpwx-vrp4-4pq7",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "alias:CVE-2025-27516",
+      "target": "https://nvd.nist.gov/vuln/detail/CVE-2025-27516",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "alias:PYSEC-2026-1471",
+      "target": "https://github.com/pypa/advisory-database/tree/main/vulns/jinja2/PYSEC-2026-1471.yaml",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "run:kimi-pillow-1001-scan-0",
+      "target": "span:kimi-pillow-1001-scan-root-0",
+      "type": "CONTAINS"
+    },
+    {
+      "source": "ans:kimi-pillow-1001-scan-answer-pillow-0",
+      "target": "claim:kimi-pillow-1001-scan-claim-pillow-0",
+      "type": "ASSERTS"
+    },
+    {
+      "source": "span:kimi-pillow-1001-scan-root-0",
+      "target": "span:kimi-pillow-1001-scan-ret-0",
+      "type": "PARENT_OF"
+    },
+    {
+      "source": "span:kimi-pillow-1001-scan-root-0",
+      "target": "ans:kimi-pillow-1001-scan-answer-pillow-0",
+      "type": "PRODUCED"
+    },
+    {
+      "source": "span:kimi-pillow-1001-scan-ret-0",
+      "target": "src:kimi-pillow-1001-scan-doc-0",
+      "type": "RETRIEVED_FROM"
+    },
+    {
+      "source": "src:kimi-pillow-1001-scan-doc-0",
+      "target": "pv:pillow:10.0.1",
+      "type": "MENTIONS"
+    },
+    {
+      "source": "claim:kimi-pillow-1001-scan-claim-pillow-0",
+      "target": "pv:pillow:10.0.1",
+      "type": "CITES"
+    },
+    {
+      "source": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-agent\\kimi-pillow-1001\\requirements.lock",
+      "target": "pv:pillow:13.0.0",
+      "type": "PINS"
+    },
+    {
+      "source": "run:llama-flask-222-scan-0",
+      "target": "span:llama-flask-222-scan-root-0",
+      "type": "CONTAINS"
+    },
+    {
+      "source": "ans:llama-flask-222-scan-answer-flask-0",
+      "target": "claim:llama-flask-222-scan-claim-flask-0",
+      "type": "ASSERTS"
+    },
+    {
+      "source": "span:llama-flask-222-scan-root-0",
+      "target": "span:llama-flask-222-scan-ret-0",
+      "type": "PARENT_OF"
+    },
+    {
+      "source": "span:llama-flask-222-scan-root-0",
+      "target": "ans:llama-flask-222-scan-answer-flask-0",
+      "type": "PRODUCED"
+    },
+    {
+      "source": "span:llama-flask-222-scan-ret-0",
+      "target": "src:llama-flask-222-scan-doc-0",
+      "type": "RETRIEVED_FROM"
+    },
+    {
+      "source": "src:llama-flask-222-scan-doc-0",
+      "target": "pv:flask:2.2.2",
+      "type": "MENTIONS"
+    },
+    {
+      "source": "claim:llama-flask-222-scan-claim-flask-0",
+      "target": "pv:flask:2.2.2",
+      "type": "CITES"
+    },
+    {
+      "source": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-agent\\llama-flask-222\\requirements.lock",
+      "target": "pv:flask:3.1.1",
+      "type": "PINS"
+    },
+    {
+      "source": "run:minimax-flask-233-scan-0",
+      "target": "span:minimax-flask-233-scan-root-0",
+      "type": "CONTAINS"
+    },
+    {
+      "source": "ans:minimax-flask-233-scan-answer-flask-0",
+      "target": "claim:minimax-flask-233-scan-claim-flask-0",
+      "type": "ASSERTS"
+    },
+    {
+      "source": "span:minimax-flask-233-scan-root-0",
+      "target": "span:minimax-flask-233-scan-ret-0",
+      "type": "PARENT_OF"
+    },
+    {
+      "source": "span:minimax-flask-233-scan-root-0",
+      "target": "ans:minimax-flask-233-scan-answer-flask-0",
+      "type": "PRODUCED"
+    },
+    {
+      "source": "span:minimax-flask-233-scan-ret-0",
+      "target": "src:minimax-flask-233-scan-doc-0",
+      "type": "RETRIEVED_FROM"
+    },
+    {
+      "source": "src:minimax-flask-233-scan-doc-0",
+      "target": "pv:flask:2.3.3",
+      "type": "MENTIONS"
+    },
+    {
+      "source": "claim:minimax-flask-233-scan-claim-flask-0",
+      "target": "pv:flask:2.3.3",
+      "type": "CITES"
+    },
+    {
+      "source": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-agent\\minimax-flask-233\\requirements.lock",
+      "target": "pv:flask:3.1.1",
+      "type": "PINS"
+    },
+    {
+      "source": "run:minimax-numpy-1210-scan-0",
+      "target": "span:minimax-numpy-1210-scan-root-0",
+      "type": "CONTAINS"
+    },
+    {
+      "source": "ans:minimax-numpy-1210-scan-answer-numpy-0",
+      "target": "claim:minimax-numpy-1210-scan-claim-numpy-0",
+      "type": "ASSERTS"
+    },
+    {
+      "source": "span:minimax-numpy-1210-scan-root-0",
+      "target": "span:minimax-numpy-1210-scan-ret-0",
+      "type": "PARENT_OF"
+    },
+    {
+      "source": "span:minimax-numpy-1210-scan-root-0",
+      "target": "ans:minimax-numpy-1210-scan-answer-numpy-0",
+      "type": "PRODUCED"
+    },
+    {
+      "source": "span:minimax-numpy-1210-scan-ret-0",
+      "target": "src:minimax-numpy-1210-scan-doc-0",
+      "type": "RETRIEVED_FROM"
+    },
+    {
+      "source": "src:minimax-numpy-1210-scan-doc-0",
+      "target": "pv:numpy:1.21.0",
+      "type": "MENTIONS"
+    },
+    {
+      "source": "claim:minimax-numpy-1210-scan-claim-numpy-0",
+      "target": "pv:numpy:1.21.0",
+      "type": "CITES"
+    },
+    {
+      "source": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-agent\\minimax-numpy-1210\\requirements.lock",
+      "target": "pv:numpy:1.22",
+      "type": "PINS"
+    },
+    {
+      "source": "adv:GHSA-fpfv-jqm9-f5jm",
+      "target": "pv:numpy:1.21.0",
+      "type": "AFFECTS"
+    },
+    {
+      "source": "adv:GHSA-fpfv-jqm9-f5jm",
+      "target": "alias:PYSEC-2021-855",
+      "type": "HAS_ALIAS"
+    },
+    {
+      "source": "adv:GHSA-fpfv-jqm9-f5jm",
+      "target": "alias:CVE-2021-34141",
+      "type": "HAS_ALIAS"
+    },
+    {
+      "source": "adv:GHSA-fpfv-jqm9-f5jm",
+      "target": "https://www.oracle.com/security-alerts/cpujul2022.html",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-fpfv-jqm9-f5jm",
+      "target": "https://github.com/pypa/advisory-database/tree/main/vulns/numpy/PYSEC-2021-855.yaml",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-fpfv-jqm9-f5jm",
+      "target": "https://github.com/numpy/numpy",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-fpfv-jqm9-f5jm",
+      "target": "https://github.com/advisories/GHSA-fpfv-jqm9-f5jm",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-fpfv-jqm9-f5jm",
+      "target": "https://github.com/numpy/numpy/issues/18993#issuecomment-1010735102",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-fpfv-jqm9-f5jm",
+      "target": "https://github.com/numpy/numpy/issues/18993",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-fpfv-jqm9-f5jm",
+      "target": "https://nvd.nist.gov/vuln/detail/CVE-2021-34141",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "alias:CVE-2021-34141",
+      "target": "https://nvd.nist.gov/vuln/detail/CVE-2021-34141",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "alias:PYSEC-2021-855",
+      "target": "https://github.com/pypa/advisory-database/tree/main/vulns/numpy/PYSEC-2021-855.yaml",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "run:minimax-pillow-950-scan-0",
+      "target": "span:minimax-pillow-950-scan-root-0",
+      "type": "CONTAINS"
+    },
+    {
+      "source": "ans:minimax-pillow-950-scan-answer-pillow-0",
+      "target": "claim:minimax-pillow-950-scan-claim-pillow-0",
+      "type": "ASSERTS"
+    },
+    {
+      "source": "span:minimax-pillow-950-scan-root-0",
+      "target": "span:minimax-pillow-950-scan-ret-0",
+      "type": "PARENT_OF"
+    },
+    {
+      "source": "span:minimax-pillow-950-scan-root-0",
+      "target": "ans:minimax-pillow-950-scan-answer-pillow-0",
+      "type": "PRODUCED"
+    },
+    {
+      "source": "span:minimax-pillow-950-scan-ret-0",
+      "target": "src:minimax-pillow-950-scan-doc-0",
+      "type": "RETRIEVED_FROM"
+    },
+    {
+      "source": "src:minimax-pillow-950-scan-doc-0",
+      "target": "pv:pillow:9.5.0",
+      "type": "MENTIONS"
+    },
+    {
+      "source": "claim:minimax-pillow-950-scan-claim-pillow-0",
+      "target": "pv:pillow:9.5.0",
+      "type": "CITES"
+    },
+    {
+      "source": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-agent\\minimax-pillow-950\\requirements.lock",
+      "target": "pv:pillow:13.0.0",
+      "type": "PINS"
+    },
+    {
+      "source": "run:minimax-requests-2310-scan-0",
+      "target": "span:minimax-requests-2310-scan-root-0",
+      "type": "CONTAINS"
+    },
+    {
+      "source": "ans:minimax-requests-2310-scan-answer-requests-0",
+      "target": "claim:minimax-requests-2310-scan-claim-requests-0",
+      "type": "ASSERTS"
+    },
+    {
+      "source": "span:minimax-requests-2310-scan-root-0",
+      "target": "span:minimax-requests-2310-scan-ret-0",
+      "type": "PARENT_OF"
+    },
+    {
+      "source": "span:minimax-requests-2310-scan-root-0",
+      "target": "ans:minimax-requests-2310-scan-answer-requests-0",
+      "type": "PRODUCED"
+    },
+    {
+      "source": "span:minimax-requests-2310-scan-ret-0",
+      "target": "src:minimax-requests-2310-scan-doc-0",
+      "type": "RETRIEVED_FROM"
+    },
+    {
+      "source": "src:minimax-requests-2310-scan-doc-0",
+      "target": "pv:requests:2.31.0",
+      "type": "MENTIONS"
+    },
+    {
+      "source": "claim:minimax-requests-2310-scan-claim-requests-0",
+      "target": "pv:requests:2.31.0",
+      "type": "CITES"
+    },
+    {
+      "source": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-agent\\minimax-requests-2310\\requirements.lock",
+      "target": "pv:requests:2.32.4",
+      "type": "PINS"
+    },
+    {
+      "source": "adv:GHSA-9hjg-9r4m-mvj7",
+      "target": "pv:requests:2.31.0",
+      "type": "AFFECTS"
+    },
+    {
+      "source": "adv:GHSA-9hjg-9r4m-mvj7",
+      "target": "alias:PYSEC-2026-1872",
+      "type": "HAS_ALIAS"
+    },
+    {
+      "source": "adv:GHSA-9hjg-9r4m-mvj7",
+      "target": "alias:CVE-2024-47081",
+      "type": "HAS_ALIAS"
+    },
+    {
+      "source": "adv:GHSA-9hjg-9r4m-mvj7",
+      "target": "http://seclists.org/fulldisclosure/2025/Jun/2",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-9hjg-9r4m-mvj7",
+      "target": "http://www.openwall.com/lists/oss-security/2025/06/04/6",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-9hjg-9r4m-mvj7",
+      "target": "http://www.openwall.com/lists/oss-security/2025/06/04/1",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-9hjg-9r4m-mvj7",
+      "target": "http://www.openwall.com/lists/oss-security/2025/06/03/9",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-9hjg-9r4m-mvj7",
+      "target": "http://www.openwall.com/lists/oss-security/2025/06/03/11",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-9hjg-9r4m-mvj7",
+      "target": "https://seclists.org/fulldisclosure/2025/Jun/2",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-9hjg-9r4m-mvj7",
+      "target": "https://requests.readthedocs.io/en/latest/api/#requests.Session.trust_env",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-9hjg-9r4m-mvj7",
+      "target": "https://pypi.org/project/requests",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-9hjg-9r4m-mvj7",
+      "target": "https://github.com/pypa/advisory-database/tree/main/vulns/requests/PYSEC-2026-1872.yaml",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-9hjg-9r4m-mvj7",
+      "target": "https://github.com/psf/requests/releases/tag/v2.32.4",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-9hjg-9r4m-mvj7",
+      "target": "https://github.com/psf/requests",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-9hjg-9r4m-mvj7",
+      "target": "https://github.com/advisories/GHSA-9hjg-9r4m-mvj7",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-9hjg-9r4m-mvj7",
+      "target": "https://github.com/psf/requests/commit/96ba401c1296ab1dda74a2365ef36d88f7d144ef",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-9hjg-9r4m-mvj7",
+      "target": "https://github.com/psf/requests/pull/6965",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-9hjg-9r4m-mvj7",
+      "target": "https://nvd.nist.gov/vuln/detail/CVE-2024-47081",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-9hjg-9r4m-mvj7",
+      "target": "https://github.com/psf/requests/security/advisories/GHSA-9hjg-9r4m-mvj7",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "alias:CVE-2024-47081",
+      "target": "https://nvd.nist.gov/vuln/detail/CVE-2024-47081",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "alias:PYSEC-2026-1872",
+      "target": "https://github.com/pypa/advisory-database/tree/main/vulns/requests/PYSEC-2026-1872.yaml",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "run:demo-flask-scan-0",
+      "target": "span:demo-flask-scan-root-0",
+      "type": "CONTAINS"
+    },
+    {
+      "source": "ans:demo-flask-scan-answer-flask-0",
+      "target": "claim:demo-flask-scan-claim-flask-0",
+      "type": "ASSERTS"
+    },
+    {
+      "source": "span:demo-flask-scan-root-0",
+      "target": "span:demo-flask-scan-ret-0",
+      "type": "PARENT_OF"
+    },
+    {
+      "source": "span:demo-flask-scan-root-0",
+      "target": "ans:demo-flask-scan-answer-flask-0",
+      "type": "PRODUCED"
+    },
+    {
+      "source": "span:demo-flask-scan-ret-0",
+      "target": "src:demo-flask-scan-doc-0",
+      "type": "RETRIEVED_FROM"
+    },
+    {
+      "source": "src:demo-flask-scan-doc-0",
+      "target": "pv:flask:3.0.3",
+      "type": "MENTIONS"
+    },
+    {
+      "source": "claim:demo-flask-scan-claim-flask-0",
+      "target": "pv:flask:3.0.3",
+      "type": "CITES"
+    },
+    {
+      "source": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\scan\\requirements.lock",
+      "target": "pv:urllib3:2.6.0",
+      "type": "PINS"
+    },
+    {
+      "source": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\scan\\requirements.lock",
+      "target": "pv:django:6.0.2",
+      "type": "PINS"
+    },
+    {
+      "source": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\scan\\requirements.lock",
+      "target": "pv:numpy:1.22",
+      "type": "PINS"
+    },
+    {
+      "source": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\scan\\requirements.lock",
+      "target": "pv:pyyaml:5.2",
+      "type": "PINS"
+    },
+    {
+      "source": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\scan\\requirements.lock",
+      "target": "pv:requests:2.32.4",
+      "type": "PINS"
+    },
+    {
+      "source": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\scan\\requirements.lock",
+      "target": "pv:jinja2:3.1.6",
+      "type": "PINS"
+    },
+    {
+      "source": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\scan\\requirements.lock",
+      "target": "pv:pillow:13.0.0",
+      "type": "PINS"
+    },
+    {
+      "source": "lf:D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\scan\\requirements.lock",
+      "target": "pv:flask:3.1.1",
+      "type": "PINS"
+    },
+    {
+      "source": "run:demo-pillow-scan-1",
+      "target": "span:demo-pillow-scan-root-1",
+      "type": "CONTAINS"
+    },
+    {
+      "source": "ans:demo-pillow-scan-answer-pillow-1",
+      "target": "claim:demo-pillow-scan-claim-pillow-1",
+      "type": "ASSERTS"
+    },
+    {
+      "source": "span:demo-pillow-scan-root-1",
+      "target": "span:demo-pillow-scan-ret-1",
+      "type": "PARENT_OF"
+    },
+    {
+      "source": "span:demo-pillow-scan-root-1",
+      "target": "ans:demo-pillow-scan-answer-pillow-1",
+      "type": "PRODUCED"
+    },
+    {
+      "source": "span:demo-pillow-scan-ret-1",
+      "target": "src:demo-pillow-scan-doc-1",
+      "type": "RETRIEVED_FROM"
+    },
+    {
+      "source": "src:demo-pillow-scan-doc-1",
+      "target": "pv:pillow:10.0.0",
+      "type": "MENTIONS"
+    },
+    {
+      "source": "claim:demo-pillow-scan-claim-pillow-1",
+      "target": "pv:pillow:10.0.0",
+      "type": "CITES"
+    },
+    {
+      "source": "run:demo-jinja2-scan-2",
+      "target": "span:demo-jinja2-scan-root-2",
+      "type": "CONTAINS"
+    },
+    {
+      "source": "ans:demo-jinja2-scan-answer-jinja2-2",
+      "target": "claim:demo-jinja2-scan-claim-jinja2-2",
+      "type": "ASSERTS"
+    },
+    {
+      "source": "span:demo-jinja2-scan-root-2",
+      "target": "span:demo-jinja2-scan-ret-2",
+      "type": "PARENT_OF"
+    },
+    {
+      "source": "span:demo-jinja2-scan-root-2",
+      "target": "ans:demo-jinja2-scan-answer-jinja2-2",
+      "type": "PRODUCED"
+    },
+    {
+      "source": "span:demo-jinja2-scan-ret-2",
+      "target": "src:demo-jinja2-scan-doc-2",
+      "type": "RETRIEVED_FROM"
+    },
+    {
+      "source": "src:demo-jinja2-scan-doc-2",
+      "target": "pv:jinja2:3.1.2",
+      "type": "MENTIONS"
+    },
+    {
+      "source": "claim:demo-jinja2-scan-claim-jinja2-2",
+      "target": "pv:jinja2:3.1.2",
+      "type": "CITES"
+    },
+    {
+      "source": "run:demo-requests-scan-3",
+      "target": "span:demo-requests-scan-root-3",
+      "type": "CONTAINS"
+    },
+    {
+      "source": "ans:demo-requests-scan-answer-requests-3",
+      "target": "claim:demo-requests-scan-claim-requests-3",
+      "type": "ASSERTS"
+    },
+    {
+      "source": "span:demo-requests-scan-root-3",
+      "target": "span:demo-requests-scan-ret-3",
+      "type": "PARENT_OF"
+    },
+    {
+      "source": "span:demo-requests-scan-root-3",
+      "target": "ans:demo-requests-scan-answer-requests-3",
+      "type": "PRODUCED"
+    },
+    {
+      "source": "span:demo-requests-scan-ret-3",
+      "target": "src:demo-requests-scan-doc-3",
+      "type": "RETRIEVED_FROM"
+    },
+    {
+      "source": "src:demo-requests-scan-doc-3",
+      "target": "pv:requests:2.31.0",
+      "type": "MENTIONS"
+    },
+    {
+      "source": "claim:demo-requests-scan-claim-requests-3",
+      "target": "pv:requests:2.31.0",
+      "type": "CITES"
+    },
+    {
+      "source": "run:demo-pyyaml-scan-4",
+      "target": "span:demo-pyyaml-scan-root-4",
+      "type": "CONTAINS"
+    },
+    {
+      "source": "ans:demo-pyyaml-scan-answer-pyyaml-4",
+      "target": "claim:demo-pyyaml-scan-claim-pyyaml-4",
+      "type": "ASSERTS"
+    },
+    {
+      "source": "span:demo-pyyaml-scan-root-4",
+      "target": "span:demo-pyyaml-scan-ret-4",
+      "type": "PARENT_OF"
+    },
+    {
+      "source": "span:demo-pyyaml-scan-root-4",
+      "target": "ans:demo-pyyaml-scan-answer-pyyaml-4",
+      "type": "PRODUCED"
+    },
+    {
+      "source": "span:demo-pyyaml-scan-ret-4",
+      "target": "src:demo-pyyaml-scan-doc-4",
+      "type": "RETRIEVED_FROM"
+    },
+    {
+      "source": "src:demo-pyyaml-scan-doc-4",
+      "target": "pv:pyyaml:3.13",
+      "type": "MENTIONS"
+    },
+    {
+      "source": "claim:demo-pyyaml-scan-claim-pyyaml-4",
+      "target": "pv:pyyaml:3.13",
+      "type": "CITES"
+    },
+    {
+      "source": "adv:GHSA-3pqx-4fqf-j49f",
+      "target": "pv:pyyaml:3.13",
+      "type": "AFFECTS"
+    },
+    {
+      "source": "adv:GHSA-3pqx-4fqf-j49f",
+      "target": "alias:PYSEC-2020-176",
+      "type": "HAS_ALIAS"
+    },
+    {
+      "source": "adv:GHSA-3pqx-4fqf-j49f",
+      "target": "alias:CVE-2019-20477",
+      "type": "HAS_ALIAS"
+    },
+    {
+      "source": "adv:GHSA-3pqx-4fqf-j49f",
+      "target": "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/33VBUY73AA6CTTYL3LRWHNFDULV7PFPN/",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-3pqx-4fqf-j49f",
+      "target": "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/52N5XS73Z5S4ZN7I7R56ICCPCTKCUV4H/",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-3pqx-4fqf-j49f",
+      "target": "https://www.exploit-db.com/download/47655",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-3pqx-4fqf-j49f",
+      "target": "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/52N5XS73Z5S4ZN7I7R56ICCPCTKCUV4H",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-3pqx-4fqf-j49f",
+      "target": "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/33VBUY73AA6CTTYL3LRWHNFDULV7PFPN",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-3pqx-4fqf-j49f",
+      "target": "https://github.com/yaml/pyyaml/blob/master/CHANGES",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-3pqx-4fqf-j49f",
+      "target": "https://github.com/yaml/pyyaml",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-3pqx-4fqf-j49f",
+      "target": "https://github.com/pypa/advisory-database/tree/main/vulns/pyyaml/PYSEC-2020-176.yaml",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-3pqx-4fqf-j49f",
+      "target": "https://github.com/advisories/GHSA-3pqx-4fqf-j49f",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-3pqx-4fqf-j49f",
+      "target": "https://nvd.nist.gov/vuln/detail/CVE-2019-20477",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "alias:CVE-2019-20477",
+      "target": "https://nvd.nist.gov/vuln/detail/CVE-2019-20477",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "alias:PYSEC-2020-176",
+      "target": "https://github.com/pypa/advisory-database/tree/main/vulns/pyyaml/PYSEC-2020-176.yaml",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "run:demo-numpy-scan-5",
+      "target": "span:demo-numpy-scan-root-5",
+      "type": "CONTAINS"
+    },
+    {
+      "source": "ans:demo-numpy-scan-answer-numpy-5",
+      "target": "claim:demo-numpy-scan-claim-numpy-5",
+      "type": "ASSERTS"
+    },
+    {
+      "source": "span:demo-numpy-scan-root-5",
+      "target": "span:demo-numpy-scan-ret-5",
+      "type": "PARENT_OF"
+    },
+    {
+      "source": "span:demo-numpy-scan-root-5",
+      "target": "ans:demo-numpy-scan-answer-numpy-5",
+      "type": "PRODUCED"
+    },
+    {
+      "source": "span:demo-numpy-scan-ret-5",
+      "target": "src:demo-numpy-scan-doc-5",
+      "type": "RETRIEVED_FROM"
+    },
+    {
+      "source": "src:demo-numpy-scan-doc-5",
+      "target": "pv:numpy:1.21.0",
+      "type": "MENTIONS"
+    },
+    {
+      "source": "claim:demo-numpy-scan-claim-numpy-5",
+      "target": "pv:numpy:1.21.0",
+      "type": "CITES"
+    },
+    {
+      "source": "run:demo-django-scan-6",
+      "target": "span:demo-django-scan-root-6",
+      "type": "CONTAINS"
+    },
+    {
+      "source": "ans:demo-django-scan-answer-django-6",
+      "target": "claim:demo-django-scan-claim-django-6",
+      "type": "ASSERTS"
+    },
+    {
+      "source": "span:demo-django-scan-root-6",
+      "target": "span:demo-django-scan-ret-6",
+      "type": "PARENT_OF"
+    },
+    {
+      "source": "span:demo-django-scan-root-6",
+      "target": "ans:demo-django-scan-answer-django-6",
+      "type": "PRODUCED"
+    },
+    {
+      "source": "span:demo-django-scan-ret-6",
+      "target": "src:demo-django-scan-doc-6",
+      "type": "RETRIEVED_FROM"
+    },
+    {
+      "source": "src:demo-django-scan-doc-6",
+      "target": "pv:django:4.2.7",
+      "type": "MENTIONS"
+    },
+    {
+      "source": "claim:demo-django-scan-claim-django-6",
+      "target": "pv:django:4.2.7",
+      "type": "CITES"
+    },
+    {
+      "source": "run:demo-urllib3-scan-7",
+      "target": "span:demo-urllib3-scan-root-7",
+      "type": "CONTAINS"
+    },
+    {
+      "source": "ans:demo-urllib3-scan-answer-urllib3-7",
+      "target": "claim:demo-urllib3-scan-claim-urllib3-7",
+      "type": "ASSERTS"
+    },
+    {
+      "source": "span:demo-urllib3-scan-root-7",
+      "target": "span:demo-urllib3-scan-ret-7",
+      "type": "PARENT_OF"
+    },
+    {
+      "source": "span:demo-urllib3-scan-root-7",
+      "target": "ans:demo-urllib3-scan-answer-urllib3-7",
+      "type": "PRODUCED"
+    },
+    {
+      "source": "span:demo-urllib3-scan-ret-7",
+      "target": "src:demo-urllib3-scan-doc-7",
+      "type": "RETRIEVED_FROM"
+    },
+    {
+      "source": "src:demo-urllib3-scan-doc-7",
+      "target": "pv:urllib3:2.0.7",
+      "type": "MENTIONS"
+    },
+    {
+      "source": "claim:demo-urllib3-scan-claim-urllib3-7",
+      "target": "pv:urllib3:2.0.7",
+      "type": "CITES"
+    },
+    {
+      "source": "adv:GHSA-2xpw-w6gg-jr37",
+      "target": "pv:urllib3:2.0.7",
+      "type": "AFFECTS"
+    },
+    {
+      "source": "adv:GHSA-2xpw-w6gg-jr37",
+      "target": "alias:PYSEC-2026-1994",
+      "type": "HAS_ALIAS"
+    },
+    {
+      "source": "adv:GHSA-2xpw-w6gg-jr37",
+      "target": "alias:CVE-2025-66471",
+      "type": "HAS_ALIAS"
+    },
+    {
+      "source": "adv:GHSA-2xpw-w6gg-jr37",
+      "target": "https://pypi.org/project/urllib3",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-2xpw-w6gg-jr37",
+      "target": "https://github.com/urllib3/urllib3",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-2xpw-w6gg-jr37",
+      "target": "https://github.com/pypa/advisory-database/tree/main/vulns/urllib3/PYSEC-2026-1994.yaml",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-2xpw-w6gg-jr37",
+      "target": "https://github.com/advisories/GHSA-2xpw-w6gg-jr37",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-2xpw-w6gg-jr37",
+      "target": "https://github.com/urllib3/urllib3/commit/d0fde3672e4a4093f7587858dccfc298eb66e46c",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-2xpw-w6gg-jr37",
+      "target": "https://github.com/urllib3/urllib3/commit/c19571de34c47de3a766541b041637ba5f716ed7",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-2xpw-w6gg-jr37",
+      "target": "https://nvd.nist.gov/vuln/detail/CVE-2025-66471",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:GHSA-2xpw-w6gg-jr37",
+      "target": "https://github.com/urllib3/urllib3/security/advisories/GHSA-2xpw-w6gg-jr37",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "alias:CVE-2025-66471",
+      "target": "https://nvd.nist.gov/vuln/detail/CVE-2025-66471",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "alias:PYSEC-2026-1994",
+      "target": "https://github.com/pypa/advisory-database/tree/main/vulns/urllib3/PYSEC-2026-1994.yaml",
+      "type": "REFERENCES"
+    }
+  ],
+  "highlights": {
+    "Q6_provenance": [],
+    "Q7_hop_audit": [],
+    "Q8_declaration_drift": [],
+    "merge_actions": [],
+    "Q9_convergence": [
+      {
+        "package": "pillow",
+        "version": "10.0.0",
+        "advisory_id": "GHSA-22hg-r758-rrw9",
+        "fixed": "13.0.0",
+        "answers": [
+          "claude-pillow-1000-scan-answer-pillow-0",
+          "demo-pillow-scan-answer-pillow-1"
+        ],
+        "models": [
+          "claude-sonnet-4-6",
+          "gemini-3.1-pro-preview"
+        ],
+        "nodes": [
+          "pv:pillow:10.0.0",
+          "adv:GHSA-22hg-r758-rrw9",
+          "ans:claude-pillow-1000-scan-answer-pillow-0",
+          "claim:claude-pillow-1000-scan-claim-pillow-0",
+          "ans:demo-pillow-scan-answer-pillow-1",
+          "claim:demo-pillow-scan-claim-pillow-1"
+        ],
+        "n_answers": 2,
+        "n_models": 2,
+        "resolved": true
+      },
+      {
+        "package": "django",
+        "version": "4.2.7",
+        "advisory_id": "GHSA-2mcm-79hx-8fxw",
+        "fixed": "6.0.2",
+        "answers": [
+          "claudesonnet-django-427-scan-answer-django-0",
+          "demo-django-scan-answer-django-6"
+        ],
+        "models": [
+          "claude-sonnet-4-6"
+        ],
+        "nodes": [
+          "pv:django:4.2.7",
+          "adv:GHSA-2mcm-79hx-8fxw",
+          "ans:claudesonnet-django-427-scan-answer-django-0",
+          "claim:claudesonnet-django-427-scan-claim-django-0",
+          "ans:demo-django-scan-answer-django-6",
+          "claim:demo-django-scan-claim-django-6"
+        ],
+        "n_answers": 2,
+        "n_models": 1,
+        "resolved": true
+      },
+      {
+        "package": "jinja2",
+        "version": "3.1.2",
+        "advisory_id": "GHSA-cpwx-vrp4-4pq7",
+        "fixed": "3.1.6",
+        "answers": [
+          "deepseek-jinja2-312-scan-answer-jinja2-0",
+          "demo-jinja2-scan-answer-jinja2-2"
+        ],
+        "models": [
+          "DeepSeek-V3.2"
+        ],
+        "nodes": [
+          "pv:jinja2:3.1.2",
+          "adv:GHSA-cpwx-vrp4-4pq7",
+          "ans:deepseek-jinja2-312-scan-answer-jinja2-0",
+          "claim:deepseek-jinja2-312-scan-claim-jinja2-0",
+          "ans:demo-jinja2-scan-answer-jinja2-2",
+          "claim:demo-jinja2-scan-claim-jinja2-2"
+        ],
+        "n_answers": 2,
+        "n_models": 1,
+        "resolved": true
+      },
+      {
+        "package": "numpy",
+        "version": "1.21.0",
+        "advisory_id": "GHSA-fpfv-jqm9-f5jm",
+        "fixed": "1.22",
+        "answers": [
+          "minimax-numpy-1210-scan-answer-numpy-0",
+          "demo-numpy-scan-answer-numpy-5"
+        ],
+        "models": [
+          "MiniMax-M2.5"
+        ],
+        "nodes": [
+          "pv:numpy:1.21.0",
+          "adv:GHSA-fpfv-jqm9-f5jm",
+          "ans:minimax-numpy-1210-scan-answer-numpy-0",
+          "claim:minimax-numpy-1210-scan-claim-numpy-0",
+          "ans:demo-numpy-scan-answer-numpy-5",
+          "claim:demo-numpy-scan-claim-numpy-5"
+        ],
+        "n_answers": 2,
+        "n_models": 1,
+        "resolved": true
+      },
+      {
+        "package": "requests",
+        "version": "2.31.0",
+        "advisory_id": "GHSA-9hjg-9r4m-mvj7",
+        "fixed": "2.32.4",
+        "answers": [
+          "minimax-requests-2310-scan-answer-requests-0",
+          "demo-requests-scan-answer-requests-3"
+        ],
+        "models": [
+          "MiniMax-M2.5"
+        ],
+        "nodes": [
+          "pv:requests:2.31.0",
+          "adv:GHSA-9hjg-9r4m-mvj7",
+          "ans:minimax-requests-2310-scan-answer-requests-0",
+          "claim:minimax-requests-2310-scan-claim-requests-0",
+          "ans:demo-requests-scan-answer-requests-3",
+          "claim:demo-requests-scan-claim-requests-3"
+        ],
+        "n_answers": 2,
+        "n_models": 1,
+        "resolved": true
+      },
+      {
+        "package": "flask",
+        "version": "1.1.2",
+        "advisory_id": "GHSA-4grg-w6v8-c28g",
+        "fixed": "3.1.1",
+        "answers": [
+          "stackexchange-62945229-scan-answer-flask-0"
+        ],
+        "models": [
+          "human:stackoverflow"
+        ],
+        "nodes": [
+          "pv:flask:1.1.2",
+          "adv:GHSA-4grg-w6v8-c28g",
+          "ans:stackexchange-62945229-scan-answer-flask-0",
+          "claim:stackexchange-62945229-scan-claim-flask-0"
+        ],
+        "n_answers": 1,
+        "n_models": 1,
+        "resolved": true
+      },
+      {
+        "package": "flask",
+        "version": "2.0.1",
+        "advisory_id": "GHSA-4grg-w6v8-c28g",
+        "fixed": "3.1.1",
+        "answers": [
+          "stackexchange-69199812-scan-answer-flask-0"
+        ],
+        "models": [
+          "human:stackoverflow"
+        ],
+        "nodes": [
+          "pv:flask:2.0.1",
+          "adv:GHSA-4grg-w6v8-c28g",
+          "ans:stackexchange-69199812-scan-answer-flask-0",
+          "claim:stackexchange-69199812-scan-claim-flask-0"
+        ],
+        "n_answers": 1,
+        "n_models": 1,
+        "resolved": true
+      },
+      {
+        "package": "flask",
+        "version": "2.3.2",
+        "advisory_id": "GHSA-4grg-w6v8-c28g",
+        "fixed": "3.1.1",
+        "answers": [
+          "stackexchange-77198219-scan-answer-flask-1"
+        ],
+        "models": [
+          "human:stackoverflow"
+        ],
+        "nodes": [
+          "pv:flask:2.3.2",
+          "adv:GHSA-4grg-w6v8-c28g",
+          "ans:stackexchange-77198219-scan-answer-flask-1",
+          "claim:stackexchange-77198219-scan-claim-flask-1"
+        ],
+        "n_answers": 1,
+        "n_models": 1,
+        "resolved": true
+      },
+      {
+        "package": "flask",
+        "version": "2.2.5",
+        "advisory_id": "GHSA-4grg-w6v8-c28g",
+        "fixed": "3.1.1",
+        "answers": [
+          "stackexchange-79003376-scan-answer-flask-1"
+        ],
+        "models": [
+          "human:stackoverflow"
+        ],
+        "nodes": [
+          "pv:flask:2.2.5",
+          "adv:GHSA-4grg-w6v8-c28g",
+          "ans:stackexchange-79003376-scan-answer-flask-1",
+          "claim:stackexchange-79003376-scan-claim-flask-1"
+        ],
+        "n_answers": 1,
+        "n_models": 1,
+        "resolved": true
+      },
+      {
+        "package": "pillow",
+        "version": "11.2.1",
+        "advisory_id": "GHSA-22hg-r758-rrw9",
+        "fixed": "13.0.0",
+        "answers": [
+          "stackexchange-79584062-scan-answer-pillow-7"
+        ],
+        "models": [
+          "human:stackoverflow"
+        ],
+        "nodes": [
+          "pv:pillow:11.2.1",
+          "adv:GHSA-22hg-r758-rrw9",
+          "ans:stackexchange-79584062-scan-answer-pillow-7",
+          "claim:stackexchange-79584062-scan-claim-pillow-7"
+        ],
+        "n_answers": 1,
+        "n_models": 1,
+        "resolved": true
+      },
+      {
+        "package": "pillow",
+        "version": "10.0.1",
+        "advisory_id": "GHSA-22hg-r758-rrw9",
+        "fixed": "13.0.0",
+        "answers": [
+          "kimi-pillow-1001-scan-answer-pillow-0"
+        ],
+        "models": [
+          "kimi-k2.5"
+        ],
+        "nodes": [
+          "pv:pillow:10.0.1",
+          "adv:GHSA-22hg-r758-rrw9",
+          "ans:kimi-pillow-1001-scan-answer-pillow-0",
+          "claim:kimi-pillow-1001-scan-claim-pillow-0"
+        ],
+        "n_answers": 1,
+        "n_models": 1,
+        "resolved": true
+      },
+      {
+        "package": "flask",
+        "version": "2.2.2",
+        "advisory_id": "GHSA-4grg-w6v8-c28g",
+        "fixed": "3.1.1",
+        "answers": [
+          "llama-flask-222-scan-answer-flask-0"
+        ],
+        "models": [
+          "meta-llama/llama-4-scout"
+        ],
+        "nodes": [
+          "pv:flask:2.2.2",
+          "adv:GHSA-4grg-w6v8-c28g",
+          "ans:llama-flask-222-scan-answer-flask-0",
+          "claim:llama-flask-222-scan-claim-flask-0"
+        ],
+        "n_answers": 1,
+        "n_models": 1,
+        "resolved": true
+      },
+      {
+        "package": "flask",
+        "version": "2.3.3",
+        "advisory_id": "GHSA-4grg-w6v8-c28g",
+        "fixed": "3.1.1",
+        "answers": [
+          "minimax-flask-233-scan-answer-flask-0"
+        ],
+        "models": [
+          "MiniMax-M2.5"
+        ],
+        "nodes": [
+          "pv:flask:2.3.3",
+          "adv:GHSA-4grg-w6v8-c28g",
+          "ans:minimax-flask-233-scan-answer-flask-0",
+          "claim:minimax-flask-233-scan-claim-flask-0"
+        ],
+        "n_answers": 1,
+        "n_models": 1,
+        "resolved": true
+      },
+      {
+        "package": "pillow",
+        "version": "9.5.0",
+        "advisory_id": "GHSA-22hg-r758-rrw9",
+        "fixed": "13.0.0",
+        "answers": [
+          "minimax-pillow-950-scan-answer-pillow-0"
+        ],
+        "models": [
+          "MiniMax-M2.5"
+        ],
+        "nodes": [
+          "pv:pillow:9.5.0",
+          "adv:GHSA-22hg-r758-rrw9",
+          "ans:minimax-pillow-950-scan-answer-pillow-0",
+          "claim:minimax-pillow-950-scan-claim-pillow-0"
+        ],
+        "n_answers": 1,
+        "n_models": 1,
+        "resolved": true
+      },
+      {
+        "package": "flask",
+        "version": "3.0.3",
+        "advisory_id": "GHSA-4grg-w6v8-c28g",
+        "fixed": "3.1.1",
+        "answers": [
+          "demo-flask-scan-answer-flask-0"
+        ],
+        "models": [
+          "gpt-5.4"
+        ],
+        "nodes": [
+          "pv:flask:3.0.3",
+          "adv:GHSA-4grg-w6v8-c28g",
+          "ans:demo-flask-scan-answer-flask-0",
+          "claim:demo-flask-scan-claim-flask-0"
+        ],
+        "n_answers": 1,
+        "n_models": 1,
+        "resolved": true
+      },
+      {
+        "package": "pyyaml",
+        "version": "3.13",
+        "advisory_id": "GHSA-3pqx-4fqf-j49f",
+        "fixed": "5.2",
+        "answers": [
+          "demo-pyyaml-scan-answer-pyyaml-4"
+        ],
+        "models": [
+          "Qwen3.5-397B-A17B"
+        ],
+        "nodes": [
+          "pv:pyyaml:3.13",
+          "adv:GHSA-3pqx-4fqf-j49f",
+          "ans:demo-pyyaml-scan-answer-pyyaml-4",
+          "claim:demo-pyyaml-scan-claim-pyyaml-4"
+        ],
+        "n_answers": 1,
+        "n_models": 1,
+        "resolved": true
+      },
+      {
+        "package": "urllib3",
+        "version": "2.0.7",
+        "advisory_id": "GHSA-2xpw-w6gg-jr37",
+        "fixed": "2.6.0",
+        "answers": [
+          "demo-urllib3-scan-answer-urllib3-7"
+        ],
+        "models": [
+          "Qwen3-235B-A22B-Instruct-2507"
+        ],
+        "nodes": [
+          "pv:urllib3:2.0.7",
+          "adv:GHSA-2xpw-w6gg-jr37",
+          "ans:demo-urllib3-scan-answer-urllib3-7",
+          "claim:demo-urllib3-scan-claim-urllib3-7"
+        ],
+        "n_answers": 1,
+        "n_models": 1,
+        "resolved": true
+      }
+    ],
+    "Q10_blast_radius": [
+      {
+        "advisory_id": "GHSA-22hg-r758-rrw9",
+        "fixed": "13.0.0",
+        "published": "2026-10-21T20:39:49Z",
+        "package": "pillow",
+        "answers": [
+          "minimax-pillow-950-scan-answer-pillow-0",
+          "kimi-pillow-1001-scan-answer-pillow-0",
+          "demo-pillow-scan-answer-pillow-1",
+          "claude-pillow-1000-scan-answer-pillow-0",
+          "stackexchange-79584062-scan-answer-pillow-7"
+        ],
+        "models": [
+          "MiniMax-M2.5",
+          "kimi-k2.5",
+          "gemini-3.1-pro-preview",
+          "claude-sonnet-4-6",
+          "human:stackoverflow"
+        ],
+        "versions": [
+          "9.5.0",
+          "10.0.1",
+          "10.0.0",
+          "11.2.1"
+        ],
+        "nodes": [
+          "adv:GHSA-22hg-r758-rrw9",
+          "ans:minimax-pillow-950-scan-answer-pillow-0",
+          "pv:pillow:9.5.0",
+          "ans:kimi-pillow-1001-scan-answer-pillow-0",
+          "pv:pillow:10.0.1",
+          "ans:demo-pillow-scan-answer-pillow-1",
+          "pv:pillow:10.0.0",
+          "ans:claude-pillow-1000-scan-answer-pillow-0",
+          "ans:stackexchange-79584062-scan-answer-pillow-7",
+          "pv:pillow:11.2.1"
+        ],
+        "n_answers": 5,
+        "n_models": 5,
+        "resolved": true
+      },
+      {
+        "advisory_id": "GHSA-4grg-w6v8-c28g",
+        "fixed": "3.1.1",
+        "published": "2025-05-13T20:25:26Z",
+        "package": "flask",
+        "answers": [
+          "demo-flask-scan-answer-flask-0",
+          "minimax-flask-233-scan-answer-flask-0",
+          "llama-flask-222-scan-answer-flask-0",
+          "stackexchange-79003376-scan-answer-flask-1",
+          "stackexchange-77198219-scan-answer-flask-1",
+          "stackexchange-69199812-scan-answer-flask-0",
+          "stackexchange-62945229-scan-answer-flask-0"
+        ],
+        "models": [
+          "gpt-5.4",
+          "MiniMax-M2.5",
+          "meta-llama/llama-4-scout",
+          "human:stackoverflow"
+        ],
+        "versions": [
+          "3.0.3",
+          "2.3.3",
+          "2.2.2",
+          "2.2.5",
+          "2.3.2",
+          "2.0.1",
+          "1.1.2"
+        ],
+        "nodes": [
+          "adv:GHSA-4grg-w6v8-c28g",
+          "ans:demo-flask-scan-answer-flask-0",
+          "pv:flask:3.0.3",
+          "ans:minimax-flask-233-scan-answer-flask-0",
+          "pv:flask:2.3.3",
+          "ans:llama-flask-222-scan-answer-flask-0",
+          "pv:flask:2.2.2",
+          "ans:stackexchange-79003376-scan-answer-flask-1",
+          "pv:flask:2.2.5",
+          "ans:stackexchange-77198219-scan-answer-flask-1",
+          "pv:flask:2.3.2",
+          "ans:stackexchange-69199812-scan-answer-flask-0",
+          "pv:flask:2.0.1",
+          "ans:stackexchange-62945229-scan-answer-flask-0",
+          "pv:flask:1.1.2"
+        ],
+        "n_answers": 7,
+        "n_models": 4,
+        "resolved": true
+      },
+      {
+        "advisory_id": "GHSA-2mcm-79hx-8fxw",
+        "fixed": "6.0.2",
+        "published": "2026-02-03T15:30:23Z",
+        "package": "django",
+        "answers": [
+          "demo-django-scan-answer-django-6",
+          "claudesonnet-django-427-scan-answer-django-0"
+        ],
+        "models": [
+          "claude-sonnet-4-6"
+        ],
+        "versions": [
+          "4.2.7"
+        ],
+        "nodes": [
+          "adv:GHSA-2mcm-79hx-8fxw",
+          "ans:demo-django-scan-answer-django-6",
+          "pv:django:4.2.7",
+          "ans:claudesonnet-django-427-scan-answer-django-0"
+        ],
+        "n_answers": 2,
+        "n_models": 1,
+        "resolved": true
+      },
+      {
+        "advisory_id": "GHSA-cpwx-vrp4-4pq7",
+        "fixed": "3.1.6",
+        "published": "2025-03-05T20:40:14Z",
+        "package": "jinja2",
+        "answers": [
+          "demo-jinja2-scan-answer-jinja2-2",
+          "deepseek-jinja2-312-scan-answer-jinja2-0"
+        ],
+        "models": [
+          "DeepSeek-V3.2"
+        ],
+        "versions": [
+          "3.1.2"
+        ],
+        "nodes": [
+          "adv:GHSA-cpwx-vrp4-4pq7",
+          "ans:demo-jinja2-scan-answer-jinja2-2",
+          "pv:jinja2:3.1.2",
+          "ans:deepseek-jinja2-312-scan-answer-jinja2-0"
+        ],
+        "n_answers": 2,
+        "n_models": 1,
+        "resolved": true
+      },
+      {
+        "advisory_id": "GHSA-fpfv-jqm9-f5jm",
+        "fixed": "1.22",
+        "published": "2021-12-18T00:00:41Z",
+        "package": "numpy",
+        "answers": [
+          "demo-numpy-scan-answer-numpy-5",
+          "minimax-numpy-1210-scan-answer-numpy-0"
+        ],
+        "models": [
+          "MiniMax-M2.5"
+        ],
+        "versions": [
+          "1.21.0"
+        ],
+        "nodes": [
+          "adv:GHSA-fpfv-jqm9-f5jm",
+          "ans:demo-numpy-scan-answer-numpy-5",
+          "pv:numpy:1.21.0",
+          "ans:minimax-numpy-1210-scan-answer-numpy-0"
+        ],
+        "n_answers": 2,
+        "n_models": 1,
+        "resolved": true
+      },
+      {
+        "advisory_id": "GHSA-9hjg-9r4m-mvj7",
+        "fixed": "2.32.4",
+        "published": "2025-06-09T19:06:08Z",
+        "package": "requests",
+        "answers": [
+          "demo-requests-scan-answer-requests-3",
+          "minimax-requests-2310-scan-answer-requests-0"
+        ],
+        "models": [
+          "MiniMax-M2.5"
+        ],
+        "versions": [
+          "2.31.0"
+        ],
+        "nodes": [
+          "adv:GHSA-9hjg-9r4m-mvj7",
+          "ans:demo-requests-scan-answer-requests-3",
+          "pv:requests:2.31.0",
+          "ans:minimax-requests-2310-scan-answer-requests-0"
+        ],
+        "n_answers": 2,
+        "n_models": 1,
+        "resolved": true
+      },
+      {
+        "advisory_id": "GHSA-3pqx-4fqf-j49f",
+        "fixed": "5.2",
+        "published": "2021-04-20T16:40:42Z",
+        "package": "pyyaml",
+        "answers": [
+          "demo-pyyaml-scan-answer-pyyaml-4"
+        ],
+        "models": [
+          "Qwen3.5-397B-A17B"
+        ],
+        "versions": [
+          "3.13"
+        ],
+        "nodes": [
+          "adv:GHSA-3pqx-4fqf-j49f",
+          "ans:demo-pyyaml-scan-answer-pyyaml-4",
+          "pv:pyyaml:3.13"
+        ],
+        "n_answers": 1,
+        "n_models": 1,
+        "resolved": true
+      },
+      {
+        "advisory_id": "GHSA-2xpw-w6gg-jr37",
+        "fixed": "2.6.0",
+        "published": "2025-12-05T18:15:54Z",
+        "package": "urllib3",
+        "answers": [
+          "demo-urllib3-scan-answer-urllib3-7"
+        ],
+        "models": [
+          "Qwen3-235B-A22B-Instruct-2507"
+        ],
+        "versions": [
+          "2.0.7"
+        ],
+        "nodes": [
+          "adv:GHSA-2xpw-w6gg-jr37",
+          "ans:demo-urllib3-scan-answer-urllib3-7",
+          "pv:urllib3:2.0.7"
+        ],
+        "n_answers": 1,
+        "n_models": 1,
+        "resolved": true
+      }
+    ]
+  },
+  "verdict_summary": {
+    "graph_verdict": "PASS",
+    "checks": {
+      "q9_finds_cross_model_convergence": true,
+      "q10_blast_radius_spans_multiple_models": true,
+      "answers_join_the_advisory_clock": true,
+      "every_cluster_node_id_is_real": true
+    },
+    "declarations_found": null,
+    "scenarios_built": null,
+    "merge_verdict": "PASS"
+  }
+}

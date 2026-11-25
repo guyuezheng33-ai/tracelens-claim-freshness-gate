@@ -1,0 +1,23 @@
+{
+  "metric": "structure-derived root-cause localization: graph vs global-lowest-score baseline",
+  "checks": {
+    "baseline_misidentifies": true,
+    "graph_localizes_true_cause": true,
+    "graph_zero_false_positive_on_clean": true,
+    "has_signal": true
+  },
+  "baseline_global_lowest_score_picks": "cache-tmp.bin",
+  "convergence_causes": [
+    "stale-policy-v2.pdf"
+  ],
+  "answers_with_signal": {
+    "ba-ans": [
+      "stale-policy-v2.pdf"
+    ]
+  },
+  "answers_clean": [
+    "cl-ans"
+  ],
+  "passed": true,
+  "verdict": "PASS"
+}

@@ -1,0 +1,2 @@
+from PIL import Image  # VERSION=10.0.1
+PIL==10.0.1

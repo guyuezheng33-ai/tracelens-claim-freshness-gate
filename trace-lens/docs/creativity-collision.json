@@ -1,0 +1,21 @@
+{
+  "schema": "tracelens/creativity-collision@1",
+  "source": "D:/桌面/Relate by Neo4j Hackathon/relate-ideas-main.zip",
+  "trace_and_expiry_as_thesis": {
+    "count": 0,
+    "files": []
+  },
+  "osv_and_answer_timeline": {
+    "count": 0,
+    "files": []
+  },
+  "official_own_idea": {
+    "count": 1,
+    "files": [
+      "agent-trace-warehouse.md"
+    ]
+  },
+  "total_docs": 385,
+  "hackathon_zip_sha256": "fc66dc93352950bb41c0a89c9384d323d3e556ac575dee57b84e03aad73b8c71",
+  "conclusion": "No official idea joins agent-answer timestamps with advisory publication times to judge born-stale answers. Combination is unoccupied."
+}

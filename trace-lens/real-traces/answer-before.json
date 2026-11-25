@@ -1,0 +1,20 @@
+[
+  {
+    "claim_id": "real-claim-0",
+    "source": "README.md",
+    "score": 1.0,
+    "text": "doc README.md score 1.0000"
+  },
+  {
+    "claim_id": "real-claim-1",
+    "source": "trace-lens/README.md",
+    "score": 1.0,
+    "text": "doc trace-lens/README.md score 1.0000"
+  },
+  {
+    "claim_id": "real-monitor",
+    "source": "trace-lens/requirements.txt",
+    "score": 0.0,
+    "text": "lowest doc pulled by monitor"
+  }
+]

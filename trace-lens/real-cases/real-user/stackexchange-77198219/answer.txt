@@ -1,0 +1,16 @@
+ I ended up trying redis memorystore from google cloud and it seems to have solved my problem. For anyone who comes across this in the future follow along  here  and use the following for the gunicorn command. 
+  gunicorn --worker-class eventlet --bind :$PORT --workers 1 --timeout 0 server:app
+  
+ Define socket IO like this: 
+  socketio = SocketIO(app, message_queue=f'redis://{redis_host}:{redis_port}')
+  
+ Lastly run the app like so: 
+  socketio.run(app, host='127.0.0.1', port=8080, debug=False)
+  
+ Leave the following the eventlet monkeypatch at the top of the server.py. Make sure you import redis in your server.py. See below: 
+  import eventlet
+eventlet.monkey_patch()
+
+import redis
+  
+ Also for those curious, in the question the gunicorn command was not correct see  here  for more on that. 

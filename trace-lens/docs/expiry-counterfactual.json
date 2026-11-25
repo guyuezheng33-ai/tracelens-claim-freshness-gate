@@ -1,0 +1,21 @@
+{
+  "schema": "tracelens/expiry-counterfactual@1",
+  "question": "does born-stale depend on real answer time (not a constant-true rule)?",
+  "design": {
+    "advisory": "PYSEC-2014-14",
+    "published": "2014-10-15T14:55:00Z",
+    "cited_version_held_fixed": "requests 2.2.0",
+    "only_variable": "answer wall-clock (supplied, not generated)",
+    "before_ns": 1356998400000000000,
+    "after_ns": 1795364590000000000
+  },
+  "checks": {
+    "before_publication_not_stale": true,
+    "after_publication_is_stale": true,
+    "verdict_flips_with_time": true,
+    "answer_time_is_supplied": true,
+    "same_advisory_and_version": true
+  },
+  "verdict": "PASS",
+  "caveat": "Both answers are self-run (no customer). Timestamps are supplied historical instants; the advisory is a real OSV record. This proves the verdict is time-dependent, not that customers exist."
+}

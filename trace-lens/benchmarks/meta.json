@@ -1,0 +1,15 @@
+{
+  "schema": "tracelens/benchmark-measurement@1",
+  "nature": "real",
+  "source": "python -m tracelens.bench --extra-runs 20 --iterations 15 --workers 1,4,8",
+  "caveat": "工作负载由 build_scaled_fixture 合成为压测图，只用于压测，不是业务事实；本表记录的是本机每次查询/并发的真实计时，换机器需重跑。",
+  "files": [
+    {
+      "file": "results.csv",
+      "nature": "real",
+      "sha256": "236ac1fa72d6e7e02832395ef0b890a542ddbde1c7d352fcd51eeb00ec63580a",
+      "source": "python -m tracelens.bench --extra-runs 20 --iterations 15 --workers 1,4,8",
+      "caveat": "计时实测；生成负载非事实数据，不得进入对外业务结论。"
+    }
+  ]
+}

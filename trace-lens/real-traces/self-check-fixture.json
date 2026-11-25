@@ -1,0 +1,123 @@
+{
+  "schema": "tracelens/agent-self-check@1",
+  "store": "store/demo-run.rl",
+  "trace_sha256": null,
+  "answer_before": [
+    {
+      "claim_id": "ba-claim-bad",
+      "source": "stale-policy-v2.pdf",
+      "score": 0.12,
+      "text": "deadline is March 1"
+    },
+    {
+      "claim_id": "ba-claim-ok",
+      "source": "current-policy-v9.pdf",
+      "score": 0.94,
+      "text": "policy v9 current"
+    }
+  ],
+  "answer_after": [
+    {
+      "claim_id": "ba-claim-ok",
+      "source": "current-policy-v9.pdf",
+      "score": 0.94,
+      "text": "policy v9 current"
+    }
+  ],
+  "claims_dropped": [
+    {
+      "claim_id": "ba-claim-bad",
+      "source": "stale-policy-v2.pdf",
+      "score": 0.12,
+      "text": "deadline is March 1"
+    }
+  ],
+  "drop_reasons": {
+    "ba-claim-bad": "Q3: no SUPPORTED_BY evidence path"
+  },
+  "fix_rule": "drop claims the graph flags (Q3 unsupported path or Q2 convergence source)",
+  "bad_sources_from_graph": [
+    "stale-policy-v2.pdf"
+  ],
+  "unsupported_claims_from_q3": [
+    "ba-claim-bad"
+  ],
+  "verdict": "PASS",
+  "checks": {
+    "baseline_misidentifies": true,
+    "graph_localizes_true_cause": true,
+    "graph_zero_false_positive_on_clean": true,
+    "has_signal": true
+  },
+  "tool_calls": [
+    {
+      "tool": "tracelens_graph_info",
+      "result": {
+        "node_count": 21,
+        "relationship_count": 22,
+        "labels": [
+          "Answer",
+          "Claim",
+          "Run",
+          "Source",
+          "Span",
+          "ToolCall"
+        ],
+        "relationship_types": [
+          "ASSERTED_IN",
+          "CALLED",
+          "CONTAINS",
+          "PARENT_OF",
+          "PRODUCED",
+          "RETRIEVED_FROM",
+          "SUPPORTED_BY"
+        ]
+      }
+    },
+    {
+      "tool": "tracelens_judge",
+      "result": "PASS",
+      "checks": {
+        "baseline_misidentifies": true,
+        "graph_localizes_true_cause": true,
+        "graph_zero_false_positive_on_clean": true,
+        "has_signal": true
+      }
+    },
+    {
+      "tool": "tracelens_query_pack",
+      "pack": "Q3",
+      "rows": 1,
+      "claim_ids": [
+        "ba-claim-bad"
+      ]
+    }
+  ],
+  "tools_available": [
+    "tracelens_query_pack",
+    "tracelens_judge",
+    "tracelens_graph_info",
+    "tracelens_readonly_cypher"
+  ],
+  "graph": {
+    "node_count": 21,
+    "relationship_count": 22,
+    "labels": [
+      "Answer",
+      "Claim",
+      "Run",
+      "Source",
+      "Span",
+      "ToolCall"
+    ],
+    "relationship_types": [
+      "ASSERTED_IN",
+      "CALLED",
+      "CONTAINS",
+      "PARENT_OF",
+      "PRODUCED",
+      "RETRIEVED_FROM",
+      "SUPPORTED_BY"
+    ]
+  }
+}

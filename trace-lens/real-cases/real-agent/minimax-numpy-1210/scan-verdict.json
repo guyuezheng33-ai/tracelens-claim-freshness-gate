@@ -1,0 +1,563 @@
+{
+  "schema": "tracelens/scan-verdict@1",
+  "input": {
+    "text": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-agent\\minimax-numpy-1210\\text.txt",
+    "lockfile": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-agent\\minimax-numpy-1210\\requirements.lock",
+    "lockfile_sha256": "627168402d0514cccd5261db8ff9945148abfac4be533e78ea1fbca4a36871a7"
+  },
+  "data_nature": {
+    "advisories": "real OSV records with affected ranges, aliases and references (passport)",
+    "claim_text": "caller-supplied text file; the bundled batch demo is 8 CAPTURED PinTrace model outputs (model names + task ids in real-traces/scan/pr-answer-sources.json), not author-written prose",
+    "lockfile": "caller-supplied lockfile; in the bundled demo the pins are scenario configuration set to each advisory's fixed release (what the project already pins), while the text is real captured model output",
+    "real_user_cases": "5 captured Stack Overflow question/answer texts plus 9 captured model outputs from the PinTrace public dataset across 6 packages; all 14 produce Q6/Q7/Q8 and BLOCK_MERGE_TEXT",
+    "caveat": "Replace --text with any real agent answer to test production text; extraction and graph decisions do not depend on the bundled phrasings."
+  },
+  "declarations_found": 1,
+  "declarations": [
+    {
+      "package": "numpy",
+      "version": "1.21.0",
+      "evidence": "import numpy as np  # VERSION=1.21.0",
+      "risk_cue": false
+    }
+  ],
+  "scenarios_built": 1,
+  "pinned": [
+    {
+      "package": "numpy",
+      "version": "1.22"
+    }
+  ],
+  "graph_verdict": "PASS",
+  "checks": {
+    "q6_provenance_path_is_multihop": true,
+    "q6_path_has_no_nulls": true,
+    "q6_traverses_advisory_identity_when_present": true,
+    "q7_hop_level_time_predicate": true,
+    "q7_identifies_which_hop_was_already_stale": true,
+    "q8_declaration_drift_found": true,
+    "sca_control_reports_pinned_clean": true,
+    "graph_changes_merge_decision_where_sca_cannot": true
+  },
+  "Q6_provenance_paths": 12,
+  "Q7_hop_audits": 1,
+  "Q8_drifts": 1,
+  "Q6_provenance": [
+    {
+      "answer_id": "scan-answer-numpy-0",
+      "claim_id": "scan-claim-numpy-0",
+      "claim_text": "import numpy as np  # VERSION=1.21.0",
+      "package": "numpy",
+      "version": "1.21.0",
+      "advisory_id": "GHSA-fpfv-jqm9-f5jm",
+      "published_ns": 1639785641000000000,
+      "created_ns": 1795478400000000000,
+      "path": [
+        "span:scan-root-0",
+        "span:scan-ret-0",
+        "src:scan-doc-0",
+        "pv:numpy:1.21.0",
+        "adv:GHSA-fpfv-jqm9-f5jm",
+        "alias:PYSEC-2021-855",
+        "https://github.com/pypa/advisory-database/tree/main/vulns/numpy/PYSEC-2021-855.yaml"
+      ],
+      "labels": [
+        "Span",
+        "Span",
+        "Source",
+        "PkgVersion",
+        "Advisory",
+        "Alias",
+        "Ref"
+      ],
+      "rels": [
+        "PARENT_OF",
+        "RETRIEVED_FROM",
+        "MENTIONS",
+        "AFFECTS",
+        "HAS_ALIAS",
+        "REFERENCES"
+      ],
+      "hops": 6
+    },
+    {
+      "answer_id": "scan-answer-numpy-0",
+      "claim_id": "scan-claim-numpy-0",
+      "claim_text": "import numpy as np  # VERSION=1.21.0",
+      "package": "numpy",
+      "version": "1.21.0",
+      "advisory_id": "GHSA-fpfv-jqm9-f5jm",
+      "published_ns": 1639785641000000000,
+      "created_ns": 1795478400000000000,
+      "path": [
+        "span:scan-root-0",
+        "span:scan-ret-0",
+        "src:scan-doc-0",
+        "pv:numpy:1.21.0",
+        "adv:GHSA-fpfv-jqm9-f5jm",
+        "alias:CVE-2021-34141",
+        "https://nvd.nist.gov/vuln/detail/CVE-2021-34141"
+      ],
+      "labels": [
+        "Span",
+        "Span",
+        "Source",
+        "PkgVersion",
+        "Advisory",
+        "Alias",
+        "Ref"
+      ],
+      "rels": [
+        "PARENT_OF",
+        "RETRIEVED_FROM",
+        "MENTIONS",
+        "AFFECTS",
+        "HAS_ALIAS",
+        "REFERENCES"
+      ],
+      "hops": 6
+    },
+    {
+      "answer_id": "scan-answer-numpy-0",
+      "claim_id": "scan-claim-numpy-0",
+      "claim_text": "import numpy as np  # VERSION=1.21.0",
+      "package": "numpy",
+      "version": "1.21.0",
+      "advisory_id": "GHSA-fpfv-jqm9-f5jm",
+      "published_ns": 1639785641000000000,
+      "created_ns": 1795478400000000000,
+      "path": [
+        "span:scan-root-0",
+        "span:scan-ret-0",
+        "src:scan-doc-0",
+        "pv:numpy:1.21.0",
+        "adv:GHSA-fpfv-jqm9-f5jm",
+        "https://www.oracle.com/security-alerts/cpujul2022.html"
+      ],
+      "labels": [
+        "Span",
+        "Span",
+        "Source",
+        "PkgVersion",
+        "Advisory",
+        "Ref"
+      ],
+      "rels": [
+        "PARENT_OF",
+        "RETRIEVED_FROM",
+        "MENTIONS",
+        "AFFECTS",
+        "REFERENCES"
+      ],
+      "hops": 5
+    },
+    {
+      "answer_id": "scan-answer-numpy-0",
+      "claim_id": "scan-claim-numpy-0",
+      "claim_text": "import numpy as np  # VERSION=1.21.0",
+      "package": "numpy",
+      "version": "1.21.0",
+      "advisory_id": "GHSA-fpfv-jqm9-f5jm",
+      "published_ns": 1639785641000000000,
+      "created_ns": 1795478400000000000,
+      "path": [
+        "span:scan-root-0",
+        "span:scan-ret-0",
+        "src:scan-doc-0",
+        "pv:numpy:1.21.0",
+        "adv:GHSA-fpfv-jqm9-f5jm",
+        "https://github.com/pypa/advisory-database/tree/main/vulns/numpy/PYSEC-2021-855.yaml"
+      ],
+      "labels": [
+        "Span",
+        "Span",
+        "Source",
+        "PkgVersion",
+        "Advisory",
+        "Ref"
+      ],
+      "rels": [
+        "PARENT_OF",
+        "RETRIEVED_FROM",
+        "MENTIONS",
+        "AFFECTS",
+        "REFERENCES"
+      ],
+      "hops": 5
+    },
+    {
+      "answer_id": "scan-answer-numpy-0",
+      "claim_id": "scan-claim-numpy-0",
+      "claim_text": "import numpy as np  # VERSION=1.21.0",
+      "package": "numpy",
+      "version": "1.21.0",
+      "advisory_id": "GHSA-fpfv-jqm9-f5jm",
+      "published_ns": 1639785641000000000,
+      "created_ns": 1795478400000000000,
+      "path": [
+        "span:scan-root-0",
+        "span:scan-ret-0",
+        "src:scan-doc-0",
+        "pv:numpy:1.21.0",
+        "adv:GHSA-fpfv-jqm9-f5jm",
+        "https://github.com/numpy/numpy"
+      ],
+      "labels": [
+        "Span",
+        "Span",
+        "Source",
+        "PkgVersion",
+        "Advisory",
+        "Ref"
+      ],
+      "rels": [
+        "PARENT_OF",
+        "RETRIEVED_FROM",
+        "MENTIONS",
+        "AFFECTS",
+        "REFERENCES"
+      ],
+      "hops": 5
+    },
+    {
+      "answer_id": "scan-answer-numpy-0",
+      "claim_id": "scan-claim-numpy-0",
+      "claim_text": "import numpy as np  # VERSION=1.21.0",
+      "package": "numpy",
+      "version": "1.21.0",
+      "advisory_id": "GHSA-fpfv-jqm9-f5jm",
+      "published_ns": 1639785641000000000,
+      "created_ns": 1795478400000000000,
+      "path": [
+        "span:scan-root-0",
+        "span:scan-ret-0",
+        "src:scan-doc-0",
+        "pv:numpy:1.21.0",
+        "adv:GHSA-fpfv-jqm9-f5jm",
+        "https://github.com/advisories/GHSA-fpfv-jqm9-f5jm"
+      ],
+      "labels": [
+        "Span",
+        "Span",
+        "Source",
+        "PkgVersion",
+        "Advisory",
+        "Ref"
+      ],
+      "rels": [
+        "PARENT_OF",
+        "RETRIEVED_FROM",
+        "MENTIONS",
+        "AFFECTS",
+        "REFERENCES"
+      ],
+      "hops": 5
+    },
+    {
+      "answer_id": "scan-answer-numpy-0",
+      "claim_id": "scan-claim-numpy-0",
+      "claim_text": "import numpy as np  # VERSION=1.21.0",
+      "package": "numpy",
+      "version": "1.21.0",
+      "advisory_id": "GHSA-fpfv-jqm9-f5jm",
+      "published_ns": 1639785641000000000,
+      "created_ns": 1795478400000000000,
+      "path": [
+        "span:scan-root-0",
+        "span:scan-ret-0",
+        "src:scan-doc-0",
+        "pv:numpy:1.21.0",
+        "adv:GHSA-fpfv-jqm9-f5jm",
+        "https://github.com/numpy/numpy/issues/18993#issuecomment-1010735102"
+      ],
+      "labels": [
+        "Span",
+        "Span",
+        "Source",
+        "PkgVersion",
+        "Advisory",
+        "Ref"
+      ],
+      "rels": [
+        "PARENT_OF",
+        "RETRIEVED_FROM",
+        "MENTIONS",
+        "AFFECTS",
+        "REFERENCES"
+      ],
+      "hops": 5
+    },
+    {
+      "answer_id": "scan-answer-numpy-0",
+      "claim_id": "scan-claim-numpy-0",
+      "claim_text": "import numpy as np  # VERSION=1.21.0",
+      "package": "numpy",
+      "version": "1.21.0",
+      "advisory_id": "GHSA-fpfv-jqm9-f5jm",
+      "published_ns": 1639785641000000000,
+      "created_ns": 1795478400000000000,
+      "path": [
+        "span:scan-root-0",
+        "span:scan-ret-0",
+        "src:scan-doc-0",
+        "pv:numpy:1.21.0",
+        "adv:GHSA-fpfv-jqm9-f5jm",
+        "https://github.com/numpy/numpy/issues/18993"
+      ],
+      "labels": [
+        "Span",
+        "Span",
+        "Source",
+        "PkgVersion",
+        "Advisory",
+        "Ref"
+      ],
+      "rels": [
+        "PARENT_OF",
+        "RETRIEVED_FROM",
+        "MENTIONS",
+        "AFFECTS",
+        "REFERENCES"
+      ],
+      "hops": 5
+    },
+    {
+      "answer_id": "scan-answer-numpy-0",
+      "claim_id": "scan-claim-numpy-0",
+      "claim_text": "import numpy as np  # VERSION=1.21.0",
+      "package": "numpy",
+      "version": "1.21.0",
+      "advisory_id": "GHSA-fpfv-jqm9-f5jm",
+      "published_ns": 1639785641000000000,
+      "created_ns": 1795478400000000000,
+      "path": [
+        "span:scan-root-0",
+        "span:scan-ret-0",
+        "src:scan-doc-0",
+        "pv:numpy:1.21.0",
+        "adv:GHSA-fpfv-jqm9-f5jm",
+        "https://nvd.nist.gov/vuln/detail/CVE-2021-34141"
+      ],
+      "labels": [
+        "Span",
+        "Span",
+        "Source",
+        "PkgVersion",
+        "Advisory",
+        "Ref"
+      ],
+      "rels": [
+        "PARENT_OF",
+        "RETRIEVED_FROM",
+        "MENTIONS",
+        "AFFECTS",
+        "REFERENCES"
+      ],
+      "hops": 5
+    },
+    {
+      "answer_id": "scan-answer-numpy-0",
+      "claim_id": "scan-claim-numpy-0",
+      "claim_text": "import numpy as np  # VERSION=1.21.0",
+      "package": "numpy",
+      "version": "1.21.0",
+      "advisory_id": "GHSA-fpfv-jqm9-f5jm",
+      "published_ns": 1639785641000000000,
+      "created_ns": 1795478400000000000,
+      "path": [
+        "span:scan-root-0",
+        "span:scan-ret-0",
+        "src:scan-doc-0",
+        "pv:numpy:1.21.0",
+        "adv:GHSA-fpfv-jqm9-f5jm",
+        "alias:PYSEC-2021-855"
+      ],
+      "labels": [
+        "Span",
+        "Span",
+        "Source",
+        "PkgVersion",
+        "Advisory",
+        "Alias"
+      ],
+      "rels": [
+        "PARENT_OF",
+        "RETRIEVED_FROM",
+        "MENTIONS",
+        "AFFECTS",
+        "HAS_ALIAS"
+      ],
+      "hops": 5
+    },
+    {
+      "answer_id": "scan-answer-numpy-0",
+      "claim_id": "scan-claim-numpy-0",
+      "claim_text": "import numpy as np  # VERSION=1.21.0",
+      "package": "numpy",
+      "version": "1.21.0",
+      "advisory_id": "GHSA-fpfv-jqm9-f5jm",
+      "published_ns": 1639785641000000000,
+      "created_ns": 1795478400000000000,
+      "path": [
+        "span:scan-root-0",
+        "span:scan-ret-0",
+        "src:scan-doc-0",
+        "pv:numpy:1.21.0",
+        "adv:GHSA-fpfv-jqm9-f5jm",
+        "alias:CVE-2021-34141"
+      ],
+      "labels": [
+        "Span",
+        "Span",
+        "Source",
+        "PkgVersion",
+        "Advisory",
+        "Alias"
+      ],
+      "rels": [
+        "PARENT_OF",
+        "RETRIEVED_FROM",
+        "MENTIONS",
+        "AFFECTS",
+        "HAS_ALIAS"
+      ],
+      "hops": 5
+    },
+    {
+      "answer_id": "scan-answer-numpy-0",
+      "claim_id": "scan-claim-numpy-0",
+      "claim_text": "import numpy as np  # VERSION=1.21.0",
+      "package": "numpy",
+      "version": "1.21.0",
+      "advisory_id": "GHSA-fpfv-jqm9-f5jm",
+      "published_ns": 1639785641000000000,
+      "created_ns": 1795478400000000000,
+      "path": [
+        "span:scan-root-0",
+        "span:scan-ret-0",
+        "src:scan-doc-0",
+        "pv:numpy:1.21.0",
+        "adv:GHSA-fpfv-jqm9-f5jm"
+      ],
+      "labels": [
+        "Span",
+        "Span",
+        "Source",
+        "PkgVersion",
+        "Advisory"
+      ],
+      "rels": [
+        "PARENT_OF",
+        "RETRIEVED_FROM",
+        "MENTIONS",
+        "AFFECTS"
+      ],
+      "hops": 4
+    }
+  ],
+  "Q7_hop_audit": [
+    {
+      "answer_id": "scan-answer-numpy-0",
+      "advisory_id": "GHSA-fpfv-jqm9-f5jm",
+      "published_ns": 1639785641000000000,
+      "created_ns": 1795478400000000000,
+      "hops_count": 3,
+      "rels": [
+        "PARENT_OF",
+        "RETRIEVED_FROM",
+        "MENTIONS"
+      ],
+      "hops": [
+        {
+          "index": 0,
+          "node": "span:scan-root-0",
+          "label": "Span",
+          "at_ns": 1795478399000000000,
+          "at_iso": "2026-11-23T23:59:59+00:00",
+          "already_stale_ns": 155692758000000000,
+          "already_stale_days": 1802.0
+        },
+        {
+          "index": 1,
+          "node": "span:scan-ret-0",
+          "label": "Span",
+          "at_ns": 1795478399500000000,
+          "at_iso": "2026-11-23T23:59:59.500000+00:00",
+          "already_stale_ns": 155692758500000000,
+          "already_stale_days": 1802.0
+        },
+        {
+          "index": 2,
+          "node": "src:scan-doc-0",
+          "label": "Source",
+          "at_ns": 1608249641000000000,
+          "at_iso": "2020-12-18T00:00:41+00:00",
+          "already_stale_ns": -31536000000000000,
+          "already_stale_days": -365.0
+        },
+        {
+          "index": 3,
+          "node": "pv:numpy:1.21.0",
+          "label": "PkgVersion",
+          "at_ns": null,
+          "at_iso": null,
+          "already_stale_ns": null,
+          "already_stale_days": null
+        }
+      ],
+      "first_hop_already_stale": {
+        "index": 0,
+        "node": "span:scan-root-0",
+        "label": "Span",
+        "at_ns": 1795478399000000000,
+        "at_iso": "2026-11-23T23:59:59+00:00",
+        "already_stale_ns": 155692758000000000,
+        "already_stale_days": 1802.0
+      },
+      "verdict": "STALE_AT_HOP"
+    }
+  ],
+  "Q8_declaration_drift": [
+    {
+      "answer_id": "scan-answer-numpy-0",
+      "claim_id": "scan-claim-numpy-0",
+      "claim_text": "import numpy as np  # VERSION=1.21.0",
+      "package": "numpy",
+      "cited_version": "1.21.0",
+      "pinned_version": "1.22",
+      "lockfile": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-agent\\minimax-numpy-1210\\requirements.lock",
+      "advisory_id": "GHSA-fpfv-jqm9-f5jm",
+      "published_ns": 1639785641000000000,
+      "created_ns": 1795478400000000000,
+      "advisory_url": "https://nvd.nist.gov/vuln/detail/CVE-2021-34141",
+      "aliases": [
+        "PYSEC-2021-855",
+        "CVE-2021-34141"
+      ],
+      "exposure_ns": 155692759000000000
+    }
+  ],
+  "sca_control": [
+    {
+      "lockfile": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-cases\\real-agent\\minimax-numpy-1210\\requirements.lock",
+      "package": "numpy",
+      "pinned_version": "1.22",
+      "advisories_on_pinned": []
+    }
+  ],
+  "merge_actions": [
+    {
+      "reject_text": "import numpy as np  # VERSION=1.21.0",
+      "cited_version": "1.21.0",
+      "pinned_version": "1.22",
+      "action": "reject declaration; 1.22 is already pinned, but the PR text would steer the next agent to a known-vulnerable release",
+      "public_evidence": "https://nvd.nist.gov/vuln/detail/CVE-2021-34141",
+      "advisory_id": "GHSA-fpfv-jqm9-f5jm",
+      "aliases": [
+        "PYSEC-2021-855",
+        "CVE-2021-34141"
+      ]
+    }
+  ],
+  "verdict": "BLOCK_MERGE_TEXT"
+}

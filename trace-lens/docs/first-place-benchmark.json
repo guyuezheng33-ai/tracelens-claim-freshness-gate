@@ -1,0 +1,123 @@
+{
+  "schema": "tracelens/first-place-benchmark@1",
+  "purpose": "外部核实档案：官方规则原文、历史获奖者公开画像、问题规模的第三方证据、竞品边界。本文件不是评分标尺；评分只按官方五维由独立评委给出，这里不预测名次、不自设分数线。",
+  "verified_at": "2026-11-23",
+  "official_rules": {
+    "status": "已核实-第一手页面",
+    "url": "https://relate.devpost.com/",
+    "theme": "Context, connected",
+    "participants_seen": 705,
+    "judging_criteria": [
+      {"name": "Creativity", "points": 10, "quote": "How fresh is the project idea or its use of Relate? Higher scores go to projects that present an original idea or an inventive way to use Relate."},
+      {"name": "Relate and connected context", "points": 30, "quote": "How effectively does the project use Relate's graph relationships to support its main use case? This includes how easily judges can use the submission of instructions, running, and exploring with Relate working as described."},
+      {"name": "Functionality and completeness", "points": 25, "quote": "How much of the project's core use case works?"},
+      {"name": "Usefulness", "points": 20, "quote": "How clearly does the project address a real problem for an intended user? Who benefits and the does the project clearly show this."},
+      {"name": "Documentation and reproducibility", "points": 15, "quote": "How clearly does the README explain the project and how to try it?"}
+    ],
+    "readme_template_required_sections": ["Project name / One-line pitch", "Use case", "How it uses Relate (Mode / Why this mode / What the graph models)", "Setup and run", "Where the data lives"],
+    "hard_requirements": [
+      "Project description: the use case, and what connects to what",
+      "Public GitHub repo with README on how to set up and use it",
+      "GitHub topic tag 'relate' (required), 'relate-neo4j-hackathon' recommended",
+      "Persistent Relate store: a directory or single file judges can inspect",
+      "Working code (or the prompts used) with Relate actually running",
+      "Demo video 1-2 minutes"
+    ],
+    "verbatim": [
+      "Judges should be able to clone it, run it, and see your graph without asking you anything.",
+      "Entries that are only prompts or AI-generated text, with no running Relate integration, won't be considered.",
+      "Explore in the browser. Use the WebAssembly build to create interactive graph views, with nothing to install."
+    ],
+    "prizes": ["First: Mac Studio M5 Max 64GB/1TB $3,799", "Second: Mac mini M6 32GB/512GB $1,499", "Third: Mac mini M6 16GB/256GB $899"],
+    "judges_count": 8,
+    "judges_include": ["Michael Hunger (VP Product Innovation)", "William Lyon (Sr PM AI Innovation)", "Yaru Lin (Lead PM)", "Jennifer Reif", "Stephen Chin (VP DevRel)"]
+  },
+  "score_conflict": {
+    "status": "已核实-三口径冲突并排保留",
+    "devpost_page_weighted": "五维加权 10/30/25/20/15（本文件 official_rules 采用，为页面明示分值）",
+    "neo4j_blog_equal": "六维等权含 AI/agentic（官方公告）",
+    "devpost_rules_equal": "五维等权（规则页表述，法律文件）",
+    "resolution": "三套口径的所有维度都产出可复跑证据；连接上下文 30% 权重在任一加权口径下都是最大杠杆"
+  },
+  "historical_winner_profiles": {
+    "status": "已核实-三源一致",
+    "note": "公开来源的历史获奖画像，仅供工程对照；不是本作品的评分标尺，也不用于预测名次。",
+    "sources": [
+      "https://medium.com/neo4j/what-40-ai-agents-revealed-about-the-future-of-graph-intelligence-97f4b48422dd",
+      "https://neo4j.com/blog/developer/what-40-ai-agents-revealed-about-the-future-of-graph-intelligence/",
+      "http://community.neo4j.com/t/build-a-tiny-aura-agent-community-challenge/76498/10"
+    ],
+    "five_judging_dimensions": ["Graph Matters", "Useful Agent", "Shows Thinking", "Interesting Idea", "Presentation"],
+    "key_quote": "The projects that rose to the top did so because they treated the graph as the intelligence, not just the storage layer.",
+    "winner_1_conspiracygraph": {
+      "graph": "1,282 nodes / 2,436 relationships over real ClaimReview fact-check data",
+      "why_won": "It goes beyond true or false to explain how claims connect via narrative frames, entity bridges, and shared topics.",
+      "judge_quote": "Every media outlet should be considering an agent like this."
+    },
+    "winner_pagerdruid": {
+      "why_won": "diagnoses incidents by reasoning over microservice dependency graphs; multi-hop dependencies, blast radius; standard RAG simply can't replicate",
+      "judge_quote": "PagerDruid demonstrates exactly what graph powered agents can do. It uses relationships intentionally to diagnose complex systems and turns connected data into clear, explainable operational insight."
+    },
+    "runner_up_regulatoryrisk": "One query. Three-hop contagion paths.",
+    "engineering_checklist_derived_from_winners": [
+      "图必须是推理主体：多跳/变长路径/motif 出现在主用例的每一次判定中，不是仅作存储",
+      "每条结论都要能展开成可解释的路径（explainable insight），而不只是布尔值",
+      "数据必须真实且可溯源（真实公开数据集 + 护照），并达到可探索的规模",
+      "Usefulness 要有可识别人群 + 真实高频问题 + 具体动作，且问题规模由外部证据而非自证支撑",
+      "评委一键 clone/run/see graph，无需提问"
+    ]
+  },
+  "problem_scale_external_evidence": {
+    "status": "已核实-第一手 arxiv 页面 + 两处独立交叉",
+    "paper": "Correct Code, Vulnerable Dependencies: A Large Scale Measurement Study of LLM-Specified Library Versions",
+    "arxiv": "2605.06279",
+    "submitted": "2026-05-07",
+    "authors": ["Chengjie Wang", "Jingzheng Wu", "Xiang Ling", "Tianyue Luo", "Chen Zhao"],
+    "benchmark": "PinTrace: 1,000 curated Stack Overflow tasks, 10 LLMs, 267 distinct PyPI libraries",
+    "verified_numbers": {
+      "tasks_with_known_cve": "36.70%-55.70%",
+      "critical_or_high_severity": "62.75%-74.51%",
+      "cve_public_before_model_knowledge_cutoff": "72.27%-91.37%",
+      "systemic_bias": "all models converge on the same small set of risky release versions"
+    },
+    "quote": "Our findings reveal LLM version selection as a first-class, previously overlooked risk surface in LLM-based development.",
+    "implication": "问题是真实且高频的，规模由第三方学术基准给出，不再依赖本项目自证；但该论文是 measurement study，不产出可部署的 pre-merge 防护工具",
+    "repo_resolution": {
+      "status": "已消解-以论文原文为准",
+      "canonical": "https://github.com/dw763j/PinTrace",
+      "method": "2026-11-24 复核：arXiv 2605.06279v1 PDF 正文明确写 'All the code and dataset have been released for open science at https://github.com/dw763j/PinTrace'；dw763j/PinTrace README 自称 'Official code release for the paper'。两处第一手来源一致。",
+      "rejected_claim": "alphaxiv 镜像页曾写 github.com/microsoft/PinTrace，与论文原文冲突；镜像转载不作为归属依据，弃用。",
+      "sources": ["https://arxiv.org/pdf/2605.06279v1", "https://github.com/dw763j/PinTrace"]
+    }
+  },
+  "sca_boundary": {
+    "status": "2026-11-23 本轮 WebSearch 已核实输入面；相邻方向已占；本检索未发现直接同题材产品（不等于不存在）",
+    "verified_input_surface": {
+      "status": "已核实-四源一致",
+      "sources": [
+        "https://www.wiz.io/academy/sca-scanning",
+        "https://www.ibm.com/think/topics/software-composition-analysis",
+        "https://www.safeguard.sh/resources/blog/sca-scanning-what-it-catches-in-practice",
+        "https://meetbrackets.com/glossary/software-composition-analysis"
+      ],
+      "finding": "SCA reads package manifests, lockfiles, SBOMs, container images or built artifacts; it matches component versions against vulnerability databases. None of the four sources lists agent natural-language answers as an input."
+    },
+    "adjacent_occupied_directions": {
+      "status": "已核实-不得声称原创",
+      "items": [
+        {"name": "FossID Agentic SCA", "url": "https://fossid.jp/articles/open-source-risk-management-enters-the-ai-era", "overlap": "exposes SCA as MCP tools/skills to agents; still operates on code/components, not the agent's sentence"},
+        {"name": "Sonatype AI dependency guidance", "url": "https://www.sonatype.com/blog/why-traditional-sca-cannot-keep-up-with-ai-generated-code", "overlap": "current component intelligence at dependency-choice time; component-level, not claim-level with evidence chain"},
+        {"name": "Labrador AI-written component misuse", "url": "https://labradorlabs.ai/?p=4854", "overlap": "version misuse / policy on manifests and lockfiles; no natural-language claim provenance"},
+        {"name": "IBM NLP on commit messages", "url": "https://www.ibm.com/think/topics/software-composition-analysis", "overlap": "partial: NLP applied to version-control text, but for commit issues, not dependency-version claims with a public-vulnerability clock"}
+      ]
+    },
+    "not_found_in_this_search": "No product found that treats an agent's natural-language version declaration as the audited input, walks a multi-hop evidence chain to the source document, and applies the advisory publication clock to decide whether the sentence was born stale. This is a search result, not an existence proof.",
+    "author_judgment": "Claim the WINDOW (before the text is merged) and the INPUT (the sentence, not the lockfile), never the category SCA. The differentiator is a graph-native multi-hop join + time counterfactual; a clean lockfile coexists with a born-stale claim in the same run."
+  },
+  "official_already_occupied": {
+    "status": "已核实-官方页面",
+    "starting_points": ["Trace a bug: connect tests, functions, modules, issues, recent changes", "Coordinate agent work", "Explore a knowledge base"],
+    "official_dependency_demo": "官方博客演示 Claude Code + deps.dev 审计 Google ADK 的 24 个依赖及传递性安全公告（通用依赖审计方向，正撞会失分）",
+    "our_lane": "不审计『已落地的依赖清单』，而审计『agent 答案文本里的版本声明 + 它沿证据链的来源 + 声明与锁文件的漂移』，属于落地前的干预窗口"
+  }
+}

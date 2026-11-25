@@ -1,0 +1,11 @@
+# requirements.lock - what the project ACTUALLY pins (each advisory's fixed release).
+# Scenario configuration: pins are set to the fixed releases; the TEXT above is real captured model output.
+# A manifest-only scanner reads only this file and reports clean.
+requests==2.32.4
+django==6.0.2
+flask==3.1.1
+urllib3==2.6.0
+pillow==13.0.0
+jinja2==3.1.6
+pyyaml==5.2
+numpy==1.22

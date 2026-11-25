@@ -1,0 +1,13 @@
+{
+  "record_id": "minimax-requests-2310",
+  "model": "MiniMax-M2.5",
+  "task_id": "BigCodeBench/32",
+  "package": "requests",
+  "cited_version": "2.31.0",
+  "fixed": "2.32.4",
+  "raw_requirement": "requests==2.31.0",
+  "import_line": "import requests  # VERSION=2.31.0",
+  "nature": "real-agent-text",
+  "dataset_url": "https://github.com/dw763j/PinTrace/blob/main/outputs/evaluation/direct_dependencies.jsonl",
+  "dataset_note": "PinTrace public evaluation output; model-generated code with inline version annotation, not customer data"
+}

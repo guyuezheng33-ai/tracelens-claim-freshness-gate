@@ -1,0 +1,20 @@
+{
+  "stale": [],
+  "clean": [
+    {
+      "answer_id": "expiry-stale-1356998400000000000",
+      "claim_id": "expiry-claim-stale",
+      "package": "requests",
+      "version": "2.2.0"
+    },
+    {
+      "answer_id": "expiry-clean-1356998400000000000",
+      "claim_id": "expiry-claim-clean",
+      "package": "requests",
+      "version": "2.3.0"
+    }
+  ],
+  "stale_count": 0,
+  "clean_count": 2,
+  "verdict": "FAIL"
+}

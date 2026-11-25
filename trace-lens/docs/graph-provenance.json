@@ -1,0 +1,668 @@
+{
+  "schema": "tracelens/graph-export@1",
+  "title": "单场景 · 溯源图",
+  "store": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\provenance\\provenance.rl",
+  "store_bytes": 45056,
+  "store_sha256": "360ada6f5bbffd84b7b6cb2a8dab4f2fe8ec67a64cf68c4eae37ef710e0fd584",
+  "source": "live Cypher read-back from the persisted Relate .rl store",
+  "queries": {
+    "nodes": "MATCH (n) RETURN labels(n)[0] AS label, properties(n) AS props",
+    "edges": "MATCH (a)-[r]->(b) RETURN coalesce(a.node_id, a.id, a.url) AS source, type(r) AS rel, coalesce(b.node_id, b.id, b.url) AS target"
+  },
+  "counts": {
+    "nodes": 19,
+    "relationships": 19,
+    "labels": {
+      "Advisory": 1,
+      "Alias": 2,
+      "Answer": 1,
+      "Claim": 1,
+      "Lockfile": 1,
+      "PkgVersion": 2,
+      "Ref": 7,
+      "Run": 1,
+      "Source": 1,
+      "Span": 2
+    },
+    "rel_types": {
+      "AFFECTS": 1,
+      "ASSERTS": 1,
+      "CITES": 1,
+      "CONTAINS": 1,
+      "HAS_ALIAS": 2,
+      "MENTIONS": 1,
+      "PARENT_OF": 1,
+      "PINS": 1,
+      "PRODUCED": 1,
+      "REFERENCES": 8,
+      "RETRIEVED_FROM": 1
+    }
+  },
+  "checks": {
+    "store_is_persisted_on_disk": true,
+    "nodes_match_live_db_count": true,
+    "relationships_match_live_db_count": true,
+    "every_node_has_properties": true,
+    "every_edge_has_type": true,
+    "every_edge_endpoint_resolves": true,
+    "q6_path_nodes_resolve_in_export": true
+  },
+  "verdict": "PASS",
+  "nodes": [
+    {
+      "id": "run:pr-review-1",
+      "label": "Run",
+      "props": {
+        "node_id": "run:pr-review-1",
+        "run_id": "pr-review-1",
+        "started_ns": 1795364588000000000
+      }
+    },
+    {
+      "id": "ans:pr-answer-1",
+      "label": "Answer",
+      "props": {
+        "answer_id": "pr-answer-1",
+        "created_ns": 1795364590000000000,
+        "model": "",
+        "node_id": "ans:pr-answer-1",
+        "question": "Which requests version should we pin?",
+        "run_id": "pr-review-1",
+        "text": "requests 2.2.0 is safe to use"
+      }
+    },
+    {
+      "id": "span:pr-root",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795364589000000000,
+        "kind": "AGENT",
+        "name": "agent.answer",
+        "node_id": "span:pr-root",
+        "run_id": "pr-review-1",
+        "span_id": "pr-root"
+      }
+    },
+    {
+      "id": "span:pr-retriever",
+      "label": "Span",
+      "props": {
+        "at_ns": 1795364589500000000,
+        "kind": "RETRIEVER",
+        "name": "vector-search",
+        "node_id": "span:pr-retriever",
+        "run_id": "pr-review-1",
+        "span_id": "pr-retriever"
+      }
+    },
+    {
+      "id": "src:stale-doc.md",
+      "label": "Source",
+      "props": {
+        "at_ns": 1381848900000000000,
+        "doc_id": "stale-doc.md",
+        "node_id": "src:stale-doc.md",
+        "source_id": "src:stale-doc.md",
+        "uri": "https://github.com/kennethreitz/requests/issues/1885"
+      }
+    },
+    {
+      "id": "pv:requests:2.2.0",
+      "label": "PkgVersion",
+      "props": {
+        "name": "requests",
+        "node_id": "pv:requests:2.2.0",
+        "version": "2.2.0"
+      }
+    },
+    {
+      "id": "claim:pr-claim-1",
+      "label": "Claim",
+      "props": {
+        "claim_id": "pr-claim-1",
+        "node_id": "claim:pr-claim-1",
+        "text": "requests 2.2.0 is safe to use"
+      }
+    },
+    {
+      "id": "lf:requirements.lock",
+      "label": "Lockfile",
+      "props": {
+        "node_id": "lf:requirements.lock",
+        "path": "requirements.lock",
+        "pinned_ns": 1795364580000000000,
+        "sha256": "no-local-lockfile"
+      }
+    },
+    {
+      "id": "pv:requests:2.3.0",
+      "label": "PkgVersion",
+      "props": {
+        "name": "requests",
+        "node_id": "pv:requests:2.3.0",
+        "version": "2.3.0"
+      }
+    },
+    {
+      "id": "adv:PYSEC-2014-14",
+      "label": "Advisory",
+      "props": {
+        "fix_available_ns": -1,
+        "fixed": "2.3.0",
+        "id": "PYSEC-2014-14",
+        "node_id": "adv:PYSEC-2014-14",
+        "osv_modified_ns": 1699415854820933120,
+        "published": "2014-10-15T14:55:00Z",
+        "published_ns": 1413384900000000000,
+        "summary": "",
+        "url": "https://github.com/kennethreitz/requests/issues/1885"
+      }
+    },
+    {
+      "id": "alias:CVE-2014-1830",
+      "label": "Alias",
+      "props": {
+        "alias": "CVE-2014-1830",
+        "node_id": "alias:CVE-2014-1830"
+      }
+    },
+    {
+      "id": "alias:GHSA-652x-xj99-gmcc",
+      "label": "Alias",
+      "props": {
+        "alias": "GHSA-652x-xj99-gmcc",
+        "node_id": "alias:GHSA-652x-xj99-gmcc"
+      }
+    },
+    {
+      "id": "https://github.com/kennethreitz/requests/issues/1885",
+      "label": "Ref",
+      "props": {
+        "ref_type": "REPORT",
+        "url": "https://github.com/kennethreitz/requests/issues/1885"
+      }
+    },
+    {
+      "id": "https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=733108",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=733108"
+      }
+    },
+    {
+      "id": "http://www.debian.org/security/2015/dsa-3146",
+      "label": "Ref",
+      "props": {
+        "ref_type": "ADVISORY",
+        "url": "http://www.debian.org/security/2015/dsa-3146"
+      }
+    },
+    {
+      "id": "http://www.mandriva.com/security/advisories?name=MDVSA-2015:133",
+      "label": "Ref",
+      "props": {
+        "ref_type": "ADVISORY",
+        "url": "http://www.mandriva.com/security/advisories?name=MDVSA-2015:133"
+      }
+    },
+    {
+      "id": "http://advisories.mageia.org/MGASA-2014-0409.html",
+      "label": "Ref",
+      "props": {
+        "ref_type": "ADVISORY",
+        "url": "http://advisories.mageia.org/MGASA-2014-0409.html"
+      }
+    },
+    {
+      "id": "http://lists.opensuse.org/opensuse-updates/2016-01/msg00095.html",
+      "label": "Ref",
+      "props": {
+        "ref_type": "WEB",
+        "url": "http://lists.opensuse.org/opensuse-updates/2016-01/msg00095.html"
+      }
+    },
+    {
+      "id": "https://github.com/advisories/GHSA-652x-xj99-gmcc",
+      "label": "Ref",
+      "props": {
+        "ref_type": "ADVISORY",
+        "url": "https://github.com/advisories/GHSA-652x-xj99-gmcc"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "run:pr-review-1",
+      "target": "span:pr-root",
+      "type": "CONTAINS"
+    },
+    {
+      "source": "ans:pr-answer-1",
+      "target": "claim:pr-claim-1",
+      "type": "ASSERTS"
+    },
+    {
+      "source": "span:pr-root",
+      "target": "span:pr-retriever",
+      "type": "PARENT_OF"
+    },
+    {
+      "source": "span:pr-root",
+      "target": "ans:pr-answer-1",
+      "type": "PRODUCED"
+    },
+    {
+      "source": "span:pr-retriever",
+      "target": "src:stale-doc.md",
+      "type": "RETRIEVED_FROM"
+    },
+    {
+      "source": "src:stale-doc.md",
+      "target": "pv:requests:2.2.0",
+      "type": "MENTIONS"
+    },
+    {
+      "source": "claim:pr-claim-1",
+      "target": "pv:requests:2.2.0",
+      "type": "CITES"
+    },
+    {
+      "source": "lf:requirements.lock",
+      "target": "pv:requests:2.3.0",
+      "type": "PINS"
+    },
+    {
+      "source": "adv:PYSEC-2014-14",
+      "target": "pv:requests:2.2.0",
+      "type": "AFFECTS"
+    },
+    {
+      "source": "adv:PYSEC-2014-14",
+      "target": "alias:GHSA-652x-xj99-gmcc",
+      "type": "HAS_ALIAS"
+    },
+    {
+      "source": "adv:PYSEC-2014-14",
+      "target": "alias:CVE-2014-1830",
+      "type": "HAS_ALIAS"
+    },
+    {
+      "source": "adv:PYSEC-2014-14",
+      "target": "https://github.com/advisories/GHSA-652x-xj99-gmcc",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:PYSEC-2014-14",
+      "target": "http://lists.opensuse.org/opensuse-updates/2016-01/msg00095.html",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:PYSEC-2014-14",
+      "target": "http://advisories.mageia.org/MGASA-2014-0409.html",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:PYSEC-2014-14",
+      "target": "http://www.mandriva.com/security/advisories?name=MDVSA-2015:133",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:PYSEC-2014-14",
+      "target": "http://www.debian.org/security/2015/dsa-3146",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:PYSEC-2014-14",
+      "target": "https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=733108",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "adv:PYSEC-2014-14",
+      "target": "https://github.com/kennethreitz/requests/issues/1885",
+      "type": "REFERENCES"
+    },
+    {
+      "source": "alias:GHSA-652x-xj99-gmcc",
+      "target": "https://github.com/advisories/GHSA-652x-xj99-gmcc",
+      "type": "REFERENCES"
+    }
+  ],
+  "highlights": {
+    "Q6_provenance": [
+      {
+        "nodes": [
+          "span:pr-root",
+          "span:pr-retriever",
+          "src:stale-doc.md",
+          "pv:requests:2.2.0",
+          "adv:PYSEC-2014-14",
+          "alias:GHSA-652x-xj99-gmcc",
+          "https://github.com/advisories/GHSA-652x-xj99-gmcc"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "HAS_ALIAS",
+          "REFERENCES"
+        ],
+        "hops": 6,
+        "package": "requests",
+        "version": "2.2.0",
+        "advisory_id": "PYSEC-2014-14",
+        "claim_text": "requests 2.2.0 is safe to use",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:pr-root",
+          "span:pr-retriever",
+          "src:stale-doc.md",
+          "pv:requests:2.2.0",
+          "adv:PYSEC-2014-14",
+          "https://github.com/advisories/GHSA-652x-xj99-gmcc"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "requests",
+        "version": "2.2.0",
+        "advisory_id": "PYSEC-2014-14",
+        "claim_text": "requests 2.2.0 is safe to use",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:pr-root",
+          "span:pr-retriever",
+          "src:stale-doc.md",
+          "pv:requests:2.2.0",
+          "adv:PYSEC-2014-14",
+          "http://lists.opensuse.org/opensuse-updates/2016-01/msg00095.html"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "requests",
+        "version": "2.2.0",
+        "advisory_id": "PYSEC-2014-14",
+        "claim_text": "requests 2.2.0 is safe to use",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:pr-root",
+          "span:pr-retriever",
+          "src:stale-doc.md",
+          "pv:requests:2.2.0",
+          "adv:PYSEC-2014-14",
+          "http://advisories.mageia.org/MGASA-2014-0409.html"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "requests",
+        "version": "2.2.0",
+        "advisory_id": "PYSEC-2014-14",
+        "claim_text": "requests 2.2.0 is safe to use",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:pr-root",
+          "span:pr-retriever",
+          "src:stale-doc.md",
+          "pv:requests:2.2.0",
+          "adv:PYSEC-2014-14",
+          "http://www.mandriva.com/security/advisories?name=MDVSA-2015:133"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "requests",
+        "version": "2.2.0",
+        "advisory_id": "PYSEC-2014-14",
+        "claim_text": "requests 2.2.0 is safe to use",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:pr-root",
+          "span:pr-retriever",
+          "src:stale-doc.md",
+          "pv:requests:2.2.0",
+          "adv:PYSEC-2014-14",
+          "http://www.debian.org/security/2015/dsa-3146"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "requests",
+        "version": "2.2.0",
+        "advisory_id": "PYSEC-2014-14",
+        "claim_text": "requests 2.2.0 is safe to use",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:pr-root",
+          "span:pr-retriever",
+          "src:stale-doc.md",
+          "pv:requests:2.2.0",
+          "adv:PYSEC-2014-14",
+          "https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=733108"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "requests",
+        "version": "2.2.0",
+        "advisory_id": "PYSEC-2014-14",
+        "claim_text": "requests 2.2.0 is safe to use",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:pr-root",
+          "span:pr-retriever",
+          "src:stale-doc.md",
+          "pv:requests:2.2.0",
+          "adv:PYSEC-2014-14",
+          "https://github.com/kennethreitz/requests/issues/1885"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "REFERENCES"
+        ],
+        "hops": 5,
+        "package": "requests",
+        "version": "2.2.0",
+        "advisory_id": "PYSEC-2014-14",
+        "claim_text": "requests 2.2.0 is safe to use",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:pr-root",
+          "span:pr-retriever",
+          "src:stale-doc.md",
+          "pv:requests:2.2.0",
+          "adv:PYSEC-2014-14",
+          "alias:GHSA-652x-xj99-gmcc"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "HAS_ALIAS"
+        ],
+        "hops": 5,
+        "package": "requests",
+        "version": "2.2.0",
+        "advisory_id": "PYSEC-2014-14",
+        "claim_text": "requests 2.2.0 is safe to use",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:pr-root",
+          "span:pr-retriever",
+          "src:stale-doc.md",
+          "pv:requests:2.2.0",
+          "adv:PYSEC-2014-14",
+          "alias:CVE-2014-1830"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS",
+          "HAS_ALIAS"
+        ],
+        "hops": 5,
+        "package": "requests",
+        "version": "2.2.0",
+        "advisory_id": "PYSEC-2014-14",
+        "claim_text": "requests 2.2.0 is safe to use",
+        "resolved": true
+      },
+      {
+        "nodes": [
+          "span:pr-root",
+          "span:pr-retriever",
+          "src:stale-doc.md",
+          "pv:requests:2.2.0",
+          "adv:PYSEC-2014-14"
+        ],
+        "rels": [
+          "PARENT_OF",
+          "RETRIEVED_FROM",
+          "MENTIONS",
+          "AFFECTS"
+        ],
+        "hops": 4,
+        "package": "requests",
+        "version": "2.2.0",
+        "advisory_id": "PYSEC-2014-14",
+        "claim_text": "requests 2.2.0 is safe to use",
+        "resolved": true
+      }
+    ],
+    "Q7_hop_audit": [
+      {
+        "nodes": [
+          "span:pr-root",
+          "span:pr-retriever",
+          "src:stale-doc.md",
+          "pv:requests:2.2.0"
+        ],
+        "stale_days": [
+          4421.06,
+          4421.06,
+          -365.0,
+          null
+        ],
+        "at_iso": [
+          "2026-11-22T16:23:09+00:00",
+          "2026-11-22T16:23:09.500000+00:00",
+          "2013-10-15T14:55:00+00:00",
+          null
+        ],
+        "labels": [
+          "Span",
+          "Span",
+          "Source",
+          "PkgVersion"
+        ],
+        "first_hop_already_stale": {
+          "index": 0,
+          "node": "span:pr-root",
+          "label": "Span",
+          "at_ns": 1795364589000000000,
+          "at_iso": "2026-11-22T16:23:09+00:00",
+          "already_stale_ns": 381979689000000000,
+          "already_stale_days": 4421.06
+        },
+        "advisory_id": "PYSEC-2014-14",
+        "verdict": "STALE_AT_HOP"
+      }
+    ],
+    "Q8_declaration_drift": [
+      {
+        "claim_chain": [
+          "ans:pr-answer-1",
+          "claim:pr-claim-1",
+          "pv:requests:2.2.0"
+        ],
+        "lockfile_chain": [
+          "lf:requirements.lock",
+          "pv:requests:2.3.0"
+        ],
+        "advisory_chain": [
+          "adv:PYSEC-2014-14",
+          "pv:requests:2.2.0"
+        ],
+        "claim_text": "requests 2.2.0 is safe to use",
+        "cited_version": "2.2.0",
+        "pinned_version": "2.3.0",
+        "advisory_id": "PYSEC-2014-14",
+        "advisory_url": "https://github.com/kennethreitz/requests/issues/1885"
+      }
+    ],
+    "merge_actions": [],
+    "Q9_convergence": [],
+    "Q10_blast_radius": []
+  },
+  "verdict_summary": {
+    "graph_verdict": "PASS",
+    "checks": {
+      "q6_provenance_path_is_multihop": true,
+      "q6_path_has_no_nulls": true,
+      "q6_traverses_advisory_identity_when_present": true,
+      "q7_hop_level_time_predicate": true,
+      "q7_identifies_which_hop_was_already_stale": true,
+      "q8_declaration_drift_found": true,
+      "sca_control_reports_pinned_clean": true,
+      "graph_changes_merge_decision_where_sca_cannot": true
+    },
+    "declarations_found": null,
+    "scenarios_built": null,
+    "merge_verdict": "PASS"
+  }
+}

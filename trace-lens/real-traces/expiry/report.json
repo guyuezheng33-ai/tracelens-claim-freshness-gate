@@ -1,0 +1,49 @@
+{
+  "schema": "tracelens/dependency-expiry-report@1",
+  "user": {
+    "persona": "developer or student accepting code from a coding agent",
+    "moment": "before merging the agent's suggestion",
+    "question": "was the cited version already known-vulnerable when the agent answered?",
+    "action": "reject the stale version and pin the advisory's fix version",
+    "not_a_persona": [
+      "hackathon entrant",
+      "judge",
+      "customer incidence"
+    ]
+  },
+  "summary": {
+    "answers_checked": 2,
+    "stale_claims": 1,
+    "clean_claims": 1,
+    "verdict": "PASS"
+  },
+  "stale_findings": [
+    {
+      "answer_id": "expiry-stale-1795489785901568000",
+      "claim_id": "expiry-claim-stale",
+      "claim_text": "requests 2.2.0 is safe to use",
+      "cited": "requests 2.2.0",
+      "known_vulnerable_since": "2014-10-15T14:55:00Z",
+      "answer_created": "2026-11-24T03:09:45.901568+00:00",
+      "advisory_aged_days_at_answer": 4422.51,
+      "public_evidence_url": "https://github.com/kennethreitz/requests/issues/1885",
+      "fix_version": "2.3.0",
+      "action": "reject 2.2.0; pin requests 2.3.0 or later"
+    }
+  ],
+  "clean_findings": [
+    {
+      "answer_id": "expiry-clean-1795489785901568000",
+      "claim_id": "expiry-claim-clean",
+      "cited": "requests 2.3.0",
+      "status": "no advisory covers this version"
+    }
+  ],
+  "evidence": {
+    "advisory_source": "https://api.osv.dev/v1/vulns/",
+    "advisory_ids": [
+      "PYSEC-2014-14"
+    ],
+    "answers_sha256": "c825c1b54695b64dbaf64a09505ee6406f4fb8df6e45d1ddecc0f1833e027ed4"
+  }
+}

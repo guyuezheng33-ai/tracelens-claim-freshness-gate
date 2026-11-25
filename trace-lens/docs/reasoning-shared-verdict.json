@@ -1,0 +1,499 @@
+{
+ "schema": "tracelens/reasoning-verdict@1",
+ "store": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens/real-traces/reasoning/shared-retriever.rl",
+ "checks": {
+  "fixpoint_reached": true,
+  "r1_finds_documents_predating_advisory": true,
+  "r3_propagates_along_parent_of": true,
+  "r4_derives_born_stale_answers": true,
+  "every_derived_fact_has_premises": true,
+  "reasoning_agrees_with_cypher_q8": true,
+  "r6_repair_plan_covers_every_derived_answer": true,
+  "r5_repair_is_smaller_than_derived_answers": true
+ },
+ "verdict": "PASS",
+ "iterations": 2,
+ "derived_counts": {
+  "R1": 8,
+  "R2": 8,
+  "R3": 16,
+  "R4": 8
+ },
+ "derived_born_stale_answers": [
+  "ans:shared-0",
+  "ans:shared-1",
+  "ans:shared-2",
+  "ans:shared-3",
+  "ans:shared-4",
+  "ans:shared-5",
+  "ans:shared-6",
+  "ans:shared-7"
+ ],
+ "facts": {
+  "R1": [
+   {
+    "subject": "src:scan-doc-0",
+    "advisory": "adv:GHSA-4grg-w6v8-c28g",
+    "rule": "R1",
+    "premises": [
+     "src:scan-doc-0",
+     "pv:flask:3.0.3",
+     "adv:GHSA-4grg-w6v8-c28g"
+    ],
+    "iteration": 0
+   },
+   {
+    "subject": "src:scan-doc-1",
+    "advisory": "adv:GHSA-22hg-r758-rrw9",
+    "rule": "R1",
+    "premises": [
+     "src:scan-doc-1",
+     "pv:pillow:10.0.0",
+     "adv:GHSA-22hg-r758-rrw9"
+    ],
+    "iteration": 0
+   },
+   {
+    "subject": "src:scan-doc-2",
+    "advisory": "adv:GHSA-cpwx-vrp4-4pq7",
+    "rule": "R1",
+    "premises": [
+     "src:scan-doc-2",
+     "pv:jinja2:3.1.2",
+     "adv:GHSA-cpwx-vrp4-4pq7"
+    ],
+    "iteration": 0
+   },
+   {
+    "subject": "src:scan-doc-3",
+    "advisory": "adv:GHSA-9hjg-9r4m-mvj7",
+    "rule": "R1",
+    "premises": [
+     "src:scan-doc-3",
+     "pv:requests:2.31.0",
+     "adv:GHSA-9hjg-9r4m-mvj7"
+    ],
+    "iteration": 0
+   },
+   {
+    "subject": "src:scan-doc-4",
+    "advisory": "adv:GHSA-3pqx-4fqf-j49f",
+    "rule": "R1",
+    "premises": [
+     "src:scan-doc-4",
+     "pv:pyyaml:3.13",
+     "adv:GHSA-3pqx-4fqf-j49f"
+    ],
+    "iteration": 0
+   },
+   {
+    "subject": "src:scan-doc-5",
+    "advisory": "adv:GHSA-fpfv-jqm9-f5jm",
+    "rule": "R1",
+    "premises": [
+     "src:scan-doc-5",
+     "pv:numpy:1.21.0",
+     "adv:GHSA-fpfv-jqm9-f5jm"
+    ],
+    "iteration": 0
+   },
+   {
+    "subject": "src:scan-doc-6",
+    "advisory": "adv:GHSA-2mcm-79hx-8fxw",
+    "rule": "R1",
+    "premises": [
+     "src:scan-doc-6",
+     "pv:django:4.2.7",
+     "adv:GHSA-2mcm-79hx-8fxw"
+    ],
+    "iteration": 0
+   },
+   {
+    "subject": "src:scan-doc-7",
+    "advisory": "adv:GHSA-2xpw-w6gg-jr37",
+    "rule": "R1",
+    "premises": [
+     "src:scan-doc-7",
+     "pv:urllib3:2.0.7",
+     "adv:GHSA-2xpw-w6gg-jr37"
+    ],
+    "iteration": 0
+   }
+  ],
+  "R2": [
+   {
+    "subject": "span:shared-ret",
+    "advisory": "adv:GHSA-2xpw-w6gg-jr37",
+    "rule": "R2",
+    "premises": [
+     "span:shared-ret",
+     "src:scan-doc-7",
+     "adv:GHSA-2xpw-w6gg-jr37"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "span:shared-ret",
+    "advisory": "adv:GHSA-2mcm-79hx-8fxw",
+    "rule": "R2",
+    "premises": [
+     "span:shared-ret",
+     "src:scan-doc-6",
+     "adv:GHSA-2mcm-79hx-8fxw"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "span:shared-ret",
+    "advisory": "adv:GHSA-fpfv-jqm9-f5jm",
+    "rule": "R2",
+    "premises": [
+     "span:shared-ret",
+     "src:scan-doc-5",
+     "adv:GHSA-fpfv-jqm9-f5jm"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "span:shared-ret",
+    "advisory": "adv:GHSA-3pqx-4fqf-j49f",
+    "rule": "R2",
+    "premises": [
+     "span:shared-ret",
+     "src:scan-doc-4",
+     "adv:GHSA-3pqx-4fqf-j49f"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "span:shared-ret",
+    "advisory": "adv:GHSA-9hjg-9r4m-mvj7",
+    "rule": "R2",
+    "premises": [
+     "span:shared-ret",
+     "src:scan-doc-3",
+     "adv:GHSA-9hjg-9r4m-mvj7"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "span:shared-ret",
+    "advisory": "adv:GHSA-cpwx-vrp4-4pq7",
+    "rule": "R2",
+    "premises": [
+     "span:shared-ret",
+     "src:scan-doc-2",
+     "adv:GHSA-cpwx-vrp4-4pq7"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "span:shared-ret",
+    "advisory": "adv:GHSA-22hg-r758-rrw9",
+    "rule": "R2",
+    "premises": [
+     "span:shared-ret",
+     "src:scan-doc-1",
+     "adv:GHSA-22hg-r758-rrw9"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "span:shared-ret",
+    "advisory": "adv:GHSA-4grg-w6v8-c28g",
+    "rule": "R2",
+    "premises": [
+     "span:shared-ret",
+     "src:scan-doc-0",
+     "adv:GHSA-4grg-w6v8-c28g"
+    ],
+    "iteration": 1
+   }
+  ],
+  "R3": [
+   {
+    "subject": "span:shared-ret",
+    "advisory": "adv:GHSA-2xpw-w6gg-jr37",
+    "rule": "R3",
+    "premises": [
+     "span:shared-ret",
+     "adv:GHSA-2xpw-w6gg-jr37"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "span:shared-ret",
+    "advisory": "adv:GHSA-2mcm-79hx-8fxw",
+    "rule": "R3",
+    "premises": [
+     "span:shared-ret",
+     "adv:GHSA-2mcm-79hx-8fxw"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "span:shared-ret",
+    "advisory": "adv:GHSA-fpfv-jqm9-f5jm",
+    "rule": "R3",
+    "premises": [
+     "span:shared-ret",
+     "adv:GHSA-fpfv-jqm9-f5jm"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "span:shared-ret",
+    "advisory": "adv:GHSA-3pqx-4fqf-j49f",
+    "rule": "R3",
+    "premises": [
+     "span:shared-ret",
+     "adv:GHSA-3pqx-4fqf-j49f"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "span:shared-ret",
+    "advisory": "adv:GHSA-9hjg-9r4m-mvj7",
+    "rule": "R3",
+    "premises": [
+     "span:shared-ret",
+     "adv:GHSA-9hjg-9r4m-mvj7"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "span:shared-ret",
+    "advisory": "adv:GHSA-cpwx-vrp4-4pq7",
+    "rule": "R3",
+    "premises": [
+     "span:shared-ret",
+     "adv:GHSA-cpwx-vrp4-4pq7"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "span:shared-ret",
+    "advisory": "adv:GHSA-22hg-r758-rrw9",
+    "rule": "R3",
+    "premises": [
+     "span:shared-ret",
+     "adv:GHSA-22hg-r758-rrw9"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "span:shared-ret",
+    "advisory": "adv:GHSA-4grg-w6v8-c28g",
+    "rule": "R3",
+    "premises": [
+     "span:shared-ret",
+     "adv:GHSA-4grg-w6v8-c28g"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "span:shared-root",
+    "advisory": "adv:GHSA-2xpw-w6gg-jr37",
+    "rule": "R3",
+    "premises": [
+     "span:shared-ret",
+     "span:shared-root",
+     "adv:GHSA-2xpw-w6gg-jr37"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "span:shared-root",
+    "advisory": "adv:GHSA-2mcm-79hx-8fxw",
+    "rule": "R3",
+    "premises": [
+     "span:shared-ret",
+     "span:shared-root",
+     "adv:GHSA-2mcm-79hx-8fxw"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "span:shared-root",
+    "advisory": "adv:GHSA-fpfv-jqm9-f5jm",
+    "rule": "R3",
+    "premises": [
+     "span:shared-ret",
+     "span:shared-root",
+     "adv:GHSA-fpfv-jqm9-f5jm"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "span:shared-root",
+    "advisory": "adv:GHSA-3pqx-4fqf-j49f",
+    "rule": "R3",
+    "premises": [
+     "span:shared-ret",
+     "span:shared-root",
+     "adv:GHSA-3pqx-4fqf-j49f"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "span:shared-root",
+    "advisory": "adv:GHSA-9hjg-9r4m-mvj7",
+    "rule": "R3",
+    "premises": [
+     "span:shared-ret",
+     "span:shared-root",
+     "adv:GHSA-9hjg-9r4m-mvj7"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "span:shared-root",
+    "advisory": "adv:GHSA-cpwx-vrp4-4pq7",
+    "rule": "R3",
+    "premises": [
+     "span:shared-ret",
+     "span:shared-root",
+     "adv:GHSA-cpwx-vrp4-4pq7"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "span:shared-root",
+    "advisory": "adv:GHSA-22hg-r758-rrw9",
+    "rule": "R3",
+    "premises": [
+     "span:shared-ret",
+     "span:shared-root",
+     "adv:GHSA-22hg-r758-rrw9"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "span:shared-root",
+    "advisory": "adv:GHSA-4grg-w6v8-c28g",
+    "rule": "R3",
+    "premises": [
+     "span:shared-ret",
+     "span:shared-root",
+     "adv:GHSA-4grg-w6v8-c28g"
+    ],
+    "iteration": 1
+   }
+  ],
+  "R4": [
+   {
+    "subject": "ans:shared-7",
+    "advisory": "adv:GHSA-fpfv-jqm9-f5jm",
+    "rule": "R4",
+    "premises": [
+     "span:shared-root",
+     "ans:shared-7",
+     "adv:GHSA-fpfv-jqm9-f5jm"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "ans:shared-6",
+    "advisory": "adv:GHSA-cpwx-vrp4-4pq7",
+    "rule": "R4",
+    "premises": [
+     "span:shared-root",
+     "ans:shared-6",
+     "adv:GHSA-cpwx-vrp4-4pq7"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "ans:shared-5",
+    "advisory": "adv:GHSA-9hjg-9r4m-mvj7",
+    "rule": "R4",
+    "premises": [
+     "span:shared-root",
+     "ans:shared-5",
+     "adv:GHSA-9hjg-9r4m-mvj7"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "ans:shared-4",
+    "advisory": "adv:GHSA-4grg-w6v8-c28g",
+    "rule": "R4",
+    "premises": [
+     "span:shared-root",
+     "ans:shared-4",
+     "adv:GHSA-4grg-w6v8-c28g"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "ans:shared-3",
+    "advisory": "adv:GHSA-3pqx-4fqf-j49f",
+    "rule": "R4",
+    "premises": [
+     "span:shared-root",
+     "ans:shared-3",
+     "adv:GHSA-3pqx-4fqf-j49f"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "ans:shared-2",
+    "advisory": "adv:GHSA-2xpw-w6gg-jr37",
+    "rule": "R4",
+    "premises": [
+     "span:shared-root",
+     "ans:shared-2",
+     "adv:GHSA-2xpw-w6gg-jr37"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "ans:shared-1",
+    "advisory": "adv:GHSA-2mcm-79hx-8fxw",
+    "rule": "R4",
+    "premises": [
+     "span:shared-root",
+     "ans:shared-1",
+     "adv:GHSA-2mcm-79hx-8fxw"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "ans:shared-0",
+    "advisory": "adv:GHSA-22hg-r758-rrw9",
+    "rule": "R4",
+    "premises": [
+     "span:shared-root",
+     "ans:shared-0",
+     "adv:GHSA-22hg-r758-rrw9"
+    ],
+    "iteration": 1
+   }
+  ]
+ },
+ "intervention": {
+  "intervention_spans": [
+   "span:shared-ret"
+  ],
+  "stale_source_spans": [
+   "span:shared-ret"
+  ],
+  "blocked_paths": [
+   "span:shared-root-[adv:GHSA-22hg-r758-rrw9]->span:shared-ret",
+   "span:shared-root-[adv:GHSA-2mcm-79hx-8fxw]->span:shared-ret",
+   "span:shared-root-[adv:GHSA-2xpw-w6gg-jr37]->span:shared-ret",
+   "span:shared-root-[adv:GHSA-3pqx-4fqf-j49f]->span:shared-ret",
+   "span:shared-root-[adv:GHSA-4grg-w6v8-c28g]->span:shared-ret",
+   "span:shared-root-[adv:GHSA-9hjg-9r4m-mvj7]->span:shared-ret",
+   "span:shared-root-[adv:GHSA-cpwx-vrp4-4pq7]->span:shared-ret",
+   "span:shared-root-[adv:GHSA-fpfv-jqm9-f5jm]->span:shared-ret"
+  ],
+  "uncovered_derived_answers": [],
+  "sound": true,
+  "repair_size": 1,
+  "derived_answer_count": 8,
+  "path_pair_count": 8,
+  "method": "greedy set cover over producer->stale-source paths in PARENT_OF"
+ },
+ "why_graph": "Q11 evaluates recursive rules R1–R4 to a fixpoint over the persisted graph: staleness is DERIVED and propagated along PARENT_OF, not matched by a fixed pattern. Every derived fact records its rule and premise nodes, so the conclusion is an explainable derivation chain. R4 is computed independently of the Cypher Q8 drift query and the verdict requires both mechanisms to flag the same answers. R5 then SOLVES a hitting set over the PARENT_OF tree — the smallest span set that blocks every stale source-to-root path — and R6 verifies that one such repair covers every R4 answer. This is constrained optimisation on the graph, not a second derivation of Q8."
+}

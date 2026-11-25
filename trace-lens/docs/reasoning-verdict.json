@@ -1,0 +1,513 @@
+{
+ "schema": "tracelens/reasoning-verdict@1",
+ "store": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens/real-traces/scan/scan.rl",
+ "checks": {
+  "fixpoint_reached": true,
+  "r1_finds_documents_predating_advisory": true,
+  "r3_propagates_along_parent_of": true,
+  "r4_derives_born_stale_answers": true,
+  "every_derived_fact_has_premises": true,
+  "reasoning_agrees_with_cypher_q8": true,
+  "r6_repair_plan_covers_every_derived_answer": true,
+  "r5_repair_is_smaller_than_derived_answers": true
+ },
+ "verdict": "PASS",
+ "iterations": 2,
+ "derived_counts": {
+  "R1": 8,
+  "R2": 8,
+  "R3": 16,
+  "R4": 8
+ },
+ "derived_born_stale_answers": [
+  "ans:scan-answer-django-6",
+  "ans:scan-answer-flask-0",
+  "ans:scan-answer-jinja2-2",
+  "ans:scan-answer-numpy-5",
+  "ans:scan-answer-pillow-1",
+  "ans:scan-answer-pyyaml-4",
+  "ans:scan-answer-requests-3",
+  "ans:scan-answer-urllib3-7"
+ ],
+ "facts": {
+  "R1": [
+   {
+    "subject": "src:scan-doc-0",
+    "advisory": "adv:GHSA-4grg-w6v8-c28g",
+    "rule": "R1",
+    "premises": [
+     "src:scan-doc-0",
+     "pv:flask:3.0.3",
+     "adv:GHSA-4grg-w6v8-c28g"
+    ],
+    "iteration": 0
+   },
+   {
+    "subject": "src:scan-doc-1",
+    "advisory": "adv:GHSA-22hg-r758-rrw9",
+    "rule": "R1",
+    "premises": [
+     "src:scan-doc-1",
+     "pv:pillow:10.0.0",
+     "adv:GHSA-22hg-r758-rrw9"
+    ],
+    "iteration": 0
+   },
+   {
+    "subject": "src:scan-doc-2",
+    "advisory": "adv:GHSA-cpwx-vrp4-4pq7",
+    "rule": "R1",
+    "premises": [
+     "src:scan-doc-2",
+     "pv:jinja2:3.1.2",
+     "adv:GHSA-cpwx-vrp4-4pq7"
+    ],
+    "iteration": 0
+   },
+   {
+    "subject": "src:scan-doc-3",
+    "advisory": "adv:GHSA-9hjg-9r4m-mvj7",
+    "rule": "R1",
+    "premises": [
+     "src:scan-doc-3",
+     "pv:requests:2.31.0",
+     "adv:GHSA-9hjg-9r4m-mvj7"
+    ],
+    "iteration": 0
+   },
+   {
+    "subject": "src:scan-doc-4",
+    "advisory": "adv:GHSA-3pqx-4fqf-j49f",
+    "rule": "R1",
+    "premises": [
+     "src:scan-doc-4",
+     "pv:pyyaml:3.13",
+     "adv:GHSA-3pqx-4fqf-j49f"
+    ],
+    "iteration": 0
+   },
+   {
+    "subject": "src:scan-doc-5",
+    "advisory": "adv:GHSA-fpfv-jqm9-f5jm",
+    "rule": "R1",
+    "premises": [
+     "src:scan-doc-5",
+     "pv:numpy:1.21.0",
+     "adv:GHSA-fpfv-jqm9-f5jm"
+    ],
+    "iteration": 0
+   },
+   {
+    "subject": "src:scan-doc-6",
+    "advisory": "adv:GHSA-2mcm-79hx-8fxw",
+    "rule": "R1",
+    "premises": [
+     "src:scan-doc-6",
+     "pv:django:4.2.7",
+     "adv:GHSA-2mcm-79hx-8fxw"
+    ],
+    "iteration": 0
+   },
+   {
+    "subject": "src:scan-doc-7",
+    "advisory": "adv:GHSA-2xpw-w6gg-jr37",
+    "rule": "R1",
+    "premises": [
+     "src:scan-doc-7",
+     "pv:urllib3:2.0.7",
+     "adv:GHSA-2xpw-w6gg-jr37"
+    ],
+    "iteration": 0
+   }
+  ],
+  "R2": [
+   {
+    "subject": "span:scan-ret-0",
+    "advisory": "adv:GHSA-4grg-w6v8-c28g",
+    "rule": "R2",
+    "premises": [
+     "span:scan-ret-0",
+     "src:scan-doc-0",
+     "adv:GHSA-4grg-w6v8-c28g"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "span:scan-ret-1",
+    "advisory": "adv:GHSA-22hg-r758-rrw9",
+    "rule": "R2",
+    "premises": [
+     "span:scan-ret-1",
+     "src:scan-doc-1",
+     "adv:GHSA-22hg-r758-rrw9"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "span:scan-ret-2",
+    "advisory": "adv:GHSA-cpwx-vrp4-4pq7",
+    "rule": "R2",
+    "premises": [
+     "span:scan-ret-2",
+     "src:scan-doc-2",
+     "adv:GHSA-cpwx-vrp4-4pq7"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "span:scan-ret-3",
+    "advisory": "adv:GHSA-9hjg-9r4m-mvj7",
+    "rule": "R2",
+    "premises": [
+     "span:scan-ret-3",
+     "src:scan-doc-3",
+     "adv:GHSA-9hjg-9r4m-mvj7"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "span:scan-ret-4",
+    "advisory": "adv:GHSA-3pqx-4fqf-j49f",
+    "rule": "R2",
+    "premises": [
+     "span:scan-ret-4",
+     "src:scan-doc-4",
+     "adv:GHSA-3pqx-4fqf-j49f"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "span:scan-ret-5",
+    "advisory": "adv:GHSA-fpfv-jqm9-f5jm",
+    "rule": "R2",
+    "premises": [
+     "span:scan-ret-5",
+     "src:scan-doc-5",
+     "adv:GHSA-fpfv-jqm9-f5jm"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "span:scan-ret-6",
+    "advisory": "adv:GHSA-2mcm-79hx-8fxw",
+    "rule": "R2",
+    "premises": [
+     "span:scan-ret-6",
+     "src:scan-doc-6",
+     "adv:GHSA-2mcm-79hx-8fxw"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "span:scan-ret-7",
+    "advisory": "adv:GHSA-2xpw-w6gg-jr37",
+    "rule": "R2",
+    "premises": [
+     "span:scan-ret-7",
+     "src:scan-doc-7",
+     "adv:GHSA-2xpw-w6gg-jr37"
+    ],
+    "iteration": 1
+   }
+  ],
+  "R3": [
+   {
+    "subject": "span:scan-ret-0",
+    "advisory": "adv:GHSA-4grg-w6v8-c28g",
+    "rule": "R3",
+    "premises": [
+     "span:scan-ret-0",
+     "adv:GHSA-4grg-w6v8-c28g"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "span:scan-ret-1",
+    "advisory": "adv:GHSA-22hg-r758-rrw9",
+    "rule": "R3",
+    "premises": [
+     "span:scan-ret-1",
+     "adv:GHSA-22hg-r758-rrw9"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "span:scan-ret-2",
+    "advisory": "adv:GHSA-cpwx-vrp4-4pq7",
+    "rule": "R3",
+    "premises": [
+     "span:scan-ret-2",
+     "adv:GHSA-cpwx-vrp4-4pq7"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "span:scan-ret-3",
+    "advisory": "adv:GHSA-9hjg-9r4m-mvj7",
+    "rule": "R3",
+    "premises": [
+     "span:scan-ret-3",
+     "adv:GHSA-9hjg-9r4m-mvj7"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "span:scan-ret-4",
+    "advisory": "adv:GHSA-3pqx-4fqf-j49f",
+    "rule": "R3",
+    "premises": [
+     "span:scan-ret-4",
+     "adv:GHSA-3pqx-4fqf-j49f"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "span:scan-ret-5",
+    "advisory": "adv:GHSA-fpfv-jqm9-f5jm",
+    "rule": "R3",
+    "premises": [
+     "span:scan-ret-5",
+     "adv:GHSA-fpfv-jqm9-f5jm"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "span:scan-ret-6",
+    "advisory": "adv:GHSA-2mcm-79hx-8fxw",
+    "rule": "R3",
+    "premises": [
+     "span:scan-ret-6",
+     "adv:GHSA-2mcm-79hx-8fxw"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "span:scan-ret-7",
+    "advisory": "adv:GHSA-2xpw-w6gg-jr37",
+    "rule": "R3",
+    "premises": [
+     "span:scan-ret-7",
+     "adv:GHSA-2xpw-w6gg-jr37"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "span:scan-root-0",
+    "advisory": "adv:GHSA-4grg-w6v8-c28g",
+    "rule": "R3",
+    "premises": [
+     "span:scan-ret-0",
+     "span:scan-root-0",
+     "adv:GHSA-4grg-w6v8-c28g"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "span:scan-root-1",
+    "advisory": "adv:GHSA-22hg-r758-rrw9",
+    "rule": "R3",
+    "premises": [
+     "span:scan-ret-1",
+     "span:scan-root-1",
+     "adv:GHSA-22hg-r758-rrw9"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "span:scan-root-2",
+    "advisory": "adv:GHSA-cpwx-vrp4-4pq7",
+    "rule": "R3",
+    "premises": [
+     "span:scan-ret-2",
+     "span:scan-root-2",
+     "adv:GHSA-cpwx-vrp4-4pq7"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "span:scan-root-3",
+    "advisory": "adv:GHSA-9hjg-9r4m-mvj7",
+    "rule": "R3",
+    "premises": [
+     "span:scan-ret-3",
+     "span:scan-root-3",
+     "adv:GHSA-9hjg-9r4m-mvj7"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "span:scan-root-4",
+    "advisory": "adv:GHSA-3pqx-4fqf-j49f",
+    "rule": "R3",
+    "premises": [
+     "span:scan-ret-4",
+     "span:scan-root-4",
+     "adv:GHSA-3pqx-4fqf-j49f"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "span:scan-root-5",
+    "advisory": "adv:GHSA-fpfv-jqm9-f5jm",
+    "rule": "R3",
+    "premises": [
+     "span:scan-ret-5",
+     "span:scan-root-5",
+     "adv:GHSA-fpfv-jqm9-f5jm"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "span:scan-root-6",
+    "advisory": "adv:GHSA-2mcm-79hx-8fxw",
+    "rule": "R3",
+    "premises": [
+     "span:scan-ret-6",
+     "span:scan-root-6",
+     "adv:GHSA-2mcm-79hx-8fxw"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "span:scan-root-7",
+    "advisory": "adv:GHSA-2xpw-w6gg-jr37",
+    "rule": "R3",
+    "premises": [
+     "span:scan-ret-7",
+     "span:scan-root-7",
+     "adv:GHSA-2xpw-w6gg-jr37"
+    ],
+    "iteration": 1
+   }
+  ],
+  "R4": [
+   {
+    "subject": "ans:scan-answer-flask-0",
+    "advisory": "adv:GHSA-4grg-w6v8-c28g",
+    "rule": "R4",
+    "premises": [
+     "span:scan-root-0",
+     "ans:scan-answer-flask-0",
+     "adv:GHSA-4grg-w6v8-c28g"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "ans:scan-answer-pillow-1",
+    "advisory": "adv:GHSA-22hg-r758-rrw9",
+    "rule": "R4",
+    "premises": [
+     "span:scan-root-1",
+     "ans:scan-answer-pillow-1",
+     "adv:GHSA-22hg-r758-rrw9"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "ans:scan-answer-jinja2-2",
+    "advisory": "adv:GHSA-cpwx-vrp4-4pq7",
+    "rule": "R4",
+    "premises": [
+     "span:scan-root-2",
+     "ans:scan-answer-jinja2-2",
+     "adv:GHSA-cpwx-vrp4-4pq7"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "ans:scan-answer-requests-3",
+    "advisory": "adv:GHSA-9hjg-9r4m-mvj7",
+    "rule": "R4",
+    "premises": [
+     "span:scan-root-3",
+     "ans:scan-answer-requests-3",
+     "adv:GHSA-9hjg-9r4m-mvj7"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "ans:scan-answer-pyyaml-4",
+    "advisory": "adv:GHSA-3pqx-4fqf-j49f",
+    "rule": "R4",
+    "premises": [
+     "span:scan-root-4",
+     "ans:scan-answer-pyyaml-4",
+     "adv:GHSA-3pqx-4fqf-j49f"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "ans:scan-answer-numpy-5",
+    "advisory": "adv:GHSA-fpfv-jqm9-f5jm",
+    "rule": "R4",
+    "premises": [
+     "span:scan-root-5",
+     "ans:scan-answer-numpy-5",
+     "adv:GHSA-fpfv-jqm9-f5jm"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "ans:scan-answer-django-6",
+    "advisory": "adv:GHSA-2mcm-79hx-8fxw",
+    "rule": "R4",
+    "premises": [
+     "span:scan-root-6",
+     "ans:scan-answer-django-6",
+     "adv:GHSA-2mcm-79hx-8fxw"
+    ],
+    "iteration": 1
+   },
+   {
+    "subject": "ans:scan-answer-urllib3-7",
+    "advisory": "adv:GHSA-2xpw-w6gg-jr37",
+    "rule": "R4",
+    "premises": [
+     "span:scan-root-7",
+     "ans:scan-answer-urllib3-7",
+     "adv:GHSA-2xpw-w6gg-jr37"
+    ],
+    "iteration": 1
+   }
+  ]
+ },
+ "intervention": {
+  "intervention_spans": [
+   "span:scan-ret-0",
+   "span:scan-ret-1",
+   "span:scan-ret-2",
+   "span:scan-ret-3",
+   "span:scan-ret-4",
+   "span:scan-ret-5",
+   "span:scan-ret-6",
+   "span:scan-ret-7"
+  ],
+  "stale_source_spans": [
+   "span:scan-ret-0",
+   "span:scan-ret-1",
+   "span:scan-ret-2",
+   "span:scan-ret-3",
+   "span:scan-ret-4",
+   "span:scan-ret-5",
+   "span:scan-ret-6",
+   "span:scan-ret-7"
+  ],
+  "blocked_paths": [
+   "span:scan-root-0-[adv:GHSA-4grg-w6v8-c28g]->span:scan-ret-0",
+   "span:scan-root-1-[adv:GHSA-22hg-r758-rrw9]->span:scan-ret-1",
+   "span:scan-root-2-[adv:GHSA-cpwx-vrp4-4pq7]->span:scan-ret-2",
+   "span:scan-root-3-[adv:GHSA-9hjg-9r4m-mvj7]->span:scan-ret-3",
+   "span:scan-root-4-[adv:GHSA-3pqx-4fqf-j49f]->span:scan-ret-4",
+   "span:scan-root-5-[adv:GHSA-fpfv-jqm9-f5jm]->span:scan-ret-5",
+   "span:scan-root-6-[adv:GHSA-2mcm-79hx-8fxw]->span:scan-ret-6",
+   "span:scan-root-7-[adv:GHSA-2xpw-w6gg-jr37]->span:scan-ret-7"
+  ],
+  "uncovered_derived_answers": [],
+  "sound": true,
+  "repair_size": 8,
+  "derived_answer_count": 8,
+  "path_pair_count": 8,
+  "method": "greedy set cover over producer->stale-source paths in PARENT_OF"
+ },
+ "why_graph": "Q11 evaluates recursive rules R1–R4 to a fixpoint over the persisted graph: staleness is DERIVED and propagated along PARENT_OF, not matched by a fixed pattern. Every derived fact records its rule and premise nodes, so the conclusion is an explainable derivation chain. R4 is computed independently of the Cypher Q8 drift query and the verdict requires both mechanisms to flag the same answers. R5 then SOLVES a hitting set over the PARENT_OF tree — the smallest span set that blocks every stale source-to-root path — and R6 verifies that one such repair covers every R4 answer. This is constrained optimisation on the graph, not a second derivation of Q8."
+}

@@ -1,0 +1,101 @@
+{
+  "schema": "tracelens/demo-sources@1",
+  "sources": [
+    {
+      "n": 1,
+      "package": "requests",
+      "model": "MiniMax-M2.5",
+      "task_id": "BigCodeBench/32",
+      "cited_version": "2.31.0",
+      "import_line": "import requests  # VERSION=2.31.0",
+      "raw_requirement": "requests==2.31.0",
+      "advisory": "GHSA-9hjg-9r4m-mvj7",
+      "dataset_url": "https://github.com/dw763j/PinTrace/blob/main/outputs/evaluation/direct_dependencies.jsonl",
+      "nature": "real-agent-text (captured model output, non-customer)"
+    },
+    {
+      "n": 2,
+      "package": "django",
+      "model": "claude-sonnet-4-6",
+      "task_id": "BigCodeBench/181",
+      "cited_version": "4.2.7",
+      "import_line": "from django.http import HttpResponse",
+      "raw_requirement": "Django==4.2.7",
+      "advisory": "GHSA-2mcm-79hx-8fxw",
+      "dataset_url": "https://github.com/dw763j/PinTrace/blob/main/outputs/evaluation/direct_dependencies.jsonl",
+      "nature": "real-agent-text (captured model output, non-customer)"
+    },
+    {
+      "n": 3,
+      "package": "flask",
+      "model": "gpt-5.4",
+      "task_id": "BigCodeBench/80",
+      "cited_version": "3.0.3",
+      "import_line": "from flask import Flask, render_template, request  # VERSION=3.0.3",
+      "raw_requirement": "flask==3.0.3",
+      "advisory": "GHSA-4grg-w6v8-c28g",
+      "dataset_url": "https://github.com/dw763j/PinTrace/blob/main/outputs/evaluation/direct_dependencies.jsonl",
+      "nature": "real-agent-text (captured model output, non-customer)"
+    },
+    {
+      "n": 4,
+      "package": "urllib3",
+      "model": "Qwen3-235B-A22B-Instruct-2507",
+      "task_id": "BigCodeBench/723",
+      "cited_version": "2.0.7",
+      "import_line": "requirements.txt: urllib3==2.0.7",
+      "raw_requirement": "urllib3==2.0.7",
+      "advisory": "GHSA-2xpw-w6gg-jr37",
+      "dataset_url": "https://github.com/dw763j/PinTrace/blob/main/outputs/evaluation/direct_dependencies.jsonl",
+      "nature": "real-agent-text (captured model output, non-customer)"
+    },
+    {
+      "n": 5,
+      "package": "pillow",
+      "model": "gemini-3.1-pro-preview",
+      "task_id": "BigCodeBench/180",
+      "cited_version": "10.0.0",
+      "import_line": "from PIL import Image  # VERSION=10.0.0",
+      "raw_requirement": "PIL==10.0.0",
+      "advisory": "GHSA-22hg-r758-rrw9",
+      "dataset_url": "https://github.com/dw763j/PinTrace/blob/main/outputs/evaluation/direct_dependencies.jsonl",
+      "nature": "real-agent-text (captured model output, non-customer)"
+    },
+    {
+      "n": 6,
+      "package": "jinja2",
+      "model": "DeepSeek-V3.2",
+      "task_id": "stackexchange-63901755",
+      "cited_version": "3.1.2",
+      "import_line": "from jinja2 import Environment, PackageLoader, select_autoescape  # VERSION=3.1.2",
+      "raw_requirement": "jinja2==3.1.2",
+      "advisory": "GHSA-cpwx-vrp4-4pq7",
+      "dataset_url": "https://github.com/dw763j/PinTrace/blob/main/outputs/evaluation/direct_dependencies.jsonl",
+      "nature": "real-agent-text (captured model output, non-customer)"
+    },
+    {
+      "n": 7,
+      "package": "pyyaml",
+      "model": "Qwen3.5-397B-A17B",
+      "task_id": "stackexchange-69200750",
+      "cited_version": "3.13",
+      "import_line": "import yaml  # VERSION=3.13",
+      "raw_requirement": "yaml==3.13",
+      "advisory": "GHSA-3pqx-4fqf-j49f",
+      "dataset_url": "https://github.com/dw763j/PinTrace/blob/main/outputs/evaluation/direct_dependencies.jsonl",
+      "nature": "real-agent-text (captured model output, non-customer)"
+    },
+    {
+      "n": 8,
+      "package": "numpy",
+      "model": "MiniMax-M2.5",
+      "task_id": "BigCodeBench/10",
+      "cited_version": "1.21.0",
+      "import_line": "import numpy as np  # VERSION=1.21.0",
+      "raw_requirement": "numpy==1.21.0",
+      "advisory": "GHSA-fpfv-jqm9-f5jm",
+      "dataset_url": "https://github.com/dw763j/PinTrace/blob/main/outputs/evaluation/direct_dependencies.jsonl",
+      "nature": "real-agent-text (captured model output, non-customer)"
+    }
+  ]
+}

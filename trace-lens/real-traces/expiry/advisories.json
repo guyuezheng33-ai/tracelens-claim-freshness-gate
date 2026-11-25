@@ -1,0 +1,57 @@
+{
+  "schema": "tracelens/expiry-advisories@1",
+  "source": "https://api.osv.dev/v1/vulns/",
+  "advisories": [
+    {
+      "id": "PYSEC-2014-14",
+      "aliases": [
+        "CVE-2014-1830",
+        "GHSA-652x-xj99-gmcc"
+      ],
+      "references": [
+        {
+          "type": "REPORT",
+          "url": "https://github.com/kennethreitz/requests/issues/1885"
+        },
+        {
+          "type": "WEB",
+          "url": "https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=733108"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "http://www.debian.org/security/2015/dsa-3146"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "http://www.mandriva.com/security/advisories?name=MDVSA-2015:133"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "http://advisories.mageia.org/MGASA-2014-0409.html"
+        },
+        {
+          "type": "WEB",
+          "url": "http://lists.opensuse.org/opensuse-updates/2016-01/msg00095.html"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://github.com/advisories/GHSA-652x-xj99-gmcc"
+        }
+      ],
+      "package": "requests",
+      "ecosystem": "PyPI",
+      "purl": "pkg:pypi/requests",
+      "published": "2014-10-15T14:55:00Z",
+      "published_ns": 1413384900000000000,
+      "fixed": "2.3.0",
+      "fix_available": null,
+      "fix_available_ns": -1,
+      "osv_modified_ns": 1699415854820933120,
+      "modified": "2023-11-08T03:57:34.820933Z",
+      "url": "https://github.com/kennethreitz/requests/issues/1885",
+      "summary": ""
+    }
+  ],
+  "answers_file": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens/real-traces/expiry/answers.json",
+  "answers_sha256": "9ae47a708ee273b9c10e4568a58cc246301ddb5097ebc4144e01f7209b66e509"
+}

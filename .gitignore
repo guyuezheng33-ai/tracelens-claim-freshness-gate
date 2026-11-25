@@ -1,0 +1,35 @@
+# ---- Forge / contest workbench internals (not part of the product) ----
+.forge_lock/
+.forge_lock.json
+soldieros/
+*.docx
+
+# ---- Local environment ----
+.venv/
+**/.venv/
+__pycache__/
+**/__pycache__/
+*.py[cod]
+.pytest_cache/
+**/.pytest_cache/
+.ruff_cache/
+**/.ruff_cache/
+*.egg-info/
+**/*.egg-info/
+
+# ---- Upstream source archives (recoverable from official URLs) ----
+*.zip
+
+# ---- Large raw third-party datasets (evidence already extracted and committed) ----
+trace-lens/real-cases/pintrace/direct_dependencies.jsonl
+trace-lens/real-cases/pintrace/task_outcomes.jsonl
+trace-lens/real-cases/pintrace/so_e2e_balanced.jsonl
+trace-lens/real-cases/pintrace/run_audits.jsonl
+
+# ---- Superseded drafts (kept locally in backup, not published) ----
+AI-DISCLOSURE-DRAFT.md
+trace-lens/docs/SUBMISSION.md
+
+# ---- OS ----
+.DS_Store
+Thumbs.db

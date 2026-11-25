@@ -1,0 +1,37 @@
+# Batch demo input: 8 CAPTURED model outputs from the PinTrace public evaluation
+# dataset (direct_dependencies.jsonl). Each block keeps the model's actual import
+# line and requirement line; model names and task ids are in pr-answer-sources.json.
+# Nothing below is author-written prose. The lockfile pins are scenario configuration
+# set to each advisory's fixed release (what the project already pins).
+
+# [1] MiniMax-M2.5 | task BigCodeBench/32 | PinTrace public evaluation output
+import requests  # VERSION=2.31.0
+requests==2.31.0
+
+# [2] claude-sonnet-4-6 | task BigCodeBench/181 | PinTrace public evaluation output
+from django.http import HttpResponse
+Django==4.2.7
+
+# [3] gpt-5.4 | task BigCodeBench/80 | PinTrace public evaluation output
+from flask import Flask, render_template, request  # VERSION=3.0.3
+flask==3.0.3
+
+# [4] Qwen3-235B-A22B-Instruct-2507 | task BigCodeBench/723 | PinTrace public evaluation output
+requirements.txt: urllib3==2.0.7
+urllib3==2.0.7
+
+# [5] gemini-3.1-pro-preview | task BigCodeBench/180 | PinTrace public evaluation output
+from PIL import Image  # VERSION=10.0.0
+PIL==10.0.0
+
+# [6] DeepSeek-V3.2 | task stackexchange-63901755 | PinTrace public evaluation output
+from jinja2 import Environment, PackageLoader, select_autoescape  # VERSION=3.1.2
+jinja2==3.1.2
+
+# [7] Qwen3.5-397B-A17B | task stackexchange-69200750 | PinTrace public evaluation output
+import yaml  # VERSION=3.13
+yaml==3.13
+
+# [8] MiniMax-M2.5 | task BigCodeBench/10 | PinTrace public evaluation output
+import numpy as np  # VERSION=1.21.0
+numpy==1.21.0

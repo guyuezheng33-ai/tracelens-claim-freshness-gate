@@ -1,0 +1,13 @@
+{
+  "record_id": "minimax-pillow-950",
+  "model": "MiniMax-M2.5",
+  "task_id": "BigCodeBench/406",
+  "package": "pillow",
+  "cited_version": "9.5.0",
+  "fixed": "13.0.0",
+  "raw_requirement": "PIL==9.5.0",
+  "import_line": "from PIL import Image  # VERSION=9.5.0",
+  "nature": "real-agent-text",
+  "dataset_url": "https://github.com/dw763j/PinTrace/blob/main/outputs/evaluation/direct_dependencies.jsonl",
+  "dataset_note": "PinTrace public evaluation output; model-generated code with inline version annotation, not customer data"
+}

@@ -1,0 +1,49 @@
+ I uses Linux Mint 22 based on Ubuntu 24.04. 
+ Code works for me with  uv  and  Python 3.10  when I install  PyQt6  but not with  PyQt5  
+ And it doesn't need line  matplotlib.use('Qt5Agg')  nor  matplotlib.use('QtAgg')  
+(but it works also with those lines) 
+ 
+ As for  tkinter : normally  tkinter  is intalled directly with  Python  
+but on Ubuntu it is separated package which is installed with  apt install python3.10-tk . 
+And I think this can be problem to install it in version installed with  uv . 
+ BTW: on version  Ubuntu Server  (which doesn't have installed X11, and usually is used on computers without monitor) it may have Python without  tkinter  because  tkinter  is  useless without  X11  and monitor. 
+ There is no problem when you install full  Python 3.10  using  apt install python3.10-full  or  apt install python3.10 python3.10-tk  and later create virtual environment with  python3.10 -m venv ...  
+ 
+ Full code used for tests: 
+  $ uv init test_py310 --python 3.10 
+$ cd test_py310/
+$ uv add numpy matplotlib pyqt6
+$ uv run main.py
+  
+  main.py  
+ It allows to run with parameter like  uv run main.py tkagg  
+  import sys
+print('>>> Executable:', sys.executable)
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+import matplotlib
+# matplotlib.use('QtAgg')   # works for me when installed `PyQt6` but not `PyQt5`
+# matplotlib.use('Qt5Agg')  # works for me when installed `PyQt6` but not `PyQt5`
+# matplotlib.use('Qt6Agg')  # doesn't exist `Qt6Agg`
+# matplotlib.use('TkAgg')   # `tkinter` is not installed with `uv`
+
+if len(sys.argv) > 1:
+    print('>>> Using:', sys.argv[1])
+    matplotlib.use(sys.argv[1])
+
+x = np.linspace(0, 10, 100)
+y = np.sin(x)
+plt.plot(x, y, label='sin(x)', color='blue', linestyle='--')
+# plt.ion()  # ion = Interactive ON
+plt.show()
+  
+ 
+ These setup commands worked for Ubuntu 24.04 (tested by @SunBear): 
+  $ uv init test_py310 --python 3.10 
+$ cd test_py310/
+$ uv add numpy matplotlib pyqt6
+$ sudo apt install python3.10-tk libxcb-cursor0
+$ uv run main.py
+  

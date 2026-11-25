@@ -1,0 +1,38 @@
+name: TraceLens born-stale guard
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install TraceLens
+        run: python -m pip install -e "./trace-lens[dev]"
+      - name: Full test suite
+        run: python -m pytest trace-lens/tests -q
+      - name: Scan a captured real answer (must block)
+        run: |
+          python -m tracelens.scan \
+            --text trace-lens/real-cases/real-user/stackexchange-62945229/text.txt \
+            --lockfile trace-lens/real-cases/real-user/stackexchange-62945229/requirements.lock \
+            --passport trace-lens/real-traces/scan/osv-batch-passport.json \
+            --as-of 2026-11-24T00:00:00Z \
+            --store /tmp/tracelens-scan.rl \
+            --out /tmp/tracelens-verdict.json
+      - name: Fail the check if TraceLens does not block the stale declaration
+        run: |
+          python -c "import json; v=json.load(open('/tmp/tracelens-verdict.json')); assert v['verdict']=='BLOCK_MERGE_TEXT', v['verdict']; assert v['Q6_provenance_paths']>=1; assert v['Q7_hop_audits']>=1; assert v['Q8_drifts']>=1; print('TraceLens blocked:', v['merge_actions'][0]['reject_text'])"
+      - name: Cross-model convergence and blast radius (must pass)
+        run: |
+          cd trace-lens
+          python -m tracelens.convergence \
+            --passport real-traces/scan/osv-batch-passport.json \
+            --store /tmp/convergence.rl --out /tmp/convergence-verdict.json
+          python -c "import json; v=json.load(open('/tmp/convergence-verdict.json')); assert v['verdict']=='PASS', v['checks']; assert v['checks']['q9_finds_cross_model_convergence']; assert v['checks']['q10_blast_radius_spans_multiple_models']; print('Q9 clusters:', len(v['Q9_convergence']), 'Q10 advisories:', len(v['Q10_blast_radius']))"

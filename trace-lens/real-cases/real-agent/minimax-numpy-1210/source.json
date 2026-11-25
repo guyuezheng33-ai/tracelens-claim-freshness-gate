@@ -1,0 +1,13 @@
+{
+  "record_id": "minimax-numpy-1210",
+  "model": "MiniMax-M2.5",
+  "task_id": "BigCodeBench/10",
+  "package": "numpy",
+  "cited_version": "1.21.0",
+  "fixed": "1.22",
+  "raw_requirement": "numpy==1.21.0",
+  "import_line": "import numpy as np  # VERSION=1.21.0",
+  "nature": "real-agent-text",
+  "dataset_url": "https://github.com/dw763j/PinTrace/blob/main/outputs/evaluation/direct_dependencies.jsonl",
+  "dataset_note": "PinTrace public evaluation output; model-generated code with inline version annotation, not customer data"
+}

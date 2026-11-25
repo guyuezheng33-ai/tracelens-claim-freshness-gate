@@ -1,0 +1,16 @@
+{
+  "record_id": "stackexchange-62945229",
+  "question_id": "62945229",
+  "answer_id": "62945657",
+  "title": "Nginx reverse-proxy for python app using docker-compose",
+  "url": "https://stackoverflow.com/a/62945657",
+  "package": "flask",
+  "cited_version": "1.1.2",
+  "fixed": "3.1.1",
+  "advisory": "GHSA-4grg-w6v8-c28g",
+  "declaration_snippet": "flask==1.1.2",
+  "declaration_where": "answer",
+  "text_chars": 4390,
+  "license_note": "Stack Exchange content, CC BY-SA 4.0; attribution retained via answer URL",
+  "captured": "real public Stack Overflow question/answer downloaded from PinTrace public dataset"
+}

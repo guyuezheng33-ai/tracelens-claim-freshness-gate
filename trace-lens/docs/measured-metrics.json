@@ -1,0 +1,23 @@
+{
+  "store": "store/demo-run.rl",
+  "scope": "Q1-Q4 diagnostic demo graph only; not the born-stale claim graph",
+  "nodes": 21,
+  "relationships": 22,
+  "labels": [
+    "Answer",
+    "Claim",
+    "Run",
+    "Source",
+    "Span",
+    "ToolCall"
+  ],
+  "relationship_types": [
+    "ASSERTED_IN",
+    "CALLED",
+    "CONTAINS",
+    "PARENT_OF",
+    "PRODUCED",
+    "RETRIEVED_FROM",
+    "SUPPORTED_BY"
+  ]
+}

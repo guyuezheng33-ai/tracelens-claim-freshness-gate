@@ -1,0 +1,2 @@
+from django.http import HttpResponse
+Django==4.2.7

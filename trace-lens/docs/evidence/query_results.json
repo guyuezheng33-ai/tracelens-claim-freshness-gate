@@ -1,0 +1,90 @@
+{
+  "Q1": {
+    "name": "path-to-evidence",
+    "question": "哪个低分来源污染了这个答案？",
+    "rows": [
+      {
+        "path": [
+          "ans:ba-ans",
+          "span:ba-root",
+          "span:ba-ret-2",
+          "src:bad-answer:stale-policy-v2.pdf"
+        ],
+        "labels": [
+          "Answer",
+          "Span",
+          "Span",
+          "Source"
+        ],
+        "bad_source": "stale-policy-v2.pdf",
+        "score": 0.12,
+        "hops": 3
+      },
+      {
+        "path": [
+          "ans:ba-ans",
+          "span:ba-root",
+          "span:ba-ret-1",
+          "src:bad-answer:stale-policy-v2.pdf"
+        ],
+        "labels": [
+          "Answer",
+          "Span",
+          "Span",
+          "Source"
+        ],
+        "bad_source": "stale-policy-v2.pdf",
+        "score": 0.12,
+        "hops": 3
+      }
+    ],
+    "passed": true
+  },
+  "Q2": {
+    "name": "evidence-convergence-loop",
+    "question": "Agent 是否在多个分支上重复检索同一个（低分）来源——打转？",
+    "rows": [
+      {
+        "doc": "stale-policy-v2.pdf",
+        "branch_a": "vector-search",
+        "branch_b": "keyword-search",
+        "common_ancestor": "compliance-answer",
+        "convergence_path": [
+          "span:ba-ret-1",
+          "span:ba-root",
+          "span:ba-ret-2"
+        ],
+        "score_a": 0.12,
+        "score_b": 0.12
+      }
+    ],
+    "passed": true
+  },
+  "Q3": {
+    "name": "unsupported-claim-forensics",
+    "question": "哪些断言没有任何证据路径支撑？",
+    "rows": [
+      {
+        "claim_id": "ba-claim-bad",
+        "text": "deadline is March 1",
+        "answer_id": "ba-ans",
+        "run_id": "bad-answer"
+      }
+    ],
+    "passed": true
+  },
+  "Q4": {
+    "name": "cost-attribution",
+    "question": "这次运行哪个子树烧掉了预算？",
+    "rows": [
+      {
+        "root_span": "compliance-answer",
+        "spans": 5,
+        "total_cost": 0.0208,
+        "output_tokens": 660,
+        "slowest_ms": 2400.0
+      }
+    ],
+    "passed": true
+  }
+}

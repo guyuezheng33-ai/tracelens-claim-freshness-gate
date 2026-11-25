@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TraceLens · 单文件交互看板</title>
+<style>
+:root { color-scheme: light; --ink:#1d2330; --muted:#5b6475; --line:#e2e6ee;
+        --bg:#f7f8fa; --blue:#1a5fb4; --green:#17693a; --red:#a32d2d; }
+* { box-sizing: border-box; }
+body { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; margin:0;
+       padding:28px 32px 56px; background:var(--bg); color:var(--ink); line-height:1.5; }
+h1 { font-size:23px; font-weight:650; margin:0 0 6px; }
+h2 { font-size:16px; font-weight:650; margin:0 0 12px; }
+.sub { color:var(--muted); font-size:13px; margin:4px 0 0; }
+.card { background:#fff; border:1px solid var(--line); border-radius:10px;
+        padding:16px 20px; margin-bottom:16px; }
+section { margin-bottom:26px; }
+code { font-family:ui-monospace, SFMono-Regular, Consolas, monospace; font-size:12px;
+       background:#f1f3f7; border-radius:4px; padding:1px 5px; }
+table { border-collapse:collapse; width:100%; font-size:13px; }
+th,td { text-align:left; padding:7px 10px; border-bottom:1px solid #edf0f5;
+        vertical-align:top; }
+th { color:var(--muted); font-weight:600; }
+.badge { display:inline-block; font-size:12px; font-weight:650; padding:2px 9px;
+         border-radius:999px; }
+.pass { background:#e6f4ea; color:var(--green); }
+.fail { background:#fce8e6; color:var(--red); }
+.unknown { background:#eef0f4; color:var(--muted); }
+.tag { display:inline-block; background:#eef3fb; border:1px solid #cbdcf5;
+       color:var(--blue); border-radius:5px; padding:1px 7px; font-size:11px;
+       margin-right:6px; font-weight:600; }
+.tag.tool { background:#f3effb; border-color:#d9cbf5; color:#6d3fb5; }
+.tag.pack { background:#e6f4ea; border-color:#bfe3cb; color:var(--green); }
+.tag.drop { background:#fce8e6; border-color:#f3c6c2; color:var(--red); }
+details { border:1px solid var(--line); border-radius:8px; background:#fff;
+          margin:8px 0; overflow:hidden; }
+details > summary { cursor:pointer; padding:11px 14px; font-size:13px;
+                    list-style:none; display:flex; align-items:center; gap:6px;
+                    flex-wrap:wrap; }
+details > summary::-webkit-details-marker { display:none; }
+details > summary::before { content:"\25B8"; color:#8a93a5; font-size:11px; }
+details[open] > summary::before { content:"\25BE"; }
+details > summary:hover { background:#fafbfd; }
+.detail-body { padding:4px 16px 14px; border-top:1px solid #edf0f5; }
+.muted { color:var(--muted); font-size:12px; }
+.chain { display:inline-block; background:#eef3fb; border:1px solid #cbdcf5;
+         border-radius:5px; padding:2px 7px; font-family:ui-monospace, monospace;
+         font-size:12px; }
+.arrow { color:#8a93a5; margin:0 4px; }
+.controls { display:flex; gap:8px; margin-bottom:10px; }
+button { font:inherit; font-size:12px; padding:5px 11px; border:1px solid var(--line);
+         background:#fff; border-radius:6px; cursor:pointer; color:var(--ink); }
+button:hover { background:#f1f3f7; }
+button.active { background:#eef3fb; border-color:#cbdcf5; color:var(--blue); }
+pre { white-space:pre-wrap; word-break:break-word; font-size:12px; background:#fafbfd;
+      border:1px solid var(--line); border-radius:6px; padding:10px 12px; margin:8px 0; }
+.callout { border-left:4px solid var(--blue); background:#f4f8ff; border-radius:6px;
+           padding:10px 14px; font-size:13px; margin:10px 0; }
+.callout.dropped-callout { border-left-color:var(--red); background:#fff5f4; }
+.claim.dropped > summary { background:#fff5f4; }
+.stage { font-size:11px; color:var(--muted); text-transform:uppercase;
+         letter-spacing:.04em; margin:14px 0 2px; font-weight:650; }
+[hidden] { display:none !important; }
+</style>
+</head>
+<body>
+<h1>TraceLens · 单文件交互看板</h1>
+<p class="sub">store: <code>D:\桌面\Relate by Neo4j Hackathon\trace-lens\store\demo-run.rl</code> · 零外部资源，离线可打开 · 点击任意区块展开证据</p>
+<section class="card"><h2>⓪ 答案保质期：合并前的一条 Cypher 判定</h2><p class="sub">要回答的问题：was the cited version already known-vulnerable when the agent answered? · 判定 <span class="badge pass">PASS</span></p><div class="stage">需要拒绝（出生即过期）</div><ul><li><span class="tag drop">出生即过期</span> <code>requests 2.2.0</code><div class="muted">漏洞自 <code>2014-10-15T14:55:00Z</code> 公开 · 答案生成于 2026-11-24T03:09:45.901568+00:00 · 滞后 <strong>4422.51 天</strong> · 公开证据 <code>https://github.com/kennethreitz/requests/issues/1885</code> · 动作：<strong>reject 2.2.0; pin requests 2.3.0 or later</strong></div></li></ul><div class="stage">通过（干净）</div><ul><li><span class="tag pack">干净</span> <code>requests 2.3.0</code><div class="muted">无 advisory 覆盖此版本 · no advisory covers this version</div></li></ul><p class="muted">advisory 与答案时间来自真实 OSV 记录与运行墙钟；时间反事实对照见 docs/expiry-counterfactual.json（同一版本、答案时间前移则判定翻转）。</p></section>
+<section class="card"><h2>① 摘要：判定 / 查询包 / 真因对照</h2><div><span class="badge pass" style="font-size:14px">PASS</span></div><p class="sub">structure-derived root-cause localization: graph vs global-lowest-score baseline</p><div class="stage">判定检查</div><table><thead><tr><th>检查项</th><th>结果</th></tr></thead><tbody><tr><td><code>baseline_misidentifies</code></td><td><span class="badge pass">PASS</span></td></tr><tr><td><code>graph_localizes_true_cause</code></td><td><span class="badge pass">PASS</span></td></tr><tr><td><code>graph_zero_false_positive_on_clean</code></td><td><span class="badge pass">PASS</span></td></tr><tr><td><code>has_signal</code></td><td><span class="badge pass">PASS</span></td></tr></tbody></table><div class="stage">查询包行数（共 4 包）</div><table><thead><tr><th>包</th><th>名称</th><th>行数</th><th>断言</th></tr></thead><tbody><tr><td><strong>Q1</strong></td><td>path-to-evidence</td><td>2</td><td><span class="badge pass">PASS</span></td></tr><tr><td><strong>Q2</strong></td><td>evidence-convergence-loop</td><td>1</td><td><span class="badge pass">PASS</span></td></tr><tr><td><strong>Q3</strong></td><td>unsupported-claim-forensics</td><td>1</td><td><span class="badge pass">PASS</span></td></tr><tr><td><strong>Q4</strong></td><td>cost-attribution</td><td>1</td><td><span class="badge pass">PASS</span></td></tr></tbody></table><div class="stage">基线 vs 图定位真因</div><table><thead><tr><th>方式</th><th>结论</th><th>解读</th></tr></thead><tbody><tr><td>全局最低分基线</td><td><code>cache-tmp.bin</code></td><td>对每条答案都一样，无法定位被污染的那一条（误判）</td></tr><tr><td>图路径定位真因</td><td><code>stale-policy-v2.pdf</code></td><td>由 Q2 收敛 motif 与 Q1 证据路径结构推导</td></tr></tbody></table></section>
+<section><h2>② 四个查询包（点击标题展开 / 折叠，可切换 JSON 视图）</h2><div class="controls"><button type="button" id="expand-all">全部展开</button><button type="button" id="collapse-all">全部折叠</button></div><details class="pack" open><summary><span class="tag pack">Q1</span><strong>path-to-evidence</strong><span class="muted">哪个低分来源污染了这个答案？</span><span class="muted">2 行</span><span class="badge pass">PASS</span></summary><div class="detail-body"><div class="controls"><button type="button" class="view-btn active" data-view="table">表格视图</button><button type="button" class="view-btn" data-view="json">JSON 视图</button></div><div class="table-view-wrap"><table class="table-view"><thead><tr><th>path</th><th>labels</th><th>bad_source</th><th>score</th><th>hops</th></tr></thead><tbody><tr><td><span class="chain">ans:ba-ans</span><span class="arrow">&rarr;</span><span class="chain">span:ba-root</span><span class="arrow">&rarr;</span><span class="chain">span:ba-ret-2</span><span class="arrow">&rarr;</span><span class="chain">src:bad-answer:stale-policy-v2.pdf</span></td><td><span class="chain">Answer</span><span class="arrow">&rarr;</span><span class="chain">Span</span><span class="arrow">&rarr;</span><span class="chain">Span</span><span class="arrow">&rarr;</span><span class="chain">Source</span></td><td>stale-policy-v2.pdf</td><td>0.12</td><td>3</td></tr><tr><td><span class="chain">ans:ba-ans</span><span class="arrow">&rarr;</span><span class="chain">span:ba-root</span><span class="arrow">&rarr;</span><span class="chain">span:ba-ret-1</span><span class="arrow">&rarr;</span><span class="chain">src:bad-answer:stale-policy-v2.pdf</span></td><td><span class="chain">Answer</span><span class="arrow">&rarr;</span><span class="chain">Span</span><span class="arrow">&rarr;</span><span class="chain">Span</span><span class="arrow">&rarr;</span><span class="chain">Source</span></td><td>stale-policy-v2.pdf</td><td>0.12</td><td>3</td></tr></tbody></table></div><div class="json-view" hidden><pre>[
+  {
+    &quot;path&quot;: [
+      &quot;ans:ba-ans&quot;,
+      &quot;span:ba-root&quot;,
+      &quot;span:ba-ret-2&quot;,
+      &quot;src:bad-answer:stale-policy-v2.pdf&quot;
+    ],
+    &quot;labels&quot;: [
+      &quot;Answer&quot;,
+      &quot;Span&quot;,
+      &quot;Span&quot;,
+      &quot;Source&quot;
+    ],
+    &quot;bad_source&quot;: &quot;stale-policy-v2.pdf&quot;,
+    &quot;score&quot;: 0.12,
+    &quot;hops&quot;: 3
+  },
+  {
+    &quot;path&quot;: [
+      &quot;ans:ba-ans&quot;,
+      &quot;span:ba-root&quot;,
+      &quot;span:ba-ret-1&quot;,
+      &quot;src:bad-answer:stale-policy-v2.pdf&quot;
+    ],
+    &quot;labels&quot;: [
+      &quot;Answer&quot;,
+      &quot;Span&quot;,
+      &quot;Span&quot;,
+      &quot;Source&quot;
+    ],
+    &quot;bad_source&quot;: &quot;stale-policy-v2.pdf&quot;,
+    &quot;score&quot;: 0.12,
+    &quot;hops&quot;: 3
+  }
+]</pre></div></div></details><details class="pack" open><summary><span class="tag pack">Q2</span><strong>evidence-convergence-loop</strong><span class="muted">Agent 是否在多个分支上重复检索同一个（低分）来源——打转？</span><span class="muted">1 行</span><span class="badge pass">PASS</span></summary><div class="detail-body"><div class="controls"><button type="button" class="view-btn active" data-view="table">表格视图</button><button type="button" class="view-btn" data-view="json">JSON 视图</button></div><div class="table-view-wrap"><table class="table-view"><thead><tr><th>doc</th><th>branch_a</th><th>branch_b</th><th>common_ancestor</th><th>convergence_path</th><th>score_a</th><th>score_b</th></tr></thead><tbody><tr><td>stale-policy-v2.pdf</td><td>vector-search</td><td>keyword-search</td><td>compliance-answer</td><td><span class="chain">span:ba-ret-1</span><span class="arrow">&rarr;</span><span class="chain">span:ba-root</span><span class="arrow">&rarr;</span><span class="chain">span:ba-ret-2</span></td><td>0.12</td><td>0.12</td></tr></tbody></table></div><div class="json-view" hidden><pre>[
+  {
+    &quot;doc&quot;: &quot;stale-policy-v2.pdf&quot;,
+    &quot;branch_a&quot;: &quot;vector-search&quot;,
+    &quot;branch_b&quot;: &quot;keyword-search&quot;,
+    &quot;common_ancestor&quot;: &quot;compliance-answer&quot;,
+    &quot;convergence_path&quot;: [
+      &quot;span:ba-ret-1&quot;,
+      &quot;span:ba-root&quot;,
+      &quot;span:ba-ret-2&quot;
+    ],
+    &quot;score_a&quot;: 0.12,
+    &quot;score_b&quot;: 0.12
+  }
+]</pre></div></div></details><details class="pack" open><summary><span class="tag pack">Q3</span><strong>unsupported-claim-forensics</strong><span class="muted">哪些断言没有任何证据路径支撑？</span><span class="muted">1 行</span><span class="badge pass">PASS</span></summary><div class="detail-body"><div class="controls"><button type="button" class="view-btn active" data-view="table">表格视图</button><button type="button" class="view-btn" data-view="json">JSON 视图</button></div><div class="table-view-wrap"><table class="table-view"><thead><tr><th>claim_id</th><th>text</th><th>answer_id</th><th>run_id</th></tr></thead><tbody><tr><td>ba-claim-bad</td><td>deadline is March 1</td><td>ba-ans</td><td>bad-answer</td></tr></tbody></table></div><div class="json-view" hidden><pre>[
+  {
+    &quot;claim_id&quot;: &quot;ba-claim-bad&quot;,
+    &quot;text&quot;: &quot;deadline is March 1&quot;,
+    &quot;answer_id&quot;: &quot;ba-ans&quot;,
+    &quot;run_id&quot;: &quot;bad-answer&quot;
+  }
+]</pre></div></div></details><details class="pack" open><summary><span class="tag pack">Q4</span><strong>cost-attribution</strong><span class="muted">这次运行哪个子树烧掉了预算？</span><span class="muted">1 行</span><span class="badge pass">PASS</span></summary><div class="detail-body"><div class="controls"><button type="button" class="view-btn active" data-view="table">表格视图</button><button type="button" class="view-btn" data-view="json">JSON 视图</button></div><div class="table-view-wrap"><table class="table-view"><thead><tr><th>root_span</th><th>spans</th><th>total_cost</th><th>output_tokens</th><th>slowest_ms</th></tr></thead><tbody><tr><td>compliance-answer</td><td>5</td><td>0.0208</td><td>660</td><td>2400.0</td></tr></tbody></table></div><div class="json-view" hidden><pre>[
+  {
+    &quot;root_span&quot;: &quot;compliance-answer&quot;,
+    &quot;spans&quot;: 5,
+    &quot;total_cost&quot;: 0.0208,
+    &quot;output_tokens&quot;: 660,
+    &quot;slowest_ms&quot;: 2400.0
+  }
+]</pre></div></div></details></section>
+<section class="card"><h2>③ 答案自查时间旅行：before &rarr; 图诊断 &rarr; after</h2><div class="callout dropped-callout"><strong>一眼看清：</strong>被删除的 claim 与图给出的删除理由<ul><li>deadline is March 1 &larr; <strong>Q3: no SUPPORTED_BY evidence path</strong></li></ul>点击每条 claim 可展开其 Q1/Q3 路径直达污染来源。</div><div class="stage">BEFORE：自查前答案（2 条，红框为被删 claim）</div><details class="claim dropped"><summary><span class="tag">声明</span>deadline is March 1 <code>ba-claim-bad</code> <span class="muted">来源 stale-policy-v2.pdf</span> <span class="tag drop">删除：Q3: no SUPPORTED_BY evidence path</span></summary><div class="detail-body"><div class="callout"><span class="tag pack">Q3</span><span class="chain">Claim: claim:ba-claim-bad</span><span class="arrow">&rarr;</span><span class="chain">Answer: answer:ba-ans</span><div class="muted">结构路径证据</div></div><div class="callout"><span class="tag pack">Q1</span><span class="chain">Answer: ans:ba-ans</span><span class="arrow">&rarr;</span><span class="chain">Span: span:ba-root</span><span class="arrow">&rarr;</span><span class="chain">Span: span:ba-ret-2</span><span class="arrow">&rarr;</span><span class="chain">Source: src:bad-answer:stale-policy-v2.pdf</span><div class="muted">污染来源 <code>stale-policy-v2.pdf</code> &middot; 分数 0.12 &middot; 3 跳</div></div><div class="callout"><span class="tag pack">Q1</span><span class="chain">Answer: ans:ba-ans</span><span class="arrow">&rarr;</span><span class="chain">Span: span:ba-root</span><span class="arrow">&rarr;</span><span class="chain">Span: span:ba-ret-1</span><span class="arrow">&rarr;</span><span class="chain">Source: src:bad-answer:stale-policy-v2.pdf</span><div class="muted">污染来源 <code>stale-policy-v2.pdf</code> &middot; 分数 0.12 &middot; 3 跳</div></div></div></details><details class="claim"><summary><span class="tag">声明</span>policy v9 current <code>ba-claim-ok</code> <span class="muted">来源 current-policy-v9.pdf</span></summary><div class="detail-body"><p class="muted">该 store 无对应图路径</p></div></details><div class="stage">DIAGNOSE：MCP 工具诊断动作（点击展开工具名与 Q3 路径证据）</div><details class="toolcall"><summary><span class="tag tool">tracelens_graph_info</span></summary><div class="detail-body"><div class="stage">工具返回（原始 JSON）</div><pre>{
+  &quot;tool&quot;: &quot;tracelens_graph_info&quot;,
+  &quot;result&quot;: {
+    &quot;node_count&quot;: 21,
+    &quot;relationship_count&quot;: 22,
+    &quot;labels&quot;: [
+      &quot;Answer&quot;,
+      &quot;Claim&quot;,
+      &quot;Run&quot;,
+      &quot;Source&quot;,
+      &quot;Span&quot;,
+      &quot;ToolCall&quot;
+    ],
+    &quot;relationship_types&quot;: [
+      &quot;ASSERTED_IN&quot;,
+      &quot;CALLED&quot;,
+      &quot;CONTAINS&quot;,
+      &quot;PARENT_OF&quot;,
+      &quot;PRODUCED&quot;,
+      &quot;RETRIEVED_FROM&quot;,
+      &quot;SUPPORTED_BY&quot;
+    ]
+  }
+}</pre></div></details><details class="toolcall"><summary><span class="tag tool">tracelens_judge</span></summary><div class="detail-body"><div class="stage">工具返回（原始 JSON）</div><pre>{
+  &quot;tool&quot;: &quot;tracelens_judge&quot;,
+  &quot;result&quot;: &quot;PASS&quot;,
+  &quot;checks&quot;: {
+    &quot;baseline_misidentifies&quot;: true,
+    &quot;graph_localizes_true_cause&quot;: true,
+    &quot;graph_zero_false_positive_on_clean&quot;: true,
+    &quot;has_signal&quot;: true
+  }
+}</pre></div></details><details class="toolcall"><summary><span class="tag tool">tracelens_query_pack</span><span class="tag pack">Q3</span><span class="muted">1 行</span><span class="muted">标记 ba-claim-bad</span></summary><div class="detail-body"><div class="stage">Q3 路径证据</div><div class="callout"><span class="tag pack">Q3</span><span class="chain">Claim: claim:ba-claim-bad</span><span class="arrow">&rarr;</span><span class="chain">Answer: answer:ba-ans</span><div class="muted">结构路径证据</div></div><div class="stage">工具返回（原始 JSON）</div><pre>{
+  &quot;tool&quot;: &quot;tracelens_query_pack&quot;,
+  &quot;pack&quot;: &quot;Q3&quot;,
+  &quot;rows&quot;: 1,
+  &quot;claim_ids&quot;: [
+    &quot;ba-claim-bad&quot;
+  ],
+  &quot;drop_reasons&quot;: {
+    &quot;ba-claim-bad&quot;: &quot;Q3: no SUPPORTED_BY evidence path&quot;
+  }
+}</pre></div></details><div class="stage">AFTER：自查后答案（1 条）</div><details class="claim"><summary><span class="tag">声明</span>policy v9 current <code>ba-claim-ok</code> <span class="muted">来源 current-policy-v9.pdf</span></summary><div class="detail-body"><p class="muted">该 store 无对应图路径</p></div></details></section>
+<script>window.__TRACELENS_DASHBOARD__ = {"schema": "tracelens/dashboard@1", "store": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\store\\demo-run.rl", "verdict": {"metric": "structure-derived root-cause localization: graph vs global-lowest-score baseline", "checks": {"baseline_misidentifies": true, "graph_localizes_true_cause": true, "graph_zero_false_positive_on_clean": true, "has_signal": true}, "baseline_global_lowest_score_picks": "cache-tmp.bin", "convergence_causes": ["stale-policy-v2.pdf"], "answers_with_signal": {"ba-ans": ["stale-policy-v2.pdf"]}, "answers_clean": ["cl-ans"], "passed": true, "verdict": "PASS"}, "packs": {"Q1": {"name": "path-to-evidence", "question": "哪个低分来源污染了这个答案？", "rows": [{"path": ["ans:ba-ans", "span:ba-root", "span:ba-ret-2", "src:bad-answer:stale-policy-v2.pdf"], "labels": ["Answer", "Span", "Span", "Source"], "bad_source": "stale-policy-v2.pdf", "score": 0.12, "hops": 3}, {"path": ["ans:ba-ans", "span:ba-root", "span:ba-ret-1", "src:bad-answer:stale-policy-v2.pdf"], "labels": ["Answer", "Span", "Span", "Source"], "bad_source": "stale-policy-v2.pdf", "score": 0.12, "hops": 3}]}, "Q2": {"name": "evidence-convergence-loop", "question": "Agent 是否在多个分支上重复检索同一个（低分）来源——打转？", "rows": [{"doc": "stale-policy-v2.pdf", "branch_a": "vector-search", "branch_b": "keyword-search", "common_ancestor": "compliance-answer", "convergence_path": ["span:ba-ret-1", "span:ba-root", "span:ba-ret-2"], "score_a": 0.12, "score_b": 0.12}]}, "Q3": {"name": "unsupported-claim-forensics", "question": "哪些断言没有任何证据路径支撑？", "rows": [{"claim_id": "ba-claim-bad", "text": "deadline is March 1", "answer_id": "ba-ans", "run_id": "bad-answer"}]}, "Q4": {"name": "cost-attribution", "question": "这次运行哪个子树烧掉了预算？", "rows": [{"root_span": "compliance-answer", "spans": 5, "total_cost": 0.0208, "output_tokens": 660, "slowest_ms": 2400.0}]}}, "answer_before": [{"claim_id": "ba-claim-bad", "source": "stale-policy-v2.pdf", "score": 0.12, "text": "deadline is March 1"}, {"claim_id": "ba-claim-ok", "source": "current-policy-v9.pdf", "score": 0.94, "text": "policy v9 current"}], "answer_after": [{"claim_id": "ba-claim-ok", "source": "current-policy-v9.pdf", "score": 0.94, "text": "policy v9 current"}], "tool_calls": [{"tool": "tracelens_graph_info", "result": {"node_count": 21, "relationship_count": 22, "labels": ["Answer", "Claim", "Run", "Source", "Span", "ToolCall"], "relationship_types": ["ASSERTED_IN", "CALLED", "CONTAINS", "PARENT_OF", "PRODUCED", "RETRIEVED_FROM", "SUPPORTED_BY"]}}, {"tool": "tracelens_judge", "result": "PASS", "checks": {"baseline_misidentifies": true, "graph_localizes_true_cause": true, "graph_zero_false_positive_on_clean": true, "has_signal": true}}, {"tool": "tracelens_query_pack", "pack": "Q3", "rows": 1, "claim_ids": ["ba-claim-bad"], "drop_reasons": {"ba-claim-bad": "Q3: no SUPPORTED_BY evidence path"}}], "drop_reasons": {"ba-claim-bad": "Q3: no SUPPORTED_BY evidence path"}, "expiry": {"schema": "tracelens/dependency-expiry-report@1", "user": {"persona": "developer or student accepting code from a coding agent", "moment": "before merging the agent's suggestion", "question": "was the cited version already known-vulnerable when the agent answered?", "action": "reject the stale version and pin the advisory's fix version", "not_a_persona": ["hackathon entrant", "judge", "customer incidence"]}, "summary": {"answers_checked": 2, "stale_claims": 1, "clean_claims": 1, "verdict": "PASS"}, "stale_findings": [{"answer_id": "expiry-stale-1795489785901568000", "claim_id": "expiry-claim-stale", "claim_text": "requests 2.2.0 is safe to use", "cited": "requests 2.2.0", "known_vulnerable_since": "2014-10-15T14:55:00Z", "answer_created": "2026-11-24T03:09:45.901568+00:00", "advisory_aged_days_at_answer": 4422.51, "public_evidence_url": "https://github.com/kennethreitz/requests/issues/1885", "fix_version": "2.3.0", "action": "reject 2.2.0; pin requests 2.3.0 or later"}], "clean_findings": [{"answer_id": "expiry-clean-1795489785901568000", "claim_id": "expiry-claim-clean", "cited": "requests 2.3.0", "status": "no advisory covers this version"}], "evidence": {"advisory_source": "https://api.osv.dev/v1/vulns/", "advisory_ids": ["PYSEC-2014-14"], "answers_sha256": "c825c1b54695b64dbaf64a09505ee6406f4fb8df6e45d1ddecc0f1833e027ed4"}}};</script>
+<script>
+(function () {
+  function setView(btn, showTable) {
+    var box = btn.closest('.pack');
+    if (!box) { return; }
+    var table = box.querySelector('.table-view-wrap');
+    var json = box.querySelector('.json-view');
+    if (table) { table.hidden = !showTable; }
+    if (json) { json.hidden = showTable; }
+    var buttons = box.querySelectorAll('.view-btn');
+    for (var i = 0; i < buttons.length; i++) {
+      var active = (buttons[i].getAttribute('data-view') === 'table') === showTable;
+      buttons[i].classList.toggle('active', active);
+    }
+  }
+  var viewButtons = document.querySelectorAll('.view-btn');
+  for (var i = 0; i < viewButtons.length; i++) {
+    viewButtons[i].addEventListener('click', function () {
+      setView(this, this.getAttribute('data-view') === 'table');
+    });
+  }
+  var expand = document.getElementById('expand-all');
+  var collapse = document.getElementById('collapse-all');
+  if (expand) {
+    expand.addEventListener('click', function () {
+      var all = document.querySelectorAll('details');
+      for (var j = 0; j < all.length; j++) { all[j].open = true; }
+    });
+  }
+  if (collapse) {
+    collapse.addEventListener('click', function () {
+      var all = document.querySelectorAll('details');
+      for (var j = 0; j < all.length; j++) { all[j].open = false; }
+    });
+  }
+})();
+</script>
+<footer><p class="muted">由 tracelens.dashboard 从查询结果与结构判定同源生成 · 单文件 / 无网络依赖</p></footer>
+</body>
+</html>

@@ -1,0 +1,211 @@
+{
+  "schema": "tracelens/first-place-evidence@1",
+  "source_note": "all numbers read from this run's artefacts; JSON and Markdown rendered from the same object",
+  "decision": {
+    "scanner_reads": "lockfile pins only",
+    "scanner_verdict": "CLEAN",
+    "graph_reads": "answer text + evidence chain + advisory timeline + lockfile",
+    "graph_verdict": "BLOCK_MERGE_TEXT",
+    "one_sentence": "The dependency file is clean, but the agent's sentence is born stale: only the graph joins the declaration to the evidence chain and the advisory clock."
+  },
+  "measured": {
+    "real_advisories": 8,
+    "advisories": [
+      {
+        "id": "GHSA-9hjg-9r4m-mvj7",
+        "package": "requests",
+        "fixed": "2.32.4",
+        "published": "2025-06-09T19:06:08Z"
+      },
+      {
+        "id": "GHSA-2mcm-79hx-8fxw",
+        "package": "django",
+        "fixed": "6.0.2",
+        "published": "2026-02-03T15:30:23Z"
+      },
+      {
+        "id": "GHSA-4grg-w6v8-c28g",
+        "package": "flask",
+        "fixed": "3.1.1",
+        "published": "2025-05-13T20:25:26Z"
+      },
+      {
+        "id": "GHSA-2xpw-w6gg-jr37",
+        "package": "urllib3",
+        "fixed": "2.6.0",
+        "published": "2025-12-05T18:15:54Z"
+      },
+      {
+        "id": "GHSA-22hg-r758-rrw9",
+        "package": "pillow",
+        "fixed": "13.0.0",
+        "published": "2026-10-21T20:39:49Z"
+      },
+      {
+        "id": "GHSA-cpwx-vrp4-4pq7",
+        "package": "jinja2",
+        "fixed": "3.1.6",
+        "published": "2025-03-05T20:40:14Z"
+      },
+      {
+        "id": "GHSA-3pqx-4fqf-j49f",
+        "package": "pyyaml",
+        "fixed": "5.2",
+        "published": "2021-04-20T16:40:42Z"
+      },
+      {
+        "id": "GHSA-fpfv-jqm9-f5jm",
+        "package": "numpy",
+        "fixed": "1.22",
+        "published": "2021-12-18T00:00:41Z"
+      }
+    ],
+    "text_declarations": 8,
+    "scenarios_built": 8,
+    "q6_multihop_paths": 111,
+    "q6_distinct_hop_lengths": [
+      4,
+      5,
+      6
+    ],
+    "q7_hop_audits": 8,
+    "q8_drifts": 8,
+    "merge_actions": 8,
+    "single_scenario_graph": {
+      "nodes": 19,
+      "relationships": 19,
+      "store_sha256": "360ada6f5bbffd84b7b6cb2a8dab4f2fe8ec67a64cf68c4eae37ef710e0fd584"
+    },
+    "batch_graph": {
+      "nodes": 162,
+      "relationships": 175,
+      "store_sha256": "5f4dcf9f8be506889b86e48c561740f3e29f31494f64c9206e513b56d03d54e6"
+    },
+    "osv_graph": {
+      "nodes": 11023,
+      "relationships": 50952,
+      "vulnerabilities": 873,
+      "nature": "real-public",
+      "source": "OSV.dev public API",
+      "store": "real-traces\\osv\\osv-graph.rl",
+      "sha256": "679fd34fd375b3855623abf41f7c010b23cc47e3a8c9f875ff6a1b6700de1103"
+    },
+    "first_stale_hop": {
+      "node": "span:pr-root",
+      "at_iso": "2026-11-22T16:23:09+00:00",
+      "already_stale_days": 4421.06
+    },
+    "full_suite_tests_passed": 137,
+    "verification_log": "logs\\award-verify-20261124T110936.log",
+    "real_cases": {
+      "count": 9,
+      "nature": "real-agent-text",
+      "sha256": "5b125744916ac6ca5644b0e4443f9b81c84199926408bcf8f37e60bba8800b39"
+    },
+    "convergence": {
+      "answers_merged": 22,
+      "distinct_models": 10,
+      "q9_clusters": 17,
+      "q10_advisories": 8,
+      "top_cluster": {
+        "package": "pillow",
+        "version": "10.0.0",
+        "advisory_id": "GHSA-22hg-r758-rrw9",
+        "fixed": "13.0.0",
+        "answers": [
+          "claude-pillow-1000-scan-answer-pillow-0",
+          "demo-pillow-scan-answer-pillow-1"
+        ],
+        "models": [
+          "claude-sonnet-4-6",
+          "gemini-3.1-pro-preview"
+        ],
+        "nodes": [
+          "pv:pillow:10.0.0",
+          "adv:GHSA-22hg-r758-rrw9",
+          "ans:claude-pillow-1000-scan-answer-pillow-0",
+          "claim:claude-pillow-1000-scan-claim-pillow-0",
+          "ans:demo-pillow-scan-answer-pillow-1",
+          "claim:demo-pillow-scan-claim-pillow-1"
+        ],
+        "n_answers": 2,
+        "n_models": 2
+      }
+    },
+    "reasoning": {
+      "iterations": 2,
+      "derived_counts": {
+        "R1": 8,
+        "R2": 8,
+        "R3": 16,
+        "R4": 8
+      },
+      "born_stale_derived": 8,
+      "agrees_with_cypher_q8": true
+    }
+  },
+  "counterfactual": {
+    "checks": {
+      "before_publication_not_stale": true,
+      "after_publication_is_stale": true,
+      "verdict_flips_with_time": true,
+      "answer_time_is_supplied": true,
+      "same_advisory_and_version": true
+    },
+    "verdict": "PASS"
+  },
+  "problem_scale": {
+    "status": "已核实-第一手 arxiv 页面 + 两处独立交叉",
+    "paper": "Correct Code, Vulnerable Dependencies: A Large Scale Measurement Study of LLM-Specified Library Versions",
+    "arxiv": "2605.06279",
+    "submitted": "2026-05-07",
+    "authors": [
+      "Chengjie Wang",
+      "Jingzheng Wu",
+      "Xiang Ling",
+      "Tianyue Luo",
+      "Chen Zhao"
+    ],
+    "benchmark": "PinTrace: 1,000 curated Stack Overflow tasks, 10 LLMs, 267 distinct PyPI libraries",
+    "verified_numbers": {
+      "tasks_with_known_cve": "36.70%-55.70%",
+      "critical_or_high_severity": "62.75%-74.51%",
+      "cve_public_before_model_knowledge_cutoff": "72.27%-91.37%",
+      "systemic_bias": "all models converge on the same small set of risky release versions"
+    },
+    "quote": "Our findings reveal LLM version selection as a first-class, previously overlooked risk surface in LLM-based development.",
+    "implication": "问题是真实且高频的，规模由第三方学术基准给出，不再依赖本项目自证；但该论文是 measurement study，不产出可部署的 pre-merge 防护工具",
+    "repo_resolution": {
+      "status": "已消解-以论文原文为准",
+      "canonical": "https://github.com/dw763j/PinTrace",
+      "method": "2026-11-24 复核：arXiv 2605.06279v1 PDF 正文明确写 'All the code and dataset have been released for open science at https://github.com/dw763j/PinTrace'；dw763j/PinTrace README 自称 'Official code release for the paper'。两处第一手来源一致。",
+      "rejected_claim": "alphaxiv 镜像页曾写 github.com/microsoft/PinTrace，与论文原文冲突；镜像转载不作为归属依据，弃用。",
+      "sources": [
+        "https://arxiv.org/pdf/2605.06279v1",
+        "https://github.com/dw763j/PinTrace"
+      ]
+    }
+  },
+  "checks": {
+    "eight_real_advisories_loaded": true,
+    "declaration_count_matches_scenarios": true,
+    "every_declaration_produced_a_drift": true,
+    "sca_control_reports_pinned_clean": true,
+    "graph_blocks_merge_text_where_sca_cannot": true,
+    "provenance_checks_all_pass": true,
+    "hop_audit_finds_already_stale_hop": true,
+    "time_counterfactual_passes": true,
+    "both_graph_exports_pass": true,
+    "osv_graph_scale_over_500": true,
+    "real_cases_are_captured_text": true,
+    "cross_model_convergence_found": true,
+    "advisory_blast_radius_spans_models": true,
+    "verdict_path_resolves_advisory_identity": true,
+    "fixpoint_reasoning_derives_born_stale": true,
+    "shared_collector_repair_is_one_cut": true,
+    "real_public_catch_blocks_stale_model_output": true,
+    "latest_full_suite_is_green": true,
+    "external_problem_scale_is_sourced": true
+  },
+  "verdict": "PASS"
+}

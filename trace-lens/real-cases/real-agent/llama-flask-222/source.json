@@ -1,0 +1,13 @@
+{
+  "record_id": "llama-flask-222",
+  "model": "meta-llama/llama-4-scout",
+  "task_id": "BigCodeBench/80",
+  "package": "flask",
+  "cited_version": "2.2.2",
+  "fixed": "3.1.1",
+  "raw_requirement": "flask==2.2.2",
+  "import_line": "from flask import Flask, render_template, request  # VERSION=2.2.2",
+  "nature": "real-agent-text",
+  "dataset_url": "https://github.com/dw763j/PinTrace/blob/main/outputs/evaluation/direct_dependencies.jsonl",
+  "dataset_note": "PinTrace public evaluation output; model-generated code with inline version annotation, not customer data"
+}

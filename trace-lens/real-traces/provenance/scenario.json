@@ -1,0 +1,69 @@
+{
+  "schema": "tracelens/provenance-scenario@1",
+  "nature": "reconstructed-from-real-advisory-and-real-wall-clock",
+  "caveat": "Self-run, no customer. Advisory is a real OSV record; answer and lockfile are a reproducible pre-merge scenario, not production traffic.",
+  "advisory_ids": [
+    "PYSEC-2014-14"
+  ],
+  "scenario": {
+    "run": {
+      "id": "pr-review-1",
+      "started_ns": 1795364588000000000
+    },
+    "answer": {
+      "id": "pr-answer-1",
+      "created_ns": 1795364590000000000,
+      "question": "Which requests version should we pin?",
+      "text": "requests 2.2.0 is safe to use"
+    },
+    "claims": [
+      {
+        "id": "pr-claim-1",
+        "text": "requests 2.2.0 is safe to use",
+        "package": "requests",
+        "version": "2.2.0"
+      }
+    ],
+    "spans": [
+      {
+        "id": "pr-root",
+        "kind": "AGENT",
+        "name": "agent.answer",
+        "at_ns": 1795364589000000000
+      },
+      {
+        "id": "pr-retriever",
+        "kind": "RETRIEVER",
+        "name": "vector-search",
+        "at_ns": 1795364589500000000,
+        "parent_id": "pr-root",
+        "retrieved_doc": "stale-doc.md"
+      }
+    ],
+    "sources": [
+      {
+        "doc_id": "stale-doc.md",
+        "uri": "https://github.com/kennethreitz/requests/issues/1885",
+        "at_ns": 1381848900000000000,
+        "at_ns_origin": "derived: real published_ns minus 365d (doc predates advisory)",
+        "mentions": [
+          {
+            "package": "requests",
+            "version": "2.2.0"
+          }
+        ]
+      }
+    ],
+    "lockfile": {
+      "path": "requirements.lock",
+      "pinned_ns": 1795364580000000000,
+      "sha256": "no-local-lockfile",
+      "pins": [
+        {
+          "package": "requests",
+          "version": "2.3.0"
+        }
+      ]
+    }
+  }
+}

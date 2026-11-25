@@ -1,0 +1,88 @@
+{
+  "schema": "tracelens/falsifiable-comparison@1",
+  "store": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\store\\demo-run.rl",
+  "store_sha256": "abac8bc1d1acd32edac53f7e8104b34a8a0eaca83b69132b3bec46c8b9e077ba",
+  "threshold": 0.5,
+  "baseline": {
+    "method": "global lowest Source.score, same answer-independent pick",
+    "pick": "cache-tmp.bin"
+  },
+  "graph": {
+    "method": "Q1 per-answer evidence path with convergence motif",
+    "answers": 2
+  },
+  "per_answer": [
+    {
+      "answer_id": "ba-ans",
+      "baseline_pick": "cache-tmp.bin",
+      "baseline_localizes": false,
+      "graph_picks": [
+        "stale-policy-v2.pdf"
+      ],
+      "graph_path_count": 2,
+      "graph_paths": [
+        {
+          "path": [
+            "ans:ba-ans",
+            "span:ba-root",
+            "span:ba-ret-2",
+            "src:bad-answer:stale-policy-v2.pdf"
+          ],
+          "bad_source": "stale-policy-v2.pdf",
+          "score": 0.12,
+          "hops": 3
+        },
+        {
+          "path": [
+            "ans:ba-ans",
+            "span:ba-root",
+            "span:ba-ret-1",
+            "src:bad-answer:stale-policy-v2.pdf"
+          ],
+          "bad_source": "stale-policy-v2.pdf",
+          "score": 0.12,
+          "hops": 3
+        }
+      ]
+    },
+    {
+      "answer_id": "cl-ans",
+      "baseline_pick": "cache-tmp.bin",
+      "baseline_localizes": false,
+      "graph_picks": [],
+      "graph_path_count": 0,
+      "graph_paths": []
+    }
+  ],
+  "falsifiable_checks": {
+    "baseline_is_answer_blind": true,
+    "graph_distinguishes_answers": true,
+    "baseline_wrong_on_at_least_one_answer": true
+  },
+  "judge": {
+    "metric": "structure-derived root-cause localization: graph vs global-lowest-score baseline",
+    "checks": {
+      "baseline_misidentifies": true,
+      "graph_localizes_true_cause": true,
+      "graph_zero_false_positive_on_clean": true,
+      "has_signal": true
+    },
+    "baseline_global_lowest_score_picks": "cache-tmp.bin",
+    "convergence_causes": [
+      "stale-policy-v2.pdf"
+    ],
+    "answers_with_signal": {
+      "ba-ans": [
+        "stale-policy-v2.pdf"
+      ]
+    },
+    "answers_clean": [
+      "cl-ans"
+    ],
+    "passed": true,
+    "verdict": "PASS"
+  },
+  "passed": true,
+  "verdict": "PASS",
+  "caveat": "Both methods run on the same store and the same threshold. The baseline is deliberately naive; this compares localization, not general retrieval quality."
+}

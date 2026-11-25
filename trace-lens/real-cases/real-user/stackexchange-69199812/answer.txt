@@ -1,0 +1,21 @@
+ When Cloud Run starts your container, a health check is sent to the container. Your container is not responding to the health check. Therefore, Cloud Run determines that your service is failing. 
+ Cloud Run requires that a container provide service/process/program that listens for and responds to HTTP requests. 
+ Your hello.py file only prints a message to stdout. Your program does not start a process to listen for requests. 
+ A very simple example that converts your example into a working program: 
+  import os
+
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+        return "Hello world"
+
+if __name__ == '__main__':
+        app.run(debug=True, host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))
+  
+ Note: You will need to add a file  requirements.txt  to your build to include Flask. Create  requirements.txt  in the same location as  Dockerfile . 
+ requirements.txt: 
+  Flask==2.0.1
+  

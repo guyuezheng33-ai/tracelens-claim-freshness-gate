@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tracelens"
+version = "0.1.0"
+description = "Born-stale dependency declaration gate over a connected graph"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["relate-db==1.2.0"]
+
+[project.optional-dependencies]
+dev = ["pytest==9.1.1", "ruff>=0.6"]
+
+[project.scripts]
+tracelens-scan = "tracelens.scan:main"
+tracelens-provenance = "tracelens.provenance:main"
+tracelens-convergence = "tracelens.convergence:main"
+tracelens-reason = "tracelens.reasoning:main"
+tracelens-ask = "tracelens.ask:main"
+tracelens-graphexport = "tracelens.graphexport:main"
+tracelens-graphexplorer = "tracelens.graphexplorer:main"
+tracelens-evidence = "tracelens.evidence:main"
+tracelens-realcases = "tracelens.realcases:main"
+
+[tool.setuptools.packages.find]
+include = ["tracelens*"]

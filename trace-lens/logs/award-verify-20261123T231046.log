@@ -1,0 +1,432 @@
+=== [V1/创意] falsifiable head-to-head ===
+{
+  "out": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\docs\\falsification.json",
+  "verdict": "PASS",
+  "checks": {
+    "baseline_is_answer_blind": true,
+    "graph_distinguishes_answers": true,
+    "baseline_wrong_on_at_least_one_answer": true
+  },
+  "answers": 2,
+  "baseline_pick": "cache-tmp.bin"
+}
+=== [V2/有用性] real failure case pack ===
+{
+  "ok": true,
+  "errors": [],
+  "case_count": 4,
+  "nature": "real-development-failures",
+  "sha256": "24e9d16c89fd5c1aa1c11083cb077c1f60083c8345e55c2f4f3d3f6de1618fe4"
+}
+=== [V3/完整性] real-scale traceable graph (pytest, offline) ===
+....                                                                     [100%]
+4 passed in 1.17s
+=== [V6/AI-agentic] real model call + graph-only rejection ===
+{
+  "out": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\guardrail-run.json",
+  "verdict": "PASS",
+  "before": 2,
+  "after": 1,
+  "decision_source": "graph only (Q3 unsupported path / Q2 convergence cause)",
+  "model_calls": 2,
+  "model": "gpt-oss-20b"
+}
+=== [V5/连接上下文] graph as diagnosis + runtime constraint ===
+{
+  "out": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\docs\\context-proof.json",
+  "verdict": "PASS",
+  "checks": {
+    "all_four_packs_assert_on_diagnostic_store": true,
+    "guardrail_decision_is_graph_only": true,
+    "model_cannot_release_rejected_claim": true,
+    "every_decision_cites_graph_evidence": true,
+    "real_graph_is_traceable_at_scale": true
+  }
+}
+=== [创意/有用性] answer-expiry on real OSV timeline ===
+{
+  "out": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\expiry\\answers.json",
+  "schema": "tracelens/expiry-agent-run@1",
+  "advisory_id": "PYSEC-2014-14",
+  "advisory_published": "2014-10-15T14:55:00Z",
+  "advisory_fixed": "2.3.0",
+  "advisory_url": "https://github.com/kennethreitz/requests/issues/1885",
+  "question": "Which requests version is safe?",
+  "answer_count": 2,
+  "created_ns": 1795446659971304200,
+  "clock_source": "wall-clock",
+  "clean_version_check": "verified-outside-advisory-range",
+  "nature": "run-with-real-osv-data",
+  "caveat": "Self-run agent, no customer. Advisory fetched live from OSV. Versions are checked against the advisory range, not self-labelled. Clean version is validated outside the affected range, not copied as a label."
+}
+{
+  "store": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\expiry\\expiry.rl",
+  "nodes": 7,
+  "relationships": 5,
+  "advisory_passport": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\expiry\\advisories.json",
+  "advisories": [
+    "PYSEC-2014-14"
+  ]
+}
+{
+  "verdict": "PASS",
+  "stale_count": 1,
+  "clean_count": 1
+}
+{
+  "out": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\expiry\\report.json",
+  "md": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\expiry\\report.md",
+  "verdict": "PASS",
+  "stale": 1,
+  "clean": 1
+}
+=== [V4/清晰度] single-file interactive dashboard (with expiry timeline) ===
+{
+  "out": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\docs\\award-dashboard.html",
+  "bytes": 24591,
+  "verdict": "PASS",
+  "packs": {
+    "Q1": 2,
+    "Q2": 1,
+    "Q3": 1,
+    "Q4": 1
+  },
+  "claims_before": 2,
+  "claims_after": 1,
+  "tool_calls": 3
+}
+=== [连接上下文/主体] unified provenance graph: graph AS the intelligence ===
+{
+  "graph": {
+    "store": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\provenance\\provenance.rl",
+    "nodes": 10,
+    "relationships": 9,
+    "bytes": 40960,
+    "affects_edges_derived_from_real_ranges": [
+      {
+        "advisory_id": "PYSEC-2014-14",
+        "package": "requests",
+        "version": "2.2.0",
+        "origin": "source"
+      }
+    ]
+  },
+  "verdict": "PASS",
+  "checks": {
+    "q6_provenance_path_is_multihop": true,
+    "q6_path_has_no_nulls": true,
+    "q7_hop_level_time_predicate": true,
+    "q7_identifies_which_hop_was_already_stale": true,
+    "q8_declaration_drift_found": true,
+    "sca_control_reports_pinned_clean": true,
+    "graph_changes_merge_decision_where_sca_cannot": true
+  },
+  "q6_paths": 1,
+  "q7_paths": 1,
+  "q8_drifts": 1,
+  "sca_control": [
+    {
+      "lockfile": "requirements.lock",
+      "package": "requests",
+      "pinned_version": "2.3.0",
+      "advisories_on_pinned": []
+    }
+  ]
+}
+=== [有用性/完整度] one-command scan over 8 real advisories (offline passport) ===
+{
+  "schema": "tracelens/scan-verdict@1",
+  "input": {
+    "text": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\scan\\pr-answer.txt",
+    "lockfile": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\scan\\requirements.lock",
+    "lockfile_sha256": "5238b60080d999b47f09e86173e8d72a8537cde8162c9e70aeea8c658157efa1"
+  },
+  "declarations_found": 8,
+  "scenarios_built": 8,
+  "pinned": [
+    {
+      "package": "requests",
+      "version": "2.3.0"
+    },
+    {
+      "package": "django",
+      "version": "1.3.4"
+    },
+    {
+      "package": "flask",
+      "version": "3.1.1"
+    },
+    {
+      "package": "urllib3",
+      "version": "2.6.0"
+    },
+    {
+      "package": "pillow",
+      "version": "13.0.0"
+    },
+    {
+      "package": "jinja2",
+      "version": "2.10.1"
+    },
+    {
+      "package": "pyyaml",
+      "version": "5.2"
+    },
+    {
+      "package": "numpy",
+      "version": "1.8.1"
+    }
+  ],
+  "graph_verdict": "PASS",
+  "checks": {
+    "q6_provenance_path_is_multihop": true,
+    "q6_path_has_no_nulls": true,
+    "q7_hop_level_time_predicate": true,
+    "q7_identifies_which_hop_was_already_stale": true,
+    "q8_declaration_drift_found": true,
+    "sca_control_reports_pinned_clean": true,
+    "graph_changes_merge_decision_where_sca_cannot": true
+  },
+  "Q6_provenance_paths": 8,
+  "Q7_hop_audits": 8,
+  "Q8_drifts": 8,
+  "Q6_provenance": [
+    {
+      "answer_id": "scan-answer-requests-0",
+      "claim_id": "scan-claim-requests-0",
+      "claim_text": "requests 2.2.0",
+      "package": "requests",
+      "version": "2.2.0",
+      "advisory_id": "GHSA-652x-xj99-gmcc",
+      "published_ns": 1652494162000000000,
+      "created_ns": 1795364590000000000,
+      "path": [
+        "span:scan-root-0",
+        "span:scan-ret-0",
+        "src:scan-doc-0",
+        "pv:requests:2.2.0"
+      ],
+      "labels": [
+        "Span",
+        "Span",
+        "Source",
+        "PkgVersion"
+      ],
+      "rels": [
+        "PARENT_OF",
+        "RETRIEVED_FROM",
+        "MENTIONS"
+      ],
+      "hops": 3
+    },
+    {
+      "answer_id": "scan-answer-django-1",
+      "claim_id": "scan-claim-django-1",
+      "claim_text": "django 1.3.0",
+      "package": "django",
+      "version": "1.3.0",
+      "advisory_id": "GHSA-2655-q453-22f9",
+      "published_ns": 1652764231000000000,
+      "created_ns": 1795364590000000000,
+      "path": [
+        "span:scan-root-1",
+        "span:scan-ret-1",
+        "src:scan-doc-1",
+        "pv:django:1.3.0"
+      ],
+      "la
+=== [连接上下文/清晰度] see your graph: live Cypher read-back -> single-file explorer ===
+{
+  "store": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\provenance\\provenance.rl",
+  "store_sha256": "1163d67cee744bc1c64228f33f5f61957786af3152cd31721d72199bb678577c",
+  "counts": {
+    "nodes": 10,
+    "relationships": 9,
+    "labels": {
+      "Advisory": 1,
+      "Answer": 1,
+      "Claim": 1,
+      "Lockfile": 1,
+      "PkgVersion": 2,
+      "Run": 1,
+      "Source": 1,
+      "Span": 2
+    },
+    "rel_types": {
+      "AFFECTS": 1,
+      "ASSERTS": 1,
+      "CITES": 1,
+      "CONTAINS": 1,
+      "MENTIONS": 1,
+      "PARENT_OF": 1,
+      "PINS": 1,
+      "PRODUCED": 1,
+      "RETRIEVED_FROM": 1
+    }
+  },
+  "checks": {
+    "store_is_persisted_on_disk": true,
+    "nodes_match_live_db_count": true,
+    "relationships_match_live_db_count": true,
+    "every_node_has_properties": true,
+    "every_edge_has_type": true,
+    "every_edge_endpoint_resolves": true,
+    "q6_path_nodes_resolve_in_export": true
+  },
+  "verdict": "PASS"
+}
+{
+  "store": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\scan\\scan.rl",
+  "store_sha256": "e82b54701af22bf51f025c649af06281268b16f6e58b3c4c403b15bf6b1e5e01",
+  "counts": {
+    "nodes": 73,
+    "relationships": 72,
+    "labels": {
+      "Advisory": 8,
+      "Answer": 8,
+      "Claim": 8,
+      "Lockfile": 1,
+      "PkgVersion": 16,
+      "Run": 8,
+      "Source": 8,
+      "Span": 16
+    },
+    "rel_types": {
+      "AFFECTS": 8,
+      "ASSERTS": 8,
+      "CITES": 8,
+      "CONTAINS": 8,
+      "MENTIONS": 8,
+      "PARENT_OF": 8,
+      "PINS": 8,
+      "PRODUCED": 8,
+      "RETRIEVED_FROM": 8
+    }
+  },
+  "checks": {
+    "store_is_persisted_on_disk": true,
+    "nodes_match_live_db_count": true,
+    "relationships_match_live_db_count": true,
+    "every_node_has_properties": true,
+    "every_edge_has_type": true,
+    "every_edge_endpoint_resolves": true,
+    "q6_path_nodes_resolve_in_export": true
+  },
+  "verdict": "PASS"
+}
+{
+  "out": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\docs\\graph-explorer.html",
+  "graphs": 2,
+  "nodes": [
+    10,
+    73
+  ],
+  "relationships": [
+    9,
+    72
+  ],
+  "verdicts": [
+    "PASS",
+    "PASS"
+  ],
+  "store_hash_matches_disk": [
+    true,
+    true
+  ],
+  "bytes": 94313
+}
+=== [有用性/反证] born-stale counterfactual: same version, time flips verdict ===
+{
+  "out": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\expiry\\cf-before-answers.json",
+  "schema": "tracelens/expiry-agent-run@1",
+  "advisory_id": "PYSEC-2014-14",
+  "advisory_published": "2014-10-15T14:55:00Z",
+  "advisory_fixed": "2.3.0",
+  "advisory_url": "https://github.com/kennethreitz/requests/issues/1885",
+  "question": "Which requests version is safe?",
+  "answer_count": 2,
+  "created_ns": 1356998400000000000,
+  "clock_source": "supplied-as-of",
+  "clean_version_check": "verified-outside-advisory-range",
+  "nature": "run-with-real-osv-data",
+  "caveat": "Self-run agent, no customer. Advisory fetched live from OSV. Versions are checked against the advisory range, not self-labelled. Clean version is validated outside the affected range, not copied as a label."
+}
+{
+  "store": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\expiry\\cf-before.rl",
+  "nodes": 7,
+  "relationships": 5,
+  "advisory_passport": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\expiry\\cf-before-adv.json",
+  "advisories": [
+    "PYSEC-2014-14"
+  ]
+}
+{
+  "verdict": "FAIL",
+  "stale_count": 0,
+  "clean_count": 2
+}
+{
+  "out": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\expiry\\cf-after-answers.json",
+  "schema": "tracelens/expiry-agent-run@1",
+  "advisory_id": "PYSEC-2014-14",
+  "advisory_published": "2014-10-15T14:55:00Z",
+  "advisory_fixed": "2.3.0",
+  "advisory_url": "https://github.com/kennethreitz/requests/issues/1885",
+  "question": "Which requests version is safe?",
+  "answer_count": 2,
+  "created_ns": 1795364590000000000,
+  "clock_source": "supplied-as-of",
+  "clean_version_check": "verified-outside-advisory-range",
+  "nature": "run-with-real-osv-data",
+  "caveat": "Self-run agent, no customer. Advisory fetched live from OSV. Versions are checked against the advisory range, not self-labelled. Clean version is validated outside the affected range, not copied as a label."
+}
+{
+  "store": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\expiry\\cf-after.rl",
+  "nodes": 7,
+  "relationships": 5,
+  "advisory_passport": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\real-traces\\expiry\\cf-after-adv.json",
+  "advisories": [
+    "PYSEC-2014-14"
+  ]
+}
+{
+  "verdict": "PASS",
+  "stale_count": 1,
+  "clean_count": 1
+}
+{
+  "out": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\docs\\expiry-counterfactual.json",
+  "verdict": "PASS",
+  "checks": {
+    "before_publication_not_stale": true,
+    "after_publication_is_stale": true,
+    "verdict_flips_with_time": true,
+    "answer_time_is_supplied": true,
+    "same_advisory_and_version": true
+  }
+}
+=== [ALL] full test suite ===
+........................................................................ [ 59%]
+.................................................                        [100%]
+121 passed in 16.95s
+=== [EVIDENCE] programmatic first-place pack (this run only) ===
+{
+  "json": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\docs\\first-place-evidence.json",
+  "markdown": "D:\\桌面\\Relate by Neo4j Hackathon\\trace-lens\\docs\\EVIDENCE.md",
+  "verdict": "PASS",
+  "checks": {
+    "eight_real_advisories_loaded": true,
+    "declaration_count_matches_scenarios": true,
+    "every_declaration_produced_a_drift": true,
+    "sca_control_reports_pinned_clean": true,
+    "graph_blocks_merge_text_where_sca_cannot": true,
+    "provenance_checks_all_pass": true,
+    "hop_audit_finds_already_stale_hop": true,
+    "time_counterfactual_passes": true,
+    "both_graph_exports_pass": true,
+    "latest_full_suite_is_green": true,
+    "external_problem_scale_is_sourced": true
+  },
+  "tests": 121
+}
+OK: six dimensions rebuilt and re-verified with this run's evidence

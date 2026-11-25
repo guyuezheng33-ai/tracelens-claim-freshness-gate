@@ -1,0 +1,2 @@
+import numpy as np  # VERSION=1.21.0
+numpy==1.21.0

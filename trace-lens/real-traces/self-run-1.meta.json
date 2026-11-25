@@ -1,0 +1,31 @@
+{
+  "schema": "tracelens/real-trace-passport@1",
+  "nature": "real",
+  "source_file": "self-run-1.otlp.json",
+  "sha256": "848cad7b52c0f4abb21a4d37c92f57c6614882602462e13bce1b3df253d0262a",
+  "origin": "self-run: python -m tracelens.realagent, TF-IDF over real product docs, wall-clock nanosecond timestamps",
+  "caveat": "self-run, no customer, deterministic scorer; real execution artifact not a hand-written fixture",
+  "intake": {
+    "ok": true,
+    "reason": "",
+    "spans": 4,
+    "timed_spans": 4,
+    "parents": 3,
+    "events": 12,
+    "event_names": [
+      "tracelens.answer",
+      "tracelens.claim",
+      "tracelens.retrieval",
+      "tracelens.tool_call"
+    ],
+    "checks": {
+      "spans_present": true,
+      "real_timestamps": true,
+      "positive_durations": true,
+      "has_parent_edges": true,
+      "has_events": true,
+      "has_tool_or_retrieval": true
+    }
+  },
+  "allowed_use": "对外结论可用；不得声称来自付费客户或生产流量"
+}

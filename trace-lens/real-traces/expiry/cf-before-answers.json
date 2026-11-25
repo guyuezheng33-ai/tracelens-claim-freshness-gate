@@ -1,0 +1,50 @@
+{
+  "meta": {
+    "schema": "tracelens/expiry-agent-run@1",
+    "advisory_id": "PYSEC-2014-14",
+    "advisory_published": "2014-10-15T14:55:00Z",
+    "advisory_fixed": "2.3.0",
+    "advisory_url": "https://github.com/kennethreitz/requests/issues/1885",
+    "question": "Which requests version is safe?",
+    "answer_count": 2,
+    "created_ns": 1356998400000000000,
+    "clock_source": "supplied-as-of",
+    "clean_version_check": "verified-outside-advisory-range",
+    "nature": "run-with-real-osv-data",
+    "caveat": "Self-run agent, no customer. Advisory fetched live from OSV. Versions are checked against the advisory range, not self-labelled. Clean version is validated outside the affected range, not copied as a label."
+  },
+  "answers": [
+    {
+      "answer_id": "expiry-stale-1356998400000000000",
+      "question": "Which requests version is safe?",
+      "created_ns": 1356998400000000000,
+      "created_iso": "2013-01-01T00:00:00+00:00",
+      "scenario": "agent answered without checking the advisory timeline",
+      "claims": [
+        {
+          "claim_id": "expiry-claim-stale",
+          "text": "requests 2.2.0 is safe to use",
+          "package": "requests",
+          "version": "2.2.0",
+          "source": "https://github.com/kennethreitz/requests/issues/1885"
+        }
+      ]
+    },
+    {
+      "answer_id": "expiry-clean-1356998400000000000",
+      "question": "Which requests version is safe?",
+      "created_ns": 1356998400000000000,
+      "created_iso": "2013-01-01T00:00:00+00:00",
+      "scenario": "agent answered citing a release outside the advisory range",
+      "claims": [
+        {
+          "claim_id": "expiry-claim-clean",
+          "text": "requests 2.3.0 is in use",
+          "package": "requests",
+          "version": "2.3.0",
+          "source": "https://github.com/kennethreitz/requests/issues/1885"
+        }
+      ]
+    }
+  ]
+}

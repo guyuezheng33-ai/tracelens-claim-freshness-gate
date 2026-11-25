@@ -1,0 +1,13 @@
+{
+  "record_id": "deepseek-jinja2-312",
+  "model": "DeepSeek-V3.2",
+  "task_id": "stackexchange-63901755",
+  "package": "jinja2",
+  "cited_version": "3.1.2",
+  "fixed": "3.1.6",
+  "raw_requirement": "jinja2==3.1.2",
+  "import_line": "from jinja2 import Environment, PackageLoader, select_autoescape  # VERSION=3.1.2",
+  "nature": "real-agent-text",
+  "dataset_url": "https://github.com/dw763j/PinTrace/blob/main/outputs/evaluation/direct_dependencies.jsonl",
+  "dataset_note": "PinTrace public evaluation output; model-generated code with inline version annotation, not customer data"
+}

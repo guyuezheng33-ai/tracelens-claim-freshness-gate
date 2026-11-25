@@ -1,0 +1,119 @@
+{
+  "schema": "tracelens/agent-self-check@1",
+  "store": "real-traces/self-run-1.rl",
+  "trace_sha256": "848cad7b52c0f4abb21a4d37c92f57c6614882602462e13bce1b3df253d0262a",
+  "answer_before": [
+    {
+      "claim_id": "real-claim-0",
+      "source": "README.md",
+      "score": 1.0,
+      "text": "doc README.md score 1.0000"
+    },
+    {
+      "claim_id": "real-claim-1",
+      "source": "trace-lens/README.md",
+      "score": 1.0,
+      "text": "doc trace-lens/README.md score 1.0000"
+    },
+    {
+      "claim_id": "real-monitor",
+      "source": "trace-lens/requirements.txt",
+      "score": 0.0,
+      "text": "lowest doc pulled by monitor"
+    }
+  ],
+  "answer_after": [
+    {
+      "claim_id": "real-claim-0",
+      "source": "README.md",
+      "score": 1.0,
+      "text": "doc README.md score 1.0000"
+    },
+    {
+      "claim_id": "real-claim-1",
+      "source": "trace-lens/README.md",
+      "score": 1.0,
+      "text": "doc trace-lens/README.md score 1.0000"
+    }
+  ],
+  "claims_dropped": [
+    {
+      "claim_id": "real-monitor",
+      "source": "trace-lens/requirements.txt",
+      "score": 0.0,
+      "text": "lowest doc pulled by monitor"
+    }
+  ],
+  "fix_rule": "drop claims whose source is a convergence cause or below threshold",
+  "bad_sources_from_graph": [],
+  "verdict": "FAIL",
+  "checks": {
+    "baseline_misidentifies": true,
+    "graph_localizes_true_cause": false,
+    "graph_zero_false_positive_on_clean": true,
+    "has_signal": false
+  },
+  "tool_calls": [
+    {
+      "tool": "tracelens_graph_info",
+      "result": {
+        "node_count": 15,
+        "relationship_count": 18,
+        "labels": [
+          "Answer",
+          "Claim",
+          "Run",
+          "Source",
+          "Span",
+          "ToolCall"
+        ],
+        "relationship_types": [
+          "ASSERTED_IN",
+          "CALLED",
+          "CONTAINS",
+          "PARENT_OF",
+          "PRODUCED",
+          "RETRIEVED_FROM",
+          "SUPPORTED_BY"
+        ]
+      }
+    },
+    {
+      "tool": "tracelens_judge",
+      "result": "FAIL",
+      "checks": {
+        "baseline_misidentifies": true,
+        "graph_localizes_true_cause": false,
+        "graph_zero_false_positive_on_clean": true,
+        "has_signal": false
+      }
+    }
+  ],
+  "tools_available": [
+    "tracelens_query_pack",
+    "tracelens_judge",
+    "tracelens_graph_info",
+    "tracelens_readonly_cypher"
+  ],
+  "graph": {
+    "node_count": 15,
+    "relationship_count": 18,
+    "labels": [
+      "Answer",
+      "Claim",
+      "Run",
+      "Source",
+      "Span",
+      "ToolCall"
+    ],
+    "relationship_types": [
+      "ASSERTED_IN",
+      "CALLED",
+      "CONTAINS",
+      "PARENT_OF",
+      "PRODUCED",
+      "RETRIEVED_FROM",
+      "SUPPORTED_BY"
+    ]
+  }
+}

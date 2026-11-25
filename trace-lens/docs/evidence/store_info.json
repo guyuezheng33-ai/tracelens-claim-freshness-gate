@@ -1,0 +1,21 @@
+{
+  "node_count": 21,
+  "relationship_count": 22,
+  "labels": [
+    "Answer",
+    "Claim",
+    "Run",
+    "Source",
+    "Span",
+    "ToolCall"
+  ],
+  "relationship_types": [
+    "ASSERTED_IN",
+    "CALLED",
+    "CONTAINS",
+    "PARENT_OF",
+    "PRODUCED",
+    "RETRIEVED_FROM",
+    "SUPPORTED_BY"
+  ]
+}

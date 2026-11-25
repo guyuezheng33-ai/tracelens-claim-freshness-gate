@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 300" width="960" height="300" role="img" aria-label="Q1 path to evidence: an Answer traced back through the root agent and two retriever branches to a low-score stale source">
+  <rect width="960" height="300" fill="#f7f9fc"/>
+  <text x="28" y="40" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="20" font-weight="700" fill="#1b2a4a">Q1 · path-to-evidence　一条 Cypher 走完「答案 → 污染来源」</text>
+  <text x="28" y="64" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="13" fill="#5a6b8c">bad-answer run　·　score &lt; 0.5　·　path 末元素 = Source，全程无 null</text>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8899b5"/>
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#d64545"/>
+    </marker>
+  </defs>
+
+  <!-- edges -->
+  <path d="M210,150 C250,150 250,150 292,150" stroke="#8899b5" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <path d="M420,150 C470,105 470,105 520,105" stroke="#8899b5" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <path d="M420,150 C470,195 470,195 520,195" stroke="#8899b5" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <path d="M650,105 C700,105 700,150 748,150" stroke="#d64545" stroke-width="2.5" stroke-dasharray="5,3" fill="none" marker-end="url(#arrowRed)"/>
+  <path d="M650,195 C700,195 700,150 748,150" stroke="#d64545" stroke-width="2.5" stroke-dasharray="5,3" fill="none" marker-end="url(#arrowRed)"/>
+
+  <!-- Answer node -->
+  <rect x="28" y="118" width="182" height="64" rx="8" fill="#e8eef9" stroke="#4a63a0" stroke-width="2"/>
+  <text x="119" y="145" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#1b2a4a">Answer · ba-ans</text>
+  <text x="119" y="165" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5a6b8c">text_hash = h-wrong-answer</text>
+
+  <!-- root span -->
+  <rect x="292" y="118" width="128" height="64" rx="8" fill="#eef3fb" stroke="#7a8fb8" stroke-width="2"/>
+  <text x="356" y="145" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#1b2a4a">Span · root</text>
+  <text x="356" y="165" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5a6b8c">compliance-answer</text>
+
+  <!-- retriever A -->
+  <rect x="520" y="76" width="130" height="58" rx="8" fill="#eef3fb" stroke="#7a8fb8" stroke-width="2"/>
+  <text x="585" y="100" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#1b2a4a">Span · ret-1</text>
+  <text x="585" y="119" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5a6b8c">vector-search</text>
+
+  <!-- retriever B -->
+  <rect x="520" y="168" width="130" height="58" rx="8" fill="#eef3fb" stroke="#7a8fb8" stroke-width="2"/>
+  <text x="585" y="192" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#1b2a4a">Span · ret-2</text>
+  <text x="585" y="211" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5a6b8c">keyword-search</text>
+
+  <!-- Source (highlighted) -->
+  <rect x="748" y="118" width="190" height="64" rx="8" fill="#fdeaea" stroke="#d64545" stroke-width="2.5"/>
+  <text x="843" y="143" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#8f1d1d">Source · stale-policy-v2.pdf</text>
+  <text x="843" y="164" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" fill="#d64545" font-weight="700">score 0.12　←　污染根因</text>
+
+  <!-- legend -->
+  <text x="28" y="232" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="12" fill="#5a6b8c">关系：Answer ←PRODUCED─ root ─PARENT_OF*→ retriever ─RETRIEVED_FROM→ Source</text>
+  <text x="28" y="256" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="12" fill="#5a6b8c">两个检索分支收敛到同一低分来源 —— Q2 用图 motif 复现这一「打转」信号</text>
+  <text x="28" y="282" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="11" fill="#8899b5">本图由测试结果直接映射生成　·　store/store/demo-run.rl　·　relate-db 1.2.0 实测</text>
+</svg>

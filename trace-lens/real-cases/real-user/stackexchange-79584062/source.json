@@ -1,0 +1,16 @@
+{
+  "record_id": "stackexchange-79584062",
+  "question_id": "79584062",
+  "answer_id": "79584608",
+  "title": "UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown",
+  "url": "https://stackoverflow.com/a/79584608",
+  "package": "pillow",
+  "cited_version": "11.2.1",
+  "fixed": "13.0.0",
+  "advisory": "GHSA-22hg-r758-rrw9",
+  "declaration_snippet": "pillow==11.2.1",
+  "declaration_where": "question",
+  "text_chars": 8700,
+  "license_note": "Stack Exchange content, CC BY-SA 4.0; attribution retained via answer URL",
+  "captured": "real public Stack Overflow question/answer downloaded from PinTrace public dataset"
+}
